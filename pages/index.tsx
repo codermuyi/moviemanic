@@ -1,4 +1,4 @@
-import { useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '@/styles/Home.module.css'
@@ -6,27 +6,30 @@ import Navbar from '@/src/Navbar'
 import Search from 'src/Search'
 import Category from '@/src/Category'
 
+// process.env.NEXT_PUBLIC_TMDB_API_KEY
 
 export default function Home() {
-  let movieCategoryTypes = ['Trending', 'Popular', 'Now Playing', 'Upcoming', 'Top Rated']
+  let movieCategoryTypes = ['Popular', 'Now Playing', 'Upcoming', 'Top Rated']
   let tvShowCategoryTypes = ['Trending', 'Popular', 'Airing Today', 'On Air', 'Top Rated']
 
-  const [data, setData] = useState<{[key: string]: any}>({})
+  const [data, setData] = useState<{ [key: string]: any }>([])
 
   const callAPI = async () => {
     try {
-      const res = await fetch(`https://jsonplaceholder.typicode.com/posts/1`);
-      const data = await res.json();
-      setData(data);
-      // console.log(data);
+      const res = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`)
+      const data = await res.json()
+      
+      setData(data.results);
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
   };
-  
+
   useEffect(() => {
     callAPI()
   }, [])
+
+  console.log(data)
 
   return (
     <>
@@ -39,20 +42,28 @@ export default function Home() {
 
       <main className={styles.main}>
         <Navbar />
-        <div >
-          {/* {data.body} */}
+        <div className='content'>
           <Search />
+          <Category
+            categoryName='Trending'
+            show='movie'
+            data={data}
+          />
           {
-            movieCategoryTypes.map((n, i) => 
-              <Category key={i} categoryName={n} show='movie'/>
+            movieCategoryTypes.map((n, i) =>
+              <Category
+                key={i}
+                categoryName={n}
+                show='movie'
+              />
             )
           }
           {
-            tvShowCategoryTypes.map((n, i) => 
-              <Category key={i} categoryName={n} show='tv series'/>
+            tvShowCategoryTypes.map((n, i) =>
+              <Category key={i} categoryName={n} show='tv series' />
             )
           }
-          
+
         </div>
       </main>
     </>

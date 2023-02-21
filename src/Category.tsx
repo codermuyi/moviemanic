@@ -1,13 +1,18 @@
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 import Button from './global/Button'
 
+import MovieCard from './MovieCard'
+
 interface Props {
   categoryName: string
   show: string
+  data?: any
 }
 
-const Category = ({ categoryName, show }: Props) => {
+const Category = ({ categoryName, show, data }: Props) => {
+
   return (
     <Cont>
       <Heading>
@@ -29,13 +34,20 @@ const Category = ({ categoryName, show }: Props) => {
         </div>
       </Heading>
       <List>
-
+        {data?.map((movie: any) => (
+          <MovieCard
+            key={movie.id}
+            movieName={movie.title}
+            imgSrc={movie.poster_path}
+          />
+        ))}
       </List>
     </Cont>
   )
 }
 
 const Cont = styled.div`
+  margin: 1rem .4rem;
   padding: 1rem;
   a {
     font-size: .7em;
@@ -61,7 +73,11 @@ const Heading = styled.div`
 `
 
 const List = styled.div`
-
+  display: flex;
+  flex-shrink: 0;
+  gap: 1rem;
+  overflow-x: auto;
+  appearance: none;
 `
 
 export default Category
