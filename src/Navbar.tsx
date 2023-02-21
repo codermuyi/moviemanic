@@ -1,19 +1,63 @@
 import styled from 'styled-components'
+import Image from 'next/image'
+import {
+  MainIcon,
+  ProfileIcon,
+  GridIcon,
+  MovieIcon,
+  TVIcon,
+} from './SVGIcons'
 
+/*
+  movie
+  grid
+  movie-2
+  television
+*/
 
 const Navbar = () => {
+  const iconWidth = 30
+  const iconHeight = 30
+  const iconFill = 'currentColor'
+
   return (
     <Bar>
       <div>
-        4
+        <MainIcon 
+          width={iconWidth}
+          height={iconHeight}
+          fill={iconFill}
+        />
       </div>
       <div className='nav'>
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
+        <div>
+          <GridIcon 
+            width={iconWidth}
+            height={iconHeight}
+            fill={iconFill}
+          />
+        </div>
+        <div>
+          <MovieIcon 
+            width={iconWidth}
+            height={iconHeight}
+            fill={iconFill}
+          />
+        </div>
+        <div>
+          <TVIcon 
+            width={iconWidth}
+            height={iconHeight}
+            fill={iconFill}
+          />
+        </div>
       </div>
       <div>
-        5
+        <ProfileIcon 
+          width={iconWidth}
+          height={iconHeight}
+          fill={iconFill}
+        />
       </div>
     </Bar>
   )
@@ -24,11 +68,19 @@ const Bar = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 1rem 3rem;
-  background-color: purple;
+  background-color: rgb(78, 100, 160);
+  /* margin-inline: 1rem; */
 
   .nav {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: .5em;
+
+    div {
+      width: 30px;
+      height: 30px;
+    }
   }
 `
 

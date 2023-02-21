@@ -1,18 +1,32 @@
+import { useState, useEffect} from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
-// import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
-
 import Navbar from '@/src/Navbar'
 import Search from 'src/Search'
 import Category from '@/src/Category'
 
 
-// const inter = Inter({ subsets: ['latin'] })
-
 export default function Home() {
   let movieCategoryTypes = ['Trending', 'Popular', 'Now Playing', 'Upcoming', 'Top Rated']
   let tvShowCategoryTypes = ['Trending', 'Popular', 'Airing Today', 'On Air', 'Top Rated']
+
+  const [data, setData] = useState<{[key: string]: any}>({})
+
+  const callAPI = async () => {
+    try {
+      const res = await fetch(`https://jsonplaceholder.typicode.com/posts/1`);
+      const data = await res.json();
+      setData(data);
+      // console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  
+  useEffect(() => {
+    callAPI()
+  }, [])
 
   return (
     <>
@@ -25,7 +39,8 @@ export default function Home() {
 
       <main className={styles.main}>
         <Navbar />
-        <div>
+        <div >
+          {/* {data.body} */}
           <Search />
           {
             movieCategoryTypes.map((n, i) => 
@@ -43,3 +58,4 @@ export default function Home() {
     </>
   )
 }
+

@@ -19,11 +19,11 @@ const Category = ({ categoryName, show }: Props) => {
           <Link href='/'>
             <Button
               border='none'
-              color='transparent'
+              bgColor='transparent'
               radius='10px'
               cursor='pointer'
             >
-              SHOW MORE
+              SEE MORE
             </Button>
           </Link>
         </div>
@@ -37,6 +37,9 @@ const Category = ({ categoryName, show }: Props) => {
 
 const Cont = styled.div`
   padding: 1rem;
+  a {
+    font-size: .7em;
+  }
 `
 
 const Heading = styled.div`

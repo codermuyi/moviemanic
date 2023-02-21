@@ -1,12 +1,16 @@
-
+import styled from 'styled-components'
 import Image from 'next/image'
  
 const MovieCard = () => {
   return (
-    <div>
+    <Card>
       
-    </div>
+    </Card>
   )
 }
+
+const Card = styled.div`
+
+`
 
 export default MovieCard

@@ -1,7 +1,8 @@
 
 interface Props {
   border: string;
-  color: string;
+  color?: string
+  bgColor: string;
   children?: React.ReactNode;
   // height: string;
   onClick?: () => void;
@@ -14,6 +15,7 @@ interface Props {
 const Button: React.FC<Props> = ({ 
     border,
     color,
+    bgColor,
     children,
     onClick, 
     radius,
@@ -26,7 +28,8 @@ const Button: React.FC<Props> = ({
     <button 
       onClick={onClick}
       style={{
-         backgroundColor: color,
+         backgroundColor: bgColor,
+         color,
          border,
          borderRadius: radius,
          cursor,
