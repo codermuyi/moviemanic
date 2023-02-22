@@ -61,7 +61,7 @@ const Bar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 3rem;
+  padding: 1rem 2rem;
   background-color: rgb(var(--theme-main-color));
   /* margin-inline: 1rem; */
 
@@ -69,7 +69,7 @@ const Bar = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: .5em;
+    gap: 2em;
 
     div {
       width: 30px;
@@ -81,8 +81,9 @@ const Bar = styled.div`
     flex-direction: column;
     height: 85%;
     width: 60px;
-    border-radius: 50px;
+    border-radius: 10px;
     margin: 3rem auto;
+    padding: 2rem;
 
     .nav {
       flex-direction: column;
