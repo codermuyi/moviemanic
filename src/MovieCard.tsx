@@ -17,7 +17,7 @@ const MovieCard = ({
   isTrending
 }: Props) => {
 
-  const width = isTrending ? 250 : 170
+  const width = isTrending ? 500 : 170
   const height = isTrending ? 170 : 130
 
   return (
@@ -27,7 +27,7 @@ const MovieCard = ({
         alt={movieName}
         width={width}
         height={height}
-        className={`card-image ${!isTrending ? 'normal': 'trending'}`}
+        className={`card-image ${!isTrending ? 'normal' : 'trending'}`}
       />
       <div className='other-info'>
 
@@ -50,15 +50,28 @@ const Card = styled.div`
   }
 
   .trending {
-    width: 250px;
+    width: 300px;
+  }
+
+  @media ${breakpoints.md} {
+    .trending {
+      width: 350px;
+      height: 200px;
+    }
   }
 
   @media ${breakpoints.lg} {
     .trending {
-      width: 320px;
-      height: 200px;
+      width: 400px;
+      height: 250px;
     }
   }
-`
+  @media ${breakpoints.xl} {
+    .trending {
+      width: 500px;
+      height: 300px;
+    }
+  }
+  `
 
 export default MovieCard
