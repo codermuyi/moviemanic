@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import Image from 'next/image'
 
+import breakpoints from '@/assets/breakpoints'
+
 // `https://image.tmdb.org/t/p/w1024${imgSrc}`
 
 interface Props {
@@ -15,8 +17,8 @@ const MovieCard = ({
   isTrending
 }: Props) => {
 
-  const width = isTrending ? 250 : 160
-  const height = isTrending ? 170 : 120
+  const width = isTrending ? 250 : 170
+  const height = isTrending ? 170 : 130
 
   return (
     <Card>
@@ -25,7 +27,7 @@ const MovieCard = ({
         alt={movieName}
         width={width}
         height={height}
-        className='card-image'
+        className={`card-image ${!isTrending ? 'normal': 'trending'}`}
       />
       <div className='other-info'>
 
@@ -41,6 +43,21 @@ const Card = styled.div`
     object-fit: cover;
     object-position: right top;
     border-radius: 20px;
+  }
+
+  .normal {
+    width: 100%;
+  }
+
+  .trending {
+    width: 250px;
+  }
+
+  @media ${breakpoints.lg} {
+    .trending {
+      width: 320px;
+      height: 200px;
+    }
   }
 `
 

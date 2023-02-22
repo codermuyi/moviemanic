@@ -41,7 +41,9 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <Navbar />
+        <div>
+          <Navbar />
+        </div>
         <div className='content'>
           <Search />
           <Category

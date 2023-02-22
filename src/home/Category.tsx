@@ -4,6 +4,7 @@ import styled, { css, StyledComponent } from 'styled-components'
 
 import Button from '../global/Button'
 import MovieCard from '../MovieCard'
+import breakpoints from '@/assets/breakpoints'
 
 
 interface Props {
@@ -35,22 +36,16 @@ const Category = ({ categoryName, showType, data, isTrending = false }: Props) =
           </Link>
         </div>
       </Heading>
+
       <List isTrending={isTrending}>
         {data.map((movie: any, index: number) => {
-          if (index < 4)
-            return <MovieCard
-              key={movie.id}
-              movieName={movie.title}
-              imgSrc={movie.backdrop_path}
-              isTrending={isTrending}
-            />
-          else if (isTrending && index >= 4)
-            return <MovieCard
-              key={movie.id}
-              movieName={movie.title}
-              imgSrc={movie.backdrop_path}
-              isTrending={isTrending}
-            />
+          if (!isTrending && index > 5) return
+          return <MovieCard
+            key={movie.id}
+            movieName={movie.title}
+            imgSrc={movie.backdrop_path}
+            isTrending={isTrending}
+          />
         })}
       </List>
     </Cont>
@@ -59,8 +54,7 @@ const Category = ({ categoryName, showType, data, isTrending = false }: Props) =
 
 const Cont = styled.div`
   margin: 1rem .1rem;
-  padding: 1rem;
-
+  padding: 0 1rem;
 `
 
 const Heading = styled.div`
@@ -94,20 +88,33 @@ const Heading = styled.div`
   }
 `
 
-const List: StyledComponent<'div', any, {isTrending: boolean}> = styled.div`
-  display: flex;
-  flex-shrink: 0;
+const List: StyledComponent<'div', any, { isTrending: boolean }> = styled.div`
   gap: 1rem;
-
-  ${(props: any) => props.isTrending ? css`
+  
+  ${(props: any) => props.isTrending ?
+    css`
+    display: flex;
+    flex-shrink: 0;
     overflow-x: auto;
-
-  `: css`
+    `:
+    css`
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    /* flex-wrap: wrap; */
-    /* justify-content: center; */
+    justify-content: center;
+
+    @media ${breakpoints.md} {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media ${breakpoints.xl} {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      & > *::nth-child(5) {
+        grid-column: 1 / 3;
+      } 
+      & > *::last-child {
+        grid-column: 3 / 5;
+      }
+    }
   `}
 `
 

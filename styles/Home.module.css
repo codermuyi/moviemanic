@@ -1,23 +1,28 @@
 .main {
-  /* padding: 6rem; */
   min-height: 100vh;
   background-color: rgb(var(--main-bg-color), .5);
 }
 
-@media (min-width: 720px) {
+@media (min-width: 992px) {
   .main {
-    /* display: grid; */
-    grid-template-columns: 1fr 9fr;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: 1;
+    height: 100vh;
+    /* width: 100vw; */
   }
 
-  .main::nth-child(1) {
-    align-self: center;
-    display: flex;
-    margin: 2rem;
+  .main > * {
+    height: 100%;
+    overflow: auto;
+  }
+
+  .main > *::nth-child(1) {
+    
   }
   
-  .main::nth-child(2) {
-  
+  .main > *::nth-child(2) {
+    padding-inline: 4rem;
   }
 }
 

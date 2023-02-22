@@ -7,6 +7,7 @@ import {
   MovieIcon,
   TVIcon,
 } from './SVGIcons'
+import breakpoints from '@/assets/breakpoints'
 
 const Navbar = () => {
   const iconWidth = 30
@@ -73,6 +74,18 @@ const Bar = styled.div`
     div {
       width: 30px;
       height: 30px;
+    }
+  }
+
+  @media ${breakpoints.lg} {
+    flex-direction: column;
+    height: 85%;
+    width: 60px;
+    border-radius: 50px;
+    margin: 3rem auto;
+
+    .nav {
+      flex-direction: column;
     }
   }
 `
