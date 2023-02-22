@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import styled from 'styled-components';
-import Button from './global/Button';
+import Button from './Button';
 import { SearchIcon } from './SVGIcons'
 
 const Search = () => {
@@ -17,7 +17,7 @@ const Search = () => {
       <Button
         border='none'
         bgColor='white'
-        color='black'
+        color='rgb(var(--sec-text-color))'
         radius='10px'
         cursor='pointer'
         padding=' .8em 1em'

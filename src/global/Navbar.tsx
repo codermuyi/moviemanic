@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import Image from 'next/image'
+// import Image from 'next/image'
 import {
   MainIcon,
   ProfileIcon,
@@ -7,13 +7,6 @@ import {
   MovieIcon,
   TVIcon,
 } from './SVGIcons'
-
-/*
-  movie
-  grid
-  movie-2
-  television
-*/
 
 const Navbar = () => {
   const iconWidth = 30
@@ -29,7 +22,7 @@ const Navbar = () => {
           fill={iconFill}
         />
       </div>
-      <div className='nav'>
+      <nav className='nav'>
         <div>
           <GridIcon 
             width={iconWidth}
@@ -51,7 +44,7 @@ const Navbar = () => {
             fill={iconFill}
           />
         </div>
-      </div>
+      </nav>
       <div>
         <ProfileIcon 
           width={iconWidth}
@@ -68,7 +61,7 @@ const Bar = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 1rem 3rem;
-  background-color: rgb(78, 100, 160);
+  background-color: rgb(var(--theme-main-color));
   /* margin-inline: 1rem; */
 
   .nav {
@@ -83,7 +76,5 @@ const Bar = styled.div`
     }
   }
 `
-
-// console.log('the key is: ' + process.env.NEXT_PUBLIC_TMDB_API_KEY);
 
 export default Navbar;

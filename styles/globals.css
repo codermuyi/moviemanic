@@ -11,7 +11,10 @@
   --main-text-color: 255, 255, 255;
   --sec-text-color: 20, 20, 20;
   --main-bg-color: 50, 50, 50;
-  --sec-bg-color: 
+  --sec-bg-color: 100, 100, 100;
+  --theme-main-color: 78, 100, 160;
+
+  
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -30,6 +33,7 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  /* overflow-y: hidden; */
 }
 
 body {
@@ -51,3 +55,4 @@ a {
     color-scheme: dark;
   }
 }
+
