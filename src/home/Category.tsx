@@ -34,6 +34,7 @@ const Category = ({ categoryName, showType, isTrending, fetch_path }: Props) => 
 
   return (
     <Cont>
+      {(isTrending && showType == 'TV Series') && <br />}
       <Heading>
         <div className='name'>
           <p className='category-name'>{categoryName}</p>
@@ -65,6 +66,7 @@ const Category = ({ categoryName, showType, isTrending, fetch_path }: Props) => 
 const Cont = styled.div`
   margin: 1rem .1rem;
   padding: 0 1rem;
+  max-width: 2000px;
 
   .simplebar-scrollbar {
     height: .8rem;

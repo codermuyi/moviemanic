@@ -25,10 +25,7 @@ const CategoryList = ({ isTrending, data, showType }: { isTrending: boolean, dat
   return (
     <>
       {isTrending ?
-        <SimpleBar style={{
-          maxWidth: 2000,
-          width: '100%',
-        }}>
+        <SimpleBar autoHide={false}>
           <List isTrending={isTrending}>
             {generateCards()}
           </List>
@@ -65,7 +62,6 @@ const List: StyledComponent<'div', any, { isTrending: boolean }> = styled.div`
       
       @media ${breakpoints.xxl} {
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        
       }
   `}
 `

@@ -99,6 +99,10 @@ const CardInfo = styled.div`
     bottom: 1rem;
   }
 
+  .normal-info {
+    font-size: .8em;
+  }
+
   .date-and-type {
     display: flex;
     gap: 1.2em;
