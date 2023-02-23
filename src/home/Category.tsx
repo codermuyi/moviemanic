@@ -2,13 +2,10 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import styled, { css, StyledComponent } from 'styled-components'
 
-import SimpleBar from 'simplebar-react';
-import 'simplebar-react/dist/simplebar.min.css';
-
 import Button from '../global/Button'
 import MovieCard from '../MovieCard'
 import breakpoints from '@/assets/breakpoints'
-
+import CategoryList from './CategoryList'
 
 interface Props {
   categoryName: string
@@ -18,7 +15,6 @@ interface Props {
 }
 
 const Category = ({ categoryName, showType, isTrending, fetch_path }: Props) => {
-
   const [data, setData] = useState<{ [key: string]: any }>([])
 
   useEffect(() => {
@@ -35,21 +31,6 @@ const Category = ({ categoryName, showType, isTrending, fetch_path }: Props) => 
 
     callAPI()
   }, [fetch_path])
-
-  function generateCards() {
-    return data?.map((movie: any, index: number) => {
-      if (!isTrending && index > 5) return
-      if (index > 9) return
-      return <MovieCard
-        key={movie.id}
-        movieName={movie.title || movie.name}
-        imgSrc={movie.backdrop_path}
-        isTrending={isTrending}
-        date={movie.release_date || movie.first_air_date}
-        type={showType}
-      />
-    })
-  }
 
   return (
     <Cont>
@@ -72,19 +53,11 @@ const Category = ({ categoryName, showType, isTrending, fetch_path }: Props) => 
         </div>
       </Heading>
 
-      {isTrending ?
-        <SimpleBar style={{
-          maxWidth: 2000,
-          width: '100%',
-        }}>
-          <List isTrending={isTrending}>
-            {generateCards()}
-          </List>
-        </SimpleBar> :
-        <List isTrending={isTrending}>
-          {generateCards()}
-        </List>
-      }
+      <CategoryList 
+        isTrending={isTrending}
+        data={data}
+        showType={showType}
+      />
     </Cont>
   )
 }
@@ -133,34 +106,6 @@ const Heading = styled.div`
   }
 `
 
-const List: StyledComponent<'div', any, { isTrending: boolean }> = styled.div`
-  gap: 1rem;
-  
-  ${(props: any) => props.isTrending ?
-    css`
-    display: flex;
-    flex-shrink: 0;
-    margin-bottom: .5rem;
-    `:
-    css`
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: center;
-
-    @media ${breakpoints.sm} {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-
-    @media ${breakpoints.xl} {
-      gap: 2rem;
-    }
-    
-    @media ${breakpoints.xxl} {
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      
-    }
-  `}
-`
 
 export default Category
 
