@@ -55,6 +55,8 @@ const Card = styled.div`
     object-fit: cover;
     object-position: left top;
     border-radius: 20px;
+    width: auto;
+    height: auto;
   }
 
   .normal {
