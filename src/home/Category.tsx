@@ -1,6 +1,9 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import styled, { css, StyledComponent } from 'styled-components'
+
+import SimpleBar from 'simplebar-react';
+import 'simplebar-react/dist/simplebar.min.css';
 
 import Button from '../global/Button'
 import MovieCard from '../MovieCard'
@@ -10,11 +13,41 @@ import breakpoints from '@/assets/breakpoints'
 interface Props {
   categoryName: string
   showType: string
-  data?: any
-  isTrending?: boolean
+  isTrending: boolean
+  fetch_path: string
 }
 
-const Category = ({ categoryName, showType, data, isTrending = false }: Props) => {
+const Category = ({ categoryName, showType, isTrending, fetch_path }: Props) => {
+
+  const [data, setData] = useState<{ [key: string]: any }>([])
+
+  useEffect(() => {
+    const callAPI = async () => {
+      try {
+        const res = await fetch(`https://api.themoviedb.org/3/${fetch_path}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`)
+        const data = await res.json()
+
+        setData(data.results);
+      } catch (err) {
+        console.log(err)
+      }
+    };
+
+    callAPI()
+  }, [fetch_path])
+
+  function generateCards() {
+    return data?.map((movie: any, index: number) => {
+      if (!isTrending && index > 5) return
+      if (index > 9) return
+      return <MovieCard
+        key={movie.id}
+        movieName={movie.title}
+        imgSrc={movie.backdrop_path}
+        isTrending={isTrending}
+      />
+    })
+  }
 
   return (
     <Cont>
@@ -37,17 +70,19 @@ const Category = ({ categoryName, showType, data, isTrending = false }: Props) =
         </div>
       </Heading>
 
-      <List isTrending={isTrending}>
-        {data.map((movie: any, index: number) => {
-          if (!isTrending && index > 5) return
-          return <MovieCard
-            key={movie.id}
-            movieName={movie.title}
-            imgSrc={movie.backdrop_path}
-            isTrending={isTrending}
-          />
-        })}
-      </List>
+      {isTrending ?
+        <SimpleBar style={{
+          maxWidth: 2000,
+          width: '100%',
+        }}>
+          <List isTrending={isTrending}>
+            {generateCards()}
+          </List>
+        </SimpleBar> :
+        <List isTrending={isTrending}>
+          {generateCards()}
+        </List>
+      }
     </Cont>
   )
 }
@@ -55,6 +90,14 @@ const Category = ({ categoryName, showType, data, isTrending = false }: Props) =
 const Cont = styled.div`
   margin: 1rem .1rem;
   padding: 0 1rem;
+
+  .simplebar-scrollbar {
+    height: .8rem;
+  }
+
+  .simplebar-scrollbar::before {
+    background-color: rgb(var(--theme-main-color));
+  }
 `
 
 const Heading = styled.div`
@@ -95,7 +138,7 @@ const List: StyledComponent<'div', any, { isTrending: boolean }> = styled.div`
     css`
     display: flex;
     flex-shrink: 0;
-    overflow-x: auto;
+    margin-bottom: .5rem;
     `:
     css`
     display: grid;

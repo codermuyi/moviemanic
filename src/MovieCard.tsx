@@ -17,14 +17,15 @@ const MovieCard = ({
   isTrending
 }: Props) => {
 
-  const width = isTrending ? 500 : 170
+  const width = isTrending ? 5000 : 170
   const height = isTrending ? 170 : 130
 
   return (
     <Card>
       <Image
-        src='/last-of-us.jpeg'
-        alt={movieName}
+        // src='/last-of-us.jpeg'
+        src={`https://image.tmdb.org/t/p/w500${imgSrc}`}
+        alt={movieName || 'No image'}
         width={width}
         height={height}
         className={`card-image ${!isTrending ? 'normal' : 'trending'}`}
@@ -61,6 +62,9 @@ const Card = styled.div`
   }
 
   @media ${breakpoints.lg} {
+    .normal {
+      height: 180px;
+    }
     .trending {
       width: 400px;
       height: 250px;

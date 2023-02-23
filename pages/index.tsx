@@ -5,31 +5,9 @@ import styles from '@/styles/Home.module.css'
 import Navbar from '@/src/global/Navbar'
 import Search from '@/src/global/Search'
 import Category from '@/src/home/Category'
-
-import data from '../assets/demo_data'
-
-// process.env.NEXT_PUBLIC_TMDB_API_KEY
+import { filmCategories } from '@/assets/film_info'
 
 export default function Home() {
-  let movieCategoryTypes = ['Popular', 'Now Playing', 'Upcoming', 'Top Rated']
-  let tvShowCategoryTypes = ['Popular', 'Airing Today', 'On Air', 'Top Rated']
-
-  // const [data, setData] = useState<{ [key: string]: any }>([])
-
-  // const callAPI = async () => {
-  //   try {
-  //     const res = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`)
-  //     const data = await res.json()
-
-  //     setData(data.results);
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   callAPI()
-  // }, [])
 
   return (
     <>
@@ -46,35 +24,14 @@ export default function Home() {
         </div>
         <div className='content'>
           <Search />
-          <Category
-            categoryName='Trending'
-            showType='movie'
-            data={data}
-            isTrending
-          />
           {
-            movieCategoryTypes.map((n, i) =>
+            filmCategories.map(c =>
               <Category
-                key={i}
-                categoryName={n}
-                showType='movie'
-                data={data}
-              />
-            )
-          }
-          <Category
-            categoryName='Trending'
-            showType='tv series'
-            data={data}
-            isTrending
-          />
-          {
-            tvShowCategoryTypes.map((n, i) =>
-              <Category
-                key={i}
-                categoryName={n}
-                showType='tv series'
-                data={data}
+                key={c.id}
+                categoryName={c.name}
+                showType={c.type}
+                isTrending={c.isTrending}
+                fetch_path={c.fetch_path}
               />
             )
           }
