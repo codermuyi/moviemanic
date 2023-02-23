@@ -3,77 +3,77 @@ import { v4 as uuid } from 'uuid'
 const filmCategories: {
   id: string
   name: string
-  type: 'movie' | 'tv series'
+  type: 'Movie' | 'TV Series'
   isTrending: boolean
   fetch_path: string
 }[] = [
     {
       id: uuid(),
       name: 'Trending',
-      type: 'movie',
+      type: 'Movie',
       isTrending: true,
       fetch_path: 'trending/movie/day'
     },
     {
       id: uuid(),
       name: 'Popular',
-      type: 'movie',
+      type: 'Movie',
       isTrending: false,
       fetch_path: 'movie/popular'
     },
     {
       id: uuid(),
       name: 'Now Playing',
-      type: 'movie',
+      type: 'Movie',
       isTrending: false,
       fetch_path: 'movie/now_playing'
     },
     {
       id: uuid(),
       name: 'Upcoming',
-      type: 'movie',
+      type: 'Movie',
       isTrending: false,
       fetch_path: 'movie/upcoming'
     },
     {
       id: uuid(),
       name: 'Top Rated',
-      type: 'movie',
+      type: 'Movie',
       isTrending: false,
       fetch_path: 'movie/top_rated'
     },
     {
       id: uuid(),
       name: 'Trending',
-      type: 'tv series',
+      type: 'TV Series',
       isTrending: true,
-      fetch_path: 'tv/trending'
+      fetch_path: 'trending/tv/day'
     },
     {
       id: uuid(),
       name: 'Popular',
-      type: 'tv series',
+      type: 'TV Series',
       isTrending: false,
       fetch_path: 'tv/popular'
     },
     {
       id: uuid(),
-      name: 'Airing today', // Now Playing
-      type: 'tv series',
+      name: 'Airing today',
+      type: 'TV Series',
       isTrending: false,
       fetch_path: 'tv/airing_today'
     },
     {
       id: uuid(),
       name: 'On Air',
-      type: 'tv series',
+      type: 'TV Series',
       isTrending: false,
       fetch_path: 'tv/on_the_air'
     },
     {
       id: uuid(),
       name: 'Top Rated',
-      type: 'tv series',
+      type: 'TV Series',
       isTrending: false,
       fetch_path: 'tv/top_rated'
     }
