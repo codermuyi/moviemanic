@@ -6,6 +6,7 @@ import Navbar from '@/src/global/Navbar'
 import Search from '@/src/global/Search'
 import Category from '@/src/home/Category'
 import { filmCategories } from '@/assets/film_info'
+import Footer from '@/src/global/Footer'
 
 export default function Home() {
 
@@ -19,24 +20,27 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <div>
+        <div className={styles.col1}>
           <Navbar />
         </div>
-        <div className='content'>
-          <Search />
-          {
-            filmCategories.map(c =>
-              <Category
-                key={c.id}
-                categoryName={c.name}
-                showType={c.type}
-                isTrending={c.isTrending}
-                fetch_path={c.fetch_path}
-              />
-            )
-          }
+        <div className={styles.col2}>
+          <div className={styles.content}>
+            <Search />
+            {
+              filmCategories.map(c =>
+                <Category
+                  key={c.id}
+                  categoryName={c.name}
+                  showType={c.type}
+                  isTrending={c.isTrending}
+                  fetch_path={c.fetch_path}
+                />
+              )
+            }
+          </div>
         </div>
       </main>
+      <Footer />
     </>
   )
 }

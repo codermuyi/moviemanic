@@ -2,12 +2,13 @@ import { useState } from 'react'
 import styled from 'styled-components';
 import Button from './Button';
 import { SearchIcon } from './SVGIcons'
+import breakpoints from '@/assets/breakpoints';
 
 const Search = () => {
   return (
     <Cont>
       <Field>
-        <SearchIcon 
+        <SearchIcon
           width='30px'
           height='30px'
           fill='currentColor'
@@ -32,6 +33,13 @@ const Cont = styled.div`
   display: flex;
   padding: 1rem 2rem;
   gap: 1em;
+  max-width: 800px;
+  margin-inline: auto;
+
+  @media ${breakpoints.lg} {
+    padding-top: 3rem;
+    font-size: 2rem;
+  }
   
 `
 
@@ -56,8 +64,11 @@ const Field = styled.div`
     padding: 1em;
     padding-left: 2.5rem;
     background: inherit;
-    /* border: 1px solid white; */
     border: 0;
+
+    @media ${breakpoints.lg} {
+      font-size: 1rem;
+    }
   }
 `
 

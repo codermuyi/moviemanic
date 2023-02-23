@@ -77,13 +77,25 @@ const Bar = styled.div`
     }
   }
 
+  @media ${breakpoints.md} {
+    margin: 1rem;
+    border-radius: 10px;
+  }
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+
   @media ${breakpoints.lg} {
     flex-direction: column;
     height: 85%;
     width: 60px;
-    border-radius: 10px;
     margin: 3rem auto;
     padding: 2rem;
+    left: 30px;
+    right: initial;
 
     .nav {
       flex-direction: column;

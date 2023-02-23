@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { StyledComponent, css } from 'styled-components'
 import Image from 'next/image'
 
 import breakpoints from '@/assets/breakpoints'
@@ -9,40 +9,51 @@ interface Props {
   imgSrc: string
   movieName: string
   isTrending: boolean
+  date: string,
+  type: string
 }
 
 const MovieCard = ({
   imgSrc,
   movieName,
-  isTrending
+  isTrending,
+  date,
+  type
 }: Props) => {
 
-  const width = isTrending ? 5000 : 170
   const height = isTrending ? 170 : 130
 
   return (
     <Card>
       <Image
-        // src='/last-of-us.jpeg'
-        src={`https://image.tmdb.org/t/p/w500${imgSrc}`}
+        src={`https://image.tmdb.org/t/p/w1280${imgSrc}`}
         alt={movieName || 'No image'}
-        width={width}
+        width={5000}
         height={height}
         className={`card-image ${!isTrending ? 'normal' : 'trending'}`}
       />
-      <div className='other-info'>
-
-      </div>
+      <CardInfo isTrending={isTrending}>
+        <div>
+          <div className='date-and-type'>
+            <span className='date'>{parseInt(date)}</span>
+            <span className='type'>{type}</span>
+          </div>
+          <div className='name'>
+            <span>{movieName}</span>
+          </div>
+        </div>
+      </CardInfo>
     </Card>
   )
 }
 
 const Card = styled.div`
   min-height: 150px;
+  position: relative;
 
   .card-image {
     object-fit: cover;
-    object-position: right top;
+    object-position: left top;
     border-radius: 20px;
   }
 
@@ -76,6 +87,44 @@ const Card = styled.div`
       height: 300px;
     }
   }
-  `
+`
+
+const CardInfo: StyledComponent<
+  'div', any, { isTrending: boolean }
+> = styled.div`
+  .date-and-type {
+    display: flex;
+    gap: 1.2em;
+    color: rgb(var(--main-text-color), .7);
+    font-size: .7em;
+
+    ${(props: any) => props.isTrending && css`
+      & > div {
+        position: absolute;
+        /* inset: 0; */
+        top: 0;
+        right: 0;
+        bottom: -50%;
+        left: 0
+      }
+    `}
+
+    .type {
+      position: relative;
+      &::before {
+        content: '';
+        position: absolute;
+        left: -1em;
+        top: 50%;
+        transform: translate(50%, -50%);
+        display: inline-block;
+        /* background: rgb(var(--main-text-color)); */
+        background: rgb(var(--theme-main-color));
+        padding: .2em;
+        border-radius: 50%;
+      }
+    }
+  }
+`
 
 export default MovieCard

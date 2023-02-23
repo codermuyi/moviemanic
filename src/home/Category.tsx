@@ -42,9 +42,11 @@ const Category = ({ categoryName, showType, isTrending, fetch_path }: Props) => 
       if (index > 9) return
       return <MovieCard
         key={movie.id}
-        movieName={movie.title}
+        movieName={movie.title || movie.name}
         imgSrc={movie.backdrop_path}
         isTrending={isTrending}
+        date={movie.release_date || movie.first_air_date}
+        type={showType}
       />
     })
   }
@@ -104,7 +106,7 @@ const Heading = styled.div`
   display: flex;
   justify-content: space-between;
   padding-block: .4rem;
-  margin-bottom: .4rem;
+  margin-block: 2rem .4rem;
 
   .name {
     display: flex;
@@ -145,18 +147,17 @@ const List: StyledComponent<'div', any, { isTrending: boolean }> = styled.div`
     grid-template-columns: 1fr 1fr;
     justify-content: center;
 
-    @media ${breakpoints.md} {
+    @media ${breakpoints.sm} {
       grid-template-columns: 1fr 1fr 1fr;
     }
 
     @media ${breakpoints.xl} {
+      gap: 2rem;
+    }
+    
+    @media ${breakpoints.xxl} {
       grid-template-columns: 1fr 1fr 1fr 1fr;
-      & > *::nth-child(5) {
-        grid-column: 1 / 3;
-      } 
-      & > *::last-child {
-        grid-column: 3 / 5;
-      }
+      
     }
   `}
 `
