@@ -32,8 +32,8 @@ const MovieCard = ({
         height={height}
         className={`card-image ${!isTrending ? 'normal' : 'trending'}`}
       />
-      <CardInfo isTrending={isTrending}>
-        <div>
+      <CardInfo>
+        <div className={`${!isTrending ? 'normal-info' : 'trending-info'}`}>
           <div className='date-and-type'>
             <span className='date'>{parseInt(date)}</span>
             <span className='type'>{type}</span>
@@ -58,13 +58,14 @@ const Card = styled.div`
     width: auto;
     height: auto;
   }
-
+  
   .normal {
     width: 100%;
   }
-
+  
   .trending {
     width: 300px;
+    filter: brightness(60%);
   }
 
   @media ${breakpoints.md} {
@@ -91,25 +92,18 @@ const Card = styled.div`
   }
 `
 
-const CardInfo: StyledComponent<
-  'div', any, { isTrending: boolean }
-> = styled.div`
+const CardInfo = styled.div`
+  .trending-info {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+  }
+
   .date-and-type {
     display: flex;
     gap: 1.2em;
     color: rgb(var(--main-text-color), .7);
     font-size: .7em;
-
-    ${(props: any) => props.isTrending && css`
-      & > div {
-        position: absolute;
-        /* inset: 0; */
-        top: 0;
-        right: 0;
-        bottom: -50%;
-        left: 0
-      }
-    `}
 
     .type {
       position: relative;
@@ -120,7 +114,6 @@ const CardInfo: StyledComponent<
         top: 50%;
         transform: translate(50%, -50%);
         display: inline-block;
-        /* background: rgb(var(--main-text-color)); */
         background: rgb(var(--theme-main-color));
         padding: .2em;
         border-radius: 50%;
