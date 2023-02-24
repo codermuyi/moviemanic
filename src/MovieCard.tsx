@@ -1,5 +1,6 @@
-import styled, {keyframes} from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import Image from 'next/image'
+import Link from 'next/link'
 import breakpoints from '@/assets/breakpoints'
 
 interface Props {
@@ -7,7 +8,8 @@ interface Props {
   movieName: string
   isTrending: boolean
   date: string,
-  type: string
+  type: string,
+  id: number
 }
 
 const MovieCard = ({
@@ -15,34 +17,39 @@ const MovieCard = ({
   movieName,
   isTrending,
   date,
-  type
+  type,
+  id
 }: Props) => {
 
   const height = isTrending ? 170 : 130
 
   return (
-    <Card>
-      <span></span>
-      <Image
-        // src='/last-of-us.jpeg'
-        src={`https://image.tmdb.org/t/p/w1280${imgSrc}`}
-        alt={movieName || 'No image'}
-        width={5000}
-        height={height}
-        className={`card-image ${!isTrending ? 'normal' : 'trending'}`}
-      />
-      <CardInfo>
-        <div className={`${!isTrending ? 'normal-info' : 'trending-info'}`}>
-          <div className='date-and-type'>
-            <span className='date'>{parseInt(date)}</span>
-            <span className='type'>{type}</span>
+    <Link
+      href={type == 'Movie' ? `/movies/${id}` : `/tv-series/${id}`}
+    >
+      <Card>
+        <span></span>
+        <Image
+          // src='/last-of-us.jpeg'
+          src={`https://image.tmdb.org/t/p/w1280${imgSrc}`}
+          alt={movieName || 'No image'}
+          width={5000}
+          height={height}
+          className={`card-image ${!isTrending ? 'normal' : 'trending'}`}
+        />
+        <CardInfo>
+          <div className={`${!isTrending ? 'normal-info' : 'trending-info'}`}>
+            <div className='date-and-type'>
+              <span className='date'>{parseInt(date)}</span>
+              <span className='type'>{type}</span>
+            </div>
+            <div className='name'>
+              <span>{movieName}</span>
+            </div>
           </div>
-          <div className='name'>
-            <span>{movieName}</span>
-          </div>
-        </div>
-      </CardInfo>
-    </Card>
+        </CardInfo>
+      </Card>
+    </Link>
   )
 }
 

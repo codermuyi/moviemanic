@@ -18,6 +18,7 @@ const CategoryList = ({ isTrending, data, showType }: { isTrending: boolean, dat
         isTrending={isTrending}
         date={movie.release_date || movie.first_air_date}
         type={showType}
+        id={movie.id}
       />
     })
   }
