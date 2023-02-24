@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-// import Image from 'next/image'
+import Link from 'next/link'
 import {
   MainIcon,
   ProfileIcon,
@@ -16,38 +16,47 @@ const Navbar = () => {
 
   return (
     <Bar>
-      <div>
-        <MainIcon 
-          width={iconWidth}
-          height={iconHeight}
-          fill={iconFill}
-        />
+      <Link href='/'>
+        <div>
+          <MainIcon
+            width={iconWidth}
+            height={iconHeight}
+            // fill={iconFill}
+            fill='black'
+          />
+        </div>
+      </Link>
+      <div className='nav'>
+        <Link href='/'>
+          <div>
+            <GridIcon
+              width={iconWidth}
+              height={iconHeight}
+              fill={iconFill}
+            />
+          </div>
+        </Link>
+        <Link href='/'>
+          <div>
+            <MovieIcon
+              width={iconWidth}
+              height={iconHeight}
+              fill={iconFill}
+            />
+          </div>
+        </Link>
+        <Link href='/'>
+          <div>
+            <TVIcon
+              width={iconWidth}
+              height={iconHeight}
+              fill={iconFill}
+            />
+          </div>
+        </Link>
       </div>
-      <nav className='nav'>
-        <div>
-          <GridIcon 
-            width={iconWidth}
-            height={iconHeight}
-            fill={iconFill}
-          />
-        </div>
-        <div>
-          <MovieIcon 
-            width={iconWidth}
-            height={iconHeight}
-            fill={iconFill}
-          />
-        </div>
-        <div>
-          <TVIcon 
-            width={iconWidth}
-            height={iconHeight}
-            fill={iconFill}
-          />
-        </div>
-      </nav>
       <div>
-        <ProfileIcon 
+        <ProfileIcon
           width={iconWidth}
           height={iconHeight}
           fill={iconFill}
@@ -57,13 +66,12 @@ const Navbar = () => {
   )
 }
 
-const Bar = styled.div`
+const Bar = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
   background-color: rgb(var(--theme-main-color));
-  /* margin-inline: 1rem; */
 
   .nav {
     display: flex;
