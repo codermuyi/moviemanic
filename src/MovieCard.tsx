@@ -66,7 +66,6 @@ const Card = styled.div`
 
   :hover {
     .card-image.normal {
-      /* transform: translateY(-20px) rotateX(7deg); */
       transform: translateY(-8%) rotateX(7deg);
       box-shadow: 0 5px 15px rgba(0,0,0,0.28);
     }
@@ -74,7 +73,7 @@ const Card = styled.div`
       transform: scale(.95);
     }
     .trending-info {
-      transform: translate(10px, -10px);
+      transform: translate(10px, -15px);
     }
 
     span:after {
