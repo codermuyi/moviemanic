@@ -1,9 +1,6 @@
-import styled, { StyledComponent, css } from 'styled-components'
+import styled from 'styled-components'
 import Image from 'next/image'
-
 import breakpoints from '@/assets/breakpoints'
-
-// `https://image.tmdb.org/t/p/w1024${imgSrc}`
 
 interface Props {
   imgSrc: string
@@ -26,6 +23,7 @@ const MovieCard = ({
   return (
     <Card>
       <Image
+        // src='/last-of-us.jpeg'
         src={`https://image.tmdb.org/t/p/w1280${imgSrc}`}
         alt={movieName || 'No image'}
         width={5000}

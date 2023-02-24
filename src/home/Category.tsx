@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import styled, { css, StyledComponent } from 'styled-components'
+import styled from 'styled-components'
 
 import Button from '../global/Button'
-import MovieCard from '../MovieCard'
-import breakpoints from '@/assets/breakpoints'
 import CategoryList from './CategoryList'
+
+// import data from '@/assets/demo_data'
 
 interface Props {
   categoryName: string
