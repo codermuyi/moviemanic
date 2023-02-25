@@ -11,7 +11,7 @@ const moviePage = ({ data }: { data: any }) => {
         <title>Moviemanic</title>
         <meta name="description" content="Search for any movie and tv series" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/movie-projector.ico" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       
       <PageLayout>
