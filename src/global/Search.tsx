@@ -66,6 +66,15 @@ const Field = styled.div`
     background: inherit;
     border: 0;
 
+    ::placeholder {
+      color: rgb(var(--main-text-color), .5);
+    }
+
+    :focus {
+      outline: 0;
+      border-bottom: 1px solid rgb(var(--main-text-color));
+    }
+
     @media ${breakpoints.lg} {
       font-size: 1rem;
     }
