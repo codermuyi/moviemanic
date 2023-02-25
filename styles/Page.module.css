@@ -1,9 +1,10 @@
 .main {
   min-height: 100vh;
-  background-color: rgb(var(--main-bg-color));
+  /* background-color: rgb(var(--main-bg-color)); */
   padding-bottom: 2rem;
+  background: linear-gradient(55deg, #000850 0%, #000320 100%), radial-gradient(100% 225% at 100% 0%, #FF6928 0%, #000000 100%);
+  background-blend-mode: screen, overlay, hard-light, normal;
 }
-
 
 @media (min-width: 600px) {
   .col1 {
