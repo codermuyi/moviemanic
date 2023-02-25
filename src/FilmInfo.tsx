@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import Casts from './Casts'
+import breakpoints from '@/assets/breakpoints'
 
 interface Info {
   title: string
@@ -10,6 +12,7 @@ interface Info {
   status: string
   genres: Array<{ name: string }>
   overview: string
+  credits: any
 }
 
 const FilmInfo = ({
@@ -21,7 +24,8 @@ const FilmInfo = ({
   release_date,
   status,
   genres,
-  overview
+  overview,
+  credits
 }: Info) => {
   return (
     <Info>
@@ -63,11 +67,11 @@ const FilmInfo = ({
           <h2 className='heading'>Synopsis</h2>
           <p>{overview}</p>
         </div>
-        <div className='casts'>
-          <h2 className='heading'>Casts</h2>
-
-        </div>
+        <Casts credits={credits} />
       </Details2>
+      {/* <div>
+        <h2>Similar Movies</h2>
+      </div> */}
     </Info>
   )
 }
@@ -91,6 +95,10 @@ const Details1 = styled.div`
   justify-content: center;
   gap: 2rem;
   margin-bottom: 2rem;
+  
+  @media (max-width: 300px) {
+    flex-direction: column;
+  }
 
   & > div {
     /* flex: 1; */
@@ -130,14 +138,8 @@ const Details2 = styled.div`
     }
   }
 
-  .synopsis {
-    p {
-      padding-block: 1rem;
-    }
-  }
-
-  .casts {
-    
+  .synopsis p {
+    padding-block: 1rem;
   }
 `
 
