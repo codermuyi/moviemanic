@@ -38,7 +38,7 @@ const FilmInfo = ({
       </Name>
       <Details1>
         <div>
-          <span className='heading'>Length</span>
+          <span className='heading'>Duration</span>
           <span>{runtime} min.</span>
         </div>
         <div>
@@ -69,9 +69,6 @@ const FilmInfo = ({
         </div>
         <Casts credits={credits} />
       </Details2>
-      {/* <div>
-        <h2>Similar Movies</h2>
-      </div> */}
     </Info>
   )
 }
@@ -101,7 +98,6 @@ const Details1 = styled.div`
   }
 
   & > div {
-    /* flex: 1; */
     display: flex;
     flex-direction: column;
     font-size: .9em;
@@ -128,6 +124,7 @@ const Details2 = styled.div`
       gap: .4em;
       font-size: .8em;
       padding-block: 1rem;
+      font-family: 'Lexend', sans-serif;
 
       li {
         background-color: white;
