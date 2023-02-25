@@ -31,12 +31,18 @@ const Poster = styled.div`
   @media ${breakpoints.md} {
     .sticky {
       position: sticky;
-      top: 20px;
+      top: 100px;
     }
 
     .poster-img {
       width: 300px;
       height: 400px;
+    }
+  }
+  
+  @media ${breakpoints.lg} {
+    .sticky {
+      top: 20px;
     }
   }
 `
