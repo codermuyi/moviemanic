@@ -1,6 +1,7 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import PageLayout from '@/src/global/PageLayout'
+import FilmPoster from '@/src/FilmPoster'
+import FilmInfo from '@/src/FilmInfo'
 
 const moviePage = ({ data }: { data: any }) => {
   console.log(data)
@@ -13,15 +14,16 @@ const moviePage = ({ data }: { data: any }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      
+
       <PageLayout>
-        <Image
-          src={`https://image.tmdb.org/t/p/w1280${data.poster_path}`}
-          alt='image'
-          width={300}
-          height={400}
-          style={{ objectFit: 'cover' }}
-        />
+        <div>
+          <FilmPoster
+            path={data.poster_path}
+          />
+          <FilmInfo
+            {...data}
+          />
+        </div>
       </PageLayout>
     </>
   )
