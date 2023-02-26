@@ -1,11 +1,10 @@
 import styled from 'styled-components'
 import Casts from './Casts'
-import breakpoints from '@/assets/breakpoints'
 import Trailer from './Trailer'
 
 interface Info {
   title: string
-  original_title: string
+  name: string
   tagline: string
   runtime: string
   spoken_languages: Array<{ english_name: string }>
@@ -15,11 +14,13 @@ interface Info {
   overview: string
   credits: any
   trailerID: string
+  first_air_date: string
+  last_air_date: string
 }
 
 const FilmInfo = ({
   title,
-  original_title,
+  name,
   tagline,
   runtime,
   spoken_languages,
@@ -29,30 +30,48 @@ const FilmInfo = ({
   overview,
   credits,
   trailerID,
+  first_air_date,
+  last_air_date,
 }: Info) => {
   return (
     <Info>
       <Trailer id={trailerID} />
       <Name>
-        <h1>{title || original_title}</h1>
+        <h1>{title || name}</h1>
         <p className='tagline'>{tagline}</p>
         <div className='ratings'>
 
         </div>
       </Name>
       <Details1>
-        <div>
-          <span className='heading'>Duration</span>
-          <span>{runtime ? runtime+' min.' : 'N/A'}</span>
-        </div>
+        {
+          runtime && <div>
+            <span className='heading'>Duration</span>
+            <span>{runtime ? runtime + ' min.' : 'N/A'}</span>
+          </div>
+        }
         <div>
           <span className='heading'>Language</span>
           <span>{spoken_languages[0].english_name}</span>
         </div>
-        <div>
-          <span className='heading'>Year</span>
-          <span>{parseInt(release_date)}</span>
-        </div>
+        {
+          release_date && <div>
+            <span className='heading'>Release Date</span>
+            <span>{release_date}</span>
+          </div>
+        }
+        {
+          first_air_date && <>
+            <div>
+              <span className='heading'>Pilot</span>
+              <span>{first_air_date}</span>
+            </div>
+            <div>
+              <span className='heading'>Last Air</span>
+              <span>{last_air_date}</span>
+            </div>
+          </>
+        }
         <div>
           <span className='heading'>Status</span>
           <span>{status}</span>
@@ -94,7 +113,7 @@ const Name = styled.div`
 const Details1 = styled.div`
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 1.5rem;
   margin-bottom: 2rem;
   
   @media (max-width: 300px) {
@@ -104,7 +123,7 @@ const Details1 = styled.div`
   & > div {
     display: flex;
     flex-direction: column;
-    font-size: .9em;
+    font-size: .8em;
     gap: .2em;
 
     .heading {
