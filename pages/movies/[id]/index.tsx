@@ -9,8 +9,6 @@ import SimilarFilms from '@/src/SimilarFilms'
 const moviePage = ({ data, credits, similar, videoData }: { [key: string]: any }) => {
   const trailerID = videoData.results.filter((videoData: any, i: number) => videoData.type === 'Trailer')[0]?.key
 
-  // console.log(videoData.results)
-
   return (
     <>
       <Head>
@@ -48,18 +46,18 @@ const PageBody = styled.div`
 
 export const getServerSideProps = async (ctx: any) => {
   const key = process.env.NEXT_PUBLIC_TMDB_API_KEY
-  const api_path = 'https://api.themoviedb.org/3/movie/'
+  const api_path = `https://api.themoviedb.org/3/movie/${ctx.params.id}`
 
-  const res = await fetch(`${api_path}${ctx.params.id}?api_key=${key}`)
+  const res = await fetch(`${api_path}?api_key=${key}`)
   const data = await res.json()
 
-  const res2 = await fetch(`${api_path}${ctx.params.id}/credits?api_key=${key}`)
+  const res2 = await fetch(`${api_path}/credits?api_key=${key}`)
   const credits = await res2.json()
 
-  const res3 = await fetch(`${api_path}${ctx.params.id}/recommendations?api_key=${key}`)
+  const res3 = await fetch(`${api_path}/recommendations?api_key=${key}`)
   const similar = await res3.json()
 
-  const res4 = await fetch(`${api_path}${ctx.params.id}/videos?api_key=${key}`)
+  const res4 = await fetch(`${api_path}/videos?api_key=${key}`)
   const videoData = await res4.json()
 
   return {

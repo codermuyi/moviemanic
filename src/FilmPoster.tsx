@@ -25,7 +25,7 @@ const Poster = styled.div`
     object-fit: cover;
     display: block;
     margin-inline: auto;
-    border-radius: 20px;
+    border-radius: 10px;
   }
   
   @media ${breakpoints.md} {
@@ -42,7 +42,7 @@ const Poster = styled.div`
   
   @media ${breakpoints.lg} {
     .sticky {
-      top: 20px;
+      top: 30px;
     }
   }
 `

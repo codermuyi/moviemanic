@@ -25,7 +25,7 @@ const Casts = ({ credits }: { credits: any }) => {
               }
               <div className='cast-info'>
                 <p>{cast.name}</p>
-                <p className='role'>Played {cast.character}</p>
+                <p className='role'>{cast.character && 'Played ' + cast.character}</p>
               </div>
             </div>
           ))}

@@ -43,7 +43,7 @@ const FilmInfo = ({
       <Details1>
         <div>
           <span className='heading'>Duration</span>
-          <span>{runtime} min.</span>
+          <span>{runtime ? runtime+' min.' : 'N/A'}</span>
         </div>
         <div>
           <span className='heading'>Language</span>
