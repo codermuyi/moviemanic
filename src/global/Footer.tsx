@@ -12,7 +12,7 @@ const Footer = () => {
         height={50}
       />
       <br />
-      <p>Created by <a href='https://samuel-adepoju.vercel.app'>Samuel Adepoju</a></p>
+      <p>Created by <a href='https://samuel-adepoju.vercel.app'>Samuel Adepoju </a>(Ongoing)</p>
     </Foot>
   )
 }
