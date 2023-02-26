@@ -42,6 +42,9 @@ const Divv = styled.div`
 
     .box {
       width: 240px;
+      .card-image {
+        height: 150px;
+      }
     }
   }
 `

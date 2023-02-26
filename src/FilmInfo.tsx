@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import Casts from './Casts'
 import breakpoints from '@/assets/breakpoints'
+import Trailer from './Trailer'
 
 interface Info {
   title: string
@@ -13,6 +14,7 @@ interface Info {
   genres: Array<{ name: string }>
   overview: string
   credits: any
+  trailerID: string
 }
 
 const FilmInfo = ({
@@ -25,10 +27,12 @@ const FilmInfo = ({
   status,
   genres,
   overview,
-  credits
+  credits,
+  trailerID,
 }: Info) => {
   return (
     <Info>
+      <Trailer id={trailerID} />
       <Name>
         <h1>{title || original_title}</h1>
         <p className='tagline'>{tagline}</p>
@@ -79,7 +83,7 @@ const Info = styled.div`
 
 const Name = styled.div`
   text-align: center;
-  padding-block: 1rem 2rem;
+  padding-block: 2rem;
 
   .tagline {
     font-size: .8em;

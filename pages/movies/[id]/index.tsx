@@ -4,8 +4,12 @@ import PageLayout from '@/src/global/PageLayout'
 import breakpoints from '@/assets/breakpoints'
 import FilmPoster from '@/src/FilmPoster'
 import FilmInfo from '@/src/FilmInfo'
+import SimilarFilms from '@/src/SimilarFilms'
 
-const moviePage = ({ data, credits }: { data: any; credits: any }) => {
+const moviePage = ({ data, credits, similar, videoData }: { [key: string]: any }) => {
+  const trailerID = videoData.results.filter((videoData: any, i: number) => videoData.type === 'Trailer')[0]?.key
+
+  // console.log(videoData.results)
 
   return (
     <>
@@ -24,7 +28,9 @@ const moviePage = ({ data, credits }: { data: any; credits: any }) => {
           <FilmInfo
             {...data}
             credits={credits}
+            trailerID={trailerID}
           />
+          <SimilarFilms data={similar.results} />
         </PageBody>
       </PageLayout>
     </>
@@ -35,21 +41,33 @@ const PageBody = styled.div`
   @media ${breakpoints.md} {
     display: grid;
     grid-template-columns: 350px minmax(10px, 1fr);
+    grid-template-rows: 2;
     max-width: 2000px;
   }
 `
 
 export const getServerSideProps = async (ctx: any) => {
-  const res = await fetch(`https://api.themoviedb.org/3/movie/${ctx.params.id}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`)
+  const key = process.env.NEXT_PUBLIC_TMDB_API_KEY
+  const api_path = 'https://api.themoviedb.org/3/movie/'
+
+  const res = await fetch(`${api_path}${ctx.params.id}?api_key=${key}`)
   const data = await res.json()
 
-  const res2 = await fetch(`https://api.themoviedb.org/3/movie/${ctx.params.id}/credits?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`)
+  const res2 = await fetch(`${api_path}${ctx.params.id}/credits?api_key=${key}`)
   const credits = await res2.json()
+
+  const res3 = await fetch(`${api_path}${ctx.params.id}/recommendations?api_key=${key}`)
+  const similar = await res3.json()
+
+  const res4 = await fetch(`${api_path}${ctx.params.id}/videos?api_key=${key}`)
+  const videoData = await res4.json()
 
   return {
     props: {
-      data: data,
-      credits: credits
+      data,
+      credits,
+      similar,
+      videoData
     },
   }
 }
