@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Meta from '@/src/Meta'
 import PageLayout from '@/src/global/PageLayout'
 import Category from '@/src/home/Category'
 import { filmCategories } from '@/assets/film_info'
@@ -7,13 +7,7 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        <title>Moviemanic</title>
-        <meta name="description" content="Search for any movie and tv series" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
+      <Meta />
       <PageLayout>
         {
           filmCategories.map(c =>
