@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Meta from '@/src/Meta'
 import styled from 'styled-components'
 import PageLayout from '@/src/global/PageLayout'
 import breakpoints from '@/assets/breakpoints'
@@ -11,12 +11,10 @@ const moviePage = ({ data, credits, similar, videoData }: { [key: string]: any }
 
   return (
     <>
-      <Head>
-        <title>Moviemanic</title>
-        <meta name="description" content="Search for any movie and tv series" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Meta
+        title={`${data.title} | Moviemanic`}
+        description={data.overview}
+      />
 
       <PageLayout>
         <PageBody>
