@@ -45,23 +45,28 @@ const FilmInfo = ({
       </Name>
       <Details1>
         {
-          runtime && <div>
+          runtime ? <div>
             <span className='heading'>Duration</span>
-            <span>{runtime ? runtime + ' min.' : 'N/A'}</span>
-          </div>
+            <span>{runtime} min.</span>
+            {/* <span>{runtime ? runtime + ' min.' : 'N/A'}</span> */}
+          </div> : null
         }
         <div>
           <span className='heading'>Language</span>
           <span>{spoken_languages[0].english_name}</span>
         </div>
+        <div>
+          <span className='heading'>Status</span>
+          <span>{status}</span>
+        </div>
         {
-          release_date && <div>
+          release_date ? <div>
             <span className='heading'>Release Date</span>
             <span>{release_date}</span>
-          </div>
+          </div> : null
         }
         {
-          first_air_date && <>
+          first_air_date ? <>
             <div>
               <span className='heading'>Pilot</span>
               <span>{first_air_date}</span>
@@ -70,12 +75,8 @@ const FilmInfo = ({
               <span className='heading'>Last Air</span>
               <span>{last_air_date}</span>
             </div>
-          </>
+          </> : null
         }
-        <div>
-          <span className='heading'>Status</span>
-          <span>{status}</span>
-        </div>
       </Details1>
       <Details2>
         <div className='genres'>
