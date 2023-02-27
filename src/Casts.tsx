@@ -2,7 +2,6 @@ import Image from 'next/image'
 import styled from 'styled-components'
 import { ProfileIcon } from './global/SVGIcons'
 import SimpleBar from 'simplebar-react';
-import 'simplebar-react/dist/simplebar.min.css';
 
 const Casts = ({ credits }: { credits: any }) => {
   return (

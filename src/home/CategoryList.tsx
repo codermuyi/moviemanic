@@ -1,6 +1,5 @@
 import styled, { css, StyledComponent } from 'styled-components'
 import SimpleBar from 'simplebar-react';
-import 'simplebar-react/dist/simplebar.min.css';
 
 import MovieCard from '../MovieCard'
 import breakpoints from '@/assets/breakpoints'
