@@ -20,7 +20,7 @@ const Casts = ({ credits }: { credits: any }) => {
                   style={{ objectFit: 'cover' }}
                   className='cast-profile'
                 /> :
-                <ProfileIcon fill='currentColor' />
+                <ProfileIcon fill='gray' />
               }
               <div className='cast-info'>
                 <p>{cast.name}</p>
