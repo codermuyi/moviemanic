@@ -7,7 +7,6 @@ import FilmInfo from '@/src/FilmInfo'
 import SimilarFilms from '@/src/SimilarFilms'
 
 const FilmPageContent = (props: any) => {
-  console.log(props)
   const trailerID = props.videoData.results.filter((videoData: any, i: number) => videoData.type === 'Trailer')[0]?.key
 
   return (
