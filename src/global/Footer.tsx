@@ -4,15 +4,18 @@ import Image from 'next/image'
 const Footer = () => {
   return (
     <Foot>
-      <p>Powered by</p>
+      <p>Created by <a href='https://samuel-adepoju.vercel.app'>Samuel Adepoju </a></p>
+      <p>With data from</p>
+      <a href="https://www.themoviedb.org/" target='_blank' rel='noreferrer'>
+
       <Image
         src='/tmdb.svg'
         alt='TMDB attribution'
-        width={200}
-        height={50}
+        width={150}
+        height={10}
       />
+      </a>
       <br />
-      <p>Created by <a href='https://samuel-adepoju.vercel.app'>Samuel Adepoju </a>(Ongoing)</p>
     </Foot>
   )
 }
@@ -22,6 +25,8 @@ const Foot = styled.footer`
   place-items: center;
   padding-block: 2rem;
   flex-direction: column;
+  font-size: .8em;
+  gap: .6em;
 
   a {
     color: rgb(var(--theme-main-color));
