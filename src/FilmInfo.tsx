@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import Casts from './Casts'
 import Trailer from './Trailer'
+import { Rating } from 'react-simple-star-rating'
 
 interface Info {
   title: string
@@ -16,6 +17,7 @@ interface Info {
   trailerID: string
   first_air_date: string
   last_air_date: string
+  vote_average: number
 }
 
 const FilmInfo = ({
@@ -32,7 +34,9 @@ const FilmInfo = ({
   trailerID,
   first_air_date,
   last_air_date,
+  vote_average
 }: Info) => {
+
   return (
     <Info>
       <Trailer id={trailerID} />
@@ -40,7 +44,14 @@ const FilmInfo = ({
         <h1>{title || name}</h1>
         <p className='tagline'>{tagline}</p>
         <div className='ratings'>
-
+          <Rating
+            initialValue={vote_average / 2}
+            readonly={true}
+            allowFraction={true}
+            size={20}
+            emptyColor='gray'
+            fillColorArray={['#f17a45', '#f19745', '#f1a545', '#f1b345', '#f1d045']}
+          />
         </div>
       </Name>
       <Details1>
@@ -108,6 +119,10 @@ const Name = styled.div`
   .tagline {
     font-size: .8em;
     opacity: .8;
+  }
+
+  .ratings {
+    margin-top: 1rem;
   }
 `
 
