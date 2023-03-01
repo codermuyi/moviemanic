@@ -64,7 +64,7 @@ const FilmInfo = ({
         }
         <div>
           <span className='heading'>Language</span>
-          <span>{spoken_languages[0].english_name}</span>
+          <span>{spoken_languages[0]?.english_name}</span>
         </div>
         <div>
           <span className='heading'>Status</span>
