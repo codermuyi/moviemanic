@@ -160,6 +160,7 @@ const Details2 = styled.div`
     ul {
       list-style: none;
       display: flex;
+      flex-wrap: wrap;
       gap: .4em;
       font-size: .8em;
       padding-block: 1rem;
