@@ -36,6 +36,8 @@ const MovieCard = ({
           width={5000}
           height={height}
           className={`card-image ${!isTrending ? 'normal' : 'trending'}`}
+          placeholder='blur'
+          blurDataURL='iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8wc//CQAE5wH673eL6AAAAABJRU5ErkJggg=='
         />
         <CardInfo>
           <div className={`${!isTrending ? 'normal-info' : 'trending-info'}`}>
