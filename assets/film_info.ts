@@ -3,7 +3,7 @@ import { v4 as uuid } from 'uuid'
 const filmCategories: {
   id: string
   name: string
-  type: 'Movie' | 'TV Series'
+  type: 'Movie' | 'movie' | 'TV Series' | 'tv series'
   isTrending: boolean
   fetch_path: string
 }[] = [
