@@ -1,35 +1,47 @@
-import { useState } from 'react'
-import styled from 'styled-components';
-import Button from './Button';
-import { SearchIcon } from './SVGIcons'
-import breakpoints from '@/assets/breakpoints';
+import { useState } from "react";
+import { useRouter } from "next/router";
+import styled from "styled-components";
+import Button from "./Button";
+import { SearchIcon } from "./SVGIcons";
+import breakpoints from "@/assets/breakpoints";
 
 const Search = () => {
+  const router = useRouter();
+  const [searchQuery, setSearchQuery] = useState<string>("");
+
+  const handleChange = (e: any) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleSubmit = (e: any) => {
+    router.push(`/search/${searchQuery}`);
+  };
   return (
-    <Cont>
+    <Cont onSubmit={handleSubmit} action={`/search/${searchQuery}`}>
       <Field>
-        <SearchIcon
-          width='30px'
-          height='30px'
-          fill='currentColor'
+        <SearchIcon width="30px" height="30px" fill="currentColor" />
+        <input
+          type="search"
+          placeholder="Search for Movies or TV Shows"
+          value={searchQuery}
+          onChange={handleChange}
         />
-        <input type='search' placeholder='Search for Movies or TV Shows' />
       </Field>
       <Button
-        border='none'
-        bgColor='white'
-        color='rgb(var(--sec-text-color))'
-        radius='10px'
-        cursor='pointer'
-        padding=' .8em 1em'
+        border="none"
+        bgColor="white"
+        color="rgb(var(--sec-text-color))"
+        radius="10px"
+        cursor="pointer"
+        padding=" .8em 1em"
       >
         Search
       </Button>
     </Cont>
-  )
-}
+  );
+};
 
-const Cont = styled.div`
+const Cont = styled.form`
   display: flex;
   padding: 1rem 2rem;
   gap: 1em;
@@ -40,8 +52,7 @@ const Cont = styled.div`
     padding-top: 3rem;
     font-size: 2rem;
   }
-  
-`
+`;
 
 const Field = styled.div`
   display: flex;
@@ -56,7 +67,7 @@ const Field = styled.div`
   }
 
   svg {
-    margin-left: .3rem;
+    margin-left: 0.3rem;
   }
 
   input {
@@ -67,7 +78,7 @@ const Field = styled.div`
     border: 0;
 
     ::placeholder {
-      color: rgb(var(--main-text-color), .5);
+      color: rgb(var(--main-text-color), 0.5);
     }
 
     :focus {
@@ -79,6 +90,6 @@ const Field = styled.div`
       font-size: 1rem;
     }
   }
-`
+`;
 
-export default Search
+export default Search;
