@@ -2,6 +2,7 @@ import styled, { keyframes } from 'styled-components'
 import Image from 'next/image'
 import Link from 'next/link'
 import breakpoints from '@/assets/breakpoints'
+import { useState } from 'react'
 
 interface Props {
   imgSrc: string
@@ -22,6 +23,7 @@ const MovieCard = ({
 }: Props) => {
 
   const height = isTrending ? 170 : 130
+  const [src, setSrc] = useState(`https://image.tmdb.org/t/p/w1280${imgSrc}`)
 
   return (
     <Link
@@ -30,14 +32,14 @@ const MovieCard = ({
       <Card>
         <span></span>
         <Image
-          // src='/last-of-us.jpeg'
-          src={`https://image.tmdb.org/t/p/w1280${imgSrc}`}
+          src={src}
           alt={movieName || 'No image'}
           width={5000}
           height={height}
           className={`card-image ${!isTrending ? 'normal' : 'trending'}`}
           placeholder='blur'
-          blurDataURL='iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8wc//CQAE5wH673eL6AAAAABJRU5ErkJggg=='
+          blurDataURL='/white-placeholder.png'
+          onError={() => setSrc('/no-image-icon-2.png')}
         />
         <CardInfo>
           <div className={`${!isTrending ? 'normal-info' : 'trending-info'}`}>
