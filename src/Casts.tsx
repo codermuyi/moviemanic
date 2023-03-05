@@ -2,8 +2,11 @@ import Image from 'next/image'
 import styled from 'styled-components'
 import { ProfileIcon } from './global/SVGIcons'
 import SimpleBar from 'simplebar-react';
+import { useState } from 'react'
 
 const Casts = ({ credits }: { credits: any }) => {
+  const [src, setSrc] = useState('')
+  
   return (
     <FilmCast>
       <h2 className='heading'>Casts</h2>
@@ -13,12 +16,13 @@ const Casts = ({ credits }: { credits: any }) => {
             <div key={i} className='cast'>
               {cast.profile_path ?
                 <Image
-                  src={`https://image.tmdb.org/t/p/w1280${cast.profile_path}`}
+                  src={src === '' ? `https://image.tmdb.org/t/p/w1280${cast.profile_path}`: src}
                   alt={cast.name}
                   width={150}
                   height={150}
                   style={{ objectFit: 'cover' }}
                   className='cast-profile'
+                  onError={() => setSrc('/error-image.png')}
                 /> :
                 <ProfileIcon fill='gray' />
               }
