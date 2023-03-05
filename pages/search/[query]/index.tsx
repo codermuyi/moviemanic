@@ -10,9 +10,9 @@ const search = ({
 
   return (
     <PageLayout>
-      {data ? <Contents>
+      <Content>
         <h1>{num} result{num > 1 && 's'} for {searchQuery}</h1>
-        {
+        {data ?
           data.results.map((movie: any, index: number) => {
             if (movie.media_type !== 'person')
               return (
@@ -26,14 +26,13 @@ const search = ({
                   id={movie.id}
                 />
               )
-          })
-        }
-      </Contents> : 'There was an error'}
+          }) : 'There was an error'}
+      </Content>
     </PageLayout>
   )
 }
 
-const Contents = styled.div`
+const Content = styled.div`
   display: grid;
   justify-content: center;
   grid-template-columns: repeat( auto-fit, minmax(200px, 1fr) );
