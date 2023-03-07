@@ -1,26 +1,9 @@
 import FilmPageContent from "@/src/FilmPageContent"
-import { server } from 'config'
 
-const moviePage = ({ data }: { [key: string]: any }) => {
+const moviePage = () => {
   return (
-    <FilmPageContent
-      data={data[0]}
-      credits={data[1]}
-      similar={data[2]}
-      videoData={data[3]}
-    />
+    <FilmPageContent media_type='movie' />
   )
-}
-
-export const getServerSideProps = async (ctx: any) => {
-  const res = await fetch(`${server}/api/film-page/movie/${ctx.query.id}`)
-  const data = await res.json()
-
-  return {
-    props: {
-      data
-    },
-  }
 }
 
 export default moviePage
