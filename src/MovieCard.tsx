@@ -23,6 +23,7 @@ const MovieCard = ({
 }: Props) => {
 
   const height = isTrending ? 170 : 130
+  const width = isTrending ? 300: 170
   const [src, setSrc] = useState(`https://image.tmdb.org/t/p/w1280${imgSrc}`)
 
   return (
@@ -34,7 +35,7 @@ const MovieCard = ({
         <Image
           src={src}
           alt={movieName || 'No image'}
-          width={5000}
+          width={width}
           height={height}
           className={`card-image ${!isTrending ? 'normal' : 'trending'}`}
           placeholder='blur'

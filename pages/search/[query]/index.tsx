@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import PageLayout from '@/src/global/PageLayout'
 import MovieCard from '@/src/MovieCard'
+import { server } from 'config'
 
 const search = ({
   searchQuery,
@@ -53,10 +54,7 @@ const Content = styled.div`
 
 export const getServerSideProps = async (ctx: any) => {
   const q = ctx.params.query
-
-  const api_path = `https://api.themoviedb.org/3/search/multi?query=${q}&api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`
-
-  const res = await fetch(`${api_path}`)
+  const res = await fetch(`${server}/api/search/${q}`)
   const data = await res.json()
 
   if (data)

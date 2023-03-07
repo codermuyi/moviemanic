@@ -1,32 +1,15 @@
-import Image from 'next/image'
 import styled from 'styled-components'
-import { ProfileIcon } from './global/SVGIcons'
 import SimpleBar from 'simplebar-react';
+import CastProfile from './CastProfile'
 
-const Casts = ({ credits }: { credits: any }) => {
+const Casts = ({ credits }: { credits: any }) => {  
   return (
     <FilmCast>
       <h2 className='heading'>Casts</h2>
       <SimpleBar>
         <div className='cast-list'>
           {credits.cast.map((cast: any, i: number) => (
-            <div key={i} className='cast'>
-              {cast.profile_path ?
-                <Image
-                  src={`https://image.tmdb.org/t/p/w1280${cast.profile_path}`}
-                  alt={cast.name}
-                  width={150}
-                  height={150}
-                  style={{ objectFit: 'cover' }}
-                  className='cast-profile'
-                /> :
-                <ProfileIcon fill='gray' />
-              }
-              <div className='cast-info'>
-                <p>{cast.name}</p>
-                <p className='role'>{cast.character && 'Played ' + cast.character}</p>
-              </div>
-            </div>
+            <CastProfile key={i} cast={cast} />
           ))}
         </div>
       </SimpleBar>
@@ -66,7 +49,7 @@ const FilmCast = styled.div`
     text-align: center;
 
     .role {
-      opacity: .7;
+      opacity: .6;
     }
   }
 `

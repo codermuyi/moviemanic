@@ -11,26 +11,10 @@ interface Props {
   categoryName: string
   showType: string
   isTrending: boolean
-  fetch_path: string
+  data: any
 }
 
-const Category = ({ categoryName, showType, isTrending, fetch_path }: Props) => {
-  const [data, setData] = useState<{ [key: string]: any }>([])
-
-  useEffect(() => {
-    const callAPI = async () => {
-      try {
-        const res = await fetch(`https://api.themoviedb.org/3/${fetch_path}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`)
-        const data = await res.json()
-
-        setData(data.results);
-      } catch (err) {
-        console.log(err)
-      }
-    };
-
-    callAPI()
-  }, [fetch_path])
+const Category = ({ categoryName, showType, isTrending, data }: Props) => {
 
   return (
     <Cont>
@@ -56,7 +40,7 @@ const Category = ({ categoryName, showType, isTrending, fetch_path }: Props) => 
 
       <CategoryList 
         isTrending={isTrending}
-        data={data}
+        data={data.results}
         showType={showType}
       />
     </Cont>

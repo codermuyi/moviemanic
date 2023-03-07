@@ -6,27 +6,51 @@ import FilmPoster from '@/src/FilmPoster'
 import FilmInfo from '@/src/FilmInfo'
 import SimilarFilms from '@/src/SimilarFilms'
 
-const FilmPageContent = (props: any) => {
-  const trailerID = props.videoData.results.filter((videoData: any, i: number) => videoData.type === 'Trailer')[0]?.key
+import useSwr from 'swr'
+import { myFetch } from "@/assets/utilities"
+import { useRouter } from "next/router"
+
+interface Props {
+  media_type: string
+}
+
+const FilmPageContent = ({ media_type }: Props) => {
+  const router = useRouter()
+  const id = router.query.id
+
+  const { data, error, isLoading } = useSwr(`/api/film-page/${media_type}/${id}`, myFetch)
+
+  const d = data?.[0]
+  const credits = data?.[1]
+  const similar = data?.[2]
+  const videoData = data?.[3]
+
+  const trailerID = videoData?.results.filter((videoData: any, i: number) => videoData.type === 'Trailer')[0]?.key
 
   return (
     <>
       <Meta
-        title={`${props.data.name || props.data.title} | Moviemanic`}
-        description={props.data.overview}
+        title={`${d?.name || d?.title} | Moviemanic`}
+        description={d?.overview}
       />
 
       <PageLayout>
         <PageBody>
-          <FilmPoster
-            path={props.data.poster_path}
-          />
-          <FilmInfo
-            {...props.data}
-            credits={props.credits}
-            trailerID={trailerID}
-          />
-          <SimilarFilms data={props.similar.results} />
+          {isLoading ?
+            'Loading...' :
+            <>
+              <FilmPoster
+                path={d.poster_path}
+              />
+              <FilmInfo
+                {...d}
+                credits={credits}
+                trailerID={trailerID}
+              />
+              <SimilarFilms data={similar.results} />
+            </>
+          }
+          {error ? <p>An error occured</p> : null}
         </PageBody>
       </PageLayout>
     </>

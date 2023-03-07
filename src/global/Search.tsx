@@ -1,23 +1,18 @@
 import { useState } from "react";
-import { useRouter } from "next/router";
 import styled from "styled-components";
 import Button from "./Button";
 import { SearchIcon } from "./SVGIcons";
 import breakpoints from "@/assets/breakpoints";
 
 const Search = () => {
-  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   const handleChange = (e: any) => {
     setSearchQuery(e.target.value);
   };
 
-  const handleSubmit = (e: any) => {
-    router.push(`/search/${searchQuery}`);
-  };
   return (
-    <Cont onSubmit={handleSubmit} action={`/search/${searchQuery}`}>
+    <Cont action={`/search/${searchQuery}`}>
       <Field>
         <SearchIcon width="30px" height="30px" fill="currentColor" />
         <input
