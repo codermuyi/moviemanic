@@ -1,40 +1,24 @@
 import FilmPageContent from "@/src/FilmPageContent"
+import { server } from 'config'
 
-const moviePage = ({
-  data,
-  credits,
-  similar,
-  videoData
-}: { [key: string]: any }) => {
+const moviePage = ({ data }: { [key: string]: any }) => {
   return (
     <FilmPageContent
-      data={data}
-      credits={credits}
-      similar={similar}
-      videoData={videoData}
+      data={data[0]}
+      credits={data[1]}
+      similar={data[2]}
+      videoData={data[3]}
     />
   )
 }
 
 export const getServerSideProps = async (ctx: any) => {
-  const api_path = `https://api.themoviedb.org/3/movie/${ctx.params.id}`
-  const key = `?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`
-
-  const res = await fetch(`${api_path}${key}`)
+  const res = await fetch(`${server}/api/film-page/movie/${ctx.query.id}`)
   const data = await res.json()
-  const res2 = await fetch(`${api_path}/credits${key}`)
-  const credits = await res2.json()
-  const res3 = await fetch(`${api_path}/recommendations${key}`)
-  const similar = await res3.json()
-  const res4 = await fetch(`${api_path}/videos${key}`)
-  const videoData = await res4.json()
 
   return {
     props: {
-      data,
-      credits,
-      similar,
-      videoData
+      data
     },
   }
 }
