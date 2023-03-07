@@ -10,11 +10,15 @@ import useSwr from 'swr'
 import { myFetch } from "@/assets/utilities"
 import { useRouter } from "next/router"
 
-const FilmPageContent = (props: any) => {
+interface Props {
+  media_type: string
+}
+
+const FilmPageContent = ({ media_type }: Props) => {
   const router = useRouter()
   const id = router.query.id
 
-  const { data, error, isLoading } = useSwr(`/api/film-page/${props.media_type}/${id}`, myFetch)
+  const { data, error, isLoading } = useSwr(`/api/film-page/${media_type}/${id}`, myFetch)
 
   const d = data?.[0]
   const credits = data?.[1]
@@ -33,20 +37,20 @@ const FilmPageContent = (props: any) => {
       <PageLayout>
         <PageBody>
           {isLoading ?
-              'Loading...' :
-              <>
-                <FilmPoster
-                  path={d.poster_path}
-                />
-                <FilmInfo
-                  {...d}
-                  credits={credits}
-                  trailerID={trailerID}
-                />
-                <SimilarFilms data={similar.results} />
-              </>
+            'Loading...' :
+            <>
+              <FilmPoster
+                path={d.poster_path}
+              />
+              <FilmInfo
+                {...d}
+                credits={credits}
+                trailerID={trailerID}
+              />
+              <SimilarFilms data={similar.results} />
+            </>
           }
-          {error ? <p>An error occured</p>: null}
+          {error ? <p>An error occured</p> : null}
         </PageBody>
       </PageLayout>
     </>
