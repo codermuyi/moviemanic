@@ -6,12 +6,9 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const params: string | string[] | undefined = req.query.params;
-
-  console.log(req.query.params)
-
   const pathArray = ['', '/credits', '/recommendations', '/videos']
-
   let data_list = []
+  
   for (let i = 0; i < pathArray.length; i++) {
     let data = await myFetch(filmPagePath(params, pathArray[i]))
     data_list.push(data)
