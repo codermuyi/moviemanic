@@ -99,7 +99,7 @@ const FilmInfo = ({
           </ul>
         </div>
         <div className='synopsis'>
-          <h2 className='heading'>Synopsis</h2>
+          <h2 className='heading'>Overview</h2>
           <p>{overview}</p>
         </div>
         <Casts credits={credits} />
