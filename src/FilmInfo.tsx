@@ -90,6 +90,10 @@ const FilmInfo = ({
         }
       </Details1>
       <Details2>
+        <div className='synopsis'>
+          <h2 className='heading'>Overview</h2>
+          <p>{overview}</p>
+        </div>
         <div className='genres'>
           <h2 className='heading'>Genres</h2>
           <ul>
@@ -97,10 +101,6 @@ const FilmInfo = ({
               <li key={i}>{genre.name}</li>
             ))}
           </ul>
-        </div>
-        <div className='synopsis'>
-          <h2 className='heading'>Overview</h2>
-          <p>{overview}</p>
         </div>
         <Casts credits={credits} />
       </Details2>
