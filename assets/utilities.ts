@@ -1,0 +1,13 @@
+
+const APIURL = 'https://api.themoviedb.org/3/'
+const key = process.env.TMDB_API_KEY
+
+export const searchPath = (q: string) => `${APIURL}${q}&api_key=${key}`
+
+export const categoryPath = (path: string) => `${APIURL}${path}?api_key=${key}`
+
+export async function myFetch(path: string) {
+  const response = await fetch(path)
+
+  return response.json()
+}
