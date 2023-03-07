@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import styled from 'styled-components'
 import SimpleBar from 'simplebar-react';
 import CastProfile from './CastProfile'
@@ -50,7 +49,7 @@ const FilmCast = styled.div`
     text-align: center;
 
     .role {
-      opacity: .7;
+      opacity: .6;
     }
   }
 `

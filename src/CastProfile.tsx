@@ -22,7 +22,7 @@ const CastProfile = (props: any) => {
       }
       <div className='cast-info'>
         <p>{cast.name}</p>
-        <p className='role'>{cast.character && 'Played ' + cast.character}</p>
+        <p className='role'>{cast.character && cast.character}</p>
       </div>
     </div>
   )
