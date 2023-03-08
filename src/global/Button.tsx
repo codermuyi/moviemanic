@@ -41,6 +41,7 @@ const Button: React.FC<Props> = ({
          margin,
          height,
          width,
+         transitionDuration: '.2s'
       }}
       disabled={disabled}
       className='button'
