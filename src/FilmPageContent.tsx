@@ -5,10 +5,10 @@ import breakpoints from '@/assets/breakpoints'
 import FilmPoster from '@/src/FilmPoster'
 import FilmInfo from '@/src/FilmInfo'
 import SimilarFilms from '@/src/SimilarFilms'
-
 import useSwr from 'swr'
 import { myFetch } from "@/assets/utilities"
 import { useRouter } from "next/router"
+import Loader from './global/Loader'
 
 interface Props {
   media_type: string
@@ -31,9 +31,9 @@ const FilmPageContent = ({ media_type }: Props) => {
     <>
       <Meta
         title={
-          d ? 
-          `${d.name || d.title} | Moviemanic` : 
-          'Moviemanic'
+          d ?
+            `${d.name || d.title} | Moviemanic` :
+            'Moviemanic'
         }
         description={d?.overview}
       />
@@ -41,7 +41,7 @@ const FilmPageContent = ({ media_type }: Props) => {
       <PageLayout>
         <PageBody>
           {isLoading ?
-            'Loading...' :
+            <Loader /> :
             <>
               <FilmPoster
                 path={d.poster_path}
