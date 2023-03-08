@@ -2,14 +2,16 @@
 interface Props {
   border: string;
   color?: string
-  bgColor: string;
+  bgColor?: string;
   children?: React.ReactNode;
-  // height: string;
+  height?: string;
   onClick?: () => void;
   radius: string
-  // width: string;
-  cursor: string
+  width?: string;
+  cursor?: string
   padding?: string
+  margin?: string
+  disabled?: boolean
 }
 
 const Button: React.FC<Props> = ({ 
@@ -19,10 +21,12 @@ const Button: React.FC<Props> = ({
     children,
     onClick, 
     radius,
-    // height,
-    // width
+    height,
+    width,
     cursor,
-    padding
+    padding,
+    margin,
+    disabled,
   }) => { 
   return (
     <button 
@@ -34,9 +38,12 @@ const Button: React.FC<Props> = ({
          borderRadius: radius,
          cursor,
          padding,
-        //  height,
-        //  width
+         margin,
+         height,
+         width,
       }}
+      disabled={disabled}
+      className='button'
     >
     {children}
     </button>
