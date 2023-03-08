@@ -30,7 +30,11 @@ const FilmPageContent = ({ media_type }: Props) => {
   return (
     <>
       <Meta
-        title={`${d?.name || d?.title} | Moviemanic`}
+        title={
+          d ? 
+          `${d.name || d.title} | Moviemanic` : 
+          'Moviemanic'
+        }
         description={d?.overview}
       />
 
