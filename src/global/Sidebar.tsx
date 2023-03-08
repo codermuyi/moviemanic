@@ -87,8 +87,8 @@ const SideNav = styled.div`
   overflow: hidden;
   width: 0;
   z-index: 3000;
-  background-color: white;
-  color: rgb(var(--sec-text-color));
+  background-color: rgb(var(--f-bg-color));
+  color: rgb(var(--f-text-color));
   transition-duration: .2s;
 
   &.open {
@@ -97,6 +97,7 @@ const SideNav = styled.div`
 
   .nav-item {
     width: var(--sb-width);
+    transition-duration: .2s;
 
     &.toggle {
       padding: 1rem;
@@ -110,6 +111,10 @@ const SideNav = styled.div`
       align-items: center;
       width: 100%;
       padding: .5rem 1rem;
+    }
+
+    &:not(.toggle):hover {
+      padding-left: .5rem;
     }
   }
 

@@ -13,13 +13,17 @@
   --main-bg-color: 34, 34, 34;
   --sec-bg-color: 100, 100, 100;
   --theme-main-color: 78, 100, 160;
+
+  --f-bg-color: 255, 255, 255;
+  --f-text-color: 0, 0, 0;
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   :root {
-    
+    --f-bg-color: 9, 9, 9; 
+     --f-text-color: 244, 244, 244;
   }
-} */
+}
 
 * {
   box-sizing: border-box;
@@ -51,7 +55,7 @@ a {
 
 @media (prefers-color-scheme: dark) {
   html {
-    color-scheme: dark;
+    /* color-scheme: dark; */
   }
 }
 
