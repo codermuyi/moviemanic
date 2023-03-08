@@ -1,68 +1,58 @@
 import styled from 'styled-components'
 import Link from 'next/link'
+import { useState } from 'react'
 import {
   MainIcon,
   ProfileIcon,
-  GridIcon,
-  MovieIcon,
-  TVIcon,
+  MenuIcon,
 } from './SVGIcons'
 import breakpoints from '@/assets/breakpoints'
+import Sidebar from './Sidebar'
 
 const Navbar = () => {
-  const iconWidth = 30
+  const iconWidth = 40
   const iconHeight = 30
   const iconFill = 'currentColor'
+  const [isOpen, setIsOpen] = useState(false)
+
+  const toggle = () => setIsOpen(prevIsOpen => !prevIsOpen)
 
   return (
-    <Bar>
-      <Link href='/'>
+    <>
+      <Sidebar
+        iconFill={iconFill}
+        isOpen={isOpen}
+        toggle={toggle}
+      />
+
+      <Bar>
+        <div className='nav'>
+          <div onClick={toggle} style={{cursor: 'pointer'}}>
+            <MenuIcon
+              width={iconWidth}
+              height={iconHeight}
+              fill={iconFill}
+            />
+          </div>
+          <div>
+            <Link href='/'>
+              <MainIcon
+                width={iconWidth}
+                height={iconHeight}
+                fill='black'
+              />
+            </Link>
+          </div>
+        </div>
         <div>
-          <MainIcon
+          <ProfileIcon
             width={iconWidth}
             height={iconHeight}
-            // fill={iconFill}
-            fill='black'
+            fill={iconFill}
           />
         </div>
-      </Link>
-      <div className='nav'>
-        <Link href='/'>
-          <div>
-            <GridIcon
-              width={iconWidth}
-              height={iconHeight}
-              fill={iconFill}
-            />
-          </div>
-        </Link>
-        <Link href='/'>
-          <div>
-            <MovieIcon
-              width={iconWidth}
-              height={iconHeight}
-              fill={iconFill}
-            />
-          </div>
-        </Link>
-        <Link href='/'>
-          <div>
-            <TVIcon
-              width={iconWidth}
-              height={iconHeight}
-              fill={iconFill}
-            />
-          </div>
-        </Link>
-      </div>
-      <div>
-        <ProfileIcon
-          width={iconWidth}
-          height={iconHeight}
-          fill={iconFill}
-        />
-      </div>
-    </Bar>
+      </Bar>
+    </>
   )
 }
 
@@ -70,17 +60,17 @@ const Bar = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: .7rem 1rem;
   background-color: rgb(var(--theme-main-color));
 
   .nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 2em;
+    gap: 1em;
 
     div {
-      width: 30px;
+      width: 40px;
       height: 30px;
     }
   }
