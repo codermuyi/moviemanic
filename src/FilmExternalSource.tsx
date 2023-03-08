@@ -47,7 +47,8 @@ const HAHA = styled.div`
   padding: 2rem 1rem 0;
 
   .button:hover {
-    background-color: white;
+    background-color: white !important;
+    color: black;
   }
 `
 
