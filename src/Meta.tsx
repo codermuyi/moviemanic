@@ -4,6 +4,7 @@ const Meta = ({title, description}: {[key: string]: string}) => {
   return (
     <Head>
       <title>{title}</title>
+      <meta name="theme-color" content="rgb(78, 100, 160)" />
       <meta name="description" content={description} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="icon" href="/favicon.ico" />
