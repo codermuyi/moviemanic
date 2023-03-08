@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import Casts from './Casts'
 import Trailer from './Trailer'
 import { Rating } from 'react-simple-star-rating'
+import FilmExternalSource from './FilmExternalSource'
 
 interface Info {
   title: string
@@ -18,6 +19,8 @@ interface Info {
   first_air_date: string
   last_air_date: string
   vote_average: number
+  imdb_id: string
+  homepage: string
 }
 
 const FilmInfo = ({
@@ -34,7 +37,9 @@ const FilmInfo = ({
   trailerID,
   first_air_date,
   last_air_date,
-  vote_average
+  vote_average,
+  imdb_id,
+  homepage
 }: Info) => {
 
   return (
@@ -103,6 +108,7 @@ const FilmInfo = ({
           </ul>
         </div>
         <Casts credits={credits} />
+        <FilmExternalSource imdb={imdb_id} website={homepage} />
       </Details2>
     </Info>
   )
