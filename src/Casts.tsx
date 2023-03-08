@@ -8,7 +8,7 @@ const Casts = ({ credits }: { credits: any }) => {
       <h2 className='heading'>Casts</h2>
       <SimpleBar>
         <div className='cast-list'>
-          {credits.cast.map((cast: any, i: number) => (
+          {credits.cast?.map((cast: any, i: number) => (
             <CastProfile key={i} cast={cast} />
           ))}
         </div>

@@ -69,7 +69,7 @@ const FilmInfo = ({
         }
         <div>
           <span className='heading'>Language</span>
-          <span>{spoken_languages[0]?.english_name}</span>
+          <span>{spoken_languages?.[0]?.english_name}</span>
         </div>
         <div>
           <span className='heading'>Status</span>
@@ -102,7 +102,7 @@ const FilmInfo = ({
         <div className='genres'>
           <h2 className='heading'>Genres</h2>
           <ul>
-            {genres.map((genre, i) => (
+            {genres?.map((genre, i) => (
               <li key={i}>{genre.name}</li>
             ))}
           </ul>

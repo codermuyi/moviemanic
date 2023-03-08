@@ -25,7 +25,7 @@ const FilmPageContent = ({ media_type }: Props) => {
   const similar = data?.[2]
   const videoData = data?.[3]
 
-  const trailerID = videoData?.results.filter((videoData: any, i: number) => videoData.type === 'Trailer')[0]?.key
+  const trailerID = videoData?.results?.filter((videoData: any, i: number) => videoData.type === 'Trailer')[0]?.key
 
   return (
     <>

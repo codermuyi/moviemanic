@@ -4,7 +4,7 @@ import MovieCard from './MovieCard'
 const SimilarFilms = ({ data }: { data: any }) => {
   return (
     <>
-      {data[0] && <Divv>
+      {data?.[0] && <Divv>
         <h2>More Like This</h2>
         <div className='film-list'>
           {
