@@ -6,9 +6,11 @@ import breakpoints from "@/assets/breakpoints";
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [isDisabled, setDisabled] = useState<boolean>(true)
 
   const handleChange = (e: any) => {
     setSearchQuery(e.target.value);
+    setDisabled(e.target.value === '');
   };
 
   return (
@@ -24,11 +26,9 @@ const Search = () => {
       </Field>
       <Button
         border="none"
-        bgColor="white"
-        color="rgb(var(--sec-text-color))"
         radius="10px"
-        cursor="pointer"
         padding=" .8em 1em"
+        disabled={isDisabled}
       >
         Search
       </Button>
@@ -46,6 +46,17 @@ const Cont = styled.form`
   @media ${breakpoints.lg} {
     padding-top: 3rem;
     font-size: 2rem;
+  }
+
+  .button {
+    background-color: white;
+    color: rgb(var(--sec-text-color));
+  }
+
+  .button:disabled {
+    background-color: hsl(0, 30%, 30%);
+    color: white;
+    cursor: not-allowed;
   }
 `;
 
