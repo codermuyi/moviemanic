@@ -61,7 +61,7 @@ const Bar = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: .7rem 1rem;
-  background-color: rgb(var(--theme-main-color));
+  background: linear-gradient(70deg, rgb(var(--theme-main-color)), black);
 
   .nav {
     display: flex;
@@ -94,6 +94,7 @@ const Bar = styled.nav`
     padding: 2rem;
     left: 30px;
     right: initial;
+    background: linear-gradient(rgb(var(--theme-main-color)), black);
 
     .nav {
       flex-direction: column;

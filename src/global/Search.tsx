@@ -49,8 +49,14 @@ const Cont = styled.form`
   }
 
   .button {
-    background-color: white;
-    color: rgb(var(--sec-text-color));
+    background-color: rgb(var(--theme-main-color));
+    color: rgb(var(--main-text-color));
+    cursor: pointer;
+    
+    :hover {
+      background-color: white;
+      color: rgb(var(--sec-text-color));
+    }
   }
 
   .button:disabled {
