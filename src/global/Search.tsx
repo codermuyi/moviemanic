@@ -82,6 +82,7 @@ const Field = styled.div`
     padding-left: 2.5rem;
     background: inherit;
     border: 0;
+    color: rgb(var(--main-text-color));
 
     ::placeholder {
       color: rgb(var(--main-text-color), 0.5);
