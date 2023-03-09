@@ -7,15 +7,14 @@ const search = ({
   searchQuery,
   data
 }: { [key: string]: any }) => {
-  const num: number = data.results.length
-
+  const num: number = data.length
+  
   return (
     <PageLayout>
       <Content>
         <h1>{num} result{num > 1 && 's'} for {searchQuery}</h1>
         {data ?
-          data.results.map((movie: any, index: number) => {
-            if (movie.media_type !== 'person')
+          data.map((movie: any, index: number) => {
               return (
                 <MovieCard
                   key={movie.id}
@@ -61,7 +60,7 @@ export const getServerSideProps = async (ctx: any) => {
     return {
       props: {
         searchQuery: q,
-        data: data,
+        data: data.results.filter((v: any) => v.media_type !== 'person'),
       },
     }
   else
