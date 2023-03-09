@@ -42,6 +42,12 @@ const FilmInfo = ({
   homepage
 }: Info) => {
 
+  function formatDate(date: string) {
+    const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short', year: 'numeric' }
+    const dateObj = new Date(date)
+    return dateObj.toLocaleDateString('en-US', options)
+  }
+
   return (
     <Info>
       <Trailer id={trailerID} />
@@ -78,7 +84,7 @@ const FilmInfo = ({
         {
           release_date ? <div>
             <span className='heading'>Release Date</span>
-            <span>{release_date}</span>
+            <span>{formatDate(release_date)}</span>
           </div> : null
         }
         {
