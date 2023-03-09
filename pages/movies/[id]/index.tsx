@@ -1,8 +1,26 @@
 import FilmPageContent from "@/src/FilmPageContent"
+import { server } from 'config'
+import { SWRConfig } from "swr"
 
-const moviePage = () => {
+export async function getServerSideProps(ctx: any) {
+  const apiPath = `/api/film-page/movie/${ctx.params.id}`
+  const res = await fetch(`${server}${apiPath}`)
+  const data = await res.json()
+
+  return {
+    props: {
+      fallback: {
+        [apiPath]: data
+      }
+    }
+  }
+}
+
+const moviePage = ({ fallback }: any) => {
   return (
-    <FilmPageContent media_type='movie' />
+    <SWRConfig value={{ fallback }}>
+      <FilmPageContent media_type='movie' />
+    </SWRConfig>
   )
 }
 
