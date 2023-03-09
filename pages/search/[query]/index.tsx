@@ -2,19 +2,24 @@ import styled from 'styled-components'
 import PageLayout from '@/src/global/PageLayout'
 import MovieCard from '@/src/MovieCard'
 import { server } from 'config'
+import Meta from '@/src/Meta'
 
 const search = ({
   searchQuery,
   data
 }: { [key: string]: any }) => {
   const num: number = data.length
-  
+
   return (
-    <PageLayout>
-      <Content>
-        <h1>{num} result{num > 1 && 's'} for {searchQuery}</h1>
-        {data ?
-          data.map((movie: any, index: number) => {
+    <>
+      <Meta 
+        title={`Search results for "${searchQuery}" | Moviemanic`}
+      />
+      <PageLayout>
+        <Content>
+          <h1>{num} result{num > 1 && 's'} for {searchQuery}</h1>
+          {data ?
+            data.map((movie: any, index: number) => {
               return (
                 <MovieCard
                   key={movie.id}
@@ -26,9 +31,10 @@ const search = ({
                   id={movie.id}
                 />
               )
-          }) : 'There was an error'}
-      </Content>
-    </PageLayout>
+            }) : 'There was an error'}
+        </Content>
+      </PageLayout>
+    </>
   )
 }
 
