@@ -3,11 +3,10 @@ import { useRouter } from 'next/router'
 
 const Meta = ({ title, description }: { [key: string]: string }) => {
   const router = useRouter()
-  console.log(router)
+
   return (
     <Head>
       <title>{title}</title>
-      <link rel="manifest" href="/manifest.json" />
       <meta name="theme-color" content="rgb(78, 100, 160)" />
       <meta name="description" content={description} />
 
