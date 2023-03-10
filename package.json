@@ -19,6 +19,7 @@
     "nprogress": "^0.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-modal": "^3.16.1",
     "react-simple-star-rating": "^5.1.7",
     "simplebar-react": "^3.2.1",
     "styled-components": "^5.3.6",
@@ -28,6 +29,7 @@
   },
   "devDependencies": {
     "@types/nprogress": "^0.2.0",
+    "@types/react-modal": "^3.13.1",
     "@types/styled-components": "^5.1.26",
     "@types/uuid": "^9.0.1",
     "babel-plugin-styled-components": "^2.0.7"
