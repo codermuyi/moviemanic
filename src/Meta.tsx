@@ -16,8 +16,8 @@ const Meta = ({ title, description }: { [key: string]: string }) => {
         content={`https://moviemanic.vercel.app${router.asPath}`}
       />
       <meta name="og:description" content={description} />
-      <meta name="og:image" content='/moviemanic-512x512.png' />
-      <meta name="image" property="og:image" content="/moviemanic-512x512.png" />
+      <meta name="og:image" content="/icon-moviemanic.jpg" />
+      <meta name="image" property="og:image" content="/icon-moviemanic.jpg" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
     </Head>
 
