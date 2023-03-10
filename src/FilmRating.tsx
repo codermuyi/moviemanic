@@ -3,12 +3,16 @@ import styled from 'styled-components'
 import React from 'react'
 
 const FilmRating = ({ vote_average }: { vote_average: number }) => {
+  const avg = (vote_average / 2)
+  const rate = parseFloat(avg.toPrecision(2))
+
   return (
     <>
       {vote_average ?
-        <StarRating className='ratings'>
+        <StarRating>
+          <p className='rate-no'>{rate}</p>
           <Rating
-            initialValue={vote_average / 2}
+            initialValue={rate}
             readonly={true}
             allowFraction={true}
             size={20}
@@ -23,6 +27,11 @@ const FilmRating = ({ vote_average }: { vote_average: number }) => {
 
 const StarRating = styled.div`
   margin-top: 1rem;
+
+  .rate-no {
+    font-size: 2rem;
+    font-family: inherit;
+  }
 `
 
 export default FilmRating
