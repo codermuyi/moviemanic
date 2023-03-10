@@ -52,7 +52,10 @@ const FilmInfo = ({
     <Info>
       <Trailer id={trailerID} />
       <Name>
-        <h1>{title || name}</h1>
+        <h1>
+          {title || name}
+          {(!title && !name) && '404: this page is invalid'}
+        </h1>
         <p className='tagline'>{tagline}</p>
         <div className='ratings'>
           <Rating
@@ -70,16 +73,15 @@ const FilmInfo = ({
           runtime ? <div>
             <span className='heading'>Duration</span>
             <span>{runtime} min.</span>
-            {/* <span>{runtime ? runtime + ' min.' : 'N/A'}</span> */}
           </div> : null
         }
         <div>
           <span className='heading'>Language</span>
-          <span>{spoken_languages?.[0]?.english_name}</span>
+          <span>{spoken_languages?.[0]?.english_name || 'N/A'}</span>
         </div>
         <div>
           <span className='heading'>Status</span>
-          <span>{status}</span>
+          <span>{status || 'N/A'}</span>
         </div>
         {
           release_date ? <div>
@@ -103,11 +105,12 @@ const FilmInfo = ({
       <Details2>
         <div className='synopsis'>
           <h2 className='heading'>Overview</h2>
-          <p>{overview}</p>
+          <p>{overview ? overview : 'No info.'}</p>
         </div>
         <div className='genres'>
           <h2 className='heading'>Genres</h2>
           <ul>
+          {genres === undefined && <p>No info</p>}
             {genres?.map((genre, i) => (
               <li key={i}>{genre.name}</li>
             ))}

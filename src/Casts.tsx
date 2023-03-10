@@ -2,10 +2,11 @@ import styled from 'styled-components'
 import SimpleBar from 'simplebar-react';
 import CastProfile from './CastProfile'
 
-const Casts = ({ credits }: { credits: any }) => {  
+const Casts = ({ credits }: { credits: any }) => { 
   return (
     <FilmCast>
       <h2 className='heading'>Casts</h2>
+      {credits.success === false && <p>No info.</p>}
       <SimpleBar>
         <div className='cast-list'>
           {credits.cast?.map((cast: any, i: number) => (

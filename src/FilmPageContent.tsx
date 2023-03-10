@@ -20,27 +20,31 @@ const FilmPageContent = ({ media_type }: Props) => {
 
   const { data, error, isLoading } = useSwr(`/api/film-page/${media_type}/${id}`, myFetch)
 
+  
   const d = data?.[0]
   const credits = data?.[1]
   const similar = data?.[2]
   const videoData = data?.[3]
+  console.log(d)
 
   const trailerID = videoData?.results?.filter((videoData: any, i: number) => videoData.type === 'Trailer')[0]?.key
+
+  const title = d ? 
+    d.success === false ?
+    'Error 404 | Moviemanic':
+    `${d.name || d.title} | Moviemanic`:
+    'Moviemanic'
 
   return (
     <>
       <Meta
-        title={
-          d ?
-            `${d.name || d.title} | Moviemanic` :
-            'Moviemanic'
-        }
+        title={title}
         description={d?.overview}
       />
 
       <PageLayout>
         <PageBody>
-          {isLoading ?
+          {isLoading && d.success ?
             <Loader /> :
             <>
               <FilmPoster
@@ -54,7 +58,6 @@ const FilmPageContent = ({ media_type }: Props) => {
               <SimilarFilms data={similar.results} />
             </>
           }
-          {error ? <p>An error occured</p> : null}
         </PageBody>
       </PageLayout>
     </>

@@ -1,17 +1,21 @@
 import Image from 'next/image'
 import styled from 'styled-components'
 import breakpoints from '@/assets/breakpoints'
+import { useState } from 'react'
 
 const FilmPoster = ({ path }: { path: string }) => {
+  const [src, setSrc] = useState(`https://image.tmdb.org/t/p/w1280${path}`)
+  
   return (
     <Poster>
       <div className='sticky'>
         <Image
-          src={`https://image.tmdb.org/t/p/w1280${path}`}
+          src={src}
           alt='image'
           width={250}
           height={350}
           className='poster-img'
+          onError={() => setSrc('/no-image-icon-2.png')}
         />
       </div>
     </Poster>
