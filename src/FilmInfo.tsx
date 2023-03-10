@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import Casts from './Casts'
 import Trailer from './Trailer'
-import { Rating } from 'react-simple-star-rating'
 import FilmExternalSource from './FilmExternalSource'
+import StarRating from './FilmRating'
 
 interface Info {
   title: string
@@ -57,16 +57,7 @@ const FilmInfo = ({
           {(!title && !name) && '404: this page is invalid'}
         </h1>
         <p className='tagline'>{tagline}</p>
-        <div className='ratings'>
-          <Rating
-            initialValue={vote_average / 2}
-            readonly={true}
-            allowFraction={true}
-            size={20}
-            emptyColor='gray'
-            fillColorArray={['#f17a45', '#f19745', '#f1a545', '#f1b345', '#f1d045']}
-          />
-        </div>
+        <StarRating vote_average={vote_average} />
       </Name>
       <Details1>
         {
@@ -134,10 +125,6 @@ const Name = styled.div`
   .tagline {
     font-size: .8em;
     opacity: .8;
-  }
-
-  .ratings {
-    margin-top: 1rem;
   }
 `
 
