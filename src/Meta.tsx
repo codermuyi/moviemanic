@@ -9,9 +9,6 @@ const Meta = ({ title, description }: { [key: string]: string }) => {
       <title>{title}</title>
       <link rel="icon" href="/favicon.ico" />
       <meta name="description" content={description} />
-      
-      <meta name="theme-color" content="rgb(78, 100, 160)" />
-
       <meta name="og:type" content="website" />
       <meta name="og:title" content={title} />
       <meta
@@ -20,7 +17,6 @@ const Meta = ({ title, description }: { [key: string]: string }) => {
       />
       <meta name="og:description" content={description} />
       <meta name="og:image" content='/moviemanic-512x512.png' />
-
       <meta name="viewport" content="width=device-width, initial-scale=1" />
     </Head>
 
