@@ -37,15 +37,15 @@ const Divv = styled.div`
   }
 
   .film-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 1em;
 
     .box {
-      width: 240px;
+      width: 100%;
+
       .card-image {
-        height: 150px;
+        max-height: 150px;
       }
     }
   }

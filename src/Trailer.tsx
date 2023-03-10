@@ -25,7 +25,6 @@ const IFrame = styled.iframe`
   max-width: 700px;
   display: block;
   margin-inline: auto;
-  margin-top: 1.5rem;
 `
 
 export default Trailer
