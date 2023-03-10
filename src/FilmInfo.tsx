@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import Casts from './Casts'
-import Trailer from './Trailer'
 import FilmExternalSource from './FilmExternalSource'
 import StarRating from './FilmRating'
+import FilmVideos from './FilmVideos'
 
 interface Info {
   title: string
@@ -15,12 +15,12 @@ interface Info {
   genres: Array<{ name: string }>
   overview: string
   credits: any
-  trailerID: string
   first_air_date: string
   last_air_date: string
   vote_average: number
   imdb_id: string
   homepage: string
+  videoData: any
 }
 
 const FilmInfo = ({
@@ -34,12 +34,12 @@ const FilmInfo = ({
   genres,
   overview,
   credits,
-  trailerID,
   first_air_date,
   last_air_date,
   vote_average,
   imdb_id,
-  homepage
+  homepage,
+  videoData
 }: Info) => {
 
   function formatDate(date: string) {
@@ -50,7 +50,6 @@ const FilmInfo = ({
 
   return (
     <Info>
-      <Trailer id={trailerID} />
       <Name>
         <h1>
           {title || name}
@@ -59,6 +58,7 @@ const FilmInfo = ({
         <p className='tagline'>{tagline}</p>
         <StarRating vote_average={vote_average} />
       </Name>
+      <FilmVideos videoData={videoData} />
       <Details1>
         {
           runtime ? <div>
@@ -101,7 +101,7 @@ const FilmInfo = ({
         <div className='genres'>
           <h2 className='heading'>Genres</h2>
           <ul>
-          {genres === undefined && <p>No info</p>}
+            {genres === undefined && <p>No info</p>}
             {genres?.map((genre, i) => (
               <li key={i}>{genre.name}</li>
             ))}

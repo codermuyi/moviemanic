@@ -20,48 +20,46 @@ const FilmPageContent = ({ media_type }: Props) => {
 
   const { data, isLoading } = useSwr(`/api/film-page/${media_type}/${id}`, myFetch)
 
-  const d = data?.[0]
+  const info = data?.[0]
   const credits = data?.[1]
   const similar = data?.[2]
   const videoData = data?.[3]
 
-  const trailerID = videoData?.results?.filter((videoData: any) => videoData.type === 'Trailer')[0]?.key
-
   function generatePageTitle(): string {
-    const filmTitle = d.name || d.title  
+    const filmTitle = info.name || info.title
     const filmMedia = media_type === 'tv' ? 'TV Series' : 'Movies'
-    const filmDate = parseInt(d.release_date || d.first_air_date)
+    const filmDate = parseInt(info.release_date || info.first_air_date)
     const checkDate = !isNaN(filmDate) ? `(${filmDate})` : ''
- 
-    if (d) {
-      if (d.success === false) {
+
+    if (info) {
+      if (info.success === false) {
         return 'Error 404 | Moviemanic'
       } else {
         return `${filmTitle} ${checkDate} - ${filmMedia} | Moviemanic`
       }
     }
-    return'Moviemanic'
+    return 'Moviemanic'
   }
 
   return (
     <>
       <Meta
         title={generatePageTitle()}
-        description={d?.overview}
+        description={info?.overview}
       />
 
       <PageLayout>
         <PageBody>
-          {isLoading && d.success ?
+          {isLoading && info.success ?
             <Loader /> :
             <>
               <FilmPoster
-                path={d.poster_path}
+                path={info.poster_path}
               />
               <FilmInfo
-                {...d}
+                {...info}
                 credits={credits}
-                trailerID={trailerID}
+                videoData={videoData}
               />
               <SimilarFilms data={similar.results} />
             </>
