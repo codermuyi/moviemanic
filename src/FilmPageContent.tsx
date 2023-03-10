@@ -18,27 +18,35 @@ const FilmPageContent = ({ media_type }: Props) => {
   const router = useRouter()
   const id = router.query.id
 
-  const { data, error, isLoading } = useSwr(`/api/film-page/${media_type}/${id}`, myFetch)
+  const { data, isLoading } = useSwr(`/api/film-page/${media_type}/${id}`, myFetch)
 
-  
   const d = data?.[0]
   const credits = data?.[1]
   const similar = data?.[2]
   const videoData = data?.[3]
-  console.log(d)
 
-  const trailerID = videoData?.results?.filter((videoData: any, i: number) => videoData.type === 'Trailer')[0]?.key
+  const trailerID = videoData?.results?.filter((videoData: any) => videoData.type === 'Trailer')[0]?.key
 
-  const title = d ? 
-    d.success === false ?
-    'Error 404 | Moviemanic':
-    `${d.name || d.title} | Moviemanic`:
-    'Moviemanic'
+  function generatePageTitle(): string {
+    const filmTitle = d.name || d.title  
+    const filmMedia = media_type === 'tv' ? 'TV Series' : 'Movies'
+    const filmDate = parseInt(d.release_date || d.first_air_date)
+    const checkDate = !isNaN(filmDate) ? `(${filmDate})` : ''
+ 
+    if (d) {
+      if (d.success === false) {
+        return 'Error 404 | Moviemanic'
+      } else {
+        return `${filmTitle} ${checkDate} - ${filmMedia} | Moviemanic`
+      }
+    }
+    return'Moviemanic'
+  }
 
   return (
     <>
       <Meta
-        title={title}
+        title={generatePageTitle()}
         description={d?.overview}
       />
 

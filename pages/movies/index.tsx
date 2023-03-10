@@ -4,7 +4,9 @@ import Meta from '@/src/Meta'
 const index = () => {
   return (
     <>
-    <Meta />
+    <Meta 
+      title='Movies by Genre | Moviemanic'
+    />
 
     <PageLayout>
       <h1>Movies : )</h1>
