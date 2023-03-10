@@ -17,6 +17,7 @@ const Meta = ({ title, description }: { [key: string]: string }) => {
       />
       <meta name="og:description" content={description} />
       <meta name="og:image" content='/moviemanic-512x512.png' />
+      <meta name="image" property="og:image" content="/moviemanic-512x512.png" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
     </Head>
 
