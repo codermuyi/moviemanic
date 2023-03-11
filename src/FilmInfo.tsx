@@ -21,6 +21,8 @@ interface Info {
   imdb_id: string
   homepage: string
   videoData: any
+  number_of_seasons: number
+  number_of_episodes: number
 }
 
 const FilmInfo = ({
@@ -39,7 +41,9 @@ const FilmInfo = ({
   vote_average,
   imdb_id,
   homepage,
-  videoData
+  videoData,
+  number_of_seasons,
+  number_of_episodes
 }: Info) => {
 
   function formatDate(date: string) {
@@ -59,6 +63,22 @@ const FilmInfo = ({
         <StarRating vote_average={vote_average} />
       </Name>
       <FilmVideos videoData={videoData} />
+
+      <div className='series-detail'>
+        {
+          number_of_seasons ? <div>
+            <p className='heading'>Seasons</p>
+            <p> {number_of_seasons}</p>
+          </div> : null
+        }
+        {
+          number_of_episodes ? <div>
+            <p className='heading'>Episodes</p>
+            <p> {number_of_episodes}</p>
+          </div> : null
+        }
+      </div>
+
       <Details1>
         {
           runtime ? <div>
@@ -93,6 +113,7 @@ const FilmInfo = ({
           </> : null
         }
       </Details1>
+
       <Details2>
         <div className='synopsis'>
           <h2 className='heading'>Overview</h2>
@@ -116,6 +137,18 @@ const FilmInfo = ({
 
 const Info = styled.div`
   padding-inline: 1rem;
+
+  .series-detail {
+    display: flex;
+    max-width: 400px;
+    margin: 0 auto;
+
+    div {
+      flex: 1;
+      text-align: center;
+      padding-bottom: 1rem;
+    }
+  }
 `
 
 const Name = styled.div`
