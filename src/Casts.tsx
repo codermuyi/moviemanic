@@ -3,10 +3,13 @@ import SimpleBar from 'simplebar-react';
 import CastProfile from './CastProfile'
 
 const Casts = ({ credits }: { credits: any }) => { 
+
+  console.log(credits)
+
   return (
     <FilmCast>
       <h2 className='heading'>Casts</h2>
-      {credits.success === false && <p>No info.</p>}
+      {(credits.success === false || credits.cast.length === 0) && <p>No info.</p>}
       <SimpleBar>
         <div className='cast-list'>
           {credits.cast?.map((cast: any, i: number) => (
