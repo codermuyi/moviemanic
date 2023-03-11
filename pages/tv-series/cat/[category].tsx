@@ -1,31 +1,5 @@
-import PageLayout from "@/src/Layout/PageLayout"
-import Meta from '@/src/atoms/Meta'
 import { server } from 'config'
-import FilmGrid from "@/src/FilmGrid"
-import styled from 'styled-components'
-
-const categoryPage = ({ data, type }: any) => {
-  return (
-    <>
-      <Meta />
-      <PageLayout>
-        <Cat>
-          <FilmGrid
-            title={type}
-            data={data?.results}
-            mediaType='tv'
-          />
-        </Cat>
-      </PageLayout>
-    </>
-  )
-}
-
-const Cat = styled.div`
-  h2 {
-    font-size: 2.2rem;
-  }
-`
+import CategoryPageLayout from '@/src/Layout/CategoryPageLayout'
 
 export const getServerSideProps = async (ctx: any) => {
   const res = await fetch(`${server}/api/categories/tv/${ctx.query.category}`)
@@ -39,4 +13,9 @@ export const getServerSideProps = async (ctx: any) => {
   }
 }
 
-export default categoryPage
+const TVCategoryPage = (props: any) => {
+  return <CategoryPageLayout {...props} mediaType='tv' />
+}
+
+
+export default TVCategoryPage
