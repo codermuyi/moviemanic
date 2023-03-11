@@ -14,7 +14,7 @@ export default function Home({ data }: any) {
             <Category
               key={c.id}
               categoryName={c.name}
-              showType={c.type}
+              showType={c.type === 'tv' ? 'TV Series' : 'Movie'}
               isTrending={c.isTrending}
               data={data[i]}
             />

@@ -14,7 +14,14 @@ interface Props {
   data: any
 }
 
-const Category = ({ categoryName, showType, isTrending, data }: Props) => {
+const Category = ({
+  categoryName,
+  showType,
+  isTrending,
+  data
+}: Props) => {
+
+  const linkPath = showType === 'Movie' ? 'movies' : 'tv-series'
 
   return (
     <Cont>
@@ -25,12 +32,14 @@ const Category = ({ categoryName, showType, isTrending, data }: Props) => {
           <p className='show-type'>{showType}</p>
         </div>
         <div className='see-more'>
-          <Link href='/'>
+          <Link href={`/${linkPath}/cat/${categoryName.toLowerCase()}`}>
             <Button
               border='none'
-              bgColor='transparent'
+              // bgColor='transparent'
               radius='10px'
               cursor='pointer'
+              bgColor='pink'
+              padding='.5rem'
             >
               SEE MORE
             </Button>
@@ -38,7 +47,7 @@ const Category = ({ categoryName, showType, isTrending, data }: Props) => {
         </div>
       </Heading>
 
-      <CategoryList 
+      <CategoryList
         isTrending={isTrending}
         data={data.results}
         showType={showType}
@@ -76,6 +85,7 @@ const Heading = styled.div`
       font-size: 1.5rem;
       font-weight: 600;
       color: var(--theme-main-color);
+      text-transform: capitalize;
     }
 
     .show-type {

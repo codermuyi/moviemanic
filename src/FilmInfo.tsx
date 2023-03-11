@@ -137,6 +137,7 @@ const FilmInfo = ({
 
 const Info = styled.div`
   padding-inline: 1rem;
+  margin-bottom: 2rem;
 
   .series-detail {
     display: flex;

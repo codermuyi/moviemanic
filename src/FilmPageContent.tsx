@@ -61,7 +61,11 @@ const FilmPageContent = ({ media_type }: Props) => {
                 credits={credits}
                 videoData={videoData}
               />
-              <SimilarFilms data={similar.results} />
+              <SimilarFilms 
+                title='More Like This' 
+                centerTitle={true}
+                data={similar.results}
+              />
             </>
           }
         </PageBody>
@@ -76,6 +80,10 @@ const PageBody = styled.div`
     grid-template-columns: 350px minmax(10px, 1fr);
     grid-template-rows: 2;
     max-width: 2000px;
+    
+    & > * {
+      margin-bottom: 2rem;
+    }
   }
 `
 
