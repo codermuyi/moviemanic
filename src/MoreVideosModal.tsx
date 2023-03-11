@@ -73,7 +73,7 @@ const MoreVideosModal: React.FC<ModalInterface> = ({ modalIsOpen, setIsOpen, vid
           </Button>
         </ModalHeader>
         <ModalBody>
-          {filterData.map((vid: any, i: number) => {
+          {filterData?.map((vid: any, i: number) => {
             return <Box key={i}>
               <p>{vid.type}</p>
               <Trailer id={vid.key} />

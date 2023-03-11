@@ -8,13 +8,13 @@ const FilmVideos = ({ videoData }: any) => {
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const trailers = videoData?.results?.filter((videoData: any) => videoData.type === 'Trailer')
-  const trailerIDs = trailers.map((v: any) => v.key)
+  const trailerIDs = trailers?.map((v: any) => v.key)
 
   return (
     <Content>
-      <Trailer id={trailerIDs[0]} />
+      <Trailer id={trailerIDs?.[0]} />
       {
-        videoData.results.length > 1 && 
+        videoData.results?.length > 1 && 
           <Button
             border='none'
             radius='10px'
