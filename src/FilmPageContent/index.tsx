@@ -1,14 +1,15 @@
-import Meta from '@/src/Meta'
+import Meta from '@/src/atoms/Meta'
 import styled from 'styled-components'
-import PageLayout from '@/src/global/PageLayout'
+import PageLayout from '@/src/Layout/PageLayout'
 import breakpoints from '@/assets/breakpoints'
-import FilmPoster from '@/src/FilmPoster'
-import FilmInfo from '@/src/FilmInfo'
-import SimilarFilms from '@/src/SimilarFilms'
+import FilmPoster from '@/src/FilmPageContent/FilmPoster'
+import FilmInfo from '@/src/FilmPageContent/FilmInfo'
+import SimilarFilms from '@/src/FilmGrid'
+
 import useSwr from 'swr'
 import { myFetch } from "@/assets/utilities"
 import { useRouter } from "next/router"
-import Loader from './global/Loader'
+import Loader from '../atoms/Loader'
 
 interface Props {
   media_type: string

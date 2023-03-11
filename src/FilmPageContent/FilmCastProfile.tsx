@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { useState } from 'react'
-import { ProfileIcon } from './global/SVGIcons';
+import { ProfileIcon } from '../atoms/SVGIcons';
 
 const CastProfile = (props: any) => {
   const { cast } = props;

@@ -1,11 +1,7 @@
-import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
-
-import Button from '../global/Button'
+import Button from '../atoms/Button'
 import CategoryList from './CategoryList'
-
-// import data from '@/assets/demo_data'
 
 interface Props {
   categoryName: string
@@ -21,11 +17,11 @@ const Category = ({
   data
 }: Props) => {
 
-  const linkPath = showType === 'Movie' ? 'movies' : 'tv-series'
+  const linkPath = showType === 'movie' ? 'movies' : 'tv-series'
 
   return (
     <Cont>
-      {(isTrending && showType == 'TV Series') && <br />}
+      {(isTrending && showType == 'tv') && <br />}
       <Heading>
         <div className='name'>
           <p className='category-name'>{categoryName}</p>

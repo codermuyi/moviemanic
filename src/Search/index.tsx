@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
-import Button from "./Button";
-import { SearchIcon } from "./SVGIcons";
+import Button from "../atoms/Button";
+import { SearchIcon } from "../atoms/SVGIcons";
 import breakpoints from "@/assets/breakpoints";
 
 const Search = () => {

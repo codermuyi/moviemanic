@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import Trailer from './Trailer'
-import Button from './global/Button'
+import Trailer from './FilmYoutubeVideo'
+import Button from '../atoms/Button'
 import { useState } from 'react';
-import MoreVideosModal from './MoreVideosModal';
+import MoreVideosModal from './FilmVideosModal';
 
 const FilmVideos = ({ videoData }: any) => {
   const [modalIsOpen, setIsOpen] = useState(false);

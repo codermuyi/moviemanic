@@ -5,9 +5,9 @@ import {
   MainIcon,
   ProfileIcon,
   MenuIcon,
-} from './SVGIcons'
+} from '../atoms/SVGIcons'
 import breakpoints from '@/assets/breakpoints'
-import Sidebar from './Sidebar'
+import Sidebar from '../Sidebar'
 
 const Navbar = () => {
   const iconWidth = 40

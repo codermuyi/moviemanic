@@ -1,7 +1,7 @@
 import styled, { css, StyledComponent } from 'styled-components'
 import SimpleBar from 'simplebar-react';
 
-import MovieCard from '../MovieCard'
+import MovieCard from '../Cards/FilmCard'
 import breakpoints from '@/assets/breakpoints'
 
 const CategoryList = ({ isTrending, data, showType }: { isTrending: boolean, data: any, showType: string }) => {

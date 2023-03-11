@@ -1,5 +1,5 @@
-import PageLayout from "@/src/global/PageLayout"
-import Meta from '@/src/Meta'
+import PageLayout from "@/src/Layout/PageLayout"
+import Meta from '@/src/atoms/Meta'
 
 const index = () => {
   return (

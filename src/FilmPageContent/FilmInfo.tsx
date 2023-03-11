@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import Casts from './Casts'
+import Casts from './FilmCast'
 import FilmExternalSource from './FilmExternalSource'
 import StarRating from './FilmRating'
 import FilmVideos from './FilmVideos'

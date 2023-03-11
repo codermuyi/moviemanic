@@ -1,20 +1,20 @@
 import styled from 'styled-components'
-import MovieCard from './MovieCard'
+import MovieCard from './Cards/FilmCard'
 
-const SimilarFilms = ({ title, data, centerTitle, mediaType }: { title?: string, data: any, centerTitle?: boolean, mediaType?: string }) => {
+const FilmGrid = ({ title, data, centerTitle, mediaType }: { title?: string, data: any, centerTitle?: boolean, mediaType?: string }) => {
 
-  function determineMediaType(type: string): string {
-    if (type)
-      if (type === 'tv')
-        return 'TV Series'
-      else
-        return 'Movie'
-    else
-      if (mediaType === 'tv')
-        return 'TV Series'
-      else
-        return 'Movie'
-  }
+  // function determineMediaType(type: string): string {
+  //   if (type)
+  //     if (type === 'tv')
+  //       return 'TV Series'
+  //     else
+  //       return 'Movie'
+  //   else
+  //     if (mediaType === 'tv')
+  //       return 'TV Series'
+  //     else
+  //       return 'Movie'
+  // }
 
   return (
     <>
@@ -29,7 +29,7 @@ const SimilarFilms = ({ title, data, centerTitle, mediaType }: { title?: string,
                   movieName={film.title || film.name}
                   isTrending={false}
                   date={film.release_date || film.first_air_date}
-                  type={determineMediaType(film.media_type)}
+                  type={film.media_type || mediaType}
                   id={film.id}
                 />
               </div>
@@ -68,4 +68,4 @@ const Divv = styled.div.attrs((props) => {
   }
 `
 
-export default SimilarFilms
+export default FilmGrid

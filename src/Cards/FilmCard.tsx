@@ -13,7 +13,7 @@ interface Props {
   id: number
 }
 
-const MovieCard = ({
+const FilmCard = ({
   imgSrc,
   movieName,
   isTrending,
@@ -26,9 +26,11 @@ const MovieCard = ({
   const width = isTrending ? 300: 170
   const [src, setSrc] = useState(`https://image.tmdb.org/t/p/w1280${imgSrc}`)
 
+  const filmType = type === 'tv' ? 'TV Series' : 'Movie'
+
   return (
     <Link
-      href={type == 'Movie' ? `/movies/${id}` : `/tv-series/${id}`}
+      href={type === 'movie' ? `/movies/${id}` : `/tv-series/${id}`}
     >
       <Card>
         <span></span>
@@ -46,7 +48,7 @@ const MovieCard = ({
           <div className={`${!isTrending ? 'normal-info' : 'trending-info'}`}>
             <div className='date-and-type'>
               <span className='date'>{parseInt(date)}</span>
-              <span className='type'>{type}</span>
+              <span className='type'>{filmType}</span>
             </div>
             <div className='name'>
               <span>{movieName}</span>
@@ -188,4 +190,4 @@ const CardInfo = styled.div`
   }
 `
 
-export default MovieCard
+export default FilmCard

@@ -1,19 +1,17 @@
-import PageLayout from "@/src/global/PageLayout"
-import Meta from '@/src/Meta'
+import PageLayout from "@/src/Layout/PageLayout"
+import Meta from '@/src/atoms/Meta'
 import { server } from 'config'
-import SimilarFilms from "@/src/SimilarFilms"
+import FilmGrid from "@/src/FilmGrid"
 import styled from 'styled-components'
 
 const categoryPage = ({ data, type }: any) => {
-  console.log(data)
-
   return (
     <>
       <Meta />
       <PageLayout>
         <Cat>
-          <SimilarFilms
-            title={`${type} tv shows`}
+          <FilmGrid
+            title={type}
             data={data?.results}
             mediaType='tv'
           />

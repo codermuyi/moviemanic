@@ -5,9 +5,9 @@ import {
   MovieIcon,
   TVIcon,
   MenuIcon
-} from './SVGIcons'
+} from '../atoms/SVGIcons'
 // import breakpoints from '@/assets/breakpoints'
-import Button from './Button'
+import Button from '../atoms/Button'
 
 interface SidebarProps {
   iconFill: string

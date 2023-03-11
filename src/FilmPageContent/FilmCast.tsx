@@ -1,11 +1,8 @@
 import styled from 'styled-components'
 import SimpleBar from 'simplebar-react';
-import CastProfile from './CastProfile'
+import CastProfile from './FilmCastProfile'
 
 const Casts = ({ credits }: { credits: any }) => { 
-
-  console.log(credits)
-
   return (
     <FilmCast>
       <h2 className='heading'>Casts</h2>

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import Button from './global/Button'
+import Button from '../atoms/Button'
 import Link from 'next/link'
 
 interface HAHAProps {

@@ -1,6 +1,6 @@
-import Meta from '@/src/Meta'
-import PageLayout from '@/src/global/PageLayout'
-import Category from '@/src/home/Category'
+import Meta from '@/src/atoms/Meta'
+import PageLayout from '@/src/Layout/PageLayout'
+import Category from '@/src/Category'
 import { filmCategories } from '@/assets/film_info'
 import { server } from 'config'
 
@@ -14,7 +14,7 @@ export default function Home({ data }: any) {
             <Category
               key={c.id}
               categoryName={c.name}
-              showType={c.type === 'tv' ? 'TV Series' : 'Movie'}
+              showType={c.type}
               isTrending={c.isTrending}
               data={data[i]}
             />

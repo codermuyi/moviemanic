@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import PageLayout from '@/src/global/PageLayout'
-import MovieCard from '@/src/MovieCard'
+import PageLayout from '@/src/Layout/PageLayout'
+import MovieCard from '@/src/Cards/FilmCard'
 import { server } from 'config'
-import Meta from '@/src/Meta'
+import Meta from '@/src/atoms/Meta'
 
 const search = ({
   searchQuery,

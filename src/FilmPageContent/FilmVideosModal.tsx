@@ -2,8 +2,8 @@ import { Dispatch, SetStateAction } from 'react';
 import Modal from 'react-modal'
 import SimpleBar from 'simplebar-react';
 import styled from 'styled-components';
-import Button from './global/Button'
-import Trailer from './Trailer'
+import Button from '../atoms/Button'
+import Trailer from './FilmYoutubeVideo'
 
 const customStyles = {
   content: {

@@ -1,6 +1,6 @@
 import styles from '@/styles/Page.module.css'
 import Navbar from "./Navbar"
-import Search from "./Search"
+import Search from "../Search"
 import Footer from "./Footer"
 
 const PageLayout = (props: any) => {
