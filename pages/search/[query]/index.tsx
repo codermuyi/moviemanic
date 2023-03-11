@@ -12,14 +12,14 @@ const search = ({
 
   return (
     <>
-      <Meta 
+      <Meta
         title={`Search results for "${searchQuery}" | Moviemanic`}
       />
       <PageLayout>
         <Content>
           <h1>{num} result{num > 1 && 's'} for {searchQuery}</h1>
           {data ?
-            data.map((movie: any, index: number) => {
+            data.map((movie: any) => {
               return (
                 <MovieCard
                   key={movie.id}
@@ -27,7 +27,7 @@ const search = ({
                   imgSrc={movie.backdrop_path}
                   isTrending={false}
                   date={movie.release_date || movie.first_air_date}
-                  type={movie.media_type === 'tv' ? 'TV Series' : 'Movie'}
+                  type={movie.media_type}
                   id={movie.id}
                 />
               )
