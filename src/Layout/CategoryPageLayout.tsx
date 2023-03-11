@@ -1,13 +1,15 @@
 import PageLayout from "@/src/Layout/PageLayout"
 import Meta from '@/src/atoms/Meta'
-import { server } from 'config'
 import FilmGrid from "@/src/FilmGrid"
 import styled from 'styled-components'
+import _ from 'lodash'
 
 const CategoryPageLayout = ({ data, type, mediaType }: any) => {
   return (
     <>
-      <Meta />
+      <Meta 
+        title={`${_.capitalize(type)} - ${mediaType === 'tv' ? 'TV Series' : 'Movies'} | Moviemanic`}
+      />
       <PageLayout>
         <Cat>
           <FilmGrid
