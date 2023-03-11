@@ -35,11 +35,11 @@ const Category = ({
           <Link href={`/${linkPath}/cat/${categoryName.toLowerCase()}`}>
             <Button
               border='none'
-              // bgColor='transparent'
               radius='10px'
               cursor='pointer'
-              bgColor='pink'
+              bgColor='white'
               padding='.5rem'
+              color='rgb(var(--theme-main-color))'
             >
               SEE MORE
             </Button>
