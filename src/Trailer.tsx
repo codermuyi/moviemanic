@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-
+import breakpoints from '@/assets/breakpoints'
 
 const Trailer = ({ id }: { id: string }) => {
   return (
@@ -25,6 +25,17 @@ const IFrame = styled.iframe`
   max-width: 700px;
   display: block;
   margin-inline: auto;
+  height: 250px;
+
+  @media ${breakpoints.sm} {
+    height: 315px;
+  }
+  @media ${breakpoints.md} {
+    height: 250px;
+  }
+  @media ${breakpoints.lg} {
+    height: 315px;
+  }
 `
 
 export default Trailer
