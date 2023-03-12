@@ -26,8 +26,8 @@ const Sidebar = ({
   const iconWidth = 25
   const iconHeight = 25
 
-  let tvCatList = ['Genres']
-  let movieCatList = ['Genres']
+  let tvCatList = ['TV Series', 'Genres']
+  let movieCatList = ['Movies', 'Genres']
 
   filmCategories.forEach(category => {
     if (category.type === 'movie')
@@ -90,7 +90,7 @@ const Sidebar = ({
                   }
                 </SidebarDropdown>
               } else {
-                return <Link href={`/movies/cat/${cat.toLowerCase()}`} key={i}>
+                return <Link href={cat === 'Movies' ? '/movies' :`/movies/cat/${cat.toLowerCase()}`} key={i}>
                   <p>{cat}</p>
                 </Link>
               }
@@ -123,7 +123,7 @@ const Sidebar = ({
                   }
                 </SidebarDropdown>
               else
-                return <Link href={`/tv-series/cat/${cat.toLowerCase()}`} key={i}>
+                return <Link href={cat === 'TV Series' ? '/tv-series' : `/tv-series/cat/${cat.toLowerCase()}`} key={i}>
                   <p>{cat}</p>
                 </Link>
             }
@@ -140,9 +140,9 @@ const SideNav = styled.div`
   --sb-width: 250px;
   position: fixed;
   top: 0;
-  left: 0;
+  left: -250px;
   bottom: 0;
-  width: 0;
+  width: var(--sb-width);
   z-index: 3000;
   background-color: rgb(var(--f-bg-color));
   color: rgb(var(--f-text-color));
@@ -150,7 +150,7 @@ const SideNav = styled.div`
   padding-bottom: 40rem;
 
   &.open {
-    width: var(--sb-width);
+    left: 0;
   }
 
   .nav-item {
