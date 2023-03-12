@@ -116,7 +116,7 @@ const Sidebar = ({
                   toggleElementContent={<p>_ Genres</p>}
                   isSidebarOpen={isOpen}
                 >
-                  {movieGenres.map((genre, j) =>
+                  {tvGenres.map((genre, j) =>
                     <Link key={i} href={`/tv-series/genres/${genre.toLowerCase()}`}>
                       <p>{genre}</p>
                     </Link>)
