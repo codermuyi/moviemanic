@@ -8,6 +8,7 @@ import {
 } from '../atoms/SVGIcons'
 import breakpoints from '@/assets/breakpoints'
 import Sidebar from '../Sidebar'
+import Button from '../atoms/Button'
 
 const Navbar = () => {
   const iconWidth = 40
@@ -27,13 +28,13 @@ const Navbar = () => {
 
       <Bar>
         <div className='nav'>
-          <div onClick={toggle} style={{cursor: 'pointer'}}>
+          <Button onClick={toggle} cursor='pointer' bgColor='transparent' border='none' radius='none' color='inherit'>
             <MenuIcon
               width={iconWidth}
               height={iconHeight}
               fill={iconFill}
             />
-          </div>
+          </Button>
           <div>
             <Link href='/'>
               <MainIcon
@@ -61,7 +62,7 @@ const Bar = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: .7rem 1rem;
-  background: linear-gradient(70deg, rgb(var(--theme-main-color)), black);
+  background: linear-gradient(70deg, rgb(var(--theme-main-color)), rgb(var(--f-bg-color)));
 
   .nav {
     display: flex;
@@ -94,7 +95,7 @@ const Bar = styled.nav`
     padding: 2rem;
     left: 30px;
     right: initial;
-    background: linear-gradient(rgb(var(--theme-main-color)), black);
+    background: linear-gradient(rgb(var(--theme-main-color)), rgb(var(--f-bg-color)));
 
     .nav {
       flex-direction: column;

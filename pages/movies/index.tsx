@@ -5,7 +5,7 @@ const index = () => {
   return (
     <>
     <Meta 
-      title='Movies by Genre | Moviemanic'
+      title='Movies | Moviemanic'
     />
 
     <PageLayout>

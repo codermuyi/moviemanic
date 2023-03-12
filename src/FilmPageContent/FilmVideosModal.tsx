@@ -35,12 +35,11 @@ interface ModalInterface {
 }
 
 const MoreVideosModal: React.FC<ModalInterface> = ({ modalIsOpen, setIsOpen, videoData }) => {
-  let subtitle: HTMLHeadingElement | null;
+  let element: HTMLElement | null;
 
   function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    // if (subtitle !== null)
-    //   subtitle.style.color = '#f00';
+    if (element !== null) 
+      element.style.transform = 'none'
   }
 
   function closeModal() {
@@ -60,8 +59,7 @@ const MoreVideosModal: React.FC<ModalInterface> = ({ modalIsOpen, setIsOpen, vid
         ariaHideApp={false}
       >
         <ModalHeader>
-          <h2 ref={(_subtitle) => (subtitle = _subtitle)}>
-          </h2>
+          <div></div>
           <Button
             border='none'
             cursor='pointer'
@@ -72,7 +70,7 @@ const MoreVideosModal: React.FC<ModalInterface> = ({ modalIsOpen, setIsOpen, vid
             Close
           </Button>
         </ModalHeader>
-        <ModalBody>
+        <ModalBody ref={(_element) => (element = _element)}>
           {filterData?.map((vid: any, i: number) => {
             return <Box key={i}>
               <p>{vid.type}</p>
@@ -88,7 +86,7 @@ const MoreVideosModal: React.FC<ModalInterface> = ({ modalIsOpen, setIsOpen, vid
 const ModalHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  background: linear-gradient(120deg, rgb(var(--theme-main-color)), black);
+  background: linear-gradient(120deg, rgb(var(--theme-main-color)), rgb(var(--f-bg-color)));
   padding: .7rem 1rem;
 `
 
@@ -98,6 +96,9 @@ const ModalBody = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1rem;
+  color: rgb(var(--f-text-color));
+  transition-duration: .5s;
+  transform: translateX(100%);
 `
 
 const Box = styled.div`
