@@ -11,9 +11,9 @@ const SidebarDropdown = ({
   const [isDropdownOpen, openDropdown] = useState(false)
 
   useEffect(() => {
-    if (isSidebarOpen === false)
+    if (isSidebarOpen === false && name !== 'movie')
       openDropdown(false)
-  }, [isSidebarOpen])
+  }, [isSidebarOpen, name])
 
   function toggleDropdown() {
     openDropdown(prevDropdown => !prevDropdown)
@@ -28,9 +28,7 @@ const SidebarDropdown = ({
     }
     if (e.shiftKey && e.keyCode === 9)
       openDropdown(false)
-
   }
-
 
   return (
     <Dropdown isOpen={isDropdownOpen} name={name}>
