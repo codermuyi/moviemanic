@@ -79,4 +79,49 @@ const filmCategories: {
     }
   ]
 
-export { filmCategories }
+const movieGenres = [
+  'Action',
+  'Adventure',
+  'Animation',
+  'Comedy',
+  'Crime',
+  'Documentary',
+  'Drama',
+  'Family',
+  'Fantasy',
+  'History',
+  'Horror',
+  'Music',
+  'Mystery',
+  'Romance',
+  'Science Fiction',
+  'TV Movie',
+  'Thriller',
+  'War',
+  'Western',
+]
+
+const tvGenres = [
+  'Action & Adventure',
+  'Animation',
+  'Comedy',
+  'Crime',
+  'Documentary',
+  'Drama',
+  'Family',
+  'Kids',
+  'Mystery',
+  'News',
+  'Reality',
+  'Sci-Fi & Fantasy',
+  'Soap',
+  'Talk',
+  'War & Politics',
+  'Western',
+]
+
+export {
+  filmCategories,
+  movieGenres,
+  tvGenres,
+}
