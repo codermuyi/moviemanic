@@ -1,7 +1,21 @@
 import styled from 'styled-components'
 import MovieCard from './Cards/FilmCard'
 
-const FilmGrid = ({ title, data, centerTitle, mediaType }: { title?: string, data: any, centerTitle?: boolean, mediaType?: string }) => {
+interface GridProps {
+  title?: string
+  data: any
+  centerTitle?: boolean
+  mediaType?: string
+  isGenre?: boolean
+}
+
+const FilmGrid = ({
+  title,
+  data,
+  centerTitle,
+  mediaType,
+  isGenre
+}: GridProps) => {
 
   return (
     <>
@@ -9,8 +23,9 @@ const FilmGrid = ({ title, data, centerTitle, mediaType }: { title?: string, dat
         <h2>{title}</h2>
         <div className='film-list'>
           {
-            data.map((film: any, i: number) => (
-              <div key={i} className='box'>
+            data.map((film: any, i: number) => {
+              if (isGenre && i > 4) return
+              return <div key={i} className='box'>
                 <MovieCard
                   imgSrc={film.backdrop_path}
                   movieName={film.title || film.name}
@@ -20,7 +35,7 @@ const FilmGrid = ({ title, data, centerTitle, mediaType }: { title?: string, dat
                   id={film.id}
                 />
               </div>
-            ))
+            })
           }
         </div>
       </Divv>}
