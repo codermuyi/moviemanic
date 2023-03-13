@@ -6,9 +6,8 @@ import {
   TVIcon,
   MenuIcon
 } from '../atoms/SVGIcons'
-// import breakpoints from '@/assets/breakpoints'
 import Button from '../atoms/Button'
-import { filmCategories, movieGenres, tvGenres } from '@/assets/film_info'
+import { filmCategories } from '@/assets/film_info'
 import SidebarDropdown from './SidebarDropdown'
 import SimpleBar from 'simplebar-react'
 
@@ -17,6 +16,47 @@ interface SidebarProps {
   isOpen: boolean
   toggle: () => void
 }
+
+const movieGenres = [
+  'Action',
+  'Adventure',
+  'Animation',
+  'Comedy',
+  'Crime',
+  'Documentary',
+  'Drama',
+  'Family',
+  'Fantasy',
+  'History',
+  'Horror',
+  'Music',
+  'Mystery',
+  'Romance',
+  'Science Fiction',
+  'TV Movie',
+  'Thriller',
+  'War',
+  'Western',
+]
+
+const tvGenres = [
+  'Action & Adventure',
+  'Animation',
+  'Comedy',
+  'Crime',
+  'Documentary',
+  'Drama',
+  'Family',
+  'Kids',
+  'Mystery',
+  'News',
+  'Reality',
+  'Sci-Fi & Fantasy',
+  'Soap',
+  'Talk',
+  'War & Politics',
+  'Western',
+]
 
 const Sidebar = ({
   iconFill,
@@ -35,6 +75,17 @@ const Sidebar = ({
     else
       tvCatList.push(category.name)
   })
+
+  const movieGenreLinks = movieGenres.map((genre, j) => <Link key={j} href={`/movies/genres/${genre.toLowerCase()}`}>
+    <p>{genre}</p>
+  </Link>
+  )
+
+  const tvGenreLinks = tvGenres.map((genre, j) =>
+    <Link key={j} href={`/tv-series/genres/${genre.toLowerCase()}`}>
+      <p>{genre}</p>
+    </Link>
+  )
 
   return (
     <>
@@ -66,6 +117,7 @@ const Sidebar = ({
 
           <SidebarDropdown
             name='movie'
+            dataID='open-by-default'
             toggleElementContent={
               <>
                 <MovieIcon width={iconWidth} height={iconHeight} fill={iconFill} />
@@ -79,18 +131,13 @@ const Sidebar = ({
                 return <SidebarDropdown
                   key={i}
                   name='movie-genre'
-                  toggleElementContent={<p>_ Genres</p>
-                  }
+                  toggleElementContent={<p>_ Genres</p>}
                   isSidebarOpen={isOpen}
                 >
-                  {movieGenres.map((genre, j) =>
-                    <Link key={i} href={`/movies/genres/${genre.toLowerCase()}`}>
-                      <p>{genre}</p>
-                    </Link>)
-                  }
+                  {movieGenreLinks}
                 </SidebarDropdown>
               } else {
-                return <Link href={cat === 'Movies' ? '/movies' :`/movies/cat/${cat.toLowerCase()}`} key={i}>
+                return <Link href={cat === 'Movies' ? '/movies' : `/movies/cat/${cat.toLowerCase()}`} key={i}>
                   <p>{cat}</p>
                 </Link>
               }
@@ -100,6 +147,7 @@ const Sidebar = ({
 
           <SidebarDropdown
             name='tv'
+            dataID='open-by-default'
             toggleElementContent={
               <>
                 <TVIcon width={iconWidth} height={iconHeight} fill={iconFill} />
@@ -116,11 +164,7 @@ const Sidebar = ({
                   toggleElementContent={<p>_ Genres</p>}
                   isSidebarOpen={isOpen}
                 >
-                  {tvGenres.map((genre, j) =>
-                    <Link key={i} href={`/tv-series/genres/${genre.toLowerCase()}`}>
-                      <p>{genre}</p>
-                    </Link>)
-                  }
+                  {tvGenreLinks}
                 </SidebarDropdown>
               else
                 return <Link href={cat === 'TV Series' ? '/tv-series' : `/tv-series/cat/${cat.toLowerCase()}`} key={i}>
@@ -206,3 +250,5 @@ const Overlay = styled.div`
 `
 
 export default Sidebar
+
+// Solved hydration error by explicitely defining 'movieGenres' and 'tvGenres' list in this same file

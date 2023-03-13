@@ -1,19 +1,23 @@
 import styled from 'styled-components'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, ReactNode } from 'react'
 import { DropdownIcon } from '@/src/atoms/SVGIcons'
 
 const SidebarDropdown = ({
   name,
   toggleElementContent,
   isSidebarOpen,
-  children
+  children,
+  dataID = ''
 }: any) => {
   const [isDropdownOpen, openDropdown] = useState(false)
 
   useEffect(() => {
-    if (isSidebarOpen === false && name !== 'movie')
+    if (dataID === 'open-by-default') {
+      openDropdown(true)
+    }
+    if (isSidebarOpen === false)
       openDropdown(false)
-  }, [isSidebarOpen, name])
+  }, [isSidebarOpen, dataID])
 
   function toggleDropdown() {
     openDropdown(prevDropdown => !prevDropdown)
@@ -44,16 +48,15 @@ const SidebarDropdown = ({
         <DropdownIcon className={`${name}-dropdown-icon`} />
       </div>
       <div className='dropdown-body'>
-        {children.map((child: any, i: any) => {
-          return <div key={i} className='dropdown-item'>
+        {children?.map((child: ReactNode, i: number) =>
+          <div key={i} className='dropdown-item'>
             {child}
           </div>
-        })}
+        )}
       </div>
     </Dropdown>
   )
 }
-
 
 const Dropdown = styled.div.attrs(props => {
 })`
