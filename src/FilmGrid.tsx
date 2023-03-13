@@ -3,19 +3,6 @@ import MovieCard from './Cards/FilmCard'
 
 const FilmGrid = ({ title, data, centerTitle, mediaType }: { title?: string, data: any, centerTitle?: boolean, mediaType?: string }) => {
 
-  // function determineMediaType(type: string): string {
-  //   if (type)
-  //     if (type === 'tv')
-  //       return 'TV Series'
-  //     else
-  //       return 'Movie'
-  //   else
-  //     if (mediaType === 'tv')
-  //       return 'TV Series'
-  //     else
-  //       return 'Movie'
-  // }
-
   return (
     <>
       {data?.[0] && <Divv centerTitle={centerTitle}>
@@ -42,7 +29,6 @@ const FilmGrid = ({ title, data, centerTitle, mediaType }: { title?: string, dat
 }
 
 const Divv = styled.div.attrs((props) => {
-  // centerTitle: props.centerTitle
 })`
   padding: 1rem 1rem;
   grid-column: 1 / -1;
@@ -60,6 +46,7 @@ const Divv = styled.div.attrs((props) => {
 
     .box {
       width: 100%;
+      max-width: 350px;
 
       .card-image {
         max-height: 150px;
