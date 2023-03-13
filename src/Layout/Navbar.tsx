@@ -49,7 +49,7 @@ const Navbar = () => {
           <ProfileIcon
             width={iconWidth}
             height={iconHeight}
-            fill={iconFill}
+            fill="rgb(var(--f-text-color))"
           />
         </div>
       </Bar>
