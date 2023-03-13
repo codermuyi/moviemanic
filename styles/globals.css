@@ -53,6 +53,27 @@ a {
   text-decoration: none;
 }
 
+.button {
+  background-color: rgb(var(--theme-main-color));
+  border: 0;
+  cursor: pointer;
+  color: rgb(var(--f-text-color));
+  border-radius: 10px;
+  transition-duration: .2s;
+}
+
+.button:hover {
+  background-color: rgb(var(--f-bg-color));
+  box-shadow: 0 2px 2px rgb(0, 0, 0, .2);
+}
+
+.button:disabled {
+  background-color: hsl(0, 30%, 30%) !important;
+  color: white !important;
+  cursor: not-allowed !important;
+  box-shadow: none;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     /* color-scheme: dark; */

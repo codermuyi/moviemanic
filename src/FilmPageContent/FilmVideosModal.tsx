@@ -61,9 +61,6 @@ const MoreVideosModal: React.FC<ModalInterface> = ({ modalIsOpen, setIsOpen, vid
         <ModalHeader>
           <div></div>
           <Button
-            border='none'
-            cursor='pointer'
-            radius='10px'
             padding='.5rem'
             onClick={closeModal}
           >
@@ -88,6 +85,10 @@ const ModalHeader = styled.div`
   justify-content: space-between;
   background: linear-gradient(120deg, rgb(var(--theme-main-color)), rgb(var(--f-bg-color)));
   padding: .7rem 1rem;
+
+  .button {
+    
+  }
 `
 
 const ModalBody = styled.div`

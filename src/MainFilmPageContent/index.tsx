@@ -55,14 +55,13 @@ const MainFilmPageContent = ({ data, mediaType }: any) => {
               />
               <Link href={`/${linkPath}/genre/${data.genreList.genres[i].id}`}>
                 <Button
-                  border='none'
                   radius='20px'
                   margin='0 0 30px 50px'
-                  color='white'
                   padding='10px'
                 >
                   See More
                 </Button>
+                {/* <button className='button'> See More</button> */}
               </Link>
             </div>
           })

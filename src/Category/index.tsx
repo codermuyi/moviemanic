@@ -30,9 +30,6 @@ const Category = ({
         <div className='see-more'>
           <Link href={`/${linkPath}/cat/${categoryName.toLowerCase()}`}>
             <Button
-              border='none'
-              radius='10px'
-              cursor='pointer'
               bgColor='white'
               padding='.5rem'
               color='rgb(var(--theme-main-color))'

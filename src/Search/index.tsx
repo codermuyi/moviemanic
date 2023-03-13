@@ -25,8 +25,6 @@ const Search = () => {
         />
       </Field>
       <Button
-        border="none"
-        radius="10px"
         padding=" .8em 1em"
         disabled={isDisabled}
       >
@@ -49,7 +47,6 @@ const Cont = styled.form`
   }
 
   .button {
-    background-color: rgb(var(--theme-main-color));
     color: rgb(var(--main-text-color));
     cursor: pointer;
     
@@ -57,12 +54,6 @@ const Cont = styled.form`
       background-color: white;
       color: rgb(var(--sec-text-color));
     }
-  }
-
-  .button:disabled {
-    background-color: hsl(0, 30%, 30%);
-    color: white;
-    cursor: not-allowed;
   }
 `;
 

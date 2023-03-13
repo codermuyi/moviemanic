@@ -16,10 +16,7 @@ const FilmVideos = ({ videoData }: any) => {
       {
         videoData.results?.length > 1 && 
           <Button
-            border='none'
-            radius='10px'
             padding='.7rem'
-            cursor='pointer'
             onClick={() => setIsOpen(true)}
           >
             Videos <span>&lt;_&gt;</span>
@@ -38,12 +35,10 @@ const Content = styled.div`
   margin-bottom: 2rem;
 
   .button {
-    background-color: rgb(var(--theme-main-color));
     margin-block: 1rem;
     margin-inline: auto;
     display: block;
     width: 50%;
-    color: white;
     
     span {
       display: inline-block;

@@ -14,11 +14,7 @@ const FilmExternalSource = ({ imdb, website }: HAHAProps) => {
       {
         imdb && <Link href={`https://www.imdb.com/title/${imdb}`}>
           <Button
-            bgColor='rgb(var(--theme-main-color))'
-            border='none'
-            radius='10px'
             padding='1rem'
-            cursor='pointer'
           >
             IMDB
           </Button>
@@ -27,11 +23,7 @@ const FilmExternalSource = ({ imdb, website }: HAHAProps) => {
       {
         website && <Link href={website}>
           <Button
-            bgColor='rgb(var(--theme-main-color))'
-            border='none'
-            radius='10px'
             padding='1rem'
-            cursor='pointer'
           >
             Website
           </Button>
@@ -47,7 +39,7 @@ const HAHA = styled.div`
   padding: 2rem 1rem 0;
 
   .button:hover {
-    background-color: white !important;
+    background-color: white;
     color: black;
   }
 `
