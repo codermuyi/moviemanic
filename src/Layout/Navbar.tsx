@@ -28,7 +28,11 @@ const Navbar = () => {
 
       <Bar>
         <div className='nav'>
-          <Button onClick={toggle} cursor='pointer' bgColor='transparent' border='none' radius='none' color='inherit'>
+          <Button
+            onClick={toggle}
+            bgColor='transparent'
+            color='inherit'
+          >
             <MenuIcon
               width={iconWidth}
               height={iconHeight}
