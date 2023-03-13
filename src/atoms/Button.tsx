@@ -1,12 +1,12 @@
 
 interface Props {
-  border: string;
+  border?: string;
   color?: string
   bgColor?: string;
   children?: React.ReactNode;
   height?: string;
   onClick?: () => void;
-  radius: string
+  radius?: string
   width?: string;
   cursor?: string
   padding?: string
@@ -14,39 +14,39 @@ interface Props {
   disabled?: boolean
 }
 
-const Button: React.FC<Props> = ({ 
-    border,
-    color,
-    bgColor,
-    children,
-    onClick, 
-    radius,
-    height,
-    width,
-    cursor,
-    padding,
-    margin,
-    disabled,
-  }) => { 
+const Button: React.FC<Props> = ({
+  border,
+  color,
+  bgColor,
+  children,
+  onClick,
+  radius,
+  height,
+  width,
+  cursor,
+  padding,
+  margin,
+  disabled,
+}) => {
   return (
-    <button 
+    <button
       onClick={onClick}
       style={{
-         backgroundColor: bgColor,
-         color,
-         border,
-         borderRadius: radius,
-         cursor,
-         padding,
-         margin,
-         height,
-         width,
-         transitionDuration: '.2s'
+        backgroundColor: bgColor ? bgColor :'rgb(var(--theme-main-color)',
+        color,
+        borderRadius: radius,
+        padding,
+        margin,
+        height,
+        width,
+        cursor: 'pointer',
+        border: '0',
+        transitionDuration: '.2s',
       }}
       disabled={disabled}
       className='button'
     >
-    {children}
+      {children}
     </button>
   );
 }
