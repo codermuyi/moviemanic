@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import Link from 'next/link'
 import {
   GridIcon,
   MovieIcon,
@@ -10,6 +9,7 @@ import Button from '../atoms/Button'
 import { filmCategories } from '@/assets/film_info'
 import SidebarDropdown from './SidebarDropdown'
 import SimpleBar from 'simplebar-react'
+import NavLink from '../atoms/NavLink'
 
 interface SidebarProps {
   iconFill: string
@@ -76,15 +76,15 @@ const Sidebar = ({
       tvCatList.push(category.name)
   })
 
-  const movieGenreLinks = movieGenres.map((genre, j) => <Link key={j} href={`/movies/genres/${genre.toLowerCase()}`}>
+  const movieGenreLinks = movieGenres.map((genre, j) => <NavLink key={j} href={`/movies/genres/${genre.toLowerCase()}`}>
     <p>{genre}</p>
-  </Link>
+  </NavLink>
   )
 
   const tvGenreLinks = tvGenres.map((genre, j) =>
-    <Link key={j} href={`/tv-series/genres/${genre.toLowerCase()}`}>
+    <NavLink key={j} href={`/tv-series/genres/${genre.toLowerCase()}`}>
       <p>{genre}</p>
-    </Link>
+    </NavLink>
   )
 
   return (
@@ -104,13 +104,13 @@ const Sidebar = ({
             </Button>
           </div>
 
-          <Link href='/' className='nav-item nav-link'>
+          <NavLink href='/' className='nav-item nav-link'>
             <GridIcon
               width={iconWidth}
               height={iconHeight}
             />
             <p>Home</p>
-          </Link>
+          </NavLink>
 
           <SidebarDropdown
             name='movie'
@@ -134,9 +134,9 @@ const Sidebar = ({
                   {movieGenreLinks}
                 </SidebarDropdown>
               } else {
-                return <Link href={cat === 'Movies' ? '/movies' : `/movies/cat/${cat.toLowerCase()}`} key={i}>
+                return <NavLink href={cat === 'Movies' ? '/movies' : `/movies/cat/${cat.toLowerCase()}`} key={i}>
                   <p>{cat}</p>
-                </Link>
+                </NavLink>
               }
             }
             )}
@@ -164,9 +164,9 @@ const Sidebar = ({
                   {tvGenreLinks}
                 </SidebarDropdown>
               else
-                return <Link href={cat === 'TV Series' ? '/tv-series' : `/tv-series/cat/${cat.toLowerCase()}`} key={i}>
+                return <NavLink href={cat === 'TV Series' ? '/tv-series' : `/tv-series/cat/${cat.toLowerCase()}`} key={i}>
                   <p>{cat}</p>
-                </Link>
+                </NavLink>
             }
             )}
           </SidebarDropdown>
