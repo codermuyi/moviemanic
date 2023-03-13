@@ -5,10 +5,13 @@ import {
   MainIcon,
   ProfileIcon,
   MenuIcon,
+  MovieIcon,
+  TVIcon
 } from '../atoms/SVGIcons'
 import breakpoints from '@/assets/breakpoints'
 import Sidebar from '../Sidebar'
 import Button from '../atoms/Button'
+import NavLink from '../atoms/NavLink'
 
 const Navbar = () => {
   const iconWidth = 40
@@ -27,7 +30,7 @@ const Navbar = () => {
       />
 
       <Bar>
-        <div className='nav'>
+        <div className='bar-item'>
           <Button
             onClick={toggle}
             bgColor='transparent'
@@ -49,7 +52,25 @@ const Navbar = () => {
             </Link>
           </div>
         </div>
-        <div>
+
+        <div className='bar-item'>
+          <NavLink href='/movies'>
+            <MovieIcon
+              width={iconWidth}
+              height={iconHeight}
+              fill='currentColor'
+            />
+          </NavLink>
+          <NavLink href='/tv-series'>
+            <TVIcon
+              width={iconWidth}
+              height={iconHeight}
+              fill='currentColor'
+            />
+          </NavLink>
+        </div>
+
+        <div className='bar-item'>
           <ProfileIcon
             width={iconWidth}
             height={iconHeight}
@@ -63,16 +84,23 @@ const Navbar = () => {
 
 const Bar = styled.nav`
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: .7rem 1rem;
   background: linear-gradient(70deg, rgb(var(--theme-main-color)), rgb(var(--f-bg-color)));
 
-  .nav {
+  .bar-item {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 1em;
+    gap: .5em;
+    flex: 1;
+
+    :nth-child(2) {
+      justify-content: center;
+    }
+    
+    :nth-child(3) {
+      justify-content: end;
+    }
 
     div {
       width: 40px;
@@ -101,7 +129,7 @@ const Bar = styled.nav`
     right: initial;
     background: linear-gradient(rgb(var(--theme-main-color)), rgb(var(--f-bg-color)));
 
-    .nav {
+    .bar-item {
       flex-direction: column;
     }
   }
