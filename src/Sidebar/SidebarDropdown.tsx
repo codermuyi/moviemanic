@@ -74,7 +74,7 @@ const Dropdown = styled.div.attrs(props => {
     width: 14px;
     height: 14px;
     transition: .2s;
-    transform: ${p => p.isOpen ? 'rotate(-90deg)' : 'none'};
+    transform: ${p => p.isOpen ? 'none' : 'rotate(-90deg)'};
   }
   
   .dropdown-body {
