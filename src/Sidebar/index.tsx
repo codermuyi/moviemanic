@@ -94,10 +94,7 @@ const Sidebar = ({
           <div className="nav-item toggle">
             <Button
               bgColor='transparent'
-              border='none'
-              radius='none'
               onClick={toggle}
-              cursor='pointer'
             >
               <MenuIcon
                 width={iconWidth}
