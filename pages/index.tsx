@@ -7,7 +7,7 @@ import { server } from 'config'
 export default function Home({ data }: any) {
   return (
     <>
-      <Meta title='Moviemanic - The Movie Search App' />
+      <Meta title='Moviemanic' />
       <PageLayout>
         {
           filmCategories.map((c, i) =>
