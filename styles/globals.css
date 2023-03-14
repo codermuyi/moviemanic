@@ -14,16 +14,17 @@
   --sec-bg-color: 100, 100, 100;
   --theme-main-color: 78, 100, 160;
 
-  --f-bg-color: 255, 255, 255;
-  --f-text-color: 0, 0, 0;
+  /* --f-bg-color: 255, 255, 255;
+  --f-text-color: 0, 0, 0; */
 
   --sub-color: 186,79,58;
+  
+  --f-bg-color: 9, 9, 9; 
+   --f-text-color: 244, 244, 244;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --f-bg-color: 9, 9, 9; 
-     --f-text-color: 244, 244, 244;
   }
 }
 
@@ -78,7 +79,7 @@ a {
 
 @media (prefers-color-scheme: dark) {
   html {
-    /* color-scheme: dark; */
+    color-scheme: dark;
   }
 }
 
