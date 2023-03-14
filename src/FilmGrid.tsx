@@ -20,7 +20,7 @@ const FilmGrid = ({
   return (
     <>
       {data?.[0] && <Divv centerTitle={centerTitle}>
-        <h2>{title}</h2>
+        {title && <h2>{title}</h2>}
         <div className='film-list'>
           {
             data.map((film: any, i: number) => {
@@ -45,7 +45,7 @@ const FilmGrid = ({
 
 const Divv = styled.div.attrs((props) => {
 })`
-  padding: 1rem 1rem;
+  padding: 1rem;
   grid-column: 1 / -1;
 
   h2 {
