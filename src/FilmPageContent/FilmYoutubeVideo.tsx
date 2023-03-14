@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import breakpoints from '@/assets/breakpoints'
 
-const Trailer = ({ id }: { id: string }) => {
+const Trailer = ({ id, isSmall }: { id: string, isSmall?: boolean }) => {
   return (
     <>
       {id && <IFrame
@@ -12,14 +12,15 @@ const Trailer = ({ id }: { id: string }) => {
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen
-        className='trailer'
+        isSmall={isSmall}
       >
       </IFrame>}
     </>
   )
 }
 
-const IFrame = styled.iframe`
+const IFrame = styled.iframe.attrs(p => {
+})`
   min-width: 200px;
   width: 100%;
   max-width: 700px;
@@ -36,6 +37,8 @@ const IFrame = styled.iframe`
   @media ${breakpoints.lg} {
     height: 315px;
   }
+
+  height: ${p => p.isSmall && '250px !important'}
 `
 
 export default Trailer

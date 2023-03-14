@@ -3,7 +3,7 @@ import Modal from 'react-modal'
 import SimpleBar from 'simplebar-react';
 import styled from 'styled-components';
 import Button from '../atoms/Button'
-import Trailer from './FilmYoutubeVideo'
+import Video from './FilmYoutubeVideo'
 
 const customStyles = {
   content: {
@@ -48,6 +48,8 @@ const MoreVideosModal: React.FC<ModalInterface> = ({ modalIsOpen, setIsOpen, vid
 
   const filterData = videoData?.filter((data: { site: string }) => data.site === 'YouTube')
 
+  console.log(videoData)
+
   return (
     <>
       <Modal
@@ -70,8 +72,8 @@ const MoreVideosModal: React.FC<ModalInterface> = ({ modalIsOpen, setIsOpen, vid
         <ModalBody ref={(_element) => (element = _element)}>
           {filterData?.map((vid: any, i: number) => {
             return <Box key={i}>
-              <p>{vid.type}</p>
-              <Trailer id={vid.key} />
+              <p>{vid.name}</p>
+              <Video id={vid.key} isSmall />
             </Box>
           })}
         </ModalBody>
@@ -105,6 +107,11 @@ const ModalBody = styled.div`
 const Box = styled.div`
   display: grid;
   margin-top: 2rem;
+  max-height: 300px;
+
+  p {
+    margin-bottom: 10px;
+  }
 `
 
 export default MoreVideosModal
