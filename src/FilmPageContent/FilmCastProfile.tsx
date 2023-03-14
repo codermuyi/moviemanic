@@ -10,7 +10,7 @@ const CastProfile = (props: any) => {
     <div className='cast'>
       {cast.profile_path ?
         <Image
-          src={src === '' ? `https://image.tmdb.org/t/p/w1280${cast.profile_path}` : src}
+          src={src === '' ? `https://image.tmdb.org/t/p/w500${cast.profile_path}` : src}
           alt={cast.name}
           width={150}
           height={150}
