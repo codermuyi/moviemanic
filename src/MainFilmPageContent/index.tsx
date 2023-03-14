@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { filmCategories, movieGenres } from "@/assets/film_info"
-// import breakpoints from "@/assets/breakpoints"
 import SimpleBar from "simplebar-react"
 import Link from 'next/link'
 import FilmGrid from "@/src/FilmGrid"
@@ -10,8 +9,6 @@ import Button from '@/src/atoms/Button'
 const MainFilmPageContent = ({ data, mediaType }: any) => {
   const title = mediaType === 'movie' ? 'Movies' : 'TV Series'
   const linkPath = mediaType === 'movie' ? 'movies' : 'tv-series'
-
-  console.log(data)
 
   return (
     <PageBody>

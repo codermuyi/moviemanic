@@ -7,8 +7,6 @@ const NavLink = ({ href, children, className }: any) => {
   const [ariaCurrent, setAriaCurrent] = useState<'page' | undefined>()
   const { asPath } = useRouter()
 
-  console.log(asPath)
-
   useEffect(() => {
     const ariaCurrent = href === decodeURIComponent(asPath) ? "page" : undefined
 
