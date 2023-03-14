@@ -85,7 +85,7 @@ const PageBody = styled.div`
     grid-template-rows: 2;
     max-width: 2000px;
     
-    & > * {
+    & > *:not(:last-child) {
       margin-bottom: 2rem;
     }
   }
