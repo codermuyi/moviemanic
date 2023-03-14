@@ -11,7 +11,7 @@ const BlockBottomLink = () => {
           <p>Movies</p>
         </div>
       </Link>
-      <Link className='card' href='tv-series'>
+      <Link className='card' href='/tv-series'>
         <div>
           <p>TV Series</p>
         </div>
