@@ -2,10 +2,12 @@ import styles from '@/styles/Page.module.css'
 import Navbar from "./Navbar"
 import Search from "../Search"
 import Footer from "./Footer"
+import ScrollToTopButton from '../atoms/ScrollToTopButton'
 
 const PageLayout = (props: any) => {
   return (
     <>
+      <ScrollToTopButton />
       <main className={styles.main}>
         <div className={styles.col1}>
           <Navbar />
