@@ -11,6 +11,8 @@ import { myFetch } from "@/assets/utilities"
 import { useRouter } from "next/router"
 import Loader from '../atoms/Loader'
 
+import BlockBottomLink from '../BlockBottomLink'
+
 interface Props {
   media_type: string
 }
@@ -70,6 +72,7 @@ const FilmPageContent = ({ media_type }: Props) => {
             </>
           }
         </PageBody>
+        <BlockBottomLink />
       </PageLayout>
     </>
   )

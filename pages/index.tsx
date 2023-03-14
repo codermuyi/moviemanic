@@ -3,6 +3,7 @@ import PageLayout from '@/src/Layout/PageLayout'
 import Category from '@/src/Category'
 import { filmCategories } from '@/assets/film_info'
 import { server } from 'config'
+import BlockBottomLink from '@/src/BlockBottomLink'
 
 export default function Home({ data }: any) {
   return (
@@ -20,6 +21,7 @@ export default function Home({ data }: any) {
             />
           )
         }
+        <BlockBottomLink />
       </PageLayout>
     </>
   )

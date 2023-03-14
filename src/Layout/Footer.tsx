@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import Image from 'next/image'
+import breakpoints from '@/assets/breakpoints'
 
 const Footer = () => {
   return (
@@ -29,9 +30,26 @@ const Foot = styled.footer`
   gap: .6em;
   background-color: rgb(var(--f-bg-color));
   color: rgb(var(--f-text-color));
+  /* border-inline: 1rem solid rgb(var(--sub-color)); */
 
   a {
     color: rgb(var(--theme-main-color));
+  }
+
+  @media ${breakpoints.lg} {
+    padding-block: 6rem;
+    position: relative;
+
+    ::before {
+      content: '';
+      position: absolute;
+      right: 100px;
+      top: 0;
+      bottom: 0;
+      width: 200px;
+      background-color: rgb(var(--sub-color));
+      clip-path: polygon(3% 100%, 8% 35%, 21% 34%, 35% 44%, 51% 26%, 100% 16%, 100% 29%, 64% 38%, 99% 54%, 74% 100%, 59% 100%, 84% 60%, 56% 47%, 37% 63%, 20% 48%, 18% 76%, 25% 100%);
+      }
   }
 `
 

@@ -16,6 +16,8 @@
 
   --f-bg-color: 255, 255, 255;
   --f-text-color: 0, 0, 0;
+
+  --sub-color: 186,79,58;
 }
 
 @media (prefers-color-scheme: dark) {
