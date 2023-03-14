@@ -1,6 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
 import Modal from 'react-modal'
-import SimpleBar from 'simplebar-react';
 import styled from 'styled-components';
 import Button from '../atoms/Button'
 import Video from './FilmYoutubeVideo'
@@ -47,8 +46,6 @@ const MoreVideosModal: React.FC<ModalInterface> = ({ modalIsOpen, setIsOpen, vid
   }
 
   const filterData = videoData?.filter((data: { site: string }) => data.site === 'YouTube')
-
-  console.log(videoData)
 
   return (
     <>
