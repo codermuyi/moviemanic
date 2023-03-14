@@ -10,6 +10,8 @@ import { filmCategories } from '@/assets/film_info'
 import SidebarDropdown from './SidebarDropdown'
 import SimpleBar from 'simplebar-react'
 import NavLink from '../atoms/NavLink'
+import useSwr from 'swr'
+import { myFetch } from '@/assets/utilities'
 
 interface SidebarProps {
   iconFill: string
@@ -17,52 +19,14 @@ interface SidebarProps {
   toggle: () => void
 }
 
-const movieGenres = [
-  'Action',
-  'Adventure',
-  'Animation',
-  'Comedy',
-  'Crime',
-  'Documentary',
-  'Drama',
-  'Family',
-  'Fantasy',
-  'History',
-  'Horror',
-  'Music',
-  'Mystery',
-  'Romance',
-  'Science Fiction',
-  'TV Movie',
-  'Thriller',
-  'War',
-  'Western',
-]
-
-const tvGenres = [
-  'Action & Adventure',
-  'Animation',
-  'Comedy',
-  'Crime',
-  'Documentary',
-  'Drama',
-  'Family',
-  'Kids',
-  'Mystery',
-  'News',
-  'Reality',
-  'Sci-Fi & Fantasy',
-  'Soap',
-  'Talk',
-  'War & Politics',
-  'Western',
-]
-
 const Sidebar = ({
   iconFill,
   isOpen,
   toggle,
 }: SidebarProps) => {
+  const { data: movieGenres } = useSwr('/api/genre/movie/small-list', myFetch)
+  const { data: tvGenres } = useSwr('/api/genre/tv/small-list', myFetch)
+
   const iconWidth = 25
   const iconHeight = 25
 
@@ -76,14 +40,15 @@ const Sidebar = ({
       tvCatList.push(category.name)
   })
 
-  const movieGenreLinks = movieGenres.map((genre, j) => <NavLink key={j} href={`/movies/genres/${genre.toLowerCase()}`}>
-    <p>{genre}</p>
-  </NavLink>
+  const movieGenreLinks = movieGenres?.map((genre: any) =>
+    <NavLink key={genre.id} href={`/movies/genre/${genre.id}`}>
+      <p>{genre.name}</p>
+    </NavLink>
   )
 
-  const tvGenreLinks = tvGenres.map((genre, j) =>
-    <NavLink key={j} href={`/tv-series/genres/${genre.toLowerCase()}`}>
-      <p>{genre}</p>
+  const tvGenreLinks = tvGenres?.map((genre: any) =>
+    <NavLink key={genre.id} href={`/tv-series/genre/${genre.id}`}>
+      <p>{genre.name}</p>
     </NavLink>
   )
 

@@ -5,10 +5,16 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const path = req.query.media
+  const media = req.query.media
   const id = req.query.id
 
-  const data = await myFetch(searchPath(`discover/${path}?with_genre=${id}`))
+  const data = await myFetch(searchPath(`discover/${media}?with_genres=${id}`))
 
-  res.status(200).json(data)
+  const genreList = await myFetch(categoryPath(`genre/${media}/list`))
+  const genre = genreList.genres.filter((genre: any) => genre.id == id)
+
+  res.status(200).json({
+    name: genre[0].name,
+    data: data.results
+  })
 }
