@@ -3,6 +3,7 @@ import Meta from '@/src/atoms/Meta'
 import FilmGrid from "@/src/FilmGrid"
 import styled from 'styled-components'
 import _ from 'lodash'
+import BlockBottomLink from "../BlockBottomLink"
 
 const CategoryPageLayout = ({ data, type, mediaType }: any) => {
   return (
@@ -18,6 +19,7 @@ const CategoryPageLayout = ({ data, type, mediaType }: any) => {
             mediaType={mediaType}
           />
         </Cat>
+        <BlockBottomLink />
       </PageLayout>
     </>
   )
@@ -25,7 +27,8 @@ const CategoryPageLayout = ({ data, type, mediaType }: any) => {
 
 const Cat = styled.div`
   h2 {
-    font-size: 2.2rem;
+    font-size: 2rem;
+    padding: 1rem;
   }
 `
 
