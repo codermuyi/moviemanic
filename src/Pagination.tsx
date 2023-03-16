@@ -31,6 +31,9 @@ const Pagination = ({
       case 'category':
         router.push(`${query}?page=${pageno}`)
         break
+      case 'genre':
+        router.push(`${query}?page=${pageno}`)
+        break
     }
   }
 
@@ -46,7 +49,7 @@ const Pagination = ({
         <p>Page {currentPage} of {total}</p>
       </div>
       <Button disabled={currentPage >= total} onClick={() => navigate(currentPage + 1)}>
-      <Image src={arrowRight} alt='next' />
+        <Image src={arrowRight} alt='next' />
       </Button>
       <Button disabled={currentPage >= total} onClick={() => navigate(total)}>
         <Image src={skipNext} alt={`skip to page ${total}`} />
