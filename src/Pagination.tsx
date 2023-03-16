@@ -10,19 +10,25 @@ import skipNext from '@/assets/icons/skip-next.svg'
 interface Props {
   currentPage: number
   totalPages: number
-  query: string
+  query?: string
+  pageType: string
 }
 
 const Pagination = ({
   currentPage,
   totalPages,
-  query
+  query,
+  pageType
 }: Props) => {
   const router = useRouter()
   const total = totalPages < 500 ? totalPages : 500
 
   function navigate(pageno: number) {
-    router.push(`/search/${query}?page=${pageno}`)
+    switch (pageType) {
+      case 'search':
+        router.push(`/search/${query}?page=${pageno}`)
+        break;
+    }
   }
 
   return (

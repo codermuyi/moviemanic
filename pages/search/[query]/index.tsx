@@ -8,13 +8,13 @@ const SearchResults = ({
   fallback,
   ctxQuery
 }: { [key: string]: any }) => {
-  
+
   return (
     <SWRConfig value={{ fallback }}>
-      <SearchPageContent 
-      searchQuery={searchQuery}
-      contextQuery={ctxQuery}
-       />
+      <SearchPageContent
+        searchQuery={searchQuery}
+        contextQuery={ctxQuery}
+      />
     </SWRConfig>
   )
 }

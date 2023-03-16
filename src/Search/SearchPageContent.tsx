@@ -45,6 +45,7 @@ const SearchPageContent = ({
               currentPage={d?.page}
               totalPages={d?.total_pages}
               query={searchQuery}
+              pageType='search'
             />
           </>
           : <Loader />}
