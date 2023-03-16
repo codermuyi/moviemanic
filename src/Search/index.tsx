@@ -3,18 +3,28 @@ import styled from "styled-components";
 import Button from "../atoms/Button";
 import { SearchIcon } from "../atoms/SVGIcons";
 import breakpoints from "@/assets/breakpoints";
+import { useRouter } from "next/router";
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [isDisabled, setDisabled] = useState<boolean>(true)
+  const router = useRouter()
 
   const handleChange = (e: any) => {
     setSearchQuery(e.target.value);
     setDisabled(e.target.value === '');
   };
 
+  const handleSubmit = (e: any) => {
+    e.preventDefault()
+    router.push({
+      pathname: `/search/${searchQuery}`,
+      query: { page: 1 },
+    })
+  }
+
   return (
-    <Cont action={`/search/${searchQuery}`}>
+    <Cont onSubmit={handleSubmit}>
       <Field>
         <SearchIcon width="30px" height="30px" fill="currentColor" />
         <input

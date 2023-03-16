@@ -6,8 +6,9 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const q = req.query.query;
+  const page_no = req.query.page
 
-  const data = await myFetch(searchPath(`search/multi?query=${q}`))
+  const data = await myFetch(searchPath(`search/multi?query=${q}&page=${page_no}`))
 
   res.status(200).json(data)
 }
