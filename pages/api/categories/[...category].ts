@@ -7,7 +7,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const category: string | string[] | undefined = req.query.category;
-  const page_no = req.query.page || 1
+  const page_no = req.query.page
 
   const newCat = filmCategories.filter(cat => {
     return (

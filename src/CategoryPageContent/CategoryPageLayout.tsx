@@ -6,8 +6,7 @@ import _ from 'lodash'
 import BlockBottomLink from "../BlockBottomLink"
 import Pagination from "../Pagination"
 
-const CategoryPageLayout = ({ data, type, mediaType, page }: any) => {
-  console.log(page)
+const CategoryPageLayout = ({ data, type, mediaType }: any) => {
   return (
     <>
       <Meta 

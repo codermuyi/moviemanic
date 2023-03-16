@@ -2,7 +2,9 @@ import { server } from 'config'
 import CategoryPageLayout from '@/src/CategoryPageContent/CategoryPageLayout'
 
 export const getServerSideProps = async (ctx: any) => {
-  const res = await fetch(`${server}/api/categories/tv/${ctx.query.category}?page=${ctx.query.page}`)
+  const page = ctx.query.page || 1
+
+  const res = await fetch(`${server}/api/categories/tv/${ctx.query.category}?page=${page}`)
   const data = await res.json()
 
   return {
