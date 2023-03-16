@@ -27,7 +27,10 @@ const Pagination = ({
     switch (pageType) {
       case 'search':
         router.push(`/search/${query}?page=${pageno}`)
-        break;
+        break
+      case 'category':
+        router.push(`${query}?page=${pageno}`)
+        break
     }
   }
 

@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { categoryPath, myFetch } from 'assets/utilities'
+import { categoryPath, myFetch, searchPath } from 'assets/utilities'
 import { filmCategories } from '@/assets/film_info';
 
 export default async function handler(
@@ -7,6 +7,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const category: string | string[] | undefined = req.query.category;
+  const page_no = req.query.page || 1
 
   const newCat = filmCategories.filter(cat => {
     return (
@@ -15,7 +16,7 @@ export default async function handler(
     )
   })[0]
 
-  const data = await myFetch(categoryPath(newCat.fetch_path))
+  const data = await myFetch(searchPath(`${newCat.fetch_path}?page=${page_no}`))
 
   res.status(200).json(data)
 }

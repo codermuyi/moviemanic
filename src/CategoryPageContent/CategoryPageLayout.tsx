@@ -4,8 +4,10 @@ import FilmGrid from "@/src/FilmGrid"
 import styled from 'styled-components'
 import _ from 'lodash'
 import BlockBottomLink from "../BlockBottomLink"
+import Pagination from "../Pagination"
 
-const CategoryPageLayout = ({ data, type, mediaType }: any) => {
+const CategoryPageLayout = ({ data, type, mediaType, page }: any) => {
+  console.log(page)
   return (
     <>
       <Meta 
@@ -19,6 +21,12 @@ const CategoryPageLayout = ({ data, type, mediaType }: any) => {
             mediaType={mediaType}
           />
         </Cat>
+        <Pagination
+          currentPage={data.page}
+          totalPages={data.total_pages}
+          query={type}
+          pageType='category'
+        />
         <BlockBottomLink />
       </PageLayout>
     </>
