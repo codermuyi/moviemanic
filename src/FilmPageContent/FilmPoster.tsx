@@ -7,7 +7,7 @@ const FilmPoster = ({ path }: { path: string }) => {
   const [src, setSrc] = useState(`https://image.tmdb.org/t/p/w1280${path}`)
   
   return (
-    <Poster>
+    <Poster className='film-poster'>
       <div className='sticky'>
         <Image
           src={src}

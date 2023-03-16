@@ -12,9 +12,10 @@ const FilmVideos = ({ videoData }: any) => {
 
   return (
     <Content>
-      <Trailer id={trailerIDs?.[0]} />
-      {
-        videoData.results?.length > 1 && 
+      <div style={{ maxWidth: '700px' }}>
+        <Trailer id={trailerIDs?.[0]} />
+        {
+          videoData.results?.length > 1 &&
           <Button
             padding='.7rem'
             onClick={() => setIsOpen(true)}
@@ -22,6 +23,7 @@ const FilmVideos = ({ videoData }: any) => {
             Videos <span>&lt;_&gt;</span>
           </Button>
         }
+      </div>
       <MoreVideosModal
         modalIsOpen={modalIsOpen}
         setIsOpen={setIsOpen}
@@ -32,7 +34,7 @@ const FilmVideos = ({ videoData }: any) => {
 }
 
 const Content = styled.div`
-  margin-bottom: 2rem;
+  margin-block: 2rem;
 
   .button {
     margin-block: 1rem;

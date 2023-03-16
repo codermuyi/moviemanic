@@ -1,13 +1,9 @@
 import styled from 'styled-components'
 import Casts from './FilmCast'
 import FilmExternalSource from './FilmExternalSource'
-import StarRating from './FilmRating'
 import FilmVideos from './FilmVideos'
 
 interface Info {
-  title: string
-  name: string
-  tagline: string
   runtime: string
   spoken_languages: Array<{ english_name: string }>
   release_date: string
@@ -17,7 +13,6 @@ interface Info {
   credits: any
   first_air_date: string
   last_air_date: string
-  vote_average: number
   imdb_id: string
   homepage: string
   videoData: any
@@ -26,9 +21,6 @@ interface Info {
 }
 
 const FilmInfo = ({
-  title,
-  name,
-  tagline,
   runtime,
   spoken_languages,
   release_date,
@@ -38,7 +30,6 @@ const FilmInfo = ({
   credits,
   first_air_date,
   last_air_date,
-  vote_average,
   imdb_id,
   homepage,
   videoData,
@@ -54,14 +45,6 @@ const FilmInfo = ({
 
   return (
     <Info>
-      <Name>
-        <h1>
-          {title || name}
-          {(!title && !name) && '404: this page is invalid'}
-        </h1>
-        <p className='tagline'>{tagline}</p>
-        <StarRating vote_average={vote_average} />
-      </Name>
       <FilmVideos videoData={videoData} />
 
       <div className='series-detail'>
@@ -152,21 +135,12 @@ const Info = styled.div`
   }
 `
 
-const Name = styled.div`
-  text-align: center;
-  padding-block: 2rem;
-
-  .tagline {
-    font-size: .8em;
-    opacity: .8;
-  }
-`
-
 const Details1 = styled.div`
   display: flex;
   justify-content: center;
   gap: 1.5rem;
   margin-bottom: 2rem;
+  max-width: 700px;
   
   @media (max-width: 300px) {
     flex-direction: column;
@@ -192,7 +166,7 @@ const Details2 = styled.div`
     margin-top: .5em;
   }
 
-  .genres {
+  .genres {    
     ul {
       list-style: none;
       display: flex;
@@ -213,6 +187,7 @@ const Details2 = styled.div`
 
   .synopsis p {
     padding-block: 1rem;
+    max-width: 70ch;
   }
 `
 

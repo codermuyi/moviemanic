@@ -12,6 +12,7 @@ import { useRouter } from "next/router"
 import Loader from '../atoms/Loader'
 
 import BlockBottomLink from '../BlockBottomLink'
+import Backdrop from './FilmBackdrop'
 
 interface Props {
   media_type: string
@@ -56,6 +57,7 @@ const FilmPageContent = ({ media_type }: Props) => {
           {isLoading && info.success ?
             <Loader /> :
             <>
+              <Backdrop info={info} />
               <FilmPoster
                 path={info.poster_path}
               />
@@ -64,8 +66,8 @@ const FilmPageContent = ({ media_type }: Props) => {
                 credits={credits}
                 videoData={videoData}
               />
-              <SimilarFilms 
-                title='More Like This' 
+              <SimilarFilms
+                title='More Like This'
                 centerTitle={true}
                 data={similar.results}
               />
@@ -79,6 +81,12 @@ const FilmPageContent = ({ media_type }: Props) => {
 }
 
 const PageBody = styled.div`
+  @media ${breakpoints.mdMax} {
+    & > .film-poster {
+      display: none;
+    }
+  }
+
   @media ${breakpoints.md} {
     display: grid;
     grid-template-columns: 350px minmax(10px, 1fr);
