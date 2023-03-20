@@ -7,17 +7,12 @@
 
 .col2 {
   max-width: 2000px;
+  grid-column: 2 / 3;
 }
 
 @media (min-width: 768px) {
   .col1 {
     padding: 1rem;
-  }
-}
-
-@media (max-width: 992px) {
-  .main{
-    padding-top: 70px;
   }
 }
 
@@ -27,12 +22,7 @@
     grid-template-columns: 1fr 9fr;
   }
 
-  .main .col1 {
-    height: 100vh;
-  }
-
   .main .col2 {
     margin-right: .5rem;
   }
 }
-

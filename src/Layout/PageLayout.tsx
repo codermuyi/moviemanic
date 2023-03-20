@@ -13,9 +13,7 @@ const PageLayout = (props: any) => {
     <>
       <ScrollToTopButton />
       <main className={styles.main}>
-        <div className={styles.col1}>
-          <Navbar />
-        </div>
+        <Navbar />
         <Col2 className={styles.col2} homepage={router.asPath === '/'}>
           <Search />
           {props.children}

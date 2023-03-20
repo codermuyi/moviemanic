@@ -108,20 +108,15 @@ const Bar = styled.nav`
     }
   }
 
-  @media ${breakpoints.md} {
-    margin: 1rem;
-    border-radius: 10px;
-  }
-
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
   z-index: 1000;
-
+  
   @media ${breakpoints.lg} {
+    border-radius: 10px;
     flex-direction: column;
-    height: 85%;
+    height: 85vh;
+    top: 2rem;
     width: 60px;
     margin: 3rem auto;
     padding: 2rem;
