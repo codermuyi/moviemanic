@@ -3,7 +3,7 @@ import Meta from '@/src/atoms/Meta'
 import useSwr from 'swr'
 import { myFetch } from '@/assets/utilities'
 import Loader from '@/src/atoms/Loader'
-import Pagination from '@/src/Pagination'
+import Pagination from '@/src/atoms/Pagination'
 import PageLayout from '@/src/Layout/PageLayout'
 import MovieCard from '@/src/Cards/FilmCard'
 

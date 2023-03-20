@@ -1,6 +1,6 @@
-import FilmGrid from '@/src/FilmGrid'
-import BlockBottomLink from '@/src/BlockBottomLink'
-import Pagination from '../Pagination'
+import FilmGrid from '@/src/atoms/FilmGrid'
+import BlockBottomLink from '@/src/atoms/BlockBottomLink'
+import Pagination from '../atoms/Pagination'
 
 const GenrePageContent = ({ data, name, mediaType, id }: any) => {
   console.log(data)

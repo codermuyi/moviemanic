@@ -1,10 +1,10 @@
 import PageLayout from "@/src/Layout/PageLayout"
 import Meta from '@/src/atoms/Meta'
-import FilmGrid from "@/src/FilmGrid"
+import FilmGrid from "@/src/atoms/FilmGrid"
 import styled from 'styled-components'
 import _ from 'lodash'
-import BlockBottomLink from "../BlockBottomLink"
-import Pagination from "../Pagination"
+import BlockBottomLink from "../atoms/BlockBottomLink"
+import Pagination from "../atoms/Pagination"
 
 const CategoryPageLayout = ({ data, type, mediaType }: any) => {
   return (

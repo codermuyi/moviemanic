@@ -4,14 +4,14 @@ import PageLayout from '@/src/Layout/PageLayout'
 import breakpoints from '@/assets/breakpoints'
 import FilmPoster from '@/src/FilmPageContent/FilmPoster'
 import FilmInfo from '@/src/FilmPageContent/FilmInfo'
-import SimilarFilms from '@/src/FilmGrid'
+import SimilarFilms from '@/src/atoms/FilmGrid'
 
 import useSwr from 'swr'
 import { myFetch } from "@/assets/utilities"
 import { useRouter } from "next/router"
 import Loader from '../atoms/Loader'
 
-import BlockBottomLink from '../BlockBottomLink'
+import BlockBottomLink from '../atoms/BlockBottomLink'
 import Backdrop from './FilmBackdrop'
 
 interface Props {

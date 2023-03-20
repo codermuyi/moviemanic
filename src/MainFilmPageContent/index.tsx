@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { filmCategories, movieGenres } from "@/assets/film_info"
 import SimpleBar from "simplebar-react"
 import Link from 'next/link'
-import FilmGrid from "@/src/FilmGrid"
+import FilmGrid from "@/src/atoms/FilmGrid"
 import Button from '@/src/atoms/Button'
 
 const MainFilmPageContent = ({ data, mediaType }: any) => {

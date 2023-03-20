@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import FilmCard from './Cards/FilmCard'
+import FilmCard from '../Cards/FilmCard'
 
 interface GridProps {
   title?: string
