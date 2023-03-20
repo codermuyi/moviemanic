@@ -5,38 +5,32 @@ import breakpoints from '@/assets/breakpoints'
 import { useState } from 'react'
 
 interface Props {
-  imgSrc: string
-  movieName: string
   isTrending: boolean
-  date: string,
-  type: string,
-  id: number
+  type: string
+  data: any
 }
 
 const FilmCard = ({
-  imgSrc,
-  movieName,
   isTrending,
-  date,
   type,
-  id
+  data
 }: Props) => {
-
   const height = isTrending ? 170 : 130
   const width = isTrending ? 300: 170
-  const [src, setSrc] = useState(`https://image.tmdb.org/t/p/w1280${imgSrc}`)
+  const [src, setSrc] = useState(`https://image.tmdb.org/t/p/w1280${data.backdrop_path}`)
 
   const filmType = type === 'tv' ? 'TV Series' : 'Movie'
+  const date = parseInt(data.release_date || data.first_air_date) || 'N/A'
 
-  return (
+  return data && (
     <Link
-      href={type === 'movie' ? `/movies/${id}` : `/tv-series/${id}`}
+      href={type === 'movie' ? `/movies/${data.id}` : `/tv-series/${data.id}`}
     >
       <Card>
         <span></span>
         <Image
           src={src}
-          alt={movieName || 'No image'}
+          alt={(data.title || data.name) || 'No image'}
           width={width}
           height={height}
           className={`card-image ${!isTrending ? 'normal' : 'trending'}`}
@@ -47,11 +41,11 @@ const FilmCard = ({
         <CardInfo>
           <div className={`${!isTrending ? 'normal-info' : 'trending-info'}`}>
             <div className='date-and-type'>
-              <span className='date'>{parseInt(date)}</span>
+              <span className='date'>{date}</span>
               <span className='type'>{filmType}</span>
             </div>
             <div className='name'>
-              <span>{movieName}</span>
+              <span>{data.title || data.name}</span>
             </div>
           </div>
         </CardInfo>

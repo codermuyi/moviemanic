@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import MovieCard from './Cards/FilmCard'
+import FilmCard from './Cards/FilmCard'
 
 interface GridProps {
   title?: string
@@ -26,13 +26,10 @@ const FilmGrid = ({
             data.map((film: any, i: number) => {
               if (isGenre && i > 4) return
               return <div key={i} className='box'>
-                <MovieCard
-                  imgSrc={film.backdrop_path}
-                  movieName={film.title || film.name}
+                <FilmCard
                   isTrending={false}
-                  date={film.release_date || film.first_air_date}
                   type={film.media_type || mediaType}
-                  id={film.id}
+                  data={film}
                 />
               </div>
             })

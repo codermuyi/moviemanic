@@ -1,23 +1,25 @@
-import styled, { css, StyledComponent } from 'styled-components'
+import styled, { css } from 'styled-components'
 import SimpleBar from 'simplebar-react';
-
-import MovieCard from '../Cards/FilmCard'
+import FilmCard from '../Cards/FilmCard'
 import breakpoints from '@/assets/breakpoints'
 
-const CategoryList = ({ isTrending, data, showType }: { isTrending: boolean, data: any, showType: string }) => {
+interface ListProps {
+  isTrending: boolean
+  data: any
+  showType: string
+}
+
+const CategoryList = ({ isTrending, data, showType }: ListProps) => {
 
   function generateCards() {
-    return data?.map((movie: any, index: number) => {
+    return data?.map((dataItem: any, index: number) => {
       if (!isTrending && index > 5) return
       if (index > 9) return
-      return <MovieCard
-        key={movie.id}
-        movieName={movie.title || movie.name}
-        imgSrc={movie.backdrop_path}
+      return <FilmCard
+        key={dataItem.id}
         isTrending={isTrending}
-        date={movie.release_date || movie.first_air_date}
         type={showType}
-        id={movie.id}
+        data={dataItem}
       />
     })
   }
@@ -25,7 +27,7 @@ const CategoryList = ({ isTrending, data, showType }: { isTrending: boolean, dat
   return (
     <>
       {isTrending ?
-        <SimpleBar autoHide={false}>
+        <SimpleBar autoHide={false} style={{ overflowY: 'hidden' }}>
           <List isTrending={isTrending}>
             {generateCards()}
           </List>
@@ -38,10 +40,10 @@ const CategoryList = ({ isTrending, data, showType }: { isTrending: boolean, dat
   )
 }
 
-const List: StyledComponent<'div', any, { isTrending: boolean }> = styled.div`
+const List = styled.div.attrs(p => { })`
   gap: 1rem;
   
-  ${(props: any) => props.isTrending ?
+  ${p => p.isTrending ?
     css`
       display: flex;
       flex-shrink: 0;

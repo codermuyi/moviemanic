@@ -25,7 +25,7 @@ const Category = ({
       <Heading>
         <div className='name'>
           <p className='category-name'>{categoryName}</p>
-          <p className='show-type'>{showType}</p>
+          <p className='show-type'>{showType === 'tv' ? 'TV Series' : 'Movie'}</p>
         </div>
         <div className='see-more'>
           <Link href={`/${linkPath}/cat/${categoryName.toLowerCase()}`}>

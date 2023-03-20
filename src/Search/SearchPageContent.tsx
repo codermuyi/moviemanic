@@ -26,16 +26,13 @@ const SearchPageContent = ({
           <>
             <Content>
               <h1>Result{num > 1 && 's'} for &quot;{searchQuery}&quot; ({num})</h1>
-              {data.map((movie: any) => {
+              {data.map((filmData: any) => {
                 return (
                   <MovieCard
-                    key={movie.id}
-                    movieName={movie.title || movie.name}
-                    imgSrc={movie.backdrop_path}
+                    key={filmData.id}
                     isTrending={false}
-                    date={movie.release_date || movie.first_air_date}
-                    type={movie.media_type}
-                    id={movie.id}
+                    type={filmData.media_type}
+                    data={filmData}
                   />
                 )
               })}
