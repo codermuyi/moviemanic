@@ -52,7 +52,6 @@ const Category = ({
 const Cont = styled.div`
   margin: 1rem .1rem;
   padding: 0 1rem;
-  max-width: 2000px;
 
   .simplebar-scrollbar {
     height: .8rem;
@@ -95,6 +94,4 @@ const Heading = styled.div`
   }
 `
 
-
 export default Category
-

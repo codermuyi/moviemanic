@@ -5,6 +5,10 @@
   background-blend-mode: screen, overlay, hard-light, normal;
 }
 
+.col2 {
+  max-width: 2000px;
+}
+
 @media (min-width: 768px) {
   .col1 {
     padding: 1rem;
@@ -27,7 +31,7 @@
     height: 100vh;
   }
 
-  .main .content {
+  .main .col2 {
     margin-right: .5rem;
   }
 }
