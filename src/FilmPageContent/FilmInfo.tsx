@@ -91,7 +91,7 @@ const FilmInfo = ({
             </div>
             <div>
               <span className='heading'>Last Air</span>
-              <span>{last_air_date}</span>
+              <span>{last_air_date || 'N/A'}</span>
             </div>
           </> : null
         }
