@@ -10,6 +10,7 @@ interface Props {
   padding?: string
   margin?: string
   disabled?: boolean
+  name?: string
 }
 
 const Button: React.FC<Props> = ({
@@ -23,6 +24,7 @@ const Button: React.FC<Props> = ({
   padding,
   margin,
   disabled,
+  name,
 }) => {
   return (
     <button
@@ -38,6 +40,7 @@ const Button: React.FC<Props> = ({
         width,
       }}
       disabled={disabled}
+      aria-label={name}
     >
       {children}
     </button>
