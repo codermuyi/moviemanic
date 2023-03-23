@@ -36,17 +36,10 @@ const SpinnerBody = styled.div<SpinnerProps>`
   height: ${(p) => (p.height ? p.height : "4rem")};
   width: ${(p) => (p.width ? p.width : "4rem")};
   border: ${(p) => (p.borderWidth ? p.borderWidth : "4px")} solid #d1d5db;
-  border-top-color: ${(p) => (p.borderColor ? p.borderColor : "#3b82f6")};
+  border-top-color: ${(p) => (p.borderColor ? p.borderColor : 'rgb(var(--sub-color))')};
   border-radius: 50%;
   animation: ${spinnerAnimation}
     ${(p) => (p.duration ? `${p.duration}ms` : "800ms")} linear infinite;
 `;
-
-Loader.defaultProps = {
-  width: '150px',
-  height: '150px',
-  borderWidth: '20px',
-  borderColor: 'rgb(var(--theme-main-color))',
-}
 
 export default Loader
