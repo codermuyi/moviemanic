@@ -35,7 +35,7 @@ const Backdrop = styled.div.attrs(p => {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, rgb(22,14,53), rgb(var(--sub-color), .7), transparent 100%);
+    background: linear-gradient(to right, rgb(22,14,53), rgb(var(--main-theme-color), .7), transparent 100%);
     z-index: 1;
   }
 

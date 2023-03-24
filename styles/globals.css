@@ -14,12 +14,9 @@
   --sec-text-color: 20, 20, 20;
   --main-bg-color: 34, 34, 34;
   --sec-bg-color: 100, 100, 100;
-  --theme-main-color: 78, 100, 160;
-
-  /* --f-bg-color: 255, 255, 255;
-  --f-text-color: 0, 0, 0; */
-
-  --sub-color: 186,79,58;
+  
+  --main-theme-color: 186,79,58;
+  --sub-theme-color: 78, 100, 160;
   
   --f-bg-color: 9, 9, 9; 
   --f-text-color: 244, 244, 244;
@@ -57,7 +54,7 @@ a {
 }
 
 .button {
-  background-color: rgb(var(--theme-main-color));
+  background-color: rgb(var(--main-theme-color));
   border: 0;
   cursor: pointer;
   color: rgb(var(--f-text-color));

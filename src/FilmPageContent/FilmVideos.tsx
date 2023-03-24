@@ -41,7 +41,7 @@ const Content = styled.div`
 
     :hover {
       background-color: white;
-      color: rgb(var(--theme-main-color));
+      color: rgb(var(--main-theme-color));
 
       span.icon {
         width: 20px;

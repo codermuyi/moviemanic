@@ -123,7 +123,7 @@ const PageBody = styled.div`
         padding: 5px;
         
         :nth-child(odd) {
-          background-color: rgb(var(--theme-main-color));
+          background-color: rgb(var(--main-theme-color));
         }
       }
     }

@@ -56,7 +56,7 @@ const Bottom = styled.div`
     }
 
     &.no-hover {
-      background-color: rgb(var(--sub-color));
+      background-color: rgb(var(--main-theme-color));
       cursor: initial;
     }
   }

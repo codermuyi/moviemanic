@@ -49,7 +49,7 @@ const Something = styled.div`
       position: absolute;
       inset: 0;
       z-index: 1;
-      background-color: rgb(var(--sub-color));
+      background-color: rgb(var(--main-theme-color));
       clip-path: circle(7.2% at 50% 50%);
       transition: clip-path .4s;
     }

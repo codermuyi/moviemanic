@@ -176,7 +176,7 @@ const CardInfo = styled.div`
         top: 50%;
         transform: translate(50%, -50%);
         display: inline-block;
-        background: rgb(var(--theme-main-color));
+        background: rgb(var(--main-theme-color));
         padding: .2em;
         border-radius: 50%;
       }

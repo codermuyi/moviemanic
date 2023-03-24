@@ -32,5 +32,5 @@
 }
 .Input:focus {
   box-shadow: 0 0 0 2px var(--violet8);
-  border-color: rgb(var(--sub-color));
+  border-color: rgb(var(--main-theme-color));
 }

@@ -168,7 +168,7 @@ const SideNav = styled.div`
     width: 100%;
     padding: .3rem 1rem;
     background-color: rgb(var(--f-bg-color));
-    color: rgb(var(--theme-main-color));
+    color: rgb(var(--main-theme-color));
 
     &.toggle {
       padding: 1rem;
@@ -189,7 +189,7 @@ const SideNav = styled.div`
   }
 
   a:hover {
-    color: rgb(var(--theme-main-color));
+    color: rgb(var(--main-theme-color));
   }
 
   & + .overlay {
@@ -201,7 +201,7 @@ const SideNav = styled.div`
   }
 
   .simplebar-scrollbar::before {
-    background-color: rgb(var(--theme-main-color));
+    background-color: rgb(var(--main-theme-color));
   }
 `
 
