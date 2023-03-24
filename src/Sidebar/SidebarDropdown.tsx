@@ -87,7 +87,7 @@ const Dropdown = styled.div.attrs(props => {
     transition: border-color .3s;
 
     :hover {
-      border-left-color: rgba(var(--main-theme-color));
+      border-left-color: rgba(var(--sub-theme-color));
     }
   }
 
