@@ -133,7 +133,7 @@ const Bar = styled.nav`
     padding: 2rem;
     left: 30px;
     right: initial;
-    background: linear-gradient(rgb(var(--sub-theme-color)), rgb(var(--f-bg-color)) 70%);
+    background: linear-gradient(rgb(var(--main-theme-color)), rgb(var(--f-bg-color)) 70%);
 
     .bar-item {
       flex-direction: column;
