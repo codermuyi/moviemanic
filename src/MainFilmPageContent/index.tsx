@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { filmCategories, movieGenres } from "@/assets/film_info"
-import SimpleBar from "simplebar-react"
+import { filmCategories } from "@/assets/film_info"
+import ScrollBar from '../atoms/ScrollBar'
 import Link from 'next/link'
 import FilmGrid from "@/src/atoms/FilmGrid"
 import Button from '@/src/atoms/Button'
@@ -14,7 +14,7 @@ const MainFilmPageContent = ({ data, mediaType }: any) => {
     <PageBody>
       <h1>{title}</h1>
       <div className='content'>
-        <SimpleBar style={{ minHeight: '100px' }}>
+        <ScrollBar style={{ minHeight: '100px' }}>
           <div className='cat-list'>
             {
               filmCategories.map((category) =>
@@ -27,7 +27,7 @@ const MainFilmPageContent = ({ data, mediaType }: any) => {
                   : '')
             }
           </div>
-        </SimpleBar>
+        </ScrollBar>
         <div className='genre-list'>
           {data.genreList.genres.map((genre: any, i: number) => <Link
             key={i}
@@ -58,7 +58,6 @@ const MainFilmPageContent = ({ data, mediaType }: any) => {
                 >
                   See More
                 </Button>
-                {/* <button className='button'> See More</button> */}
               </Link>
             </div>
           })

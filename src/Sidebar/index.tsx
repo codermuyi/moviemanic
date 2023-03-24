@@ -8,7 +8,7 @@ import {
 import Button from '../atoms/Button'
 import { filmCategories } from '@/assets/film_info'
 import SidebarDropdown from './SidebarDropdown'
-import SimpleBar from 'simplebar-react'
+import ScrollBar from '../atoms/ScrollBar'
 import NavLink from '../atoms/NavLink'
 import useSwr from 'swr'
 import { myFetch } from '@/assets/utilities'
@@ -55,7 +55,7 @@ const Sidebar = ({
   return (
     <>
       <SideNav className={isOpen ? 'open' : ''}>
-        <SimpleBar style={{ maxHeight: '95vh' }}>
+        <ScrollBar style={{ maxHeight: '95vh' }}>
           <div className="nav-item toggle">
             <Button
               bgColor='transparent'
@@ -135,7 +135,7 @@ const Sidebar = ({
             }
             )}
           </SidebarDropdown>
-        </SimpleBar>
+        </ScrollBar>
       </SideNav>
       <Overlay className='overlay' onClick={toggle}></Overlay>
     </>
@@ -168,7 +168,7 @@ const SideNav = styled.div`
     width: 100%;
     padding: .3rem 1rem;
     background-color: rgb(var(--f-bg-color));
-    color: rgb(var(--main-theme-color));
+    color: rgb(var(--sub-theme-color));
 
     &.toggle {
       padding: 1rem;
@@ -199,10 +199,6 @@ const SideNav = styled.div`
   &.open + .overlay {
     z-index: 2000;
   }
-
-  .simplebar-scrollbar::before {
-    background-color: rgb(var(--main-theme-color));
-  }
 `
 
 const Overlay = styled.div`
@@ -212,5 +208,3 @@ const Overlay = styled.div`
 `
 
 export default Sidebar
-
-// Solved hydration error by explicitely defining 'movieGenres' and 'tvGenres' list in this same file

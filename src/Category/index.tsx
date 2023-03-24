@@ -52,14 +52,6 @@ const Category = ({
 const Cont = styled.div`
   margin: 1rem .1rem;
   padding: 0 1rem;
-
-  .simplebar-scrollbar {
-    height: .8rem;
-  }
-
-  .simplebar-scrollbar::before {
-    background-color: rgb(var(--main-theme-color));
-  }
 `
 
 const Heading = styled.div`

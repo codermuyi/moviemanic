@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import SimpleBar from 'simplebar-react';
+import ScrollBar from '../atoms/ScrollBar';
 import CastProfile from './FilmCastProfile'
 
 const Casts = ({ credits }: { credits: any }) => { 
@@ -7,26 +7,18 @@ const Casts = ({ credits }: { credits: any }) => {
     <FilmCast>
       <h2 className='heading'>Casts</h2>
       {(credits.success === false || credits.cast.length === 0) && <p>No info.</p>}
-      <SimpleBar>
+      <ScrollBar>
         <div className='cast-list'>
           {credits.cast?.map((cast: any, i: number) => (
             <CastProfile key={i} cast={cast} />
           ))}
         </div>
-      </SimpleBar>
+      </ScrollBar>
     </FilmCast>
   )
 }
 
 const FilmCast = styled.div`
-  .simplebar-scrollbar {
-    height: .8rem;
-  }
-
-  .simplebar-scrollbar::before {
-    background-color: rgb(var(--main-theme-color));
-  }
-  
   .cast-list {
     display: flex;
     flex-grow: 0;

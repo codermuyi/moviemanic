@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import SimpleBar from 'simplebar-react';
+import ScrollBar from '../atoms/ScrollBar';
 import FilmCard from '../Cards/FilmCard'
 import breakpoints from '@/assets/breakpoints'
 
@@ -27,11 +27,11 @@ const CategoryList = ({ isTrending, data, showType }: ListProps) => {
   return (
     <>
       {isTrending ?
-        <SimpleBar autoHide={false} style={{ overflowY: 'hidden' }}>
+        <ScrollBar autoHide={false} style={{ overflowY: 'hidden' }}>
           <List isTrending={isTrending}>
             {generateCards()}
           </List>
-        </SimpleBar> :
+        </ScrollBar> :
         <List isTrending={isTrending}>
           {generateCards()}
         </List>
