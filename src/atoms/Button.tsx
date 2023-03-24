@@ -11,6 +11,7 @@ interface Props {
   margin?: string
   disabled?: boolean
   name?: string
+  noShadow?: boolean
 }
 
 const Button: React.FC<Props> = ({
@@ -25,6 +26,7 @@ const Button: React.FC<Props> = ({
   margin,
   disabled,
   name,
+  noShadow,
 }) => {
   return (
     <button
@@ -38,6 +40,7 @@ const Button: React.FC<Props> = ({
         margin,
         height,
         width,
+        boxShadow: noShadow ? 'none' : '',
       }}
       disabled={disabled}
       aria-label={name}
