@@ -12,6 +12,8 @@ interface Props {
   disabled?: boolean
   name?: string
   noShadow?: boolean
+  otherProps?: any
+  className?: string
 }
 
 const Button: React.FC<Props> = ({
@@ -27,6 +29,7 @@ const Button: React.FC<Props> = ({
   disabled,
   name,
   noShadow,
+  ...otherProps
 }) => {
   return (
     <button
@@ -44,6 +47,7 @@ const Button: React.FC<Props> = ({
       }}
       disabled={disabled}
       aria-label={name}
+      {...otherProps}
     >
       {children}
     </button>
