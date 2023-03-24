@@ -1,104 +1,54 @@
-import { Dispatch, SetStateAction } from 'react';
-import Modal from 'react-modal'
 import styled from 'styled-components';
-import Button from '../atoms/Button'
 import Video from './FilmYoutubeVideo'
-
-const customStyles = {
-  content: {
-    top: '25px',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translateX(-50%)',
-    width: 'calc(100% - 2rem)',
-    maxWidth: '1000px',
-    height: 'calc(100% - 50px)',
-    backgroundColor: 'rgb(var(--f-bg-color))',
-    border: 'none',
-    padding: '0',
-  },
-};
-
-Modal.defaultStyles.overlay = {
-  ...Modal.defaultStyles.overlay,
-  backgroundColor: 'rgb(0 0 0 / .8)',
-  zIndex: 4000
-}
+import ScrollBar from '../atoms/ScrollBar'
+import Dialog from '@/src/Dialog'
 
 interface ModalInterface {
-  modalIsOpen: boolean
-  setIsOpen: Dispatch<SetStateAction<boolean>>
   videoData: any
 }
 
-const MoreVideosModal: React.FC<ModalInterface> = ({ modalIsOpen, setIsOpen, videoData }) => {
-  let element: HTMLElement | null;
-
-  function afterOpenModal() {
-    if (element !== null) 
-      element.style.transform = 'none'
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
+const MoreVideosModal: React.FC<ModalInterface> = ({ videoData }) => {
   const filterData = videoData?.filter((data: { site: string }) => data.site === 'YouTube')
 
   return (
-    <>
-      <Modal
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="More Videos"
-        ariaHideApp={false}
-      >
-        <ModalHeader>
-          <div></div>
-          <Button
-            padding='.5rem'
-            onClick={closeModal}
-          >
-            Close
-          </Button>
-        </ModalHeader>
-        <ModalBody ref={(_element) => (element = _element)}>
+    <Dialog
+      name={<>
+        <span>Videos</span>
+        <span className='icon'>
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.24182 2.32181C3.3919 2.23132 3.5784 2.22601 3.73338 2.30781L12.7334 7.05781C12.8974 7.14436 13 7.31457 13 7.5C13 7.68543 12.8974 7.85564 12.7334 7.94219L3.73338 12.6922C3.5784 12.774 3.3919 12.7687 3.24182 12.6782C3.09175 12.5877 3 12.4252 3 12.25V2.75C3 2.57476 3.09175 2.4123 3.24182 2.32181ZM4 3.57925V11.4207L11.4288 7.5L4 3.57925Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+        </span>
+      </>}
+      title='Videos'
+      contentStyle={{
+        maxWidth: '1200px',
+      }}
+
+    >
+      <ScrollBar style={{ height: '70vh', padding: 0 }}>
+        <DialogBody>
           {filterData?.map((vid: any, i: number) => {
             return <Box key={i}>
               <p>{vid.name}</p>
               <Video id={vid.key} isSmall />
             </Box>
           })}
-        </ModalBody>
-      </Modal>
-    </>
+        </DialogBody>
+      </ScrollBar>
+    </Dialog>
   )
 }
 
-const ModalHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  background: linear-gradient(120deg, rgb(var(--theme-main-color)), rgb(var(--f-bg-color)));
-  padding: .7rem 1rem;
-
-  .button {
-    
-  }
-`
-
-const ModalBody = styled.div`
-  padding: 1rem;
-  height: 90%;
+const DialogBody = styled.div`
+  padding-right: 1rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1rem;
   color: rgb(var(--f-text-color));
   transition-duration: .5s;
-  transform: translateX(100%);
+
+  p {
+    font-size: .8rem;
+  }
 `
 
 const Box = styled.div`

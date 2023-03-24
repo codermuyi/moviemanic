@@ -3,7 +3,7 @@ import styles from './Dialog.module.css';
 import Button from '../atoms/Button';
 
 interface DialogProps {
-  name?: string
+  name?: string | React.ReactNode
   title?: string | React.ReactNode
   description?: string
   children?: React.ReactNode
