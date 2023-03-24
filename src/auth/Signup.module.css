@@ -1,16 +1,16 @@
 
 .Fieldset {
   display: flex;
-  gap: 20px;
+  gap: 1.3rem;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: .6rem;
   border: none;
 }
 
 .Label {
   font-size: 15px;
   color: var(--violet11);
-  width: 90px;
+  width: 70px;
   text-align: right;
 }
 

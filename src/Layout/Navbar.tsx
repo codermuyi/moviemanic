@@ -12,6 +12,8 @@ import breakpoints from '@/assets/breakpoints'
 import Sidebar from '../Sidebar'
 import Button from '../atoms/Button'
 import NavLink from '../atoms/NavLink'
+import Signup from '../auth/Signup'
+import Login from '../auth/Login'
 
 const Navbar = () => {
   const iconWidth = 40
@@ -28,13 +30,14 @@ const Navbar = () => {
         isOpen={isOpen}
         toggle={toggle}
       />
-
       <Bar>
         <div className='bar-item'>
           <Button
             onClick={toggle}
             bgColor='transparent'
             color='inherit'
+            name='Sidebar toggle'
+            noShadow
           >
             <MenuIcon
               width={iconWidth}
@@ -71,11 +74,13 @@ const Navbar = () => {
         </div>
 
         <div className='bar-item'>
-          <ProfileIcon
+          {/* <ProfileIcon
             width={iconWidth}
             height={iconHeight}
             fill="rgb(var(--f-text-color))"
-          />
+          /> */}
+          <Login />
+          <Signup />
         </div>
       </Bar>
     </>
@@ -85,8 +90,8 @@ const Navbar = () => {
 const Bar = styled.nav`
   display: flex;
   align-items: center;
-  padding: .7rem 1rem;
-  background: linear-gradient(70deg, rgb(var(--theme-main-color)), rgb(var(--f-bg-color)));
+  padding: .5rem 1rem;
+  background: linear-gradient(70deg, rgb(var(--sub-theme-color), .4), rgb(var(--f-bg-color), .8) 50%);
 
   .bar-item {
     display: flex;
@@ -100,6 +105,12 @@ const Bar = styled.nav`
     
     :nth-child(3) {
       justify-content: end;
+
+      .button {
+        color: white;
+        background-color: rgb(var(--main-theme-color));
+        padding: .3rem;
+      }
     }
 
     div {
@@ -122,7 +133,7 @@ const Bar = styled.nav`
     padding: 2rem;
     left: 30px;
     right: initial;
-    background: linear-gradient(rgb(var(--theme-main-color)), rgb(var(--f-bg-color)));
+    background: linear-gradient(rgb(var(--sub-theme-color)), rgb(var(--f-bg-color)) 70%);
 
     .bar-item {
       flex-direction: column;

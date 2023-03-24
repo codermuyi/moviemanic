@@ -1,12 +1,11 @@
 import styles from './Signup.module.css'
 import Button from '../atoms/Button';
 import { useState } from 'react'
+import Signup from './Signup';
 import MyDialog from '../Dialog'
-import Login from './Login';
 
-const Signup = () => {
+const Login = () => {
   const [formData, setFormData] = useState({
-    name: '',
     email: '',
     password: ''
   })
@@ -14,23 +13,9 @@ const Signup = () => {
   function handleChange() {
 
   }
-
   return (
-    <MyDialog
-      name='Sign Up'
-      description='Create an account to bookmark movies and tv series.'
-    >
+    <MyDialog name='Login'>
       <form>
-        <fieldset className={styles.Fieldset}>
-          <label className={styles.Label} htmlFor="name">
-            Name
-          </label>
-          <input
-            className={styles.Input}
-            id="name"
-            placeholder='Samuel Adepoju'
-          />
-        </fieldset>
         <fieldset className={styles.Fieldset}>
           <label className={styles.Label} htmlFor="email">
             Email
@@ -38,7 +23,7 @@ const Signup = () => {
           <input
             className={styles.Input}
             id="email"
-            placeholder='codermuyi@duck.com'
+            placeholder='Enter your email address'
           />
         </fieldset>
         <fieldset className={styles.Fieldset}>
@@ -46,10 +31,9 @@ const Signup = () => {
             Password
           </label>
           <input
-            type='password'
             className={styles.Input}
             id="name"
-            placeholder='************'
+            placeholder='Enter your password'
           />
         </fieldset>
         <div style={{ display: 'flex', marginTop: 25, justifyContent: 'flex-end' }}>
@@ -57,9 +41,9 @@ const Signup = () => {
         </div>
         <div>
           <p style={{ fontSize: '.8rem' }}>
-            Already have an account?
+            Don&apos;t have an account?
             {' '}
-            <Login />
+            <Signup />
           </p>
         </div>
       </form>
@@ -67,4 +51,4 @@ const Signup = () => {
   )
 }
 
-export default Signup
+export default Login
