@@ -124,11 +124,11 @@ const Info = styled.div`
 
   .series-detail {
     display: flex;
-    max-width: 400px;
-    margin: 0 auto;
+    max-width: 700px;
+    justify-content: center;
+    gap: 2rem;
 
     div {
-      flex: 1;
       text-align: center;
       padding-bottom: 1rem;
     }
