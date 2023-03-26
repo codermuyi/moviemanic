@@ -43,7 +43,7 @@ const Button: React.FC<Props> = ({
         margin,
         height,
         width,
-        boxShadow: noShadow ? 'none' : '',
+        boxShadow: noShadow ? 'none' : undefined,
       }}
       disabled={disabled}
       aria-label={name}
