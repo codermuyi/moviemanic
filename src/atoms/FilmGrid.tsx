@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components'
-// import FilmCard from '../Cards/FilmCard'
 import breakpoints from '@/assets/breakpoints'
 import FilmCard2 from '../Cards/FilmCard2'
 import FilmCard3 from '../Cards/FilmCard3'
@@ -74,7 +73,7 @@ const Divv = styled.div.attrs((props) => {
           &:first-child {
             grid-row: 1 / 3;
             grid-column: 1 / 3;
-            height: 100%;
+            height: 90%;
           }
         }
       }

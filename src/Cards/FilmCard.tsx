@@ -18,7 +18,6 @@ const FilmCard = ({
 
   return data && (
     <Card>
-      <span></span>
       <CardImage
         isTrending={isTrending}
         data={data}
@@ -30,6 +29,7 @@ const FilmCard = ({
         type={type}
         linkHref={linkHref}
       />
+      <span></span>
     </Card>
   )
 }
@@ -48,26 +48,47 @@ const Card = styled.div`
   min-height: 150px;
   position: relative;
   transition: 0.5s;
-  cursor: pointer;
   transform-style: preserve-3d;
   perspective: 200px;
 
-  :hover {
-    .card-image.normal {
-      transform: translateY(-8%) rotateX(7deg);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.28);
+  .card-image {
+    object-fit: cover;
+    object-position: center;
+    border-radius: 20px;
+    width: auto;
+    height: auto;
+    transition: 0.3s;
+
+    &.normal {
+      width: 100%;
     }
-    .card-image.trending {
-      transform: scale(.95);
-    }
-    .trending-info {
-      transform: translate(10px, -15px);
+    &.trending {
+      width: 300px;
+      filter: brightness(60%);
     }
 
-    span:after {
-      width: 50px;
-      height: 50px;
-      opacity: 1;
+    @media ${breakpoints.md} {
+      &.trending {
+        width: 350px;
+        height: 200px;
+      }
+    }
+
+    @media ${breakpoints.lg} {
+      &.normal {
+        height: 180px;
+      }
+      &.trending {
+        width: 400px;
+        height: 250px;
+      }
+    }
+
+    @media ${breakpoints.xl} {
+      &.trending {
+        width: 500px;
+        height: 300px;
+      }
     }
   }
 
@@ -85,46 +106,29 @@ const Card = styled.div`
     animation: ${animate} 2s ease-in-out infinite;
     box-shadow: 0 5px 15px rgba(0,0,0,0.08);
     animation-delay: -1s;
-  }
-
-  .card-image {
-    object-fit: cover;
-    object-position: left top;
-    border-radius: 20px;
-    width: auto;
-    height: auto;
-    transition: 0.3s;
+    pointer-events: none;
   }
   
-  .normal {
-    width: 100%;
-  }
-  
-  .trending {
-    width: 300px;
-    filter: brightness(60%);
-  }
+  :hover {
+    .card-image {
+      &.normal {
+        transform: translateY(-8%) rotateX(7deg);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.28);
+      }
+      &.trending {
+        transform: scale(.95);
+        filter: brightness(40%);
+      }
+    }
 
-  @media ${breakpoints.md} {
-    .trending {
-      width: 350px;
-      height: 200px;
+    .trending-info {
+      transform: translate(10px, -15px);
     }
-  }
 
-  @media ${breakpoints.lg} {
-    .normal {
-      height: 180px;
-    }
-    .trending {
-      width: 400px;
-      height: 250px;
-    }
-  }
-  @media ${breakpoints.xl} {
-    .trending {
-      width: 500px;
-      height: 300px;
+    span:after {
+      width: 50px;
+      height: 50px;
+      opacity: 1;
     }
   }
 `
