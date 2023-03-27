@@ -1,5 +1,8 @@
-import styled from 'styled-components'
-import FilmCard from '../Cards/FilmCard'
+import styled, { css } from 'styled-components'
+// import FilmCard from '../Cards/FilmCard'
+import breakpoints from '@/assets/breakpoints'
+import FilmCard2 from '../Cards/FilmCard2'
+import FilmCard3 from '../Cards/FilmCard3'
 
 interface GridProps {
   title?: string
@@ -19,19 +22,26 @@ const FilmGrid = ({
 
   return (
     <>
-      {data?.[0] && <Divv centerTitle={centerTitle}>
+      {data?.[0] && <Divv centerTitle={centerTitle} isGenre={isGenre}>
         {title && <h2>{title}</h2>}
         <div className='film-list'>
           {
             data.map((film: any, i: number) => {
-              if (isGenre && i > 4) return
-              return <div key={i} className='box'>
-                <FilmCard
+              if (isGenre) {
+                if (i > 4) return
+                return <FilmCard3
+                  key={i}
                   isTrending={false}
                   type={film.media_type || mediaType}
                   data={film}
                 />
-              </div>
+              }
+              return <FilmCard2
+                key={i}
+                isTrending={false}
+                type={film.media_type || mediaType}
+                data={film}
+              />
             })
           }
         </div>
@@ -53,16 +63,25 @@ const Divv = styled.div.attrs((props) => {
 
   .film-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-    gap: 1em;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    
+    ${p => p.isGenre && css`
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
 
-    .box {
-      width: 100%;
-      max-width: 350px;
-
-      .card-image {
-        max-height: 150px;
+      .film-card {
+        @media ${breakpoints.md} {
+          &:first-child {
+            grid-row: 1 / 3;
+            grid-column: 1 / 3;
+            height: 100%;
+          }
+        }
       }
+    `}
+
+    @media ${breakpoints.xl} {
+
     }
   }
 `

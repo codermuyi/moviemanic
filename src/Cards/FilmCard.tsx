@@ -1,8 +1,7 @@
 import styled, { keyframes } from 'styled-components'
-import Image from 'next/image'
-import Link from 'next/link'
 import breakpoints from '@/assets/breakpoints'
-import { useState } from 'react'
+import CardImage from './FilmCardImage'
+import CardInfo from './FilmCardInfo'
 
 interface Props {
   isTrending: boolean
@@ -15,42 +14,23 @@ const FilmCard = ({
   type,
   data
 }: Props) => {
-  const height = isTrending ? 170 : 130
-  const width = isTrending ? 300: 170
-  const [src, setSrc] = useState(`https://image.tmdb.org/t/p/w1280${data.backdrop_path}`)
-
-  const filmType = type === 'tv' ? 'TV Series' : 'Movie'
-  const date = parseInt(data.release_date || data.first_air_date) || 'N/A'
+  const linkHref = type === 'movie' ? `/movies/${data.id}` : `/tv-series/${data.id}`
 
   return data && (
-    <Link
-      href={type === 'movie' ? `/movies/${data.id}` : `/tv-series/${data.id}`}
-    >
-      <Card>
-        <span></span>
-        <Image
-          src={src}
-          alt={(data.title || data.name) || 'No image'}
-          width={width}
-          height={height}
-          className={`card-image ${!isTrending ? 'normal' : 'trending'}`}
-          placeholder='blur'
-          blurDataURL='/white-placeholder.png'
-          onError={() => setSrc('/no-image-icon-2.png')}
-        />
-        <CardInfo>
-          <div className={`${!isTrending ? 'normal-info' : 'trending-info'}`}>
-            <div className='date-and-type'>
-              <span className='date'>{date}</span>
-              <span className='type'>{filmType}</span>
-            </div>
-            <div className='name'>
-              <span>{data.title || data.name}</span>
-            </div>
-          </div>
-        </CardInfo>
-      </Card>
-    </Link>
+    <Card>
+      <span></span>
+      <CardImage
+        isTrending={isTrending}
+        data={data}
+        linkHref={linkHref}
+      />
+      <CardInfo
+        isTrending={isTrending}
+        data={data}
+        type={type}
+        linkHref={linkHref}
+      />
+    </Card>
   )
 }
 
@@ -145,41 +125,6 @@ const Card = styled.div`
     .trending {
       width: 500px;
       height: 300px;
-    }
-  }
-`
-
-const CardInfo = styled.div`
-  .trending-info {
-    position: absolute;
-    left: 1rem;
-    bottom: 1rem;
-    transition: 0.3s;
-  }
-
-  .normal-info {
-    font-size: .8em;
-  }
-
-  .date-and-type {
-    display: flex;
-    gap: 1.2em;
-    color: rgb(var(--main-text-color), .7);
-    font-size: .7em;
-
-    .type {
-      position: relative;
-      &::before {
-        content: '';
-        position: absolute;
-        left: -1em;
-        top: 50%;
-        transform: translate(50%, -50%);
-        display: inline-block;
-        background: rgb(var(--main-theme-color));
-        padding: .2em;
-        border-radius: 50%;
-      }
     }
   }
 `
