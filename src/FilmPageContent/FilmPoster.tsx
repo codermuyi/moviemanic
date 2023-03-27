@@ -15,7 +15,7 @@ const FilmPoster = ({ path }: { path: string }) => {
           width={250}
           height={350}
           className='poster-img'
-          onError={() => setSrc('/no-image-icon-2.png')}
+          onError={() => setSrc('/no-image.svg')}
         />
       </div>
     </Poster>
