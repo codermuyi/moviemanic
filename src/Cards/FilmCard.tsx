@@ -28,6 +28,7 @@ const FilmCard = ({
         data={data}
         type={type}
         linkHref={linkHref}
+        overflow
       />
       <span></span>
     </Card>
