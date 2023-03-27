@@ -74,6 +74,7 @@ const Divv = styled.div.attrs((props) => {
             grid-row: 1 / 3;
             grid-column: 1 / 3;
             height: 90%;
+            font-size: 1.25rem;
           }
         }
       }
