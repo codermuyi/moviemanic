@@ -13,6 +13,7 @@ import Loader from '../atoms/Loader'
 
 import BlockBottomLink from '../atoms/BlockBottomLink'
 import Backdrop from './FilmBackdrop'
+import RouteGuard from '../RouteGuard'
 
 interface Props {
   media_type: string
@@ -52,7 +53,7 @@ const FilmPageContent = ({ media_type }: Props) => {
         description={info?.overview}
       />
 
-      <PageLayout>
+      <RouteGuard>
         <PageBody>
           {isLoading && info.success ?
             <Loader /> :
@@ -75,7 +76,7 @@ const FilmPageContent = ({ media_type }: Props) => {
           }
         </PageBody>
         <BlockBottomLink />
-      </PageLayout>
+      </RouteGuard>
     </>
   )
 }

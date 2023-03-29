@@ -10,12 +10,10 @@ const index = ({ data }: any) => {
         title='TV Series | Moviemanic'
       />
 
-      <PageLayout>
-        <MainFilmPageContent
-          mediaType='tv'
-          data={data}
-        />
-      </PageLayout>
+      <MainFilmPageContent
+        mediaType='tv'
+        data={data}
+      />
     </>
   )
 }

@@ -1,11 +1,11 @@
 import FilmGrid from '@/src/atoms/FilmGrid'
 import BlockBottomLink from '@/src/atoms/BlockBottomLink'
 import Pagination from '../atoms/Pagination'
+import RouteGuard from '../RouteGuard'
 
 const GenrePageContent = ({ data, name, mediaType, id }: any) => {
-  console.log(data)
   return (
-    <>
+    <RouteGuard>
       <h1 style={{ padding: '2rem' }}>{name}</h1>
       <FilmGrid
         data={data.results}
@@ -18,7 +18,7 @@ const GenrePageContent = ({ data, name, mediaType, id }: any) => {
         pageType='genre'
       />
       <BlockBottomLink />
-    </>
+    </RouteGuard>
   )
 }
 

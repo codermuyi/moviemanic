@@ -4,8 +4,8 @@ import useSwr from 'swr'
 import { myFetch } from '@/assets/utilities'
 import Loader from '@/src/atoms/Loader'
 import Pagination from '@/src/atoms/Pagination'
-import PageLayout from '@/src/Layout/PageLayout'
 import MovieCard from '@/src/Cards/FilmCard'
+import RouteGuard from '../RouteGuard'
 
 const SearchPageContent = ({
   searchQuery,
@@ -21,7 +21,7 @@ const SearchPageContent = ({
       <Meta
         title={`Search results for "${searchQuery}" | Moviemanic`}
       />
-      <PageLayout>
+      <RouteGuard>
         {data ?
           <>
             <Content>
@@ -46,7 +46,7 @@ const SearchPageContent = ({
             />
           </>
           : <Loader />}
-      </PageLayout>
+      </RouteGuard>
     </>
   )
 }

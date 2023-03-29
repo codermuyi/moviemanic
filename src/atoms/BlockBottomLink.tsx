@@ -35,12 +35,13 @@ const Bottom = styled.div`
     background-color: rgb(var(--f-bg-color));
     color: rgb(var(--f-text-color));
     cursor: pointer;
-    transition: transform .3s;
+    transition: .3s;
     padding: 2.8rem 2rem;
     border-radius: 2rem;
 
     :not(.no-hover):hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
+      color: rgb(var(--main-theme-color));
     }
 
     :nth-child(1) {

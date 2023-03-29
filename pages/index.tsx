@@ -1,16 +1,20 @@
-import Meta from '@/src/atoms/Meta'
-import PageLayout from '@/src/Layout/PageLayout'
-import Category from '@/src/Category'
-import { filmCategories } from '@/assets/film_info'
+import { useSession } from '@supabase/auth-helpers-react'
+import { useRouter } from 'next/router'
+
+import Meta from 'src/atoms/Meta'
+import Category from 'src/Category'
+import BlockTopLink from 'src/atoms/BlockTopLink'
+import BlockBottomLink from 'src/atoms/BlockBottomLink'
+import RouteGuard from '@/src/RouteGuard'
+
+import { filmCategories } from 'assets/film_info'
 import { server } from 'config'
-import BlockTopLink from '@/src/atoms/BlockTopLink'
-import BlockBottomLink from '@/src/atoms/BlockBottomLink'
 
 export default function Home({ data }: any) {
   return (
     <>
       <Meta title='Moviemanic' />
-      <PageLayout>
+      <RouteGuard>
         <BlockTopLink />
         {
           filmCategories.map((c, i) =>
@@ -24,7 +28,7 @@ export default function Home({ data }: any) {
           )
         }
         <BlockBottomLink />
-      </PageLayout>
+      </RouteGuard>
     </>
   )
 }

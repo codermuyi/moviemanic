@@ -16,7 +16,7 @@ const FilmCardImage = ({
   const filmName = data.title || data.name
 
   return (
-    <Link href={linkHref}>
+    <Link href={linkHref} className={`film-card-${!isTrending ? 'normal' : 'trending'}-link`}>
       <Image
         src={src}
         alt={filmName || 'Film image'}

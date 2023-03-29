@@ -110,11 +110,18 @@ const Card = styled.div`
     pointer-events: none;
   }
   
+  .film-card-normal-link {
+    display: block;
+    transition: inherit;
+  }
+
   :hover {
+    .film-card-normal-link {
+      transform: translateY(-8%) rotateX(7deg);
+    }
     .card-image {
       &.normal {
-        transform: translateY(-8%) rotateX(7deg);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.28);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.38);
       }
       &.trending {
         transform: scale(.95);

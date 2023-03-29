@@ -10,16 +10,13 @@ const index = ({ data }: any) => {
         title='Movies | Moviemanic'
       />
 
-      <PageLayout>
-        <MainFilmPageContent
-          mediaType='movie'
-          data={data}
-        />
-      </PageLayout>
+      <MainFilmPageContent
+        mediaType='movie'
+        data={data}
+      />
     </>
   )
 }
-
 
 export async function getServerSideProps(ctx: any) {
   const res = await fetch(`${server}/api/genre/movie/list`)

@@ -5,65 +5,68 @@ import ScrollBar from '../atoms/ScrollBar'
 import Link from 'next/link'
 import FilmGrid from "@/src/atoms/FilmGrid"
 import Button from '@/src/atoms/Button'
+import RouteGuard from '../RouteGuard'
 
 const MainFilmPageContent = ({ data, mediaType }: any) => {
   const title = mediaType === 'movie' ? 'Movies' : 'TV Series'
   const linkPath = mediaType === 'movie' ? 'movies' : 'tv-series'
 
   return (
-    <PageBody>
-      <h1>{title}</h1>
-      <div className='content'>
-        <ScrollBar style={{ minHeight: '100px' }}>
-          <div className='cat-list'>
-            {
-              filmCategories.map((category) =>
-                (category.type === mediaType) ?
-                  <Link key={category.id} href={`/${linkPath}/cat/${category.name.toLowerCase()}`}>
-                    <div className='card cat-card'>
-                      {category.name}
-                    </div>
-                  </Link>
-                  : '')
-            }
+    <RouteGuard>
+      <PageBody>
+        <h1>{title}</h1>
+        <div className='content'>
+          <ScrollBar style={{ minHeight: '140px' }}>
+            <div className='cat-list'>
+              {
+                filmCategories.map((category) =>
+                  (category.type === mediaType) ?
+                    <Link key={category.id} href={`/${linkPath}/cat/${category.name.toLowerCase()}`}>
+                      <div className='card cat-card'>
+                        {category.name}
+                      </div>
+                    </Link>
+                    : '')
+              }
+            </div>
+          </ScrollBar>
+          <div className='genre-list'>
+            {data.genreList.genres.map((genre: any, i: number) => <Link
+              key={i}
+              href={`#${genre.name}`}
+              className='card genre-card'
+            >
+              <div>
+                <p>{genre.name}</p>
+              </div>
+            </Link>
+            )}
           </div>
-        </ScrollBar>
-        <div className='genre-list'>
-          {data.genreList.genres.map((genre: any, i: number) => <Link
-            key={i}
-            href={`#${genre.name}`}
-            className='card genre-card'
-          >
-            <div>
-              <p>{genre.name}</p>
-            </div>
-          </Link>
-          )}
+          <br />
+          {
+            data.filmList.map((list: any, i: number) => {
+              return <div id={data.genreList.genres[i].name} key={i}>
+                <FilmGrid
+                  title={data.genreList.genres[i].name}
+                  mediaType={mediaType}
+                  data={list.results}
+                  isGenre
+                />
+                <Link href={`/${linkPath}/genre/${data.genreList.genres[i].id}`}>
+                  <Button
+                    radius='20px'
+                    margin='0 0 30px 50px'
+                    padding='10px'
+                  >
+                    See More
+                  </Button>
+                </Link>
+              </div>
+            })
+          }
         </div>
-        <br />
-        {
-          data.filmList.map((list: any, i: number) => {
-            return <div id={data.genreList.genres[i].name} key={i}>
-              <FilmGrid
-                title={data.genreList.genres[i].name}
-                mediaType={mediaType}
-                data={list.results}
-                isGenre
-              />
-              <Link href={`/${linkPath}/genre/${data.genreList.genres[i].id}`}>
-                <Button
-                  radius='20px'
-                  margin='0 0 30px 50px'
-                  padding='10px'
-                >
-                  See More
-                </Button>
-              </Link>
-            </div>
-          })
-        }
-      </div>
-    </PageBody>
+      </PageBody>
+    </RouteGuard>
   )
 }
 
@@ -81,12 +84,8 @@ const PageBody = styled.div`
     background-color: rgb(var(--f-bg-color));
     color: rgb(var(--f-text-color));
     cursor: pointer;
-    transition: transform .3s;
+    transition: .3s;
     text-transform: capitalize;
-
-    :hover {
-      transform: scale(1.1);
-    }
   }
 
   .content {
@@ -103,6 +102,11 @@ const PageBody = styled.div`
         padding: 2.8rem 2rem;
         border-radius: 2rem;
         width: 200px;
+
+        :hover {
+          transform: scale(1.05);
+          color: rgb(var(--main-theme-color));
+        }
       }
     }
 
@@ -120,6 +124,10 @@ const PageBody = styled.div`
         text-align: center;
         font-size: .65rem;
         padding: 5px;
+
+        :hover {
+          transform: scale(1.1);
+        }
         
         :nth-child(odd) {
           background-color: rgb(var(--main-theme-color));

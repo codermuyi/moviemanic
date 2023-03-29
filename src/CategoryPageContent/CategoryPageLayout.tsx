@@ -1,10 +1,10 @@
-import PageLayout from "@/src/Layout/PageLayout"
 import Meta from '@/src/atoms/Meta'
 import FilmGrid from "@/src/atoms/FilmGrid"
 import styled from 'styled-components'
 import _ from 'lodash'
 import BlockBottomLink from "../atoms/BlockBottomLink"
 import Pagination from "../atoms/Pagination"
+import RouteGuard from "../RouteGuard"
 
 const CategoryPageLayout = ({ data, type, mediaType }: any) => {
   return (
@@ -12,7 +12,7 @@ const CategoryPageLayout = ({ data, type, mediaType }: any) => {
       <Meta 
         title={`${_.capitalize(type)} - ${mediaType === 'tv' ? 'TV Series' : 'Movies'} | Moviemanic`}
       />
-      <PageLayout>
+      <RouteGuard>
         <Cat>
           <FilmGrid
             title={type}
@@ -27,7 +27,7 @@ const CategoryPageLayout = ({ data, type, mediaType }: any) => {
           pageType='category'
         />
         <BlockBottomLink />
-      </PageLayout>
+      </RouteGuard>
     </>
   )
 }

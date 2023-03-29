@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 
 interface Props {
   color?: string
@@ -12,11 +13,11 @@ interface Props {
   disabled?: boolean
   name?: string
   noShadow?: boolean
-  otherProps?: any
+  // otherProps?: any
   className?: string
 }
 
-const Button: React.FC<Props> = ({
+const Button = forwardRef(({
   color,
   bgColor,
   children,
@@ -29,8 +30,8 @@ const Button: React.FC<Props> = ({
   disabled,
   name,
   noShadow,
-  ...otherProps
-}) => {
+  // ...otherProps
+}: Props, ref) => {
   return (
     <button
       className='button'
@@ -47,11 +48,13 @@ const Button: React.FC<Props> = ({
       }}
       disabled={disabled}
       aria-label={name}
-      {...otherProps}
+    // {...otherProps}
     >
       {children}
     </button>
   );
-}
+})
+
+Button.displayName = "Button";
 
 export default Button;

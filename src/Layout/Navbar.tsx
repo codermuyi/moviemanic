@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 import Link from 'next/link'
 import { useState } from 'react'
+import React from 'react'
+import { useRouter } from "next/router";
+import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
+
 import {
   MainIcon,
   ProfileIcon,
@@ -8,20 +12,31 @@ import {
   MovieIcon,
   TVIcon
 } from '../atoms/SVGIcons'
-import breakpoints from '@/assets/breakpoints'
 import Sidebar from '../Sidebar'
 import Button from '../atoms/Button'
 import NavLink from '../atoms/NavLink'
 import Signup from '../auth/Signup'
 import Login from '../auth/Login'
+import MyDialog from '../Dialog'
+
+import breakpoints from '@/assets/breakpoints'
+import routes from '../variables/routes'
 
 const Navbar = () => {
   const iconWidth = 40
   const iconHeight = 30
   const iconFill = 'currentColor'
   const [isOpen, setIsOpen] = useState(false)
+  const session = useSession()
+  const supabase = useSupabaseClient()
+  const router = useRouter()
 
   const toggle = () => setIsOpen(prevIsOpen => !prevIsOpen)
+
+  function signOut() {
+    supabase.auth.signOut()
+    router.push('/')
+  }
 
   return (
     <>
@@ -79,8 +94,32 @@ const Navbar = () => {
             height={iconHeight}
             fill="rgb(var(--f-text-color))"
           /> */}
-          <Login />
-          <Signup />
+          <Link href={routes.ACCOUNT}>
+            <ProfileIcon
+              width={iconWidth}
+              height={iconHeight}
+              fill="rgb(var(--f-text-color))"
+            />
+          </Link>
+          {
+            session ? <>
+
+              <Button
+                padding='.5rem'
+                onClick={signOut}
+              >
+                Sign Out
+              </Button>
+            </>
+              : <>
+                <MyDialog
+                  name='Sign Up'
+                  description='Create an account to bookmark movies and tv series.'
+                >
+                  <Signup />
+                </MyDialog>
+              </>
+          }
         </div>
       </Bar>
     </>
@@ -91,7 +130,7 @@ const Bar = styled.nav`
   display: flex;
   align-items: center;
   padding: .5rem 1rem;
-  background: linear-gradient(70deg, rgb(var(--sub-theme-color), .4), rgb(var(--f-bg-color), .8) 50%);
+  background: linear-gradient(70deg, rgb(var(--sub-theme-color), .6), rgb(var(--f-bg-color), .8) 50%);
 
   .bar-item {
     display: flex;

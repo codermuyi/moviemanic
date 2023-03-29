@@ -9,14 +9,12 @@ const genrePage = ({ data, name, id }: any) => {
       <Meta
         title={`${name} - TV Series | Moviemanic`}
       />
-      <PageLayout>
-        <GenrePageContent
-          name={name}
-          data={data}
-          mediaType='tv'
-          id={id}
-        />
-      </PageLayout>
+      <GenrePageContent
+        name={name}
+        data={data}
+        mediaType='tv'
+        id={id}
+      />
     </>
   )
 }

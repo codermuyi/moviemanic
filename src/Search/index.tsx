@@ -24,8 +24,8 @@ const Search = () => {
   }
 
   return (
-    <Cont onSubmit={handleSubmit}>
-      <Field>
+    <Cont onSubmit={handleSubmit} className='flex-center'>
+      <Field className='flex-center'>
         <SearchIcon width="30px" height="30px" fill="currentColor" />
         <input
           type="search"
@@ -45,15 +45,16 @@ const Search = () => {
 };
 
 const Cont = styled.form`
-  display: flex;
   padding: 1rem 2rem;
   gap: 1em;
-  max-width: 800px;
-  margin-inline: auto;
 
   @media ${breakpoints.lg} {
-    padding-top: 3rem;
     font-size: 2rem;
+    width: 100%;
+    border-radius: 10px;
+    background: linear-gradient(to right, rgb(var(--dark-theme-color)), rgb(var(--main-theme-color)));
+    padding: .2rem 0;
+    margin-block: 3px 1rem;
   }
 
   .button {
@@ -68,11 +69,10 @@ const Cont = styled.form`
 `;
 
 const Field = styled.div`
-  display: flex;
-  align-items: center;
   gap: 1em;
   position: relative;
   width: 100%;
+  max-width: 500px;
 
   > * {
     position: absolute;
@@ -85,7 +85,7 @@ const Field = styled.div`
 
   input {
     right: 0;
-    padding: 1em;
+    padding: 1rem;
     padding-left: 2.5rem;
     background: inherit;
     border: 0;
@@ -101,7 +101,7 @@ const Field = styled.div`
     }
 
     @media ${breakpoints.lg} {
-      font-size: 1rem;
+      padding-block: .5rem;
     }
   }
 `;

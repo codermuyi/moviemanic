@@ -17,6 +17,7 @@
   
   --main-theme-color: 186,79,58;
   --sub-theme-color: 78, 100, 160;
+  --dark-theme-color: 22, 14, 53;
   
   --f-bg-color: 9, 9, 9; 
   --f-text-color: 244, 244, 244;
@@ -72,6 +73,17 @@ a {
   color: white !important;
   cursor: not-allowed !important;
   box-shadow: none;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.grid-center {
+  display: grid;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (prefers-color-scheme: dark) {
