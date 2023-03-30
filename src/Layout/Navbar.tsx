@@ -16,7 +16,7 @@ import Sidebar from '../Sidebar'
 import Button from '../atoms/Button'
 import NavLink from '../atoms/NavLink'
 import Signup from '../auth/Signup'
-import Login from '../auth/Login'
+// import Auth from '../auth/Auth'
 import MyDialog from '../Dialog'
 
 import breakpoints from '@/assets/breakpoints'
@@ -33,9 +33,9 @@ const Navbar = () => {
 
   const toggle = () => setIsOpen(prevIsOpen => !prevIsOpen)
 
-  function signOut() {
-    supabase.auth.signOut()
-    router.push('/')
+  const signOut = async () => {
+    await supabase.auth.signOut()
+    router.push(routes.SIGN_IN)
   }
 
   return (
@@ -89,11 +89,6 @@ const Navbar = () => {
         </div>
 
         <div className='bar-item'>
-          {/* <ProfileIcon
-            width={iconWidth}
-            height={iconHeight}
-            fill="rgb(var(--f-text-color))"
-          /> */}
           <Link href={routes.ACCOUNT}>
             <ProfileIcon
               width={iconWidth}
@@ -102,23 +97,21 @@ const Navbar = () => {
             />
           </Link>
           {
-            session ? <>
-
+            session ?
               <Button
                 padding='.5rem'
                 onClick={signOut}
               >
                 Sign Out
               </Button>
-            </>
-              : <>
-                <MyDialog
-                  name='Sign Up'
-                  description='Create an account to bookmark movies and tv series.'
-                >
-                  <Signup />
-                </MyDialog>
-              </>
+              :
+              <MyDialog
+                noButton
+                name={<Button padding='.5rem'>Sign up</Button>}
+                title=''
+              >
+                <Signup />
+              </MyDialog>
           }
         </div>
       </Bar>

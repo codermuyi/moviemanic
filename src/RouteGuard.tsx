@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 import { useSession } from '@supabase/auth-helpers-react';
@@ -10,29 +10,15 @@ export default function RouteGuard({ children }: any) {
   const router = useRouter()
   const [authorized, setAuthorized] = useState(false)
   const session = useSession()
-  const content = useRef(<></>)
 
-  const hideContent = () => {
-    setAuthorized(false)
-    window.scrollTo({
-      top: 0,
-      left: 0,
-    })
-  };
-
-  const showContent = () => {
-    setAuthorized(true)
-  };
+  const hideContent = () => setAuthorized(false)
+  const showContent = () => setAuthorized(true)
 
   useEffect(() => {
     authCheck(router.asPath);
-
-    router.events.on('routeChangeStart', hideContent);
-
     router.events.on('routeChangeComplete', authCheck)
-
+    
     return () => {
-      router.events.off('routeChangeStart', hideContent);
       router.events.off('routeChangeComplete', authCheck);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -42,8 +28,6 @@ export default function RouteGuard({ children }: any) {
     const privatePaths = [routes.ACCOUNT];
     const privateWhenLoggedIn = [routes.SIGN_IN, routes.SIGN_UP, routes.HOME]
     const path = url.split('?')[0];
-
-    console.log('PATH: ', path)
 
     if (privatePaths.includes(path)) {
       // If user is signed in

@@ -8,17 +8,18 @@ interface DialogProps {
   description?: string
   children?: React.ReactNode
   contentStyle?: any
+  noButton?: boolean 
 }
 
-const MyDialog: React.FC<DialogProps> = ({ name, title, description, children, contentStyle }) => (
+const MyDialog: React.FC<DialogProps> = ({ name, title, description, children, contentStyle, noButton }) => (
   <Dialog.Root>
     <Dialog.Trigger asChild>
-      <Button padding='.5rem'>{name}</Button>
+      {!noButton ? <Button padding='.5rem'>{name}</Button> : name}
     </Dialog.Trigger>
     <Dialog.Portal>
       <Dialog.Overlay className={styles.DialogOverlay} />
       <Dialog.Content className={styles.DialogContent} style={contentStyle}>
-        <Dialog.Title className={styles.DialogTitle}>{title || name}</Dialog.Title>
+        <Dialog.Title className={styles.DialogTitle}>{title ?? name}</Dialog.Title>
         <Dialog.Description className={styles.DialogDescription}>
           {description}
         </Dialog.Description>

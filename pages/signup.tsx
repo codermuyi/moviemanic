@@ -1,12 +1,22 @@
-import React from 'react'
+import Auth from "@/src/auth/Auth"
+import Meta from "@/src/atoms/Meta"
+import BlockBottomLink from "@/src/atoms/BlockBottomLink"
 import RouteGuard from '@/src/RouteGuard'
 
-const signup = () => {
+const LoginPage = () => {
   return (
-    <RouteGuard>
-      
-    </RouteGuard>
+    <>
+      <Meta
+        title='Sign Up | Moviemanic'
+      />
+      <RouteGuard>
+        <div className="container" style={{ padding: '50px 0 100px 0' }}>
+          <Auth view='sign_up' />
+        </div>
+        <BlockBottomLink />
+      </RouteGuard>
+    </>
   )
 }
 
-export default signup
+export default LoginPage
