@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components'
 import breakpoints from '@/assets/breakpoints'
 import FilmCard2 from '../Cards/FilmCard2'
 import FilmCard3 from '../Cards/FilmCard3'
+import ListStyleCard from '../Cards/ListStyleCard'
 
 interface GridProps {
   title?: string
@@ -9,6 +10,7 @@ interface GridProps {
   centerTitle?: boolean
   mediaType?: string
   isGenre?: boolean
+  isListStyle?: boolean
 }
 
 const FilmGrid = ({
@@ -16,12 +18,13 @@ const FilmGrid = ({
   data,
   centerTitle,
   mediaType,
-  isGenre
+  isGenre,
+  isListStyle
 }: GridProps) => {
 
   return (
     <>
-      {data?.[0] && <Divv centerTitle={centerTitle} isGenre={isGenre}>
+      {data?.[0] && <Divv centerTitle={centerTitle} isGenre={isGenre} isListStyle={isListStyle}>
         {title && <h2>{title}</h2>}
         <div className='film-list'>
           {
@@ -29,6 +32,15 @@ const FilmGrid = ({
               if (isGenre) {
                 if (i > 4) return
                 return <FilmCard3
+                  key={i}
+                  isTrending={false}
+                  type={film.media_type || mediaType}
+                  data={film}
+                />
+              }
+              if (isListStyle) {
+                if (i > 2) return
+                return <ListStyleCard
                   key={i}
                   isTrending={false}
                   type={film.media_type || mediaType}
@@ -78,6 +90,10 @@ const Divv = styled.div.attrs((props) => {
           }
         }
       }
+    `}
+
+    ${p => p.isListStyle && css`
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     `}
 
     @media ${breakpoints.xl} {

@@ -5,6 +5,7 @@ import { useSupabaseClient, useSession } from '@supabase/auth-helpers-react';
 import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa, ViewType } from '@supabase/auth-ui-shared'
 import { AuthChangeEvent } from '@supabase/gotrue-js'
+// import { server } from 'config'
 
 import routes from 'src/variables/routes'
 
@@ -48,6 +49,7 @@ const CustomAuth = ({ view }: {
         providers={[]}
         view={authView}
         showLinks={false}
+        // redirectTo={`${server}/my-account`}
       />}
       <div className='auth-links grid-center'>
         {

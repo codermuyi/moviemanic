@@ -1,19 +1,17 @@
-import Meta from '@/src/atoms/Meta'
 import styled from 'styled-components'
-import PageLayout from '@/src/Layout/PageLayout'
-import breakpoints from '@/assets/breakpoints'
+import useSwr from 'swr'
+import { useRouter } from "next/router"
+
+import Meta from '@/src/atoms/Meta'
+import Loader from '../atoms/Loader'
 import FilmPoster from '@/src/FilmPageContent/FilmPoster'
 import FilmInfo from '@/src/FilmPageContent/FilmInfo'
 import SimilarFilms from '@/src/atoms/FilmGrid'
-
-import useSwr from 'swr'
-import { myFetch } from "@/assets/utilities"
-import { useRouter } from "next/router"
-import Loader from '../atoms/Loader'
-
 import BlockBottomLink from '../atoms/BlockBottomLink'
 import Backdrop from './FilmBackdrop'
 import RouteGuard from '../RouteGuard'
+import breakpoints from '@/assets/breakpoints'
+import { myFetch } from "@/assets/utilities"
 
 interface Props {
   media_type: string
@@ -92,7 +90,6 @@ const PageBody = styled.div`
     display: grid;
     grid-template-columns: 350px minmax(10px, 1fr);
     grid-template-rows: 2;
-    max-width: 2000px;
     
     & > *:not(:last-child) {
       margin-bottom: 2rem;

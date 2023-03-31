@@ -1,7 +1,7 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import styles from './Dialog.module.css';
 import Button from '../atoms/Button';
-import X from '../icons/X'
+import X from '../icons/XIcon'
 
 interface DialogProps {
   name?: string | React.ReactNode
