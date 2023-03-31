@@ -1,22 +1,23 @@
 import styled from 'styled-components';
-import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
+import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import { useState } from 'react'
 
 import Dialog from '@/src/Dialog';
 import Toast from 'src/Toast'
 import Button from '@/src/atoms/Button'
-import Right from '../icons/RightArrowIcon';
+import RightArrowIcon from '../icons/RightArrowIcon';
 import breakpoints from 'assets/breakpoints'
 
-const FirstScreenJSX = ({ profile }: any) => {
-  const session = useSession()
+const GetStartedTSX = ({ profile, session }: any) => {
   const supabase = useSupabaseClient()
   const [username, setUsername] = useState('')
+  const [toastOpen, setToastOpen] = useState(false)
+  const [toastMessage, setToastMessage] = useState('')
 
   async function saveUsername(e: any) {
     e.preventDefault()
 
-    await supabase
+    const { data, error } = await supabase
       .from('profiles')
       .insert([
         {
@@ -24,12 +25,25 @@ const FirstScreenJSX = ({ profile }: any) => {
           user_id: session?.user.id
         }
       ])
+
+    if (error) {
+      setToastMessage('Failed to set username')
+      setToastOpen(true)
+    }
+    if (data) {
+      setToastMessage('Set username succesfully')
+      setToastOpen(true)
+    }
   }
 
   return (
     <>
       {profile?.length === 0 && <FirstScreen className='flex-center'>
-        {/* <Toast /> */}
+        <Toast
+          open={toastOpen}
+          setOpen={setToastOpen}
+          message={toastMessage}
+        />
         <p>Get started to add movies and tv shows to your list</p>
         <Dialog
           noButton
@@ -45,7 +59,7 @@ const FirstScreenJSX = ({ profile }: any) => {
                 onChange={(e) => setUsername(e.target.value)}
               />
               <Button padding='10px'>
-                <Right />
+                <RightArrowIcon />
               </Button>
             </form>
           </NamePrompt>
@@ -118,5 +132,4 @@ const NamePrompt = styled.div`
   }
 `
 
-
-export default FirstScreenJSX
+export default GetStartedTSX

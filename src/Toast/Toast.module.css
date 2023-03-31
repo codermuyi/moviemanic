@@ -22,7 +22,7 @@
   box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
   padding: 15px;
   display: grid;
-  grid-template-areas: 'title action' 'description action';
+  grid-template-areas: 'description action';
   grid-template-columns: auto max-content;
   column-gap: 15px;
   align-items: center;
@@ -71,14 +71,6 @@
   }
 }
 
-.ToastTitle {
-  grid-area: title;
-  margin-bottom: 5px;
-  font-weight: 500;
-  color: rgb(var(--main-theme-color));
-  font-size: 15px;
-}
-
 .ToastDescription {
   grid-area: description;
   margin: 0;
@@ -89,24 +81,4 @@
 
 .ToastAction {
   grid-area: action;
-}
-
-.Button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  font-weight: 500;
-}
-.Button.small {
-  font-size: 12px;
-  padding: 0 10px;
-  line-height: 25px;
-  height: 25px;
-}
-.Button.large {
-  font-size: 15px;
-  padding: 0 15px;
-  line-height: 35px;
-  height: 35px;
 }
