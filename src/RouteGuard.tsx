@@ -52,5 +52,5 @@ export default function RouteGuard({ children }: any) {
     }
   }
 
-  return authorized ? children : <Loader />
+  return authorized ? children : <Loader paddingBlock='10rem' />
 }

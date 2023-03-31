@@ -8,9 +8,13 @@ interface SpinnerProps {
   duration?: number;
 }
 
-const Loader = (props: SpinnerProps) => {
+interface LoaderProps extends SpinnerProps {
+  paddingBlock?: string;
+}
+
+const Loader = (props: LoaderProps) => {
   return (
-    <Loadr>
+    <Loadr className='flex-center' paddingBlock={props.paddingBlock}>
       <SpinnerBody {...props} />
     </Loadr>
   )
@@ -25,11 +29,8 @@ const spinnerAnimation = keyframes`
   }
 `;
 
-const Loadr = styled.div`
-  display: flex;
-  justify-content: center;
-  padding-block: 10rem;
-  grid-column: 1 / -1;
+const Loadr = styled.div<LoaderProps>`
+  padding-block: ${p => p.paddingBlock ? p.paddingBlock : '4rem'};
 `
 
 const SpinnerBody = styled.div<SpinnerProps>`
