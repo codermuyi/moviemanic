@@ -56,7 +56,10 @@ const FilmPageContent = ({ media_type }: Props) => {
           {isLoading && info.success ?
             <Loader /> :
             <>
-              <Backdrop info={info} />
+              <Backdrop
+                info={info}
+                mediaType={media_type}
+              />
               <FilmPoster
                 path={info.poster_path}
                 info={info}

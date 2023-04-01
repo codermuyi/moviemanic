@@ -3,11 +3,13 @@ import FilmTitle from './FilmTitle'
 import FilmPoster from '@/src/FilmPageContent/FilmPoster'
 import breakpoints from '@/assets/breakpoints'
 
-const FilmBackdrop = ({ info }: any) => {
+const FilmBackdrop = ({ info, mediaType }: any) => {
   return (
     <Backdrop backdrop={info.backdrop_path}>
       <FilmPoster
         path={info.poster_path}
+        info={info}
+        mediaType={mediaType}
       />
       <FilmTitle
         name={info.name}
