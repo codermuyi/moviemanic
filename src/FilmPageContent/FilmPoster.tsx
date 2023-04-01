@@ -1,64 +1,18 @@
 import Image from 'next/image'
 import styled from 'styled-components'
-import useSwr from 'swr'
 import { useState } from 'react'
-import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 
 import Button from 'src/atoms/Button'
-import Toast from '../Toast'
 import breakpoints from '@/assets/breakpoints'
-// import useSupabase from '../useSupabase'
-import { myFetch } from '@/assets/utilities'
+import useAddToList from '../useAddToList'
 
 const FilmPoster = ({ path, info, mediaType }: { path: string, info: any, mediaType: string }) => {
   const [src, setSrc] = useState(`https://image.tmdb.org/t/p/w1280${path}`)
-  const supabase = useSupabaseClient()
-  const session = useSession()
-  const { data: profile } = useSwr('/api/profile-details', myFetch)
-  const [toastMessage, setToastMessage] = useState('')
-  const [toastOpen, setToastOpen] = useState(false)
-  // const [supabase, session] = useSupabase()
-
-  async function setFilmInfo() {
-    if (info) {
-      const { status } = await supabase
-        .from('film_list')
-        .insert([
-          {
-            media_type: mediaType,
-            film_id: info.id,
-            user_id: session?.user.id,
-            title: info.title || info.name,
-            year: parseInt(info.release_date || info.first_air_date),
-            poster_path: path,
-            backdrop_path: info.backdrop_path,
-            genres: info.genres.map((g: any) => g.name),
-            status: info.status,
-            // To avoid duplicates for each user
-            dup: session?.user.id + info.id
-          }
-        ])
-
-      if (status === 201) {
-        setToastOpen(true)
-        setToastMessage('Added film to your list')
-      }
-      if (status === 409) {
-        setToastOpen(true)
-        setToastMessage('Film already in your list')
-      }
-
-      console.log('Status: ', status)
-    }
-  }
+  const [addToList, AddFilmToast, username] = useAddToList(info, mediaType)
 
   return (
     <Poster className='film-poster'>
-      <Toast 
-        open={toastOpen}
-        setOpen={setToastOpen}
-        message={toastMessage}
-      />
+      <AddFilmToast />
       <div className='sticky'>
         <Image
           src={src}
@@ -68,7 +22,7 @@ const FilmPoster = ({ path, info, mediaType }: { path: string, info: any, mediaT
           className='poster-img'
           onError={() => setSrc('/no-image.svg')}
         />
-        {profile?.[0]?.username && <Button onClick={() => setFilmInfo()}>Add to list</Button>}
+        {username && <Button onClick={addToList}>Add to list</Button>}
       </div>
     </Poster>
   )
