@@ -205,6 +205,9 @@ const Overlay = styled.div`
   position: fixed;
   inset: 0;
   background-color: rgb(0 0 0 / .6);
+  -webkit-backdrop-filter: blur(3px) brightness(100%);
+  backdrop-filter: blur(3px) brightness(100%);
+  cursor: pointer;
 `
 
 export default Sidebar
