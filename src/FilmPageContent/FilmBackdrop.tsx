@@ -32,18 +32,14 @@ const Backdrop = styled.div.attrs(p => {
   border-radius: 0 50px 50px 0;
   overflow: hidden;
   margin-bottom: 2rem;
+  isolation: isolate;
 
   :before {
     content: '';
     position: absolute;
     inset: 0;
     background: linear-gradient(to right, rgb(var(--dark-theme-color)), rgb(var(--main-theme-color), .7), transparent 100%);
-    z-index: 1;
-  }
-
-  & > * {
-    position: relative;
-    z-index: 2;
+    z-index: -1;
   }
 
   @media ${breakpoints.md} {
