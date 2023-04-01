@@ -1,9 +1,9 @@
-import { forwardRef } from 'react'
+import { forwardRef, ReactNode } from 'react'
 
 interface Props {
   color?: string
   bgColor?: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
   height?: string;
   onClick?: () => void;
   radius?: string
@@ -13,8 +13,7 @@ interface Props {
   disabled?: boolean
   name?: string
   noShadow?: boolean
-  // otherProps?: any
-  className?: string
+  [key: string]: any
 }
 
 const Button = forwardRef(({
@@ -30,11 +29,12 @@ const Button = forwardRef(({
   disabled,
   name,
   noShadow,
-  // ...otherProps
+  ...otherProps
 }: Props, ref) => {
   return (
     <button
-      className='button'
+      {...otherProps}
+      className={`${otherProps.className ? `button ${otherProps.className}` : 'button'}`}
       onClick={onClick}
       style={{
         backgroundColor: bgColor,
@@ -48,7 +48,6 @@ const Button = forwardRef(({
       }}
       disabled={disabled}
       aria-label={name}
-    // {...otherProps}
     >
       {children}
     </button>
