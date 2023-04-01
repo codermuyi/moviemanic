@@ -6,9 +6,14 @@ import Loader from 'src/atoms/Loader'
 import breakpoints from 'assets/breakpoints'
 import { filmCategories } from 'assets/film_info'
 import { myFetch } from '@/assets/utilities';
+import FilmCard2 from '../Cards/FilmCard2';
 
 const UserInfoJSX = ({ profile, session, filmList }: any) => {
   const { data: categories, isLoading } = useSwr('/api/categories', myFetch)
+
+  const newList = filmList.map((film: any) => ({...film, id: film.film_id}))
+  const movies = newList.filter((film: any) => film.media_type === 'movie')
+  const tv_series = newList.filter((film: any) => film.media_type === 'tv')
 
   return (
     <>
@@ -21,12 +26,34 @@ const UserInfoJSX = ({ profile, session, filmList }: any) => {
             <div className='film-list'>
               <div className='movie-list'>
                 <h2 className='title'>Movies</h2>
-                <p>Movies added to your list will show up here</p>
+                {
+                  movies?.[0] ?
+                    <div className='film-grid'>
+                      {movies.map((film: any, i: number) => <FilmCard2
+                        key={i}
+                        isTrending={false}
+                        type={film.media_type}
+                        data={film}
+                      />)}
+                    </div>
+                    : <p>Movies added to your list will show up here</p>
+                }
                 <br />
               </div>
               <div className='tv-list'>
                 <h2 className='title'>TV Series</h2>
-                <p>TV Series added to your list will show up here</p>
+                {
+                  tv_series?.[0] ?
+                    <div className='film-grid'>
+                      {tv_series.map((film: any, i: number) => <FilmCard2
+                        key={i}
+                        isTrending={false}
+                        type={film.media_type}
+                        data={film}
+                      />)}
+                    </div>
+                    : <p>TV Series added to your list will show up here</p>
+                }
                 <br />
               </div>
             </div>
@@ -93,6 +120,12 @@ const UserInfo = styled.div`
     }
     p {
       padding: 1rem;
+    }
+    .film-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, 150px);
+      gap: 1rem;
+      padding-block: 1rem;
     }
   }
   .movies {

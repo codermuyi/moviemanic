@@ -59,6 +59,8 @@ const FilmPageContent = ({ media_type }: Props) => {
               <Backdrop info={info} />
               <FilmPoster
                 path={info.poster_path}
+                info={info}
+                mediaType={media_type}
               />
               <FilmInfo
                 {...info}
