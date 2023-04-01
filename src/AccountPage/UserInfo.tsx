@@ -11,79 +11,75 @@ import FilmCard2 from '../Cards/FilmCard2';
 const UserInfoJSX = ({ profile, session, filmList }: any) => {
   const { data: categories, isLoading } = useSwr('/api/categories', myFetch)
 
-  const newList = filmList.map((film: any) => ({...film, id: film.film_id}))
-  const movies = newList.filter((film: any) => film.media_type === 'movie')
-  const tv_series = newList.filter((film: any) => film.media_type === 'tv')
+  const movies = filmList.filter((film: any) => film.media_type === 'movie')
+  const tv_series = filmList.filter((film: any) => film.media_type === 'tv')
 
   return (
-    <>
-      {
-        profile?.[0] && <UserInfo>
-          <div>
-            <p className='username' style={{ fontSize: '2rem' }}>
-              Welcome, {profile[0].username} <span className='smile'>: )</span>
-            </p>
-            <div className='film-list'>
-              <div className='movie-list'>
-                <h2 className='title'>Movies</h2>
-                {
-                  movies?.[0] ?
-                    <div className='film-grid'>
-                      {movies.map((film: any, i: number) => <FilmCard2
-                        key={i}
-                        isTrending={false}
-                        type={film.media_type}
-                        data={film}
-                      />)}
-                    </div>
-                    : <p>Movies added to your list will show up here</p>
-                }
-                <br />
-              </div>
-              <div className='tv-list'>
-                <h2 className='title'>TV Series</h2>
-                {
-                  tv_series?.[0] ?
-                    <div className='film-grid'>
-                      {tv_series.map((film: any, i: number) => <FilmCard2
-                        key={i}
-                        isTrending={false}
-                        type={film.media_type}
-                        data={film}
-                      />)}
-                    </div>
-                    : <p>TV Series added to your list will show up here</p>
-                }
-                <br />
-              </div>
-            </div>
-            {filmList.length === 0 && <p>
-              *To add films to your list, click on the bookmark icon.
-            </p>}
+    <UserInfo>
+      <div>
+        <p className='username' style={{ fontSize: '2.3rem' }}>
+          <span>Welcome, {profile[0].username}</span>
+          <span className='smile'>: )</span>
+        </p>
+        <div className='film-list'>
+          <div className='movie-list'>
+            <h2 className='title'>Movies</h2>
+            {
+              movies?.[0] ?
+                <div className='film-grid'>
+                  {movies.map((film: any, i: number) => <FilmCard2
+                    key={i}
+                    isTrending={false}
+                    type={film.media_type}
+                    data={film}
+                  />)}
+                </div>
+                : <p>Movies added to your list will show up here</p>
+            }
             <br />
           </div>
+          <div className='tv-list'>
+            <h2 className='title'>TV Series</h2>
+            {
+              tv_series?.[0] ?
+                <div className='film-grid'>
+                  {tv_series.map((film: any, i: number) => <FilmCard2
+                    key={i}
+                    isTrending={false}
+                    type={film.media_type}
+                    data={film}
+                  />)}
+                </div>
+                : <p>TV Series added to your list will show up here</p>
+            }
+            <br />
+          </div>
+        </div>
+        {filmList.length === 0 && <p>
+          *To add films to your list, click on the bookmark icon.
+        </p>}
+        <br />
+      </div>
 
-          <Aside>
-            <h2 className='title'>Check out these movies and tv series</h2>
-            <ScrollBar style={{ maxHeight: '100%' }} autoHide={false}>
-              {
-                !isLoading ? filmCategories?.map((c: any, i: number) =>
-                  <div key={c.id}>
-                    <FilmGrid
-                      isListStyle
-                      data={categories?.[i]?.results}
-                      mediaType={c.type}
-                      title={c.name}
-                    />
-                  </div>
-                )
-                  : <Loader paddingBlock='7rem' />
-              }
-            </ScrollBar>
-          </Aside>
-        </UserInfo>
-      }
-    </>
+      <Aside>
+        <h2 className='title'>Check out these movies and tv series</h2>
+        <ScrollBar style={{ maxHeight: '100%' }} autoHide={false}>
+          <br />
+          {
+            !isLoading ? filmCategories?.map((c: any, i: number) =>
+              <FilmGrid
+                key={c.id}
+                isListStyle
+                data={categories?.[i]?.results}
+                mediaType={c.type}
+                title={c.name}
+              />
+            )
+              : <Loader paddingBlock='7rem' />
+          }
+        </ScrollBar>
+      </Aside>
+    </UserInfo>
   )
 }
 
@@ -95,6 +91,7 @@ const UserInfo = styled.div`
     padding-bottom: 1rem;
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
 
     .smile {
       transform: rotate(90deg);
@@ -109,10 +106,12 @@ const UserInfo = styled.div`
 
     .title {
       position: relative;
+      font-size: 200%;
+      
       ::before {
         content: '';
         position: absolute;
-        left: -10px;
+        left: -15px;
         height: 100%;
         width: 4px;
         background-color: rgb(var(--main-theme-color));
@@ -128,27 +127,27 @@ const UserInfo = styled.div`
       padding-block: 1rem;
     }
   }
-  .movies {
-
-  }
-  .tv-series {
-
-  }
 
   @media ${breakpoints.lg} {
     display: grid;
-    grid-template-columns: 1fr minmax(180px, 340px);
+    grid-template-columns: 1fr 340px;
   }
 `
 
 const Aside = styled.div`
+  h2.title {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
   @media ${breakpoints.lg} {
     position: sticky;
     top: 0;
-    max-height: 100vh;
+    max-height: 96vh;
     overflow: hidden;
     background-color: rgb(var(--f-bg-color), .6);
-    border-radius: 20px;
+    border-radius: 30px;
+    padding-block: .5rem;
 
     h2.title {
       display: none;

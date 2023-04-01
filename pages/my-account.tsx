@@ -8,6 +8,7 @@ import Button from '@/src/atoms/Button'
 import RouteGuard from '@/src/RouteGuard';
 import GetStarted from '@/src/AccountPage/GetStarted';
 import UserInfo from 'src/AccountPage/UserInfo'
+import Loader from '@/src/atoms/Loader';
 
 import routes from 'src/variables/routes'
 import { myFetch } from '@/assets/utilities';
@@ -17,7 +18,7 @@ export default function AccountPage() {
   const session = useSession()
   const supabase = useSupabaseClient()
   const { data: profile } = useSWR('/api/profile-details', myFetch)
-  const [filmList, setFilmList] = useState<any>([])
+  const [filmList, setFilmList] = useState<{ [x: string]: any } | null>(null)
 
   const signOut = async () => {
     await supabase.auth.signOut()
@@ -43,26 +44,27 @@ export default function AccountPage() {
       <Meta title='My Account | Moviemanic' />
       <RouteGuard>
         {
-          !profile?.[0]?.username ?
-            /* Display if username does not exists */
-            <GetStarted
+          profile?.[0]?.username ?
+            filmList ?
+              <>
+                <UserInfo
+                  profile={profile}
+                  session={session}
+                  filmList={filmList}
+                />
+                <Button
+                  padding='.5rem'
+                  margin='.5rem'
+                  onClick={signOut}
+                >
+                  Sign Out
+                </Button>
+              </>
+              : <Loader paddingBlock='10rem' />
+            : <GetStarted
               profile={profile}
               session={session}
             />
-            : <>
-              <UserInfo
-                profile={profile}
-                session={session}
-                filmList={filmList}
-              />
-              <Button
-                padding='.5rem'
-                margin='.5rem'
-                onClick={signOut}
-              >
-                Sign Out
-              </Button>
-            </>
         }
       </RouteGuard>
     </>
