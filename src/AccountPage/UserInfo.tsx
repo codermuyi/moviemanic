@@ -11,8 +11,16 @@ import FilmCard2 from '../Cards/FilmCard2';
 const UserInfoJSX = ({ profile, session, filmList }: any) => {
   const { data: categories, isLoading } = useSwr('/api/categories', myFetch)
 
-  const movies = filmList.filter((film: any) => film.media_type === 'movie')
-  const tv_series = filmList.filter((film: any) => film.media_type === 'tv')
+  function getSeconds(date: string) {
+    return (new Date(date)).getTime() / 1000
+  }
+
+  const newFilmList = filmList.sort((a: any, b: any) => {
+    return getSeconds(b.created_at) - getSeconds(a.created_at)
+  })
+
+  const movies = newFilmList.filter((film: any) => film.media_type === 'movie')
+  const tv_series = newFilmList.filter((film: any) => film.media_type === 'tv')
 
   return (
     <UserInfo>
@@ -107,7 +115,7 @@ const UserInfo = styled.div`
     .title {
       position: relative;
       font-size: 200%;
-      
+
       ::before {
         content: '';
         position: absolute;
