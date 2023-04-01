@@ -1,15 +1,20 @@
 import styled from 'styled-components';
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import { useState } from 'react'
+import { useRouter } from 'next/router';
 
 import Dialog from '@/src/Dialog';
 import Toast from 'src/Toast'
 import Button from '@/src/atoms/Button'
 import RightArrowIcon from '../icons/RightArrowIcon';
+import Loader from 'src/atoms/Loader'
 import breakpoints from 'assets/breakpoints'
+
+let hide = false;
 
 const GetStartedTSX = ({ profile, session }: any) => {
   const supabase = useSupabaseClient()
+  const router = useRouter()
   const [username, setUsername] = useState('')
   const [toastOpen, setToastOpen] = useState(false)
   const [toastMessage, setToastMessage] = useState('')
@@ -17,7 +22,7 @@ const GetStartedTSX = ({ profile, session }: any) => {
   async function saveUsername(e: any) {
     e.preventDefault()
 
-    const { data, error } = await supabase
+    const { error, status } = await supabase
       .from('profiles')
       .insert([
         {
@@ -26,24 +31,26 @@ const GetStartedTSX = ({ profile, session }: any) => {
         }
       ])
 
+    if (status === 201) {
+      setToastMessage('Set username succesfully')
+      setToastOpen(true)
+      router.reload()
+      hide = true
+    }
     if (error) {
       setToastMessage('Failed to set username')
-      setToastOpen(true)
-    }
-    if (data) {
-      setToastMessage('Set username succesfully')
       setToastOpen(true)
     }
   }
 
   return (
     <>
-      {profile?.length === 0 && <FirstScreen className='flex-center'>
-        <Toast
-          open={toastOpen}
-          setOpen={setToastOpen}
-          message={toastMessage}
-        />
+      <Toast
+        open={toastOpen}
+        setOpen={setToastOpen}
+        message={toastMessage}
+      />
+      {!hide && <FirstScreen className='flex-center'>
         <p>Get started to add movies and tv shows to your list</p>
         <Dialog
           noButton
@@ -66,6 +73,7 @@ const GetStartedTSX = ({ profile, session }: any) => {
         </Dialog>
       </FirstScreen>
       }
+      {hide && <Loader paddingBlock='10rem' />}
     </>
   )
 }
@@ -74,7 +82,7 @@ const FirstScreen = styled.div`
   padding-block: 10rem;
   background-color: rgb(var(-f-bg-color));
   gap: 1rem;
-
+  flex-direction: column;
   
   & > .button {
     --size: 12rem;
@@ -107,7 +115,6 @@ const FirstScreen = styled.div`
     }
   }
 
-  flex-direction: column;
   @media ${breakpoints.md} {
     flex-direction: row;
   }

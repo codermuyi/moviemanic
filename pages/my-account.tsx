@@ -1,4 +1,3 @@
-// import styled from 'styled-components';
 import useSWR from 'swr'
 import { useState, useEffect } from 'react'
 import { useRouter } from "next/router";
@@ -43,25 +42,28 @@ export default function AccountPage() {
     <>
       <Meta title='My Account | Moviemanic' />
       <RouteGuard>
-        <GetStarted
-          profile={profile}
-          session={session}
-        />
         {
-          session && <UserInfo
-            user={session.user}
-            profile={profile}
-            filmList={filmList}
-          />
+          !profile?.[0]?.username ?
+            /* Display if username does not exists */
+            <GetStarted
+              profile={profile}
+              session={session}
+            />
+            : <>
+              <UserInfo
+                profile={profile}
+                session={session}
+                filmList={filmList}
+              />
+              <Button
+                padding='.5rem'
+                margin='.5rem'
+                onClick={signOut}
+              >
+                Sign Out
+              </Button>
+            </>
         }
-
-        <Button
-          padding='.5rem'
-          margin='.5rem'
-          onClick={signOut}
-        >
-          Sign Out
-        </Button>
       </RouteGuard>
     </>
   )

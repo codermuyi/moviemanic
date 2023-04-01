@@ -1,19 +1,23 @@
 import styled from 'styled-components'
-
-import { filmCategories } from 'assets/film_info'
-// import Category from 'src/Category'
+import useSwr from 'swr';
 import FilmGrid from '@/src/atoms/FilmGrid';
 import ScrollBar from 'src/atoms/ScrollBar'
+import Loader from 'src/atoms/Loader'
 import breakpoints from 'assets/breakpoints'
+import { filmCategories } from 'assets/film_info'
+import { myFetch } from '@/assets/utilities';
 
+const UserInfoJSX = ({ profile, session, filmList }: any) => {
+  const { data: categories, isLoading } = useSwr('/api/categories', myFetch)
 
-const UserInfoJSX = ({ user, profile, filmList, categories }: any) => {
   return (
     <>
       {
         profile?.[0] && <UserInfo>
           <div>
-            <p className='username' style={{ fontSize: '2rem' }}>Welcome, {profile[0].username} <span className='smile'>: )</span></p>
+            <p className='username' style={{ fontSize: '2rem' }}>
+              Welcome, {profile[0].username} <span className='smile'>: )</span>
+            </p>
             <div className='film-list'>
               <div className='movie-list'>
                 <h2 className='title'>Movies</h2>
@@ -26,27 +30,27 @@ const UserInfoJSX = ({ user, profile, filmList, categories }: any) => {
                 <br />
               </div>
             </div>
-            {filmList.length === 0 &&
-              <p>
-                *To add films to your list, click on the bookmark icon.
-              </p>}
+            {filmList.length === 0 && <p>
+              *To add films to your list, click on the bookmark icon.
+            </p>}
             <br />
           </div>
 
           <Aside>
-            <h2>Check out these movies and tv series</h2>
+            <h2 className='title'>Check out these movies and tv series</h2>
             <ScrollBar style={{ maxHeight: '100%' }} autoHide={false}>
               {
-                filmCategories?.map((c: any, i: number) => <div key={c.id}>
-                  <FilmGrid
-                    isListStyle
-                    data={categories?.[i].results}
-                    mediaType={c.type}
-                    title={c.name}
-                  />
-                  <br />
-                </div>
+                !isLoading ? filmCategories?.map((c: any, i: number) =>
+                  <div key={c.id}>
+                    <FilmGrid
+                      isListStyle
+                      data={categories?.[i]?.results}
+                      mediaType={c.type}
+                      title={c.name}
+                    />
+                  </div>
                 )
+                  : <Loader paddingBlock='7rem' />
               }
             </ScrollBar>
           </Aside>
@@ -109,8 +113,13 @@ const Aside = styled.div`
     position: sticky;
     top: 0;
     max-height: 100vh;
+    overflow: hidden;
     background-color: rgb(var(--f-bg-color), .6);
     border-radius: 20px;
+
+    h2.title {
+      display: none;
+    }
   }
 `
 

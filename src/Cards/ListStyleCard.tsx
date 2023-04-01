@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import breakpoints from '@/assets/breakpoints'
 import CardImage from './FilmCardImage'
 import CardInfo from './FilmCardInfo'
 
@@ -36,19 +35,28 @@ const ListStyleCard = ({
 }
 
 const Card = styled.div`
-  /* grid-column: 1; */
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: .5rem;
   height: 90px;
   overflow: hidden;
-  background-color: rgb(var(--main-theme-color));
+  border-top: 2px solid rgb(var(--main-theme-color));
   border-radius: 10px;
+  background-color: rgb(var(--main-theme-color), .2);
+  transition: .3s;
 
   .card-image {
-    width: 90px;
+    width: 80px;
     object-fit: cover;
-    object-position: top left;
+    object-position: center;
+    transition: .3s;
+  }
+
+  :hover {
+    box-shadow: 0 3px 3px rgb(0 0 0 / .15);
+    .card-image {
+      object-position: bottom right;
+    }
   }
 `
 
