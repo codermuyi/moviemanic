@@ -17,7 +17,7 @@ const FilmCard = ({
   const linkHref = type === 'movie' ? `/movies/${data.id}` : `/tv-series/${data.id}`
 
   return data && (
-    <Card>
+    <Card className='film-card'>
       <CardImage
         isTrending={isTrending}
         data={data}

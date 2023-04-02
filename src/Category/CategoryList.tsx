@@ -63,7 +63,28 @@ const List = styled.div.attrs(p => { })`
       }
       
       @media ${breakpoints.xxl} {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: repeat(12, 1fr);
+
+        .film-card:nth-child(1) {
+          grid-column: 1 / 4;
+        }
+        .film-card:nth-child(2) {
+          grid-column: 4 / 7;
+        }
+        .film-card:nth-child(3) {
+          grid-column: 7 / 10;
+        }
+        .film-card:nth-child(4) {
+          grid-column: 10 / 13;
+        }
+        .film-card:nth-child(5) {
+          grid-column: 3 / 7;
+          grid-row: 2 / 3;
+        }
+        .film-card:nth-child(6) {
+          grid-column: 7 / 11;
+          grid-row: 2 / 3;
+        }
       }
   `}
 `
