@@ -27,7 +27,7 @@ const UserIndicatorStyle = styled.p`
   padding-inline: 1rem;
   color: rgb(var(--main-theme-color));
   background-color: rgb(var(--f-bg-color));
-  width: 12rem;
+  width: 14rem;
   padding: .7rem 0;
   position: sticky;
   top: 3.3rem;

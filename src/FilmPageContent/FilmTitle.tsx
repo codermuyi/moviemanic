@@ -23,6 +23,11 @@ const Name = styled.div`
   text-align: center;
   padding-block: 2rem;
 
+  h1 {
+    max-width: 800px;
+    margin-inline: auto;
+  }
+
   .tagline {
     font-size: .8em;
     opacity: .8;

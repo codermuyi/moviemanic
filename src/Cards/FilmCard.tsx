@@ -125,7 +125,6 @@ const Card = styled.div`
       }
       &.trending {
         transform: scale(.95);
-        filter: brightness(40%);
       }
     }
 

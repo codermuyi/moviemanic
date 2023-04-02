@@ -44,6 +44,11 @@ body {
   color: rgb(var(--main-text-color));
   font-family: var(--main-text-font);
 }
+@media (min-width: 1200px) {
+  body {
+    font-size: 20px;
+  }
+}
 
 p {
   font-family: 'Lexend', sans-serif;

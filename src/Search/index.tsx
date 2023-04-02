@@ -49,11 +49,10 @@ const Cont = styled.form`
   gap: 1em;
 
   @media ${breakpoints.lg} {
-    font-size: 2rem;
     width: 100%;
     border-radius: 10px;
     background: linear-gradient(to right, rgb(var(--dark-theme-color)), rgb(var(--main-theme-color)));
-    padding: .2rem 0;
+    padding: .5rem 0;
     margin-block: 3px 1rem;
   }
 
@@ -101,7 +100,8 @@ const Field = styled.div`
     }
 
     @media ${breakpoints.lg} {
-      padding-block: .5rem;
+      padding-block: .4rem;
+      font-size: 1.2rem;
     }
   }
 `;
