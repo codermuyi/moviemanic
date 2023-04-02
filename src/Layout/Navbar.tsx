@@ -15,8 +15,7 @@ import {
 import Sidebar from '../Sidebar'
 import Button from '../atoms/Button'
 import NavLink from '../atoms/NavLink'
-import Signup from '../auth/Signup'
-// import Auth from '../auth/Auth'
+import Login from '../auth/Login'
 import MyDialog from '../Dialog'
 
 import breakpoints from '@/assets/breakpoints'
@@ -107,10 +106,10 @@ const Navbar = () => {
               :
               <MyDialog
                 noButton
-                name={<Button padding='.5rem'>Sign up</Button>}
+                name={<Button padding='.5rem'>Sign in</Button>}
                 title=''
               >
-                <Signup />
+                <Login />
               </MyDialog>
           }
         </div>
