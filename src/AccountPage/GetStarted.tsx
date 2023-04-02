@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import Dialog from '@/src/Dialog';
 import Toast from 'src/Toast'
 import Button from '@/src/atoms/Button'
-import RightArrowIcon from '../icons/RightArrowIcon';
+import RightArrowIcon from '../icons/RightArrow';
 import Loader from 'src/atoms/Loader'
 import breakpoints from 'assets/breakpoints'
 

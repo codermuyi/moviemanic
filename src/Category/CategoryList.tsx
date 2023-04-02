@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import ScrollBar from '../atoms/ScrollBar';
+import ScrollBarX from '../atoms/ScrollBarX';
 import FilmCard from '../Cards/FilmCard'
 import breakpoints from '@/assets/breakpoints'
 
@@ -27,11 +27,12 @@ const CategoryList = ({ isTrending, data, showType }: ListProps) => {
   return (
     <>
       {isTrending ?
-        <ScrollBar autoHide={false} style={{ overflowY: 'hidden' }}>
+        <ScrollBarX>
           <List isTrending={isTrending}>
             {generateCards()}
           </List>
-        </ScrollBar> :
+        </ScrollBarX>
+        :
         <List isTrending={isTrending}>
           {generateCards()}
         </List>
@@ -40,9 +41,9 @@ const CategoryList = ({ isTrending, data, showType }: ListProps) => {
   )
 }
 
-const List = styled.div.attrs(p => { })`
+const List = styled.div<{ isTrending: boolean }>`
   gap: 1rem;
-  
+
   ${p => p.isTrending ?
     css`
       display: flex;
@@ -78,12 +79,10 @@ const List = styled.div.attrs(p => { })`
           grid-column: 10 / 13;
         }
         .film-card:nth-child(5) {
-          grid-column: 3 / 7;
-          grid-row: 2 / 3;
+          grid-column: 1 / 5;
         }
         .film-card:nth-child(6) {
-          grid-column: 7 / 11;
-          grid-row: 2 / 3;
+          grid-column: 5 / 9;
         }
       }
   `}
