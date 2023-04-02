@@ -33,6 +33,7 @@ const Category = ({
               bgColor='white'
               padding='.5rem'
               color='rgb(var(--main-theme-color))'
+              tabIndex={-1}
             >
               SEE MORE
             </Button>
