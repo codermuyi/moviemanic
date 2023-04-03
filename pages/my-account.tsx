@@ -17,7 +17,7 @@ export default function AccountPage() {
   const router = useRouter()
   const session = useSession()
   const supabase = useSupabaseClient()
-  const { data: profile } = useSWR('/api/profile-details', myFetch)
+  const { data: profile, isLoading } = useSWR('/api/profile-details', myFetch)
   const [filmList, setFilmList] = useState<{ [x: string]: any } | null>(null)
 
   const signOut = async () => {
@@ -44,12 +44,11 @@ export default function AccountPage() {
       <Meta title='My Account | Moviemanic' />
       <RouteGuard>
         {
-          profile?.[0]?.username ?
-            filmList ?
-              <>
+          !isLoading ?
+            profile?.[0]?.username ?
+              filmList ? <>
                 <UserInfo
-                  profile={profile}
-                  session={session}
+                  username={profile?.[0]?.username}
                   filmList={filmList}
                 />
                 <Button
@@ -60,11 +59,11 @@ export default function AccountPage() {
                   Sign Out
                 </Button>
               </>
-              : <Loader paddingBlock='10rem' />
-            : <GetStarted
-              profile={profile}
-              session={session}
-            />
+                : <Loader paddingBlock='10rem' />
+              : <GetStarted
+                session={session}
+              />
+            : <Loader paddingBlock='10rem' />
         }
       </RouteGuard>
     </>

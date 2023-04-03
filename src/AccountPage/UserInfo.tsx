@@ -8,7 +8,7 @@ import { filmCategories } from 'assets/film_info'
 import { myFetch } from '@/assets/utilities';
 import FilmCard2 from '../Cards/FilmCard2';
 
-const UserInfoJSX = ({ profile, session, filmList }: any) => {
+const UserInfoJSX = ({ username, filmList }: any) => {
   const { data: categories, isLoading } = useSwr('/api/categories', myFetch)
 
   function getSeconds(date: string) {
@@ -26,7 +26,7 @@ const UserInfoJSX = ({ profile, session, filmList }: any) => {
     <UserInfo>
       <div>
         <p className='username' style={{ fontSize: '2.3rem' }}>
-          <span>Welcome, {profile[0].username}</span>
+          <span>Welcome, {username}</span>
           <span className='smile'>: )</span>
         </p>
         <div className='film-list'>
@@ -64,7 +64,7 @@ const UserInfoJSX = ({ profile, session, filmList }: any) => {
           </div>
         </div>
         {filmList.length === 0 && <p>
-          *To add films to your list, click on the bookmark icon.
+          *To add films to your list, click on the + icon on film poster
         </p>}
         <br />
       </div>

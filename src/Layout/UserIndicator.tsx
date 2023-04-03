@@ -1,22 +1,20 @@
-import useSWR from 'swr'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
 
 import breakpoints from 'assets/breakpoints'
-import { myFetch } from '@/assets/utilities';
+import useGetUsername from '../hooks/useGetUsername'
 
 const UserIndicator = ({ session }: any) => {
   const router = useRouter()
-  const { data: profile, isLoading } = useSWR('/api/profile-details', myFetch)
+  const username = useGetUsername()
 
   return (
     <>
       {
         session && 
         (router.asPath !== '/my-account') && 
-        profile?.[0]?.username &&
-        <UserIndicatorStyle>
-          Signed in as {profile?.[0]?.username}
+        username && <UserIndicatorStyle>
+          Signed in as {username}
         </UserIndicatorStyle>
       }
     </>

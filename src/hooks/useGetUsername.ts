@@ -1,4 +1,4 @@
-import useSwr, { SWRResponse} from 'swr'
+import useSwr from 'swr'
 import { myFetch } from '@/assets/utilities'
 
 export default function useGetUsername() {

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useSupabaseClient } from '@supabase/auth-helpers-react'
+import { useSupabaseClient, Session } from '@supabase/auth-helpers-react'
 import { useState } from 'react'
 import { useRouter } from 'next/router';
 
@@ -12,7 +12,7 @@ import breakpoints from 'assets/breakpoints'
 
 let hide = false;
 
-const GetStartedTSX = ({ profile, session }: any) => {
+const GetStartedTSX = ({ session }: { session: Session | null }) => {
   const supabase = useSupabaseClient()
   const router = useRouter()
   const [username, setUsername] = useState('')
@@ -35,7 +35,7 @@ const GetStartedTSX = ({ profile, session }: any) => {
       setToastMessage('Set username succesfully')
       setToastOpen(true)
       router.reload()
-      hide = true
+      // hide = true
     }
     if (error) {
       setToastMessage('Failed to set username')
@@ -108,6 +108,7 @@ const FirstScreen = styled.div`
     &:focus {
       box-shadow: 0 4px 8px rgb(var(--f-bg-color), .25);
       background-color: white;
+      transform: scale(1.1);
 
       ::before {
         clip-path: circle(100% at 50% 50%);
