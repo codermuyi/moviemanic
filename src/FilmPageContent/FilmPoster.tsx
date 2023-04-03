@@ -3,16 +3,23 @@ import styled from 'styled-components'
 import { useState } from 'react'
 
 import Button from 'src/atoms/Button'
+import PlusIcon from '../icons/Plus'
+import MinusIcon from '../icons/Minus'
 import breakpoints from '@/assets/breakpoints'
-import useAddToList from '../useAddToList'
+import useAddToList from '../hooks/useAddToList'
+import useRemoveFromList from '../hooks/useRemoveFromList';
+import useGetUsername from '../hooks/useGetUsername'
 
 const FilmPoster = ({ path, info, mediaType }: { path: string, info: any, mediaType: string }) => {
   const [src, setSrc] = useState(`https://image.tmdb.org/t/p/w1280${path}`)
-  const [addToList, AddFilmToast, username] = useAddToList(info, mediaType)
+  const [addToList, AddFilmToast] = useAddToList(info, mediaType)
+  const [removeFromList, RemoveFilmToast] = useRemoveFromList(info.id, mediaType)
+  const username = useGetUsername()
 
   return (
     <Poster className='film-poster'>
       <AddFilmToast />
+      <RemoveFilmToast />
       <div className='sticky'>
         <Image
           src={src}
@@ -22,7 +29,12 @@ const FilmPoster = ({ path, info, mediaType }: { path: string, info: any, mediaT
           className='poster-img'
           onError={() => setSrc('/no-image.svg')}
         />
-        {username && <Button onClick={addToList}>Add to list</Button>}
+        {username && <Button onClick={addToList} className='flex-center'>
+          <PlusIcon width='25px' height='25px' />
+        </Button>}
+        {username && <Button onClick={removeFromList} className='minus flex-center'>
+          <MinusIcon width='25px' height='25px' />
+        </Button>}
       </div>
     </Poster>
   )
@@ -39,13 +51,17 @@ const Poster = styled.div`
   }
 
   .sticky .button {
-    padding: .3rem;
     position: absolute;
     top: 20px;
-    transform: translate(50%, 100%);
+    /* transform: translate(50%, 100%); */
     width: 50px;
     height: 50px;
     border-radius: 100%;
+    box-shadow: 0 3px 4px rgb(0 0 0 / .5);
+
+    &.minus {
+      transform: translateY(120%);
+    }
   }
   
   @media ${breakpoints.md} {
@@ -65,12 +81,6 @@ const Poster = styled.div`
       top: 30px;
     }
   }
-`
-
-const AddToList = styled(Button)`
-  padding: 1rem;
-  position: absolute;
-  top: 0;
 `
 
 export default FilmPoster

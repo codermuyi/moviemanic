@@ -1,18 +1,15 @@
-import useSwr from 'swr'
 import { useState, FC } from 'react'
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 
 import Toast from 'src/Toast'
-import { myFetch } from '@/assets/utilities'
 
 const useAddToList = (info: any, mediaType: string) => {
   const supabase = useSupabaseClient()
   const session = useSession()
   const [toastMessage, setToastMessage] = useState('')
   const [toastOpen, setToastOpen] = useState(false)
-  const { data: profile } = useSwr('/api/profile-details', myFetch)
 
-  const username = profile?.[0]?.username
+  const type = mediaType === 'tv' ? 'TV Series' : 'Movie'
 
   async function setFilmInfo() {
     if (info) {
@@ -36,26 +33,22 @@ const useAddToList = (info: any, mediaType: string) => {
 
       if (status === 201) {
         setToastOpen(true)
-        setToastMessage('Added film to your list')
+        setToastMessage(`Added ${type} to your list`)
       }
       else if (status === 409) {
         setToastOpen(true)
-        setToastMessage('Film already in your list')
+        setToastMessage(`${type} already in your list`)
       }
       else if (status === 400) {
         setToastOpen(true)
-        setToastMessage('Unable to add film to your list')
+        setToastMessage(`Unable to add ${type} to your list`)
       }
       else if (status === 0) {
         setToastOpen(true)
         setToastMessage('Failed to upload')
       }
-
-      console.log('Status: ', status)
     }
   }
-
-  const addToList = () => setFilmInfo()
 
   const AddFilmToast = () => (
     <Toast
@@ -66,13 +59,11 @@ const useAddToList = (info: any, mediaType: string) => {
   )
 
   const result: [
-    func: () => Promise<void>,
-    Toast: FC,
-    username: string | undefined
+    addToList: () => Promise<void>,
+    AddFilmToast: FC,
   ] = [
-      addToList,
+      () => setFilmInfo(),
       AddFilmToast,
-      username
     ];
 
   return result
