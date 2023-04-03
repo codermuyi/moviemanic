@@ -1,10 +1,13 @@
 import styled from 'styled-components'
 import useSwr from 'swr';
+import Link from 'next/link';
 
 import ScrollBar from 'src/atoms/ScrollBar'
 import FilmGrid from '@/src/atoms/FilmGrid';
 import Loader from 'src/atoms/Loader'
+import Button from '../atoms/Button';
 import breakpoints from 'assets/breakpoints'
+import routes from '../variables/routes';
 import { filmCategories } from 'assets/film_info'
 import { myFetch } from '@/assets/utilities';
 
@@ -18,13 +21,24 @@ const MiniCategories = () => {
         <br />
         {
           !isLoading ? filmCategories?.map((c: any, i: number) =>
-            <FilmGrid
-              key={c.id}
-              isListStyle
-              data={categories?.[i]?.results}
-              mediaType={c.type}
-              title={c.name}
-            />
+            <div key={c.id}>
+              <FilmGrid
+                isListStyle
+                data={categories?.[i]?.results}
+                mediaType={c.type}
+                title={c.name}
+              />
+              <Link
+                href={
+                  c.type == 'tv' ?
+                    routes.TV_CATEGORY(c.name)
+                    : routes.MOVIE_CATEGORY(c.name)
+                }
+                className='see-more-link'
+              >
+                <Button padding='.6rem' tabIndex={-1}>See more</Button>
+              </Link>
+            </div>
           )
             : <Loader paddingBlock='7rem' />
         }
@@ -38,10 +52,15 @@ const Aside = styled.div`
   background-color: rgb(var(--f-bg-color), .6);
   padding-block: .5rem;
   border-radius: 30px;
-  
+
   h2.title {
     margin-block: 2rem;
     text-align: center;
+  }
+
+  .see-more-link {
+    display: inline-block;
+    margin: 0 1rem 1rem;
   }
 
   @media ${breakpoints.lg} {
