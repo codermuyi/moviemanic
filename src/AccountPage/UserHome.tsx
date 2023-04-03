@@ -115,7 +115,8 @@ const Home = styled.div`
         transition-duration: .3s;
       }
       
-      :hover {
+      :hover,
+      :focus-visible {
         div {
           color: rgb(var(--main-theme-color));
         }
