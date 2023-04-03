@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useSupabaseClient, Session } from '@supabase/auth-helpers-react'
+import { useSupabaseClient, useSession } from '@supabase/auth-helpers-react'
 import { useState } from 'react'
 import { useRouter } from 'next/router';
 
@@ -7,14 +7,12 @@ import Dialog from '@/src/Dialog';
 import Toast from 'src/Toast'
 import Button from '@/src/atoms/Button'
 import RightArrowIcon from '../icons/RightArrow';
-import Loader from 'src/atoms/Loader'
 import breakpoints from 'assets/breakpoints'
 
-let hide = false;
-
-const GetStartedTSX = ({ session }: { session: Session | null }) => {
+const GetStartedTSX = () => {
   const supabase = useSupabaseClient()
   const router = useRouter()
+  const session = useSession()
   const [username, setUsername] = useState('')
   const [toastOpen, setToastOpen] = useState(false)
   const [toastMessage, setToastMessage] = useState('')
@@ -35,7 +33,6 @@ const GetStartedTSX = ({ session }: { session: Session | null }) => {
       setToastMessage('Set username succesfully')
       setToastOpen(true)
       router.reload()
-      // hide = true
     }
     if (error) {
       setToastMessage('Failed to set username')
@@ -50,7 +47,7 @@ const GetStartedTSX = ({ session }: { session: Session | null }) => {
         setOpen={setToastOpen}
         message={toastMessage}
       />
-      {!hide && <FirstScreen className='flex-center'>
+      <FirstScreen className='flex-center'>
         <p>Get started to add movies and tv shows to your list</p>
         <Dialog
           noButton
@@ -72,8 +69,6 @@ const GetStartedTSX = ({ session }: { session: Session | null }) => {
           </NamePrompt>
         </Dialog>
       </FirstScreen>
-      }
-      {hide && <Loader paddingBlock='10rem' />}
     </>
   )
 }

@@ -42,18 +42,20 @@ const Card = styled.div`
   overflow: hidden;
   border-top: 2px solid rgb(var(--main-theme-color));
   border-radius: 10px;
-  background-color: rgb(var(--main-theme-color), .2);
+  background-color: rgb(var(--f-bg-color));
   transition: .3s;
-
+  
   .card-image {
     width: 80px;
     object-fit: cover;
     object-position: center;
     transition: .3s;
   }
-
+  
   :hover {
     box-shadow: 0 3px 3px rgb(0 0 0 / .15);
+    background-color: rgb(var(--main-theme-color));
+    
     .card-image {
       object-position: bottom right;
     }

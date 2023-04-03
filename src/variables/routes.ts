@@ -12,6 +12,9 @@ const routes = {
   MOVIE_CATEGORY: (category: string) => `/movies/cat/${category}`,
   TV_CATEGORY: (category: string) => `/tv-series/cat/${category}`,
   SEARCH: (query: string) => `/search/${query}`,
+  WATCHLIST: '/my-account/list',
+  DETAILS: '/my-account/details',
+  SECURITY: '/my-account/security',
 }
 
 export default routes
