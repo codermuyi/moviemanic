@@ -1,18 +1,17 @@
-import { useState, FC } from 'react'
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
+import { toast } from 'react-toastify'
 
-import Toast from 'src/Toast'
+import { toastOptions } from '@/assets/utilities'
 
 const useAddToList = (info: any, mediaType: string) => {
   const supabase = useSupabaseClient()
   const session = useSession()
-  const [toastMessage, setToastMessage] = useState('')
-  const [toastOpen, setToastOpen] = useState(false)
-
   const type = mediaType === 'tv' ? 'TV Series' : 'Movie'
 
   async function setFilmInfo() {
     if (info) {
+      const toastId = toast.loading("Please wait...")
+
       const { status } = await supabase
         .from('film_list')
         .insert([
@@ -32,41 +31,34 @@ const useAddToList = (info: any, mediaType: string) => {
         ])
 
       if (status === 201) {
-        setToastOpen(true)
-        setToastMessage(`Added ${type} to your list`)
-      }
-      else if (status === 409) {
-        setToastOpen(true)
-        setToastMessage(`${type} already in your list`)
-      }
-      else if (status === 400) {
-        setToastOpen(true)
-        setToastMessage(`Unable to add ${type} to your list`)
-      }
-      else if (status === 0) {
-        setToastOpen(true)
-        setToastMessage('Failed to upload')
+        toast.update(toastId, {
+          render: `Added ${type} to your list`,
+          type: "success",
+          ...toastOptions
+        });
+      } else if (status === 409) {
+        toast.update(toastId, {
+          render: `${type} already in your list`,
+          type: "info",
+          ...toastOptions
+        });
+      } else if (status === 400) {
+        toast.update(toastId, {
+          render: `Unable to add ${type} to your list`,
+          type: "error",
+          ...toastOptions
+        });
+      } else if (status === 0) {
+        toast.update(toastId, {
+          render: 'Failed to upload',
+          type: "error",
+          ...toastOptions
+        });
       }
     }
   }
 
-  const AddFilmToast = () => (
-    <Toast
-      open={toastOpen}
-      setOpen={setToastOpen}
-      message={toastMessage}
-    />
-  )
-
-  const result: [
-    addToList: () => Promise<void>,
-    AddFilmToast: FC,
-  ] = [
-      () => setFilmInfo(),
-      AddFilmToast,
-    ];
-
-  return result
+  return () => setFilmInfo()
 }
 
 export default useAddToList

@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import { useSupabaseClient, useSession } from '@supabase/auth-helpers-react'
 import { useState } from 'react'
 import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
 
 import Dialog from '@/src/Dialog';
-import Toast from 'src/Toast'
 import Button from '@/src/atoms/Button'
 import RightArrowIcon from '../icons/RightArrow';
 import breakpoints from 'assets/breakpoints'
@@ -14,8 +14,6 @@ const GetStartedTSX = () => {
   const router = useRouter()
   const session = useSession()
   const [username, setUsername] = useState('')
-  const [toastOpen, setToastOpen] = useState(false)
-  const [toastMessage, setToastMessage] = useState('')
 
   async function saveUsername(e: any) {
     e.preventDefault()
@@ -30,23 +28,16 @@ const GetStartedTSX = () => {
       ])
 
     if (status === 201) {
-      setToastMessage('Set username succesfully')
-      setToastOpen(true)
+      toast.success('Set username successfully')
       router.reload()
     }
     if (error) {
-      setToastMessage('Failed to set username')
-      setToastOpen(true)
+      toast.error('Failed to set username')
     }
   }
 
   return (
     <>
-      <Toast
-        open={toastOpen}
-        setOpen={setToastOpen}
-        message={toastMessage}
-      />
       <FirstScreen className='flex-center'>
         <p>Get started to add movies and tv shows to your list</p>
         <Dialog

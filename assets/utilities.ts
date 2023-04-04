@@ -15,3 +15,13 @@ export async function myFetch(path: string) {
 
   return response.json()
 }
+
+export const toastOptions = {
+  isLoading: false,
+  autoClose: null,
+  closeButton: null,
+  draggable: null,
+  draggablePercent: 60,
+  draggableDirection: null,
+  transition: null,
+}

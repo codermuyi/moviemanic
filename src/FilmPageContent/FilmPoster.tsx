@@ -12,14 +12,12 @@ import useGetUsername from '../hooks/useGetUsername'
 
 const FilmPoster = ({ path, info, mediaType }: { path: string, info: any, mediaType: string }) => {
   const [src, setSrc] = useState(`https://image.tmdb.org/t/p/w1280${path}`)
-  const [addToList, AddFilmToast] = useAddToList(info, mediaType)
-  const [removeFromList, RemoveFilmToast] = useRemoveFromList(info.id, mediaType)
+  const addToList = useAddToList(info, mediaType)
+  const removeFromList = useRemoveFromList(info.id, mediaType)
   const username = useGetUsername()
 
   return (
     <Poster className='film-poster'>
-      <AddFilmToast />
-      <RemoveFilmToast />
       <div className='sticky'>
         <Image
           src={src}

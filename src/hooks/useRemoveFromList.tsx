@@ -1,17 +1,16 @@
-import { useState, FC } from 'react'
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
+import { toast } from 'react-toastify'
 
-import Toast from 'src/Toast'
+import { toastOptions } from '@/assets/utilities'
 
 const useRemoveFromList = (id: string | number, mediaType: string) => {
   const supabase = useSupabaseClient()
-  const [toastMessage, setToastMessage] = useState('')
-  const [toastOpen, setToastOpen] = useState(false)
-
   const type = mediaType === 'tv' ? 'TV Series' : 'Movie'
 
   async function setFilmInfo() {
     if (id) {
+      const toastId = toast.loading("Please wait...")
+
       const { data: datum } = await supabase
         .from('film_list')
         .select()
@@ -23,37 +22,28 @@ const useRemoveFromList = (id: string | number, mediaType: string) => {
         .eq('film_id', id)
 
       if (datum?.length === 0) {
-        setToastOpen(true)
-        setToastMessage(`${type} not in your list`)
-      }
-      else if (status === 204) {
-        setToastOpen(true)
-        setToastMessage(`Removed ${type} from your list`)
-      }
-      else if (status === 0) {
-        setToastOpen(true)
-        setToastMessage('Failed to upload')
+        toast.update(toastId, {
+          render: `${type} not in your list`,
+          type: "info",
+          ...toastOptions
+        });
+      } else if (status === 204) {
+        toast.update(toastId, {
+          render: `Removed ${type} from your list`,
+          type: "success",
+          ...toastOptions
+        });
+      } else if (status === 0) {
+        toast.update(toastId, {
+          render: 'Failed to upload',
+          type: "error",
+          ...toastOptions
+        });
       }
     }
   }
 
-  const RemoveFilmToast = () => (
-    <Toast
-      open={toastOpen}
-      setOpen={setToastOpen}
-      message={toastMessage}
-    />
-  )
-
-  const result: [
-    removeFromList: () => Promise<void>,
-    RemoveFilmToast: FC,
-  ] = [
-      () => setFilmInfo(),
-      RemoveFilmToast,
-    ];
-
-  return result
+  return () => setFilmInfo()
 }
 
 export default useRemoveFromList
