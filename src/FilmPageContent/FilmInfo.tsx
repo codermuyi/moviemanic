@@ -87,11 +87,11 @@ const FilmInfo = ({
           first_air_date ? <>
             <div>
               <span className='heading'>Pilot</span>
-              <span>{first_air_date}</span>
+              <span>{formatDate(first_air_date)}</span>
             </div>
             <div>
               <span className='heading'>Last Air</span>
-              <span>{last_air_date || 'N/A'}</span>
+              <span>{formatDate(last_air_date) || 'N/A'}</span>
             </div>
           </> : null
         }
@@ -138,7 +138,7 @@ const Info = styled.div`
 const Details1 = styled.div`
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 1.3rem;
   margin-bottom: 2rem;
   max-width: 700px;
   
