@@ -1,9 +1,9 @@
-import Auth from "@/src/auth/Auth"
-import Meta from "@/src/atoms/Meta"
-import BlockBottomLink from "@/src/atoms/BlockBottomLink"
-import RouteGuard from '@/src/RouteGuard'
+import Auth from "@components/Auth"
+import Meta from "@atoms/Meta"
+import BlockBottomLink from "@atoms/BlockBottomLink"
+import RouteGuard from '@atoms/RouteGuard'
 
-const LoginPage = () => {
+const LogInPage = () => {
   return (
     <>
       <Meta
@@ -19,4 +19,4 @@ const LoginPage = () => {
   )
 }
 
-export default LoginPage
+export default LogInPage

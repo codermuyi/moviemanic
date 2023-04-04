@@ -1,8 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
 
-import BrokenLinkIcon from 'src/icons/BrokenLink'
-import Button from '@/src/atoms/Button'
+import BrokenLinkIcon from '@icons/BrokenLink'
+import Button from '@atoms/Button'
 
 const Error404 = () => {
   return (

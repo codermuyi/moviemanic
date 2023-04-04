@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 
-import Meta from '@/src/atoms/Meta';
-import RouteGuard from '@/src/RouteGuard';
-import Loader from '@/src/atoms/Loader';
+import Meta from '@atoms/Meta';
+import RouteGuard from '@atoms/RouteGuard';
+import Loader from '@atoms/Loader';
 
 const DetailsPage = () => {
   return (

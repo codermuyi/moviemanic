@@ -1,11 +1,8 @@
-import { useSession } from '@supabase/auth-helpers-react'
-import { useRouter } from 'next/router'
-
-import Meta from 'src/atoms/Meta'
-import Category from 'src/Category'
-import BlockTopLink from 'src/atoms/BlockTopLink'
-import BlockBottomLink from 'src/atoms/BlockBottomLink'
-import RouteGuard from '@/src/RouteGuard'
+import Meta from '@components/atoms/Meta'
+import Category from '@components/Category'
+import BlockTopLink from '@atoms/BlockTopLink'
+import BlockBottomLink from '@atoms/BlockBottomLink'
+import RouteGuard from '@atoms/RouteGuard'
 
 import { filmCategories } from 'assets/film_info'
 import { server } from 'config'

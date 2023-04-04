@@ -1,7 +1,7 @@
 import { server } from 'config'
 import { SWRConfig } from 'swr'
 
-import SearchPageContent from '@/src/Search/SearchPageContent'
+import SearchPageLayout from '@layouts/SearchPage'
 
 const SearchResults = ({
   searchQuery,
@@ -11,14 +11,13 @@ const SearchResults = ({
 
   return (
     <SWRConfig value={{ fallback }}>
-      <SearchPageContent
+      <SearchPageLayout
         searchQuery={searchQuery}
         contextQuery={ctxQuery}
       />
     </SWRConfig>
   )
 }
-
 
 export const getServerSideProps = async (ctx: any) => {
   const q = ctx.params.query

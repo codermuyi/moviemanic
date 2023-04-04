@@ -1,7 +1,6 @@
 import { server } from 'config'
-import PageLayout from '@/src/Layout/PageLayout'
-import Meta from '@/src/atoms/Meta'
-import GenrePageContent from '@/src/GenrePageContent'
+import Meta from '@atoms/Meta'
+import GenrePageContent from '@layouts/GenrePage'
 
 const genrePage = ({ data, name, id }: any) => {
   return (

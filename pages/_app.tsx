@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react'
 import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import { SessionContextProvider } from '@supabase/auth-helpers-react'
 
-import PageLayout from '@/src/Layout/PageLayout';
+import PageLayout from '@components/PageLayout';
 
 NProgress.configure({ showSpinner: false });
 

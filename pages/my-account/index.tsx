@@ -1,11 +1,11 @@
 import useSWR from 'swr'
 
-import Meta from '@/src/atoms/Meta';
-import RouteGuard from '@/src/RouteGuard';
-import GetStarted from '@/src/AccountPage/GetStarted';
-import UserHome from '@/src/AccountPage/UserHome'
-import Loader from '@/src/atoms/Loader';
-import Layout from '@/src/AccountPage/Layout';
+import Meta from '@atoms/Meta';
+import RouteGuard from '@atoms/RouteGuard';
+import GetStarted from '@layouts/AccountPage/GetStarted';
+import UserHome from '@layouts/AccountPage/UserHome'
+import Loader from '@atoms/Loader';
+import Layout from '@layouts/AccountPage/Layout';
 import { myFetch } from '@/assets/utilities';
 
 export default function AccountPage() {

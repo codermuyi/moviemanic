@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 
-import Meta from '@/src/atoms/Meta';
-import RouteGuard from '@/src/RouteGuard';
-import UserFilmList from '@/src/AccountPage/UserFilmList'
-import Loader from '@/src/atoms/Loader';
-import Layout from '@/src/AccountPage/Layout';
+import Meta from '@atoms/Meta';
+import RouteGuard from '@atoms/RouteGuard';
+import UserFilmList from '@layouts/AccountPage/UserFilmList'
+import Loader from '@atoms/Loader';
+import Layout from '@layouts/AccountPage/Layout';
 
 const MyListPage = () => {
   const session = useSession()

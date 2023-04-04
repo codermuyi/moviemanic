@@ -1,6 +1,5 @@
-import PageLayout from "@/src/Layout/PageLayout"
-import Meta from '@/src/atoms/Meta'
-import MainFilmPageContent from "@/src/MainFilmPageContent"
+import Meta from '@atoms/Meta'
+import MainFilmPageContent from "@layouts/MainFilmPage"
 import { server } from 'config'
 
 const index = ({ data }: any) => {
