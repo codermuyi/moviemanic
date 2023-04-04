@@ -11,20 +11,22 @@ import { myFetch } from '@/assets/utilities';
 export default function AccountPage() {
   const { data: profile, isLoading } = useSWR('/api/profile-details', myFetch)
 
-  return (
+  if (isLoading) 
+    return <Loader paddingBlock='10rem' />
+
+  return profile?.[0]?.username ?
     <>
       <Meta title='My Account | Moviemanic' />
       <RouteGuard>
-        {
-          !isLoading ?
-            profile?.[0]?.username ?
-              <Layout>
-                <UserHome username={profile?.[0]?.username} />
-              </Layout>
-              : <GetStarted />
-            : <Loader paddingBlock='10rem' />
-        }
+        <Layout>
+          <UserHome username={profile?.[0]?.username} />
+        </Layout>
       </RouteGuard>
     </>
-  )
+    : <>
+      <Meta title='Get Started | Moviemanic' />
+      <RouteGuard>
+        <GetStarted />
+      </RouteGuard>
+    </>
 }
