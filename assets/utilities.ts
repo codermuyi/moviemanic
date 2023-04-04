@@ -21,7 +21,7 @@ export const toastOptions = {
   autoClose: null,
   closeButton: null,
   draggable: null,
-  draggablePercent: 60,
+  draggablePercent: 50,
   draggableDirection: null,
   transition: null,
 }
