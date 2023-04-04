@@ -1,7 +1,7 @@
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 import { toast } from 'react-toastify'
 
-import { toastOptions } from '@/assets/utilities'
+import { toastOptions } from '@constants'
 
 const useAddToList = (info: any, mediaType: string) => {
   const supabase = useSupabaseClient()
@@ -11,7 +11,6 @@ const useAddToList = (info: any, mediaType: string) => {
   async function setFilmInfo() {
     if (info) {
       const toastId = toast.loading("Please wait...")
-
       const { status } = await supabase
         .from('film_list')
         .insert([
@@ -35,25 +34,25 @@ const useAddToList = (info: any, mediaType: string) => {
           render: `Added ${type} to your list`,
           type: "success",
           ...toastOptions
-        });
+        })
       } else if (status === 409) {
         toast.update(toastId, {
           render: `${type} already in your list`,
           type: "info",
           ...toastOptions
-        });
+        })
       } else if (status === 400) {
         toast.update(toastId, {
           render: `Unable to add ${type} to your list`,
           type: "error",
           ...toastOptions
-        });
+        })
       } else if (status === 0) {
         toast.update(toastId, {
           render: 'Failed to upload',
           type: "error",
           ...toastOptions
-        });
+        })
       }
     }
   }

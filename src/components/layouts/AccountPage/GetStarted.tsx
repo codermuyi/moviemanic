@@ -8,6 +8,7 @@ import Dialog from '@components/Dialog';
 import Button from '@components/atoms/Button'
 import RightArrowIcon from '@icons/RightArrow';
 import { breakpoints } from '@constants'
+import { toastOptions } from '@constants';
 
 const GetStartedTSX = () => {
   const supabase = useSupabaseClient()
@@ -18,6 +19,7 @@ const GetStartedTSX = () => {
   async function saveUsername(e: any) {
     e.preventDefault()
 
+    const toastId = toast.loading("Please wait...")
     const { error, status } = await supabase
       .from('profiles')
       .insert([
@@ -28,39 +30,50 @@ const GetStartedTSX = () => {
       ])
 
     if (status === 201) {
-      toast.success('Set username successfully')
+      toast.update(toastId, {
+        render: 'Set username successfully',
+        type: "success",
+        ...toastOptions
+      })
       router.reload()
-    }
-    if (error) {
-      toast.error('Failed to set username')
+    } else if (status === 409) {
+      toast.update(toastId, {
+        render: 'Username exists for this account',
+        type: "error",
+        ...toastOptions
+      })
+    } else if (error) {
+      toast.update(toastId, {
+        render: 'Failed to set username',
+        type: "error",
+        ...toastOptions
+      })
     }
   }
 
   return (
-    <>
-      <FirstScreen className='flex-center'>
-        <p>Get started to add movies and tv shows to your list</p>
-        <Dialog
-          noButton
-          name={<Button>Get Started</Button>}
-          title=''
-        >
-          <NamePrompt className='grid-center'>
-            <div style={{ fontSize: '2rem' }}>Enter a username:</div>
-            <form className='flex-center' style={{ gap: 10 }} onSubmit={saveUsername}>
-              <input
-                type='text'
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-              <Button padding='10px'>
-                <RightArrowIcon />
-              </Button>
-            </form>
-          </NamePrompt>
-        </Dialog>
-      </FirstScreen>
-    </>
+    <FirstScreen className='flex-center'>
+      <p>Get started to add movies and tv shows to your list</p>
+      <Dialog
+        noButton
+        name={<Button>Get Started</Button>}
+        title=''
+      >
+        <NamePrompt className='grid-center'>
+          <div style={{ fontSize: '2rem' }}>Enter a username:</div>
+          <form className='flex-center' style={{ gap: 10 }} onSubmit={saveUsername}>
+            <input
+              type='text'
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <Button padding='10px'>
+              <RightArrowIcon />
+            </Button>
+          </form>
+        </NamePrompt>
+      </Dialog>
+    </FirstScreen>
   )
 }
 

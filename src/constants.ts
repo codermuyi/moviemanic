@@ -29,3 +29,13 @@ export const breakpoints = {
   xxl:'(min-width: 1440px)',
   xxxl:'(min-width: 2560px)',
 }
+
+export const toastOptions = {
+  isLoading: false,
+  autoClose: null,
+  closeButton: null,
+  draggable: null,
+  draggablePercent: 50,
+  draggableDirection: null,
+  transition: null,
+}
