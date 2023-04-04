@@ -51,16 +51,22 @@ const Poster = styled.div`
   .sticky .button {
     position: absolute;
     top: 20px;
-    /* transform: translate(50%, 100%); */
-    width: 50px;
-    height: 50px;
+    left: 1rem;
+    width: 35px;
+    height: 35px;
     border-radius: 100%;
     box-shadow: 0 3px 4px rgb(0 0 0 / .5);
 
     &.minus {
       transform: translateY(120%);
     }
+
+    @media (pointer: coarse) {
+      width: 50px;
+      height: 50px;
+    }
   }
+  
   
   @media ${breakpoints.md} {
     .sticky {
