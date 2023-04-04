@@ -24,8 +24,9 @@ const Name = styled.div`
   padding-block: 2rem;
 
   h1 {
-    max-width: 800px;
+    max-width: 50rem;
     margin-inline: auto;
+    font-size: 2.2rem;
   }
 
   .tagline {

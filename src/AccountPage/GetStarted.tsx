@@ -65,7 +65,7 @@ const GetStartedTSX = () => {
 }
 
 const FirstScreen = styled.div`
-  padding-block: 10rem;
+  padding: 10rem 1rem;
   background-color: rgb(var(-f-bg-color));
   gap: 1rem;
   flex-direction: column;
