@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import Casts from './FilmCast'
 import FilmExternalSource from './FilmExternalSource'
 import FilmVideos from './FilmVideos'
+import { formatDate } from '@helpers'
 
 interface Info {
   runtime: string
@@ -37,11 +38,6 @@ const FilmInfo = ({
   number_of_episodes
 }: Info) => {
 
-  function formatDate(date: string) {
-    const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short', year: 'numeric' }
-    const dateObj = new Date(date)
-    return dateObj.toLocaleDateString('en-US', options)
-  }
 
   return (
     <Info>

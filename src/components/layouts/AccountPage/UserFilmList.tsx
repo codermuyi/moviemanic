@@ -1,11 +1,8 @@
 import styled from 'styled-components'
 import FilmCard2 from '@components/Cards/FilmCard2';
+import { getSeconds } from '@helpers';
 
 const UserInfoJSX = ({ filmList }: any) => {
-  function getSeconds(date: string) {
-    return (new Date(date)).getTime() / 1000
-  }
-
   const newFilmList = filmList.sort((a: any, b: any) => {
     return getSeconds(b.created_at) - getSeconds(a.created_at)
   })
