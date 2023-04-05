@@ -49,7 +49,7 @@ const FilmList = ({ filmList, setRandomNum }: any) => {
           <br />
         </div>
       </div>
-      {filmList.length === 0 && <p>
+      {filmList.length === 0 && <p style={{ marginBottom: '3rem' }}>
         *To add films to your list, click on the + icon on film poster
       </p>}
     </UserInfo>
