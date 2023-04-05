@@ -34,7 +34,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <SessionContextProvider supabaseClient={supabase} initialSession={pageProps.initialSession}>
       <PageLayout key={router.asPath}>
         <ToastContainer
-          autoClose={2000}
+          autoClose={3000}
           pauseOnFocusLoss={false}
           hideProgressBar={true}
         />
