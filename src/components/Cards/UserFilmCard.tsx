@@ -1,11 +1,13 @@
 import useSwr from 'swr'
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 // import Link from 'next/link'
 
 import CardImage from './FilmCardImage'
 import CardInfo from './FilmCardInfo'
 import Button from '@atoms/Button'
 import MinusIcon from '@icons/Minus'
+import CardDialog from './CardDialog'
+
 import useRemoveFromList from '@hooks/useRemoveFromList';
 import { breakpoints } from '@constants'
 // import { routes } from '@constants'
@@ -27,7 +29,7 @@ const FilmCard = ({
     : `/tv-series/${supabaseData.film_id}`
 
   const { data: info } = useSwr(
-    `/api/film-item/${supabaseData.media_type}/${supabaseData.film_id}`, 
+    `/api/film-item/${supabaseData.media_type}/${supabaseData.film_id}`,
     myFetch
   )
 
@@ -48,6 +50,11 @@ const FilmCard = ({
             overflow
           />
           <div className='info-2'>
+            <CardDialog
+              info={info}
+              linkHref={linkHref}
+              mediaType={supabaseData.media_type}
+            />
             <Button onClick={remove} className='flex-center' padding='.3rem'>
               <MinusIcon width='20px' height='20px' />
             </Button>
@@ -77,7 +84,7 @@ const Card = styled.div`
   border-radius: 20px;
   display: grid;
   min-height: 6rem;
-  
+
   & > * {
     grid-area: 1 / 1;
   }
@@ -125,8 +132,13 @@ const Card = styled.div`
   .info-2 {
     display: flex;
     padding-inline: 1rem;
-    gap: .4rem;
+    gap: .6rem;
+  }
 
+  .film-poster {
+    .sticky .button.action.flex-center {
+      display: none !important;
+    }
   }
   
   .genres {

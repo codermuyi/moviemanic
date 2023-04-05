@@ -11,11 +11,13 @@ const FilmList = ({ filmList, setRandomNum }: any) => {
   const movies = newFilmList.filter((film: any) => film.media_type === 'movie')
   const tv_series = newFilmList.filter((film: any) => film.media_type === 'tv')
 
+  const formatNum = (arr: any) => arr.length > 0 && `(${arr.length})`
+
   return (
     <UserInfo>
       <div className='film-list'>
         <div className='movie-list'>
-          <h2 className='title'>Movies</h2>
+          <h2 className='title'>Movies {formatNum(movies)}</h2>
           {
             movies?.[0] ?
               <div className='film-grid'>
@@ -32,7 +34,7 @@ const FilmList = ({ filmList, setRandomNum }: any) => {
           <br />
         </div>
         <div className='tv-list'>
-          <h2 className='title'>TV Series</h2>
+          <h2 className='title'>TV Series {formatNum(tv_series)}</h2>
           {
             tv_series?.[0] ?
               <div className='film-grid'>
