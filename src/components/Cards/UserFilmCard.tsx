@@ -47,6 +47,9 @@ const FilmCard = ({
             linkHref={linkHref}
             overflow
           />
+          <div className='genres'>
+            <p className='genre'>{info?.genres.map((g: any) => g?.name).join(', ')}</p>
+          </div>
           <div className='info-2'>
             <CardDialog
               info={info}
@@ -56,9 +59,6 @@ const FilmCard = ({
             <Button onClick={remove} className='flex-center' name='Remove from list'>
               <MinusIcon width='20px' height='20px' />
             </Button>
-          </div>
-          <div className='genres'>
-            <p className='genre'>{info?.genres.map((g: any) => g?.name).join(', ')}</p>
           </div>
         </div>
         <CardImage
@@ -130,7 +130,7 @@ const Card = styled.div`
   .info-2 {
     display: flex;
     padding-inline: 1rem;
-    gap: .6rem;
+    gap: 1rem;
 
     .button {
       padding: .3rem;
