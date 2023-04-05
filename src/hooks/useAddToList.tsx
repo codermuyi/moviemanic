@@ -16,14 +16,9 @@ const useAddToList = (info: any, mediaType: string) => {
         .insert([
           {
             media_type: mediaType,
-            film_id: info.id,
+            film_id: info.film_id || info.id,
             user_id: session?.user.id,
             title: info.title || info.name,
-            year: parseInt(info.release_date || info.first_air_date),
-            poster_path: info.poster_path,
-            backdrop_path: info.backdrop_path,
-            genres: info.genres.map((g: any) => g.name),
-            status: info.status,
             // To avoid duplicates for each user
             dup: session?.user.id + info.id
           }

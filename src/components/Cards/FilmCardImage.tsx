@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
 const FilmCardImage = ({
@@ -14,6 +14,10 @@ const FilmCardImage = ({
   const height = isTrending ? 170 : 130
   const width = isTrending ? 300 : 170
   const filmName = data.title || data.name
+
+  useEffect(() => {
+    setSrc(`https://image.tmdb.org/t/p/w1280${path || data.backdrop_path}`)
+  }, [path, data])
 
   return (
     <Link href={linkHref} className={`film-card-${!isTrending ? 'normal' : 'trending'}-link`}>

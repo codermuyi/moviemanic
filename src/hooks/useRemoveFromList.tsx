@@ -5,7 +5,7 @@ import { toastOptions } from '@constants'
 
 const useRemoveFromList = (id: string | number, mediaType: string) => {
   const supabase = useSupabaseClient()
-  const type = mediaType === 'tv' ? 'TV Series' : 'Movie'
+  const type = mediaType === 'tv' ? 'TV series' : 'Movie'
 
   async function setFilmInfo() {
     if (id) {

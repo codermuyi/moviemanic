@@ -15,8 +15,8 @@ const FilmCard2 = ({
   type,
   data
 }: Props) => {
-  const id = data.film_id || data.id
-  const linkHref = type === 'movie' ? `/movies/${id}` : `/tv-series/${id}`
+  // const id = data.film_id || data.id
+  const linkHref = type === 'movie' ? `/movies/${data.id}` : `/tv-series/${data.id}`
 
   return data && (
     <Card className='film-card'>

@@ -1,8 +1,9 @@
 import styled from 'styled-components'
-import FilmCard2 from '@components/Cards/FilmCard2';
+
+import UserFilmCard from '@/src/components/Cards/UserFilmCard';
 import { getSeconds } from '@helpers';
 
-const UserInfoJSX = ({ filmList }: any) => {
+const FilmList = ({ filmList, setRandomNum }: any) => {
   const newFilmList = filmList.sort((a: any, b: any) => {
     return getSeconds(b.created_at) - getSeconds(a.created_at)
   })
@@ -18,12 +19,13 @@ const UserInfoJSX = ({ filmList }: any) => {
           {
             movies?.[0] ?
               <div className='film-grid'>
-                {movies.map((film: any, i: number) => <FilmCard2
-                  key={i}
-                  isTrending={false}
-                  type={film.media_type}
-                  data={film}
-                />)}
+                {movies.map((film: any, i: number) =>
+                  <UserFilmCard
+                    key={i}
+                    supabaseData={film}
+                    setRandomNum={setRandomNum}
+                  />
+                )}
               </div>
               : <p>Movies added to your list will show up here</p>
           }
@@ -34,12 +36,13 @@ const UserInfoJSX = ({ filmList }: any) => {
           {
             tv_series?.[0] ?
               <div className='film-grid'>
-                {tv_series.map((film: any, i: number) => <FilmCard2
-                  key={i}
-                  isTrending={false}
-                  type={film.media_type}
-                  data={film}
-                />)}
+                {tv_series.map((film: any, i: number) =>
+                  <UserFilmCard
+                    key={i}
+                    supabaseData={film}
+                    setRandomNum={setRandomNum}
+                  />
+                )}
               </div>
               : <p>TV Series added to your list will show up here</p>
           }
@@ -78,11 +81,11 @@ const UserInfo = styled.div`
     }
     .film-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, 150px);
+      grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
       gap: 1rem;
       padding-block: 1rem;
     }
   }
 `
 
-export default UserInfoJSX
+export default FilmList

@@ -11,6 +11,8 @@ const MyListPage = () => {
   const session = useSession()
   const supabase = useSupabaseClient()
   const [filmList, setFilmList] = useState<{ [x: string]: any } | null>(null)
+  // Random number to refetch data whenever a film is deleted from the list
+  const [randomNum, setRandomNum] = useState(Math.random())
 
   useEffect(() => {
     const getData = async () => {
@@ -18,14 +20,12 @@ const MyListPage = () => {
         let { data } = await supabase
           .from('film_list')
           .select()
-
         setFilmList(data)
       }
     }
     getData()
 
-  }, [session, supabase]);
-
+  }, [session, supabase, randomNum]);
 
   return (
     <>
@@ -36,6 +36,7 @@ const MyListPage = () => {
             filmList ?
               <UserFilmList
                 filmList={filmList}
+                setRandomNum={setRandomNum}
               />
               : <Loader paddingBlock='10rem' />
           }

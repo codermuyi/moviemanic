@@ -16,9 +16,8 @@ const FilmCardInfo = ({
   linkHref,
   overflow
 }: Props) => {
-
   const filmType = type === 'tv' ? 'TV Series' : 'Movie'
-  const date = parseInt(data.release_date || data.first_air_date || data.year) || 'N/A'
+  const date = parseInt(data.release_date || data.first_air_date) || 'N/A'
   const filmName = data.title || data.name
   const className = !isTrending ? 'normal-info' : 'trending-info'
 
