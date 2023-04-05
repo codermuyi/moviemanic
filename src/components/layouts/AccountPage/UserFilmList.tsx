@@ -63,6 +63,10 @@ const UserInfo = styled.div`
   .film-list {
     padding: 1rem;
 
+    .movie-list, .tv-list {
+      padding-bottom: 2rem;
+    }
+
     .title {
       position: relative;
       font-size: 200%;
@@ -76,9 +80,11 @@ const UserInfo = styled.div`
         background-color: rgb(var(--main-theme-color));
       }
     }
+
     p {
       padding: 1rem;
     }
+    
     .film-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
