@@ -14,7 +14,6 @@ const CardDialog = ({ info, linkHref, mediaType }: any) => {
       name={
         <Button
           className='flex-center'
-          padding='.3rem'
           name='More information'
         >
           <InfoIcon width='20px' height='20px' />

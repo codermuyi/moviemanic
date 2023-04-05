@@ -1,6 +1,5 @@
 import useSwr from 'swr'
 import styled from 'styled-components'
-// import Link from 'next/link'
 
 import CardImage from './FilmCardImage'
 import CardInfo from './FilmCardInfo'
@@ -10,7 +9,6 @@ import CardDialog from './CardDialog'
 
 import useRemoveFromList from '@hooks/useRemoveFromList';
 import { breakpoints } from '@constants'
-// import { routes } from '@constants'
 import { myFetch } from '@/assets/utilities'
 
 interface Props {
@@ -55,7 +53,7 @@ const FilmCard = ({
               linkHref={linkHref}
               mediaType={supabaseData.media_type}
             />
-            <Button onClick={remove} className='flex-center' padding='.3rem'>
+            <Button onClick={remove} className='flex-center' name='Remove from list'>
               <MinusIcon width='20px' height='20px' />
             </Button>
           </div>
@@ -133,6 +131,14 @@ const Card = styled.div`
     display: flex;
     padding-inline: 1rem;
     gap: .6rem;
+
+    .button {
+      padding: .3rem;
+
+      @media (pointer: coarse) {
+        padding: .6rem;
+      }
+    }
   }
 
   .film-poster {
