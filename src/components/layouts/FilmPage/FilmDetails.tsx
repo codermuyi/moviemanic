@@ -1,7 +1,4 @@
 import styled from 'styled-components'
-import Casts from './FilmCast'
-import FilmExternalSource from './FilmExternalSource'
-import FilmVideos from './FilmVideos'
 import { formatDate } from '@helpers'
 
 interface Info {
@@ -11,38 +8,27 @@ interface Info {
   status: string
   genres: Array<{ name: string }>
   overview: string
-  credits: any
   first_air_date: string
   last_air_date: string
-  imdb_id: string
-  homepage: string
-  videoData: any
   number_of_seasons: number
   number_of_episodes: number
 }
 
-const FilmInfo = ({
+const FilmDetails = ({
   runtime,
   spoken_languages,
   release_date,
   status,
   genres,
   overview,
-  credits,
   first_air_date,
   last_air_date,
-  imdb_id,
-  homepage,
-  videoData,
   number_of_seasons,
-  number_of_episodes
+  number_of_episodes,
 }: Info) => {
 
-
   return (
-    <Info>
-      <FilmVideos videoData={videoData} />
-
+    <Details>
       <div className='series-detail'>
         {
           number_of_seasons ? <div>
@@ -107,17 +93,12 @@ const FilmInfo = ({
             ))}
           </ul>
         </div>
-        <Casts credits={credits} />
-        <FilmExternalSource imdb={imdb_id} website={homepage} />
       </Details2>
-    </Info>
+    </Details>
   )
 }
 
-const Info = styled.div`
-  padding-inline: 1rem;
-  margin-bottom: 2rem;
-
+const Details = styled.div`
   .series-detail {
     display: flex;
     max-width: 700px;
@@ -173,7 +154,7 @@ const Details2 = styled.div`
       font-family: 'Lexend', sans-serif;
 
       li {
-        background-color: white;
+        background-color: rgb(var(--main-text-color));
         color: rgb(var(--sec-text-color));
         border-radius: 8px;
         padding: .2em .3em;
@@ -187,4 +168,4 @@ const Details2 = styled.div`
   }
 `
 
-export default FilmInfo
+export default FilmDetails

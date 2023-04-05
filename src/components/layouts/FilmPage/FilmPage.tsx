@@ -5,8 +5,11 @@ import { useRouter } from "next/router"
 import Meta from '@atoms/Meta'
 import Loader from '@atoms/Loader'
 import FilmPoster from './FilmPoster'
-import FilmInfo from './FilmInfo'
-import SimilarFilms from '@components/FilmGrid'
+import FilmDetails from './FilmDetails'
+import FilmVideos from './FilmVideos'
+import Casts from './FilmCast'
+import FilmExternalSource from './FilmExternalSource'
+import FilmGrid from '@components/FilmGrid'
 import BlockBottomLink from '@atoms/BlockBottomLink'
 import Backdrop from './FilmBackdrop'
 import RouteGuard from '@atoms/RouteGuard'
@@ -56,21 +59,20 @@ const FilmPageContent = ({ media_type }: Props) => {
           {isLoading && info.success ?
             <Loader /> :
             <>
-              <Backdrop
-                info={info}
-                mediaType={media_type}
-              />
+              <Backdrop info={info} mediaType={media_type} />
               <FilmPoster
                 path={info.poster_path}
                 info={info}
                 mediaType={media_type}
               />
-              <FilmInfo
-                {...info}
-                credits={credits}
-                videoData={videoData}
-              />
-              <SimilarFilms
+              <div style={{ paddingInline: '1rem', marginBottom: '2rem' }}>
+                <FilmVideos videoData={videoData} />
+                <FilmDetails {...info} />
+                <br />
+                <Casts credits={credits} />
+                <FilmExternalSource imdb={info.imdb_id} website={info.homepage} />
+              </div>
+              <FilmGrid
                 title='More Like This'
                 centerTitle={true}
                 data={similar.results}
