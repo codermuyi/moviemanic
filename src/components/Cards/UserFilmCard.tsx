@@ -130,12 +130,16 @@ const Card = styled.div`
   .info-2 {
     display: flex;
     padding-inline: 1rem;
-    gap: 1rem;
-
+    gap: .5rem;
+    
     .button {
       padding: .3rem;
+    }
 
-      @media (pointer: coarse) {
+    @media (pointer: coarse) {
+      gap: 1rem;
+      
+      .button {
         padding: .6rem;
       }
     }
