@@ -15,6 +15,7 @@ import Backdrop from './FilmBackdrop'
 import RouteGuard from '@atoms/RouteGuard'
 import { breakpoints } from '@constants'
 import { myFetch } from "@/assets/utilities"
+import { generatePageTitle } from '@helpers'
 
 interface Props {
   media_type: string
@@ -31,26 +32,10 @@ const FilmPageContent = ({ media_type }: Props) => {
   const similar = data?.[2]
   const videoData = data?.[3]
 
-  function generatePageTitle(): string {
-    const filmTitle = info.name || info.title
-    const filmMedia = media_type === 'tv' ? 'TV Series' : 'Movies'
-    const filmDate = parseInt(info.release_date || info.first_air_date)
-    const checkDate = !isNaN(filmDate) ? `(${filmDate})` : ''
-
-    if (info) {
-      if (info.success === false) {
-        return 'Error 404 | Moviemanic'
-      } else {
-        return `${filmTitle} ${checkDate} - ${filmMedia} | Moviemanic`
-      }
-    }
-    return 'Moviemanic'
-  }
-
   return (
     <>
       <Meta
-        title={generatePageTitle()}
+        title={generatePageTitle(info, media_type)}
         description={info?.overview}
       />
 
