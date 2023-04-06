@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 
 import BrokenLinkIcon from '@icons/BrokenLink'
+import BrokenScreenIcon from '@icons/BrokenScreen'
 import Button from '@atoms/Button'
 
 const Error404 = () => {
@@ -11,7 +12,9 @@ const Error404 = () => {
       textAlign: 'center',
       gap: '1rem',
     }}>
-      <BrokenLinkIcon />
+      <div>
+        <BrokenScreenIcon />
+      </div>
       <h1>404</h1>
       <p>Sorry, this page could not be found</p>
       <Link href='/'>
