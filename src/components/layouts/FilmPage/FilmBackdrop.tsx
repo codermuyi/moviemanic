@@ -1,6 +1,7 @@
 import styled from 'styled-components'
+
+import FilmPoster from '@components/FilmPoster'
 import FilmTitle from './FilmTitle'
-import FilmPoster from './FilmPoster'
 import { breakpoints } from '@constants'
 
 const FilmBackdrop = ({ info, mediaType }: any) => {
