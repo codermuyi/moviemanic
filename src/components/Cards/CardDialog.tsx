@@ -2,9 +2,9 @@ import Link from 'next/link'
 
 import Button from '@atoms/Button'
 import Dialog from '@components/Dialog'
-import FilmPoster from '../FilmPoster/FilmPoster'
-import ScrollBar from '../atoms/ScrollBar'
-import FilmDetails from '../layouts/FilmPage/FilmDetails'
+import FilmPoster from '@components/FilmPoster'
+import FilmDetails from '@components/FilmDetails'
+import ScrollBar from '@atoms/ScrollBar'
 import InfoIcon from '@icons/Info'
 
 const CardDialog = ({ info, linkHref, mediaType }: any) => {
