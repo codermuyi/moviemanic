@@ -16,6 +16,7 @@ export const routes = {
   WATCHLIST: '/my-account/list',
   DETAILS: '/my-account/details',
   SECURITY: '/my-account/security',
+  GET_STARTED: '/get-started'
 }
 
 export const breakpoints = {

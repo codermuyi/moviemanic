@@ -1,55 +1,15 @@
 import styled from 'styled-components';
-import { useSupabaseClient, useSession } from '@supabase/auth-helpers-react'
 import { useState } from 'react'
-import { useRouter } from 'next/router';
-import { toast } from 'react-toastify';
 
 import Dialog from '@components/Dialog';
 import Button from '@components/atoms/Button'
 import RightArrowIcon from '@icons/RightArrow';
 import { breakpoints } from '@constants'
-import { toastOptions } from '@constants';
+import useSaveUsername from './hooks/useSaveUsername';
 
 const GetStartedTSX = () => {
-  const supabase = useSupabaseClient()
-  const router = useRouter()
-  const session = useSession()
   const [username, setUsername] = useState('')
-
-  async function saveUsername(e: any) {
-    e.preventDefault()
-
-    const toastId = toast.loading("Please wait...")
-    const { error, status } = await supabase
-      .from('profiles')
-      .insert([
-        {
-          username,
-          user_id: session?.user.id
-        }
-      ])
-
-    if (status === 201) {
-      toast.update(toastId, {
-        render: 'Set username successfully',
-        type: "success",
-        ...toastOptions
-      })
-      router.reload()
-    } else if (status === 409) {
-      toast.update(toastId, {
-        render: 'Username exists for this account',
-        type: "error",
-        ...toastOptions
-      })
-    } else if (error) {
-      toast.update(toastId, {
-        render: 'Failed to set username',
-        type: "error",
-        ...toastOptions
-      })
-    }
-  }
+  const saveUsername = useSaveUsername(username)
 
   return (
     <FirstScreen className='flex-center'>
@@ -58,6 +18,9 @@ const GetStartedTSX = () => {
         noButton
         name={<Button>Get Started</Button>}
         title=''
+        contentStyle={{
+          paddingBlock: '2rem'
+        }}
       >
         <NamePrompt className='grid-center'>
           <div style={{ fontSize: '2rem' }}>Enter a username:</div>
