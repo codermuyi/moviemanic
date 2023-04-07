@@ -5,7 +5,6 @@ import Link from 'next/link'
 import ScrollBar from '@atoms/ScrollBar'
 import FilmGrid from "@components/FilmGrid"
 import Button from '@atoms/Button'
-import RouteGuard from '@atoms/RouteGuard'
 import { filmCategories } from "@/assets/film_info"
 
 const MainFilmPageContent = ({ data, mediaType }: any) => {
@@ -13,61 +12,59 @@ const MainFilmPageContent = ({ data, mediaType }: any) => {
   const linkPath = mediaType === 'movie' ? 'movies' : 'tv-series'
 
   return (
-    <RouteGuard>
-      <PageBody>
-        <h1>{title}</h1>
-        <div className='content'>
-          <ScrollBar style={{ minHeight: '140px' }}>
-            <div className='cat-list'>
-              {
-                filmCategories.map((category) =>
-                  (category.type === mediaType) ?
-                    <Link key={category.id} href={`/${linkPath}/cat/${category.name.toLowerCase()}`}>
-                      <div className='card cat-card'>
-                        {category.name}
-                      </div>
-                    </Link>
-                    : '')
-              }
-            </div>
-          </ScrollBar>
-          <div className='genre-list'>
-            {data.genreList.genres.map((genre: any, i: number) => <Link
-              key={i}
-              href={`#${genre.name}`}
-              className='card genre-card'
-            >
-              <div>
-                <p>{genre.name}</p>
-              </div>
-            </Link>
-            )}
+    <PageBody>
+      <h1>{title}</h1>
+      <div className='content'>
+        <ScrollBar style={{ minHeight: '140px' }}>
+          <div className='cat-list'>
+            {
+              filmCategories.map((category) =>
+                (category.type === mediaType) ?
+                  <Link key={category.id} href={`/${linkPath}/cat/${category.name.toLowerCase()}`}>
+                    <div className='card cat-card'>
+                      {category.name}
+                    </div>
+                  </Link>
+                  : '')
+            }
           </div>
-          <br />
-          {
-            data.filmList.map((list: any, i: number) => {
-              return <div id={data.genreList.genres[i].name} key={i}>
-                <FilmGrid
-                  title={data.genreList.genres[i].name}
-                  mediaType={mediaType}
-                  data={list.results}
-                  isGenre
-                />
-                <Link href={`/${linkPath}/genre/${data.genreList.genres[i].id}`}>
-                  <Button
-                    radius='20px'
-                    margin='0 0 30px 50px'
-                    padding='10px'
-                  >
-                    See More
-                  </Button>
-                </Link>
-              </div>
-            })
-          }
+        </ScrollBar>
+        <div className='genre-list'>
+          {data.genreList.genres.map((genre: any, i: number) => <Link
+            key={i}
+            href={`#${genre.name}`}
+            className='card genre-card'
+          >
+            <div>
+              <p>{genre.name}</p>
+            </div>
+          </Link>
+          )}
         </div>
-      </PageBody>
-    </RouteGuard>
+        <br />
+        {
+          data.filmList.map((list: any, i: number) => {
+            return <div id={data.genreList.genres[i].name} key={i}>
+              <FilmGrid
+                title={data.genreList.genres[i].name}
+                mediaType={mediaType}
+                data={list.results}
+                isGenre
+              />
+              <Link href={`/${linkPath}/genre/${data.genreList.genres[i].id}`}>
+                <Button
+                  radius='20px'
+                  margin='0 0 30px 50px'
+                  padding='10px'
+                >
+                  See More
+                </Button>
+              </Link>
+            </div>
+          })
+        }
+      </div>
+    </PageBody>
   )
 }
 

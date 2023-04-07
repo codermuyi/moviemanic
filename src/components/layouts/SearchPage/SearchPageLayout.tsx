@@ -4,8 +4,7 @@ import useSwr from 'swr'
 import Meta from '@/src/components/atoms/Meta'
 import Loader from '@components/atoms/Loader'
 import Pagination from '@components/atoms/Pagination'
-import MovieCard from '@components/Cards/FilmCard'
-import RouteGuard from '@atoms/RouteGuard'
+import FilmCard from '@components/Cards/FilmCard'
 import { myFetch } from '@/assets/utilities'
 
 const SearchPageContent = ({
@@ -22,32 +21,29 @@ const SearchPageContent = ({
       <Meta
         title={`Search results for "${searchQuery}" | Moviemanic`}
       />
-      <RouteGuard>
-        {data ?
-          <>
-            <Content>
-              <h1>Result{num > 1 && 's'} for &quot;{searchQuery}&quot; ({num})</h1>
-              {data.map((filmData: any) => {
-                return (
-                  <MovieCard
-                    key={filmData.id}
-                    isTrending={false}
-                    type={filmData.media_type}
-                    data={filmData}
-                  />
-                )
-              })}
-            </Content>
-
-            <Pagination
-              currentPage={d?.page}
-              totalPages={d?.total_pages}
-              query={searchQuery}
-              pageType='search'
-            />
-          </>
-          : <Loader />}
-      </RouteGuard>
+      {data ?
+        <>
+          <Content>
+            <h1>Result{num > 1 && 's'} for &quot;{searchQuery}&quot; ({num})</h1>
+            {data.map((filmData: any) => {
+              return (
+                <FilmCard
+                  key={filmData.id}
+                  isTrending={false}
+                  type={filmData.media_type}
+                  data={filmData}
+                />
+              )
+            })}
+          </Content>
+          <Pagination
+            currentPage={d?.page}
+            totalPages={d?.total_pages}
+            query={searchQuery}
+            pageType='search'
+          />
+        </>
+        : <Loader />}
     </>
   )
 }

@@ -12,7 +12,6 @@ import Casts from './FilmCast'
 import FilmExternalSource from './FilmExternalSource'
 import BlockBottomLink from '@atoms/BlockBottomLink'
 import Backdrop from './FilmBackdrop'
-import RouteGuard from '@atoms/RouteGuard'
 import { breakpoints } from '@constants'
 import { myFetch } from "@/assets/utilities"
 import { generatePageTitle } from '@helpers'
@@ -24,7 +23,6 @@ interface Props {
 const FilmPageContent = ({ media_type }: Props) => {
   const router = useRouter()
   const id = router.query.id
-
   const { data, isLoading } = useSwr(`/api/film-page/${media_type}/${id}`, myFetch)
 
   const info = data?.[0]
@@ -39,34 +37,32 @@ const FilmPageContent = ({ media_type }: Props) => {
         description={info?.overview}
       />
 
-      <RouteGuard>
-        <PageBody>
-          {isLoading && info.success ?
-            <Loader /> :
-            <>
-              <Backdrop info={info} mediaType={media_type} />
-              <FilmPoster
-                path={info.poster_path}
-                info={info}
-                mediaType={media_type}
-              />
-              <div style={{ paddingInline: '1rem', marginBottom: '2rem' }}>
-                <FilmVideos videoData={videoData} />
-                <FilmDetails {...info} />
-                <br />
-                <Casts credits={credits} />
-                <FilmExternalSource imdb={info.imdb_id} website={info.homepage} />
-              </div>
-              <FilmGrid
-                title='More Like This'
-                centerTitle={true}
-                data={similar.results}
-              />
-            </>
-          }
-        </PageBody>
-        <BlockBottomLink />
-      </RouteGuard>
+      <PageBody>
+        {isLoading && info.success ?
+          <Loader /> :
+          <>
+            <Backdrop info={info} mediaType={media_type} />
+            <FilmPoster
+              path={info.poster_path}
+              info={info}
+              mediaType={media_type}
+            />
+            <div style={{ paddingInline: '1rem', marginBottom: '2rem' }}>
+              <FilmVideos videoData={videoData} />
+              <FilmDetails {...info} />
+              <br />
+              <Casts credits={credits} />
+              <FilmExternalSource imdb={info.imdb_id} website={info.homepage} />
+            </div>
+            <FilmGrid
+              title='More Like This'
+              centerTitle={true}
+              data={similar.results}
+            />
+          </>
+        }
+      </PageBody>
+      <BlockBottomLink />
     </>
   )
 }
