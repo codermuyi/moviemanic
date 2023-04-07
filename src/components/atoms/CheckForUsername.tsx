@@ -7,7 +7,7 @@ const CheckForUsername = ({ profile, children }: any) => {
   const router = useRouter()
 
   useEffect(() => {
-    if (!profile[0]?.username) {
+    if (!profile?.[0]?.username) {
       router.push(routes.GET_STARTED)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
