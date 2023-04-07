@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react'
-import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 import { GetServerSidePropsContext } from 'next';
 
 import Meta from '@atoms/Meta';
