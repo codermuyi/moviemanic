@@ -14,13 +14,16 @@ const FilmPoster = ({
   path,
   info,
   mediaType,
+  hideButtons, 
   height,
-  hideButtons }: {
+  width,
+}: {
     path: string,
     info: any,
     mediaType: string,
-    height?: number
     hideButtons?: boolean
+    height?: string,
+    width?: string,
   }) => {
   const [src, setSrc] = useState(`https://image.tmdb.org/t/p/w1280${path}`)
   const addToList = useAddToList(info, mediaType)
@@ -32,13 +35,13 @@ const FilmPoster = ({
   }, [path])
 
   return (
-    <Poster className='film-poster' height={height}>
+    <Poster className='film-poster' height={height} width={width}>
       <div className='sticky'>
         <Image
           src={src}
           alt='image'
           width={250}
-          height={height ?? 350}
+          height={350}
           className='poster-img'
           onError={() => setSrc('/no-image.svg')}
         />
@@ -57,16 +60,14 @@ const FilmPoster = ({
   )
 }
 
-const Poster = styled.div<{ height: number | undefined }>`
+const Poster = styled.div<{ height: string | undefined, width: string | undefined }>`
   padding-block: 1rem;
-  --height: 350px;
 
   .poster-img {
     object-fit: cover;
     display: block;
     margin-inline: auto;
     border-radius: 10px;
-    height: var(--height);
   }
 
   .sticky .button {
@@ -88,7 +89,6 @@ const Poster = styled.div<{ height: number | undefined }>`
     }
   }
   
-  
   @media ${breakpoints.md} {
     .sticky {
       position: sticky;
@@ -97,7 +97,7 @@ const Poster = styled.div<{ height: number | undefined }>`
 
     .poster-img {
       width: 300px;
-      --height: 400px;
+      height: 400px;
     }
   }
   
@@ -108,9 +108,9 @@ const Poster = styled.div<{ height: number | undefined }>`
   }
   
   .poster-img {
-    --height: ${p => p.height}px;
+    height: ${p => p.height};
+    width: ${p => p.width};
   }
-
 `
 
 export default FilmPoster

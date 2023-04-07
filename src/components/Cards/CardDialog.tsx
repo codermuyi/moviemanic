@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import Button from '@atoms/Button'
 import Dialog from '@components/Dialog'
-import FilmPoster from '../layouts/FilmPage/FilmPoster'
+import FilmPoster from '../FilmPoster/FilmPoster'
 import ScrollBar from '../atoms/ScrollBar'
 import FilmDetails from '../layouts/FilmPage/FilmDetails'
 import InfoIcon from '@icons/Info'
@@ -31,7 +31,8 @@ const CardDialog = ({ info, linkHref, mediaType }: any) => {
           path={info.backdrop_path}
           info={info}
           mediaType={mediaType}
-          height={200}
+          height='15rem'
+          width='100%'
           hideButtons
         />
         <h2 style={{ textAlign: 'center', marginBottom: '1rem' }}>{info.title || info.name}</h2>

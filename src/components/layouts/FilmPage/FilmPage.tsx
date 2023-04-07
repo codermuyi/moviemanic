@@ -4,7 +4,7 @@ import { useRouter } from "next/router"
 
 import Meta from '@atoms/Meta'
 import Loader from '@atoms/Loader'
-import FilmPoster from './FilmPoster'
+import FilmPoster from '@components/FilmPoster'
 import FilmDetails from './FilmDetails'
 import FilmVideos from './FilmVideos'
 import Casts from './FilmCast'
