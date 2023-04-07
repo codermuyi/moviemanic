@@ -36,7 +36,7 @@ const FilmCard = ({
     setRandomNum(Math.random())
   }
 
-  return info && (
+  return info ? (
     <Card className='film-card'>
       <div className='card-content'>
         <div className='super-super'>
@@ -73,6 +73,11 @@ const FilmCard = ({
       </div>
     </Card>
   )
+    : <Card className='film-card'>
+      <div className='card-bg'>
+        <div></div>
+      </div>
+    </Card>
 }
 
 const Card = styled.div`
