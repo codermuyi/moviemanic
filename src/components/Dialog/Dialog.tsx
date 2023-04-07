@@ -9,7 +9,7 @@ interface DialogProps {
   description?: string
   children?: React.ReactNode
   contentStyle?: any
-  noButton?: boolean 
+  noButton?: boolean
 }
 
 const MyDialog: React.FC<DialogProps> = ({ name, title, description, children, contentStyle, noButton }) => (
@@ -20,10 +20,12 @@ const MyDialog: React.FC<DialogProps> = ({ name, title, description, children, c
     <Dialog.Portal>
       <Dialog.Overlay className={styles.DialogOverlay} />
       <Dialog.Content className={styles.DialogContent} style={contentStyle}>
-        <Dialog.Title className={styles.DialogTitle}>{title ?? name}</Dialog.Title>
-        <Dialog.Description className={styles.DialogDescription}>
+        {(title ?? name) && <Dialog.Title className={styles.DialogTitle}>
+          {title ?? name}
+        </Dialog.Title>}
+        {description && <Dialog.Description className={styles.DialogDescription}>
           {description}
-        </Dialog.Description>
+        </Dialog.Description>}
         {children}
         <Dialog.Close asChild>
           <div style={{ position: 'fixed', top: 10, right: 10 }}>

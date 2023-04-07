@@ -21,12 +21,12 @@ const CardDialog = ({ info, linkHref, mediaType }: any) => {
       }
       title=''
       contentStyle={{
-        padding: '0 1rem',
+        paddingRight: '0',
         backgroundColor: 'rgb(var(--main-text-color))',
         color: 'rgb(var(--f-bg-color))',
       }}
     >
-      <ScrollBar style={{ height: '80vh' }}>
+      <ScrollBar style={{ height: '80vh', paddingRight:'1rem' }}>
         <FilmPoster
           path={info.backdrop_path}
           info={info}

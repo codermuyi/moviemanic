@@ -107,6 +107,9 @@ const Navbar = () => {
                 noButton
                 name={<Button padding='.5rem'>Sign in</Button>}
                 title=''
+                contentStyle={{
+                  paddingBlock: '2rem'
+                }}
               >
                 <Login />
               </MyDialog>
