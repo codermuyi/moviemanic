@@ -41,13 +41,13 @@ export async function routeGuard(
 
   const { data: profile } = await supabase
     .from('profiles')
-    .select('username')
+    .select('*')
 
   return {
     props: {
       initialSession: session,
       user: session.user,
-      profile: profile,
+      profile: profile?.[0] ?? null,
       data: data ?? null,
     },
   }

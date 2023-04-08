@@ -11,7 +11,7 @@ export default function AccountPage({ profile }: { profile: any }) {
     <Meta title='My Account | Moviemanic' />
     <CheckForUsername profile={profile}>
       <Layout>
-        <UserHome username={profile?.[0]?.username} />
+        <UserHome username={profile?.username} />
       </Layout>
     </CheckForUsername>
   </>

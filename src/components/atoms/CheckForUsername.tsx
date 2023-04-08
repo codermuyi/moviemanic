@@ -7,13 +7,13 @@ const CheckForUsername = ({ profile, children }: any) => {
   const router = useRouter()
 
   useEffect(() => {
-    if (!profile?.[0]?.username) {
+    if (!profile?.username) {
       router.push(routes.GET_STARTED)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile])
 
-  return profile?.[0]?.username ? children : <Loader paddingBlock='10rem' />
+  return profile?.username ? children : <Loader paddingBlock='10rem' />
 }
 
 export default CheckForUsername
