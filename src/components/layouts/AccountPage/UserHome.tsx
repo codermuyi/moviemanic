@@ -1,12 +1,9 @@
 import styled from "styled-components"
 import Link from 'next/link'
-import { useRouter } from "next/router"
-import { useSupabaseClient } from "@supabase/auth-helpers-react"
-
 import BookmarkFilledIcon from "@icons/BookmarkFilled"
 import CogIcon from "@icons/Cog"
 import DetailsIcon from "@icons/Details"
-import { routes } from "@constants"
+import useSignOut from "@hooks/useSignOut"
 
 const pageLinks = [
   {
@@ -35,13 +32,7 @@ const pageLinks = [
 ]
 
 const UserHome = ({ username }: { username: string | undefined }) => {
-  const supabase = useSupabaseClient()
-  const router = useRouter()
-
-  const signOut = async () => {
-    await supabase.auth.signOut()
-    router.push(routes.SIGN_IN)
-  }
+  const signOut = useSignOut()
 
   return (
     <Home>

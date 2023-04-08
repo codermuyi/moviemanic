@@ -2,8 +2,7 @@ import styled from 'styled-components'
 import React from 'react'
 import Link from 'next/link'
 import { useState } from 'react'
-import { useRouter } from "next/router";
-import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
+import { useSession } from '@supabase/auth-helpers-react'
 
 import {
   MainIcon,
@@ -17,6 +16,7 @@ import NavLink from '@atoms/NavLink'
 import Sidebar from '@components/Sidebar'
 import Login from '@components/Auth/Login'
 import MyDialog from '@components/Dialog'
+import useSignOut from '@hooks/useSignOut';
 import { breakpoints } from '@constants'
 import { routes } from '@constants'
 
@@ -26,15 +26,9 @@ const Navbar = () => {
   const iconFill = 'currentColor'
   const [isOpen, setIsOpen] = useState(false)
   const session = useSession()
-  const supabase = useSupabaseClient()
-  const router = useRouter()
+  const signOut = useSignOut()
 
   const toggle = () => setIsOpen(prevIsOpen => !prevIsOpen)
-
-  const signOut = async () => {
-    await supabase.auth.signOut()
-    router.push(routes.SIGN_IN)
-  }
 
   return (
     <>
