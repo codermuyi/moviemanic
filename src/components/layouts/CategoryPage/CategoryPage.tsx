@@ -7,13 +7,13 @@ import BlockBottomLink from "@atoms/BlockBottomLink"
 import Pagination from "@atoms/Pagination"
 import Heading from '@components/TypeHeading'
 
-const CategoryPageLayout = ({ data, type, mediaType }: any) => {
+const CategoryPageLayout = ({ data, name, mediaType }: any) => {
   return (
     <>
       <Meta
-        title={`${capitalize(type)} - ${mediaType === 'tv' ? 'TV Series' : 'Movies'} | Moviemanic`}
+        title={`${capitalize(name)} - ${mediaType === 'tv' ? 'TV Series' : 'Movies'} | Moviemanic`}
       />
-      <Heading name={type} mediaType={mediaType} />
+      <Heading name={name} mediaType={mediaType} />
       <FilmGrid
         data={data?.results}
         mediaType={mediaType}
@@ -21,7 +21,7 @@ const CategoryPageLayout = ({ data, type, mediaType }: any) => {
       <Pagination
         currentPage={data.page}
         totalPages={data.total_pages}
-        query={type}
+        query={name}
         pageType='category'
       />
       <BlockBottomLink />

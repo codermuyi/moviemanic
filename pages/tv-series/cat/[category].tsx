@@ -10,7 +10,7 @@ export const getServerSideProps = async (ctx: any) => {
   return {
     props: {
       data: data,
-      type: ctx.query.category
+      name: ctx.query.category
     },
   }
 }
