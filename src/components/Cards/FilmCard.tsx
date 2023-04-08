@@ -1,11 +1,11 @@
 import styled, { keyframes } from 'styled-components'
+
 import CardImage from './FilmCardImage'
 import CardInfo from './FilmCardInfo'
-
 import { breakpoints } from '@constants'
 
 interface Props {
-  isTrending: boolean
+  isTrending?: boolean
   type: string
   data: any
 }
