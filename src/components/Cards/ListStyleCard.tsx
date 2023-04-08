@@ -22,6 +22,7 @@ const ListStyleCard = ({
         data={data}
         path={data.poster_path}
         linkHref={linkHref}
+        size={185}
       />
       <CardInfo
         isTrending={isTrending}

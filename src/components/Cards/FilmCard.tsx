@@ -23,6 +23,7 @@ const FilmCard = ({
         isTrending={isTrending}
         data={data}
         linkHref={linkHref}
+        size={1280}
       />
       <CardInfo
         isTrending={isTrending}

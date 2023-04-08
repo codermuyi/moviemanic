@@ -15,7 +15,6 @@ const FilmCard2 = ({
   type,
   data
 }: Props) => {
-  // const id = data.film_id || data.id
   const linkHref = type === 'movie' ? `/movies/${data.id}` : `/tv-series/${data.id}`
 
   return data && (
@@ -25,6 +24,7 @@ const FilmCard2 = ({
         data={data}
         path={data.poster_path}
         linkHref={linkHref}
+        size={780}
       />
       <CardInfo
         isTrending={isTrending}

@@ -66,6 +66,7 @@ const FilmCard = ({
           data={info}
           linkHref={linkHref}
           path={info.poster_path}
+          size={185}
         />
       </div>
       <div className='card-bg'>
