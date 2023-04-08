@@ -43,8 +43,6 @@ export async function routeGuard(
     .from('profiles')
     .select('username')
 
-  console.log(profile)
-
   return {
     props: {
       initialSession: session,
