@@ -1,11 +1,12 @@
 import FilmGrid from '@components/FilmGrid'
 import BlockBottomLink from '@atoms/BlockBottomLink'
 import Pagination from '@atoms/Pagination'
+import Heading from '@components/TypeHeading'
 
 const GenrePageContent = ({ data, name, mediaType, id }: any) => {
   return (
     <>
-      <h1 style={{ padding: '2rem' }}>{name}</h1>
+      <Heading name={name} mediaType={mediaType} />
       <FilmGrid
         data={data.results}
         mediaType={mediaType}

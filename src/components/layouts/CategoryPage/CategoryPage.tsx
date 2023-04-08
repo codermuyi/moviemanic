@@ -5,6 +5,7 @@ import Meta from '@atoms/Meta'
 import FilmGrid from "@components/FilmGrid"
 import BlockBottomLink from "@atoms/BlockBottomLink"
 import Pagination from "@atoms/Pagination"
+import Heading from '@components/TypeHeading'
 
 const CategoryPageLayout = ({ data, type, mediaType }: any) => {
   return (
@@ -12,13 +13,11 @@ const CategoryPageLayout = ({ data, type, mediaType }: any) => {
       <Meta
         title={`${capitalize(type)} - ${mediaType === 'tv' ? 'TV Series' : 'Movies'} | Moviemanic`}
       />
-      <Cat>
-        <FilmGrid
-          title={type}
-          data={data?.results}
-          mediaType={mediaType}
-        />
-      </Cat>
+      <Heading name={type} mediaType={mediaType} />
+      <FilmGrid
+        data={data?.results}
+        mediaType={mediaType}
+      />
       <Pagination
         currentPage={data.page}
         totalPages={data.total_pages}
@@ -29,12 +28,5 @@ const CategoryPageLayout = ({ data, type, mediaType }: any) => {
     </>
   )
 }
-
-const Cat = styled.div`
-  h2 {
-    font-size: 2rem;
-    padding: 1rem;
-  }
-`
 
 export default CategoryPageLayout
