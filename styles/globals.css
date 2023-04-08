@@ -3,7 +3,6 @@
 
 :root {
   scroll-padding: 4rem;
-  scroll-behavior: smooth;
 
   --border-radius: 12px;
   --main-text-font: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
