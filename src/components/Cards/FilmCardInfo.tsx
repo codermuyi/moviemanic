@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 import Link from 'next/link'
 
 interface Props {
-  isTrending: boolean
+  isTrending?: boolean
   type: string
   data: any
   linkHref: string

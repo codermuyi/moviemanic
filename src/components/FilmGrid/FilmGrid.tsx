@@ -34,7 +34,6 @@ const FilmGrid = ({
                 if (i > 4) return
                 return <FilmCard3
                   key={i}
-                  isTrending={false}
                   type={film.media_type || mediaType}
                   data={film}
                 />
@@ -43,14 +42,12 @@ const FilmGrid = ({
                 if (i > 2) return
                 return <ListStyleCard
                   key={i}
-                  isTrending={false}
                   type={film.media_type || mediaType}
                   data={film}
                 />
               }
               return <FilmCard2
                 key={i}
-                isTrending={false}
                 type={film.media_type || mediaType}
                 data={film}
               />

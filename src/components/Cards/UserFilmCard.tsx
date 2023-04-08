@@ -6,7 +6,6 @@ import CardInfo from './FilmCardInfo'
 import Button from '@atoms/Button'
 import MinusIcon from '@icons/Minus'
 import CardDialog from './CardDialog'
-
 import useRemoveFromList from '@hooks/useRemoveFromList';
 import { breakpoints } from '@constants'
 import { myFetch } from '@/assets/utilities'
@@ -41,7 +40,6 @@ const FilmCard = ({
       <div className='card-content'>
         <div className='super-super'>
           <CardInfo
-            isTrending={false}
             data={info}
             type={supabaseData.media_type}
             linkHref={linkHref}
@@ -62,7 +60,6 @@ const FilmCard = ({
           </div>
         </div>
         <CardImage
-          isTrending={false}
           data={info}
           linkHref={linkHref}
           path={info.poster_path}

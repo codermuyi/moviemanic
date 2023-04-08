@@ -1,17 +1,15 @@
 import styled from 'styled-components'
+
 import FilmCardImage from './FilmCardImage'
 import CardInfo from './FilmCardInfo'
-
 import { breakpoints } from '@constants'
 
 interface Props {
-  isTrending: boolean
   type: string
   data: any
 }
 
 const FilmCard3 = ({
-  isTrending,
   type,
   data
 }: Props) => {
@@ -20,13 +18,11 @@ const FilmCard3 = ({
   return data && (
     <Card className='film-card'>
       <FilmCardImage
-        isTrending={isTrending}
         data={data}
         linkHref={linkHref}
         size={780}
       />
       <CardInfo
-        isTrending={isTrending}
         data={data}
         type={type}
         linkHref={linkHref}

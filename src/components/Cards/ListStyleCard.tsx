@@ -1,9 +1,10 @@
 import styled from 'styled-components'
+
 import CardImage from './FilmCardImage'
 import CardInfo from './FilmCardInfo'
 
 interface Props {
-  isTrending: boolean
+  isTrending?: boolean
   type: string
   data: any
 }
@@ -18,14 +19,12 @@ const ListStyleCard = ({
   return data && (
     <Card className='film-card'>
       <CardImage
-        isTrending={isTrending}
         data={data}
         path={data.poster_path}
         linkHref={linkHref}
         size={185}
       />
       <CardInfo
-        isTrending={isTrending}
         data={data}
         type={type}
         linkHref={linkHref}
