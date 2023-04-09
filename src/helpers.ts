@@ -23,3 +23,13 @@ export function generatePageTitle(info: any, media_type: string): string {
   }
   return 'Moviemanic'
 }
+
+export const isMobile = {
+  android: () => navigator.userAgent.match(/Android/i),
+  blackberry: () => navigator.userAgent.match(/BlackBerry|BB/i),
+  ios: () => navigator.userAgent.match(/iPhone|iPad|iPod/i),
+  opera: () => navigator.userAgent.match(/Opera Mini/i),
+  windows: () => navigator.userAgent.match(/IEMobile/i),
+  any: () => (isMobile.android() || isMobile.blackberry() || 
+  isMobile.ios() || isMobile.opera() || isMobile.windows())
+};

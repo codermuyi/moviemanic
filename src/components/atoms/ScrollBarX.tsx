@@ -1,15 +1,16 @@
 import styled from 'styled-components'
 import { createRef, useState, useEffect, ReactNode } from 'react'
+
 import LeftArrow from '@icons/LeftArrow';
 import RightArrow from '@icons/RightArrow';
 import ScrollBar from './ScrollBar';
 import Button from './Button';
-import { breakpoints } from '@constants'
+import { isMobile } from '@/src/helpers';
 
 const ScrollBarX = ({ children }: { children: ReactNode }) => {
   const scrollableNodeRef = createRef()
   const [count, setCount] = useState(0)
-
+  
   useEffect(() => {
     const el: any = scrollableNodeRef.current
 
@@ -23,6 +24,11 @@ const ScrollBarX = ({ children }: { children: ReactNode }) => {
       if (count < 0 || count > el.scrollWidth) {
         setCount(0)
       }
+    }
+
+    if (isMobile.any() && document) {
+      document.querySelectorAll('.btn-nav')[0]?.classList.add('btn-nav-hidden')
+      document.querySelectorAll('.btn-nav')[1]?.classList.add('btn-nav-hidden')
     }
   }, [scrollableNodeRef, count])
 
@@ -74,7 +80,7 @@ const X = styled.div`
       top: 50%;
     }
 
-    @media ${breakpoints.mdMax} {
+    &.btn-nav-hidden {
       display: none;
     }
   }
