@@ -1,11 +1,9 @@
-import PageLayout from "@/src/Layout/PageLayout"
-import Meta from '@/src/atoms/Meta'
+import Meta from '@atoms/Meta'
 
 const search = () => {
   return (
     <>
       <Meta title='Search | Moviemanic' />
-      <PageLayout />
     </>
   )
 }

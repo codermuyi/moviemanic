@@ -1,30 +1,28 @@
-import Meta from '@/src/atoms/Meta'
-import PageLayout from '@/src/Layout/PageLayout'
-import Category from '@/src/Category'
-import { filmCategories } from '@/assets/film_info'
+import Meta from '@components/atoms/Meta'
+import Category from '@components/Category'
+import BlockTopLink from '@atoms/BlockTopLink'
+import BlockBottomLink from '@atoms/BlockBottomLink'
+
+import { filmCategories } from 'assets/film_info'
 import { server } from 'config'
-import BlockTopLink from '@/src/atoms/BlockTopLink'
-import BlockBottomLink from '@/src/atoms/BlockBottomLink'
 
 export default function Home({ data }: any) {
   return (
     <>
       <Meta title='Moviemanic' />
-      <PageLayout>
-        <BlockTopLink />
-        {
-          filmCategories.map((c, i) =>
-            <Category
-              key={c.id}
-              categoryName={c.name}
-              showType={c.type}
-              isTrending={c.isTrending}
-              data={data[i]}
-            />
-          )
-        }
-        <BlockBottomLink />
-      </PageLayout>
+      <BlockTopLink />
+      {
+        filmCategories.map((c, i) =>
+          <Category
+            key={c.id}
+            categoryName={c.name}
+            showType={c.type}
+            isTrending={c.isTrending}
+            data={data[i]}
+          />
+        )
+      }
+      <BlockBottomLink />
     </>
   )
 }

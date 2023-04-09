@@ -10,6 +10,11 @@
   },
   "dependencies": {
     "@next/font": "13.1.6",
+    "@radix-ui/react-dialog": "^1.0.3",
+    "@supabase/auth-helpers-nextjs": "^0.5.6",
+    "@supabase/auth-helpers-react": "^0.3.1",
+    "@supabase/auth-ui-react": "^0.3.5",
+    "@supabase/supabase-js": "^2.12.1",
     "@types/node": "18.13.0",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
@@ -19,8 +24,8 @@
     "nprogress": "^0.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-modal": "^3.16.1",
     "react-simple-star-rating": "^5.1.7",
+    "react-toastify": "^9.1.2",
     "simplebar-react": "^3.2.1",
     "styled-components": "^5.3.6",
     "swr": "^2.1.0",
@@ -30,7 +35,6 @@
   "devDependencies": {
     "@types/lodash": "^4.14.191",
     "@types/nprogress": "^0.2.0",
-    "@types/react-modal": "^3.13.1",
     "@types/styled-components": "^5.1.26",
     "@types/uuid": "^9.0.1",
     "babel-plugin-styled-components": "^2.0.7"

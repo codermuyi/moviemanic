@@ -1,4 +1,4 @@
-import FilmPageContent from "@/src/FilmPageContent"
+import FilmPageContent from "@layouts/FilmPage"
 import { server } from 'config'
 import { SWRConfig } from "swr"
 

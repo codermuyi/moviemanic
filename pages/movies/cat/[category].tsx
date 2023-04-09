@@ -1,5 +1,5 @@
 import { server } from 'config'
-import CategoryPageLayout from '@/src/CategoryPageContent/CategoryPageLayout'
+import CategoryPageLayout from '@layouts/CategoryPage'
 
 export const getServerSideProps = async (ctx: any) => {
   const page = ctx.query.page || 1
@@ -10,7 +10,7 @@ export const getServerSideProps = async (ctx: any) => {
   return {
     props: {
       data: data,
-      type: ctx.query.category
+      name: ctx.query.category
     },
   }
 }

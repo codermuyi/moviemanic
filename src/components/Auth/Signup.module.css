@@ -1,0 +1,36 @@
+
+.Fieldset {
+  display: flex;
+  gap: 1.3rem;
+  align-items: center;
+  margin-bottom: .6rem;
+  border: none;
+}
+
+.Label {
+  font-size: 15px;
+  color: var(--violet11);
+  width: 70px;
+  text-align: right;
+}
+
+.Input {
+  width: 100%;
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  padding: 0 10px;
+  font-size: 15px;
+  line-height: 1;
+  color: var(--violet11);
+  box-shadow: 0 0 0 1px rgb(0 0 0 /.3);
+  height: 35px;
+  background-color: rgb(var(--main-bg-color));
+  border: none;
+}
+.Input:focus {
+  box-shadow: 0 0 0 2px var(--violet8);
+  border-color: rgb(var(--main-theme-color));
+}
