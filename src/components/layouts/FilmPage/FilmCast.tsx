@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import ScrollBar from '@atoms/ScrollBar';
+import ScrollBarX from '@atoms/ScrollBarX';
 import CastProfile from './FilmCastProfile'
 
 const Casts = ({ credits }: { credits: any }) => { 
@@ -7,13 +7,13 @@ const Casts = ({ credits }: { credits: any }) => {
     <FilmCast>
       <h2 className='heading'>Casts</h2>
       {(credits.success === false || credits.cast.length === 0) && <p>No info.</p>}
-      <ScrollBar>
+      <ScrollBarX>
         <div className='cast-list'>
           {credits.cast?.map((cast: any, i: number) => (
             <CastProfile key={i} cast={cast} />
           ))}
         </div>
-      </ScrollBar>
+      </ScrollBarX>
     </FilmCast>
   )
 }
