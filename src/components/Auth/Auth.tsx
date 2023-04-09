@@ -6,6 +6,8 @@ import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa, ViewType } from '@supabase/auth-ui-shared'
 import { AuthChangeEvent } from '@supabase/gotrue-js'
 
+import Loader from '@atoms/Loader';
+import { server } from 'config'
 import { routes } from '@constants'
 
 const CustomAuth = ({ view }: {
@@ -16,19 +18,19 @@ const CustomAuth = ({ view }: {
   const session = useSession()
   const [authView, setAuthView] = useState<ViewType>(view)
 
+  const generateRedirectPath = (view: ViewType) => {
+    if (view === 'sign_in')
+      return `${server}${routes.ACCOUNT}`
+    else if (view === 'forgotten_password')
+      return `${server}${routes.RESET_PASSWORD}`
+  }
+
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (event: AuthChangeEvent) => {
         if (event === 'SIGNED_IN') {
-          if (router.query.returnUrl)
-            router.push(`${router?.query?.returnUrl}`)
-          else
-            router.push(routes.ACCOUNT)
+          router.push(routes.ACCOUNT)
         }
-        if (event === 'PASSWORD_RECOVERY')
-          setAuthView('forgotten_password')
-        if (event === 'USER_UPDATED')
-          setTimeout(() => setAuthView('sign_in'), 1000);
       }
     );
 
@@ -38,17 +40,18 @@ const CustomAuth = ({ view }: {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [supabase.auth]);
 
-  return (
+  return !session ? (
     <Parent>
       <h1>{authView.replace('_', ' ')}</h1>
-      {!session && <Auth
+      <Auth
         supabaseClient={supabase}
         appearance={{ theme: ThemeSupa }}
         theme="dark"
         providers={[]}
         view={authView}
         showLinks={false}
-      />}
+        redirectTo={generateRedirectPath(authView)}
+      />
       <div className='auth-links grid-center'>
         {
           authView === 'sign_in' && <>
@@ -62,7 +65,7 @@ const CustomAuth = ({ view }: {
         }
       </div>
     </Parent>
-  )
+  ) : <Loader paddingBlock='10rem' />
 }
 
 const Parent = styled.div`
