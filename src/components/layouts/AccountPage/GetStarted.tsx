@@ -5,7 +5,7 @@ import Dialog from '@components/Dialog';
 import Button from '@components/atoms/Button'
 import RightArrowIcon from '@icons/RightArrow';
 import { breakpoints } from '@constants'
-import useSaveUsername from './hooks/useSaveUsername';
+import useSaveUsername from '../../../hooks/useSaveUsername';
 
 const GetStartedTSX = () => {
   const [username, setUsername] = useState('')

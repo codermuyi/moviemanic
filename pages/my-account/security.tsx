@@ -6,9 +6,9 @@ import Meta from '@atoms/Meta';
 import CheckForUsername from '@atoms/CheckForUsername';
 import RightIcon from '@icons/RightArrow';
 import Button from '@atoms/Button'
-import useChangeUsername from '@layouts/AccountPage/hooks/useChangeUsername';
-import useChangePassword from '@layouts/AccountPage/hooks/useChangePassword';
-import useChangeEmail from '@layouts/AccountPage/hooks/useChangeEmail';
+import useChangeUsername from '@hooks/useChangeUsername';
+import useChangePassword from '@hooks/useChangePassword';
+import useChangeEmail from '@hooks/useChangeEmail';
 import { routeGuard } from '@/src/routeGuard';
 
 const SecurityPage = ({ profile }: any) => {
