@@ -8,7 +8,7 @@ interface ModalInterface {
   videoData: any
 }
 
-const MoreVideosModal: React.FC<ModalInterface> = ({ videoData }) => {
+const FilmVideosModal: React.FC<ModalInterface> = ({ videoData }) => {
   const filterData = videoData?.filter((data: { site: string }) => data.site === 'YouTube')
 
   return (
@@ -22,9 +22,10 @@ const MoreVideosModal: React.FC<ModalInterface> = ({ videoData }) => {
       title='Videos'
       contentStyle={{
         maxWidth: '1200px',
+        paddingRight: 0,
       }}
     >
-      <ScrollBar style={{ height: '70vh', padding: 0 }}>
+      <ScrollBar style={{ height: '70vh', paddingRight: '1rem' }}>
         <DialogBody>
           {filterData?.map((vid: any, i: number) => {
             return <Box key={i}>
@@ -39,7 +40,6 @@ const MoreVideosModal: React.FC<ModalInterface> = ({ videoData }) => {
 }
 
 const DialogBody = styled.div`
-  padding-right: 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1rem;
@@ -61,4 +61,4 @@ const Box = styled.div`
   }
 `
 
-export default MoreVideosModal
+export default FilmVideosModal
