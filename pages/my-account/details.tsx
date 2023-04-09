@@ -10,7 +10,7 @@ const DetailsPage = ({ profile, user }: any) => {
     <>
       <Meta title='Details | Moviemanic' />
       <CheckForUsername profile={profile}>
-        <div style={{ paddingInline: '1rem' }}>
+        <div style={{ paddingInline: '1rem', textAlign: 'center' }}>
           <h1 style={{ paddingBlock: '1rem' }}>Details</h1>
           <p>Username: {profile?.username}</p>
           <br />

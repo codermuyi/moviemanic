@@ -94,6 +94,7 @@ const PageBody = styled.div`
 
   h1 {
     padding-block: 2rem;
+    text-align: center;
   }
 
   .change-smtn {
