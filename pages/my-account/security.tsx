@@ -61,6 +61,7 @@ const SecurityPage = ({ profile }: any) => {
           </div>
 
           <div className='change-smtn'>
+            <div className='overlay'></div>
             <h2>Change Email</h2>
             <form onSubmit={handleChangeEmail}>
               <input
@@ -99,6 +100,8 @@ const PageBody = styled.div`
     max-width: 25rem;
     margin-inline: auto;
     margin-block: 1rem 3rem;
+    position: relative;
+    padding: 1rem;
 
     h2 {
       margin-bottom: 1rem;
@@ -124,6 +127,12 @@ const PageBody = styled.div`
     .button {
       width: 10rem;
       justify-self: center;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgb(0 0 0 / .5);
     }
   }
 
