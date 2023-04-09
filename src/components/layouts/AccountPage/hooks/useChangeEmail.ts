@@ -31,8 +31,6 @@ export default function useChangePassword(newEmail: string) {
         ...toastOptions
       })
     }
-
-    console.log(data)
   }
 
   return changeEmail
