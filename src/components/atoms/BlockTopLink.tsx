@@ -55,7 +55,8 @@ const Something = styled.div`
       transition: clip-path .4s;
     }
 
-    :hover {
+    :hover,
+    :focus {
       box-shadow: 0 3px 5px rgb(0 0 0 / .2);
     }
   }
@@ -63,7 +64,8 @@ const Something = styled.div`
   a:first-child {
     justify-content: end;
 
-    :hover {
+    :hover,
+    :focus {
       padding-right: 6rem;
       ::before {
         clip-path: circle(10% at 50% 50%);
@@ -76,7 +78,8 @@ const Something = styled.div`
       clip-path: circle(70.7% at 50% 50%);
     }
     
-    :hover {
+    :hover,
+    :focus {
       padding-left: 6rem;
       ::before {
         clip-path: circle(40% at 50% 50%);

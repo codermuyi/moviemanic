@@ -39,10 +39,14 @@ const Bottom = styled.div`
     padding: 2.8rem 2rem;
     border-radius: 2rem;
 
-    :not(.no-hover):hover {
-      transform: scale(1.05);
-      color: rgb(var(--main-theme-color));
+    :not(.no-hover) {
+      :hover,
+      :focus {
+        transform: scale(1.05);
+        color: rgb(var(--main-theme-color));
+      }
     }
+    
 
     :nth-child(1) {
       grid-column: 1 / 3;

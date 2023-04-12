@@ -183,9 +183,10 @@ const Card = styled.div`
     border-radius: inherit;
   }
   
-  :hover {
+  :hover,
+  :focus-within {
     .film-card-normal-link {
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
   }
 

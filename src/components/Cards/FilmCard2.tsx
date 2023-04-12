@@ -73,7 +73,7 @@ const Card = styled.div`
   }
 
   :hover,
-  :focus-visible {
+  :focus-within {
     .card-image {
       filter: brightness(50%);
       object-position: center;
@@ -110,7 +110,7 @@ const Card = styled.div`
     }
 
     :hover,
-    :focus-visible {
+    :focus-within {
       .card-image {
         filter: brightness(30%);
         object-position: center;
