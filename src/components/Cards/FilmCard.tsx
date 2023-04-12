@@ -117,7 +117,8 @@ const Card = styled.div`
     transition: inherit;
   }
 
-  :hover {
+  :hover,
+  :focus-within {
     .film-card-normal-link {
       transform: translateY(-8%) rotateX(7deg);
     }

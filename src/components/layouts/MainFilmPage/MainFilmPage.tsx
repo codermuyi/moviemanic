@@ -20,10 +20,12 @@ const MainFilmPageContent = ({ data, mediaType }: any) => {
             {
               filmCategories.map((category) =>
                 (category.type === mediaType) ?
-                  <Link key={category.id} href={`/${linkPath}/cat/${category.name.toLowerCase()}`}>
-                    <div className='card cat-card'>
-                      {category.name}
-                    </div>
+                  <Link
+                    key={category.id}
+                    href={`/${linkPath}/cat/${category.name.toLowerCase()}`}
+                    className='card cat-card'
+                  >
+                    {category.name}
                   </Link>
                   : '')
             }
@@ -101,7 +103,8 @@ const PageBody = styled.div`
         border-radius: 2rem;
         width: 200px;
 
-        :hover {
+        :hover,
+        :focus {
           transform: scale(1.05);
           color: rgb(var(--main-theme-color));
         }
@@ -123,7 +126,8 @@ const PageBody = styled.div`
         font-size: .65rem;
         padding: 5px;
 
-        :hover {
+        :hover,
+        :focus {
           transform: scale(1.1);
         }
         

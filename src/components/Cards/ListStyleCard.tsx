@@ -4,13 +4,11 @@ import CardImage from './FilmCardImage'
 import CardInfo from './FilmCardInfo'
 
 interface Props {
-  isTrending?: boolean
   type: string
   data: any
 }
 
 const ListStyleCard = ({
-  isTrending,
   type,
   data
 }: Props) => {
@@ -52,7 +50,8 @@ const Card = styled.div`
     transition: .3s;
   }
   
-  :hover {
+  :hover,
+  :focus-within {
     box-shadow: 0 3px 3px rgb(0 0 0 / .15);
     background-color: rgb(var(--main-theme-color));
     

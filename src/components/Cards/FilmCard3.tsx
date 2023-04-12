@@ -50,7 +50,7 @@ const Card = styled.div`
   }
   
   :hover,
-  :focus-visible {
+  :focus-within {
     .card-image {
       transform: scale(1.03);
       filter: brightness(60%);
@@ -77,7 +77,7 @@ const Card = styled.div`
     }
 
     :hover,
-    :focus-visible {
+    :focus-within {
       border-right: 5px solid rgb(var(--main-theme-color));
 
       .card-image {
