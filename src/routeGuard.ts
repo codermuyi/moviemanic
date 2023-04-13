@@ -1,14 +1,17 @@
 import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import { GetServerSidePropsContext } from 'next';
+
 import { routes } from './constants';
+import { myFetch } from '@/assets/utilities';
 
 export async function routeGuard(
   ctx: GetServerSidePropsContext,
   privateWhenLoggedIn?: boolean,
+  dataFetchUrl = '',
   redirect?: string,
-  data?: any,
 ) {
   const supabase = createServerSupabaseClient(ctx)
+  let data = null
 
   const {
     data: { session },
@@ -23,11 +26,14 @@ export async function routeGuard(
     }
   }
   else if (!session && privateWhenLoggedIn) {
+    // Only fetch data when page is not redirected
+    if (dataFetchUrl)
+      data = await myFetch(dataFetchUrl)
+
     return {
       props: {
-        profile: {
-          message: null
-        }
+        profile: null,
+        data: data,
       }
     }
   }
@@ -43,12 +49,15 @@ export async function routeGuard(
     .from('profiles')
     .select('*')
 
+  if (dataFetchUrl)
+    data = await myFetch(dataFetchUrl)
+
   return {
     props: {
       initialSession: session,
       user: session.user,
       profile: profile?.[0] ?? null,
-      data: data ?? null,
+      data: data,
     },
   }
 }
