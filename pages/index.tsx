@@ -2,9 +2,11 @@ import Meta from '@components/atoms/Meta'
 import Category from '@components/Category'
 import BlockTopLink from '@atoms/BlockTopLink'
 import BlockBottomLink from '@atoms/BlockBottomLink'
+import { GetServerSidePropsContext } from 'next'
 
 import { filmCategories } from 'assets/film_info'
 import { server } from 'config'
+import { routeGuard } from '@/src/routeGuard'
 
 export default function Home({ data }: any) {
   return (
@@ -27,13 +29,6 @@ export default function Home({ data }: any) {
   )
 }
 
-export const getServerSideProps = async (ctx: any) => {
-  const res = await fetch(`${server}/api/categories`)
-  const data = await res.json()
-
-  return {
-    props: {
-      data: data,
-    },
-  }
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+  return await routeGuard(ctx, true, `${server}/api/categories`)
 }
