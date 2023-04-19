@@ -118,7 +118,7 @@ const Bar = styled.nav`
   display: flex;
   align-items: center;
   padding: .5rem 1rem;
-  background: linear-gradient(70deg, rgb(var(--sub-theme-color), .6), rgb(var(--f-bg-color), .8) 50%);
+  background: linear-gradient(70deg, rgb(var(--main-theme-color), .6), rgb(var(--f-bg-color), .8) 50%);
 
   .bar-item {
     display: flex;
