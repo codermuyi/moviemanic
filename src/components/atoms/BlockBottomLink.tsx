@@ -32,8 +32,8 @@ const Bottom = styled.div`
   margin-inline: auto;
 
   .card {
-    background-color: rgb(var(--f-bg-color));
-    color: rgb(var(--f-text-color));
+    background-color: rgb(var(--dark-theme-color));
+    color: rgb(var(--main-text-color));
     cursor: pointer;
     transition: .3s;
     padding: 2.8rem 2rem;

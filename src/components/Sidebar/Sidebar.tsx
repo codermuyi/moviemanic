@@ -65,7 +65,7 @@ const Sidebar = ({
               <MenuIcon
                 width={iconWidth}
                 height={iconHeight}
-                fill='rgb(var(--f-text-color))'
+                fill='rgb(var(--main-text-color))'
               />
             </Button>
           </div>
@@ -151,8 +151,8 @@ const SideNav = styled.div`
   bottom: 0;
   width: var(--sb-width);
   z-index: 3000;
-  background-color: rgb(var(--f-bg-color));
-  color: rgb(var(--f-text-color));
+  background-color: rgb(var(--dark-theme-color));
+  color: rgb(var(--main-text-color));
   transition-duration: .2s;
   padding-bottom: 40rem;
 
@@ -168,7 +168,7 @@ const SideNav = styled.div`
     align-items: center;
     width: 100%;
     padding: .3rem 1rem;
-    background-color: rgb(var(--f-bg-color));
+    background-color: rgb(var(--dark-theme-color));
     color: rgb(var(--sub-theme-color));
 
     &.toggle {

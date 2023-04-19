@@ -86,7 +86,7 @@ const Parent = styled.div`
     border-color: rgb(var(--main-theme-color));
     
     :hover {
-      background-color: rgb(var(--f-bg-color)) !important;
+      background-color: rgb(var(--dark-theme-color)) !important;
     }
   }
 

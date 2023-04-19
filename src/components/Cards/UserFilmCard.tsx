@@ -80,7 +80,7 @@ const FilmCard = ({
 
 const Card = styled.div`
   background-color: rgb(var(--main-text-color));
-  color: rgb(var(--f-bg-color));
+  color: rgb(var(--dark-theme-color));
   margin-top: 2.5rem;
   border-radius: 20px;
   display: grid;

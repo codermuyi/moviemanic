@@ -36,11 +36,11 @@ const TheButton = styled(Button)`
   bottom: 50%;
   width: 2rem;
   height: 2rem;
-  background-color: rgb(var(--f-bg-color));
+  background-color: rgb(var(--dark-theme-color));
 
   :hover,
   :focus {
-    background-color: rgb(var(--f-text-color));
+    background-color: rgb(var(--main-text-color));
     color: rgb(var(--main-theme-color));
   }
 `

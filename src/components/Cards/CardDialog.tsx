@@ -23,7 +23,7 @@ const CardDialog = ({ info, linkHref, mediaType }: any) => {
       contentStyle={{
         paddingRight: '0',
         backgroundColor: 'rgb(var(--main-text-color))',
-        color: 'rgb(var(--f-bg-color))',
+        color: 'rgb(var(--dark-theme-color))',
       }}
     >
       <ScrollBar style={{ height: '80vh', paddingRight:'1rem' }}>

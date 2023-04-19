@@ -49,7 +49,7 @@ const MiniCategories = () => {
 
 
 const Aside = styled.div`
-  background-color: rgb(var(--f-bg-color), .6);
+  background-color: rgb(var(--dark-theme-color), .6);
   padding-block: .5rem;
   border-radius: 30px;
 

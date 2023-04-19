@@ -85,7 +85,7 @@ const Navbar = () => {
             <ProfileIcon
               width={iconWidth}
               height={iconHeight}
-              fill="rgb(var(--f-text-color))"
+              fill="rgb(var(--main-text-color))"
             />
           </Link>
           {
@@ -118,7 +118,7 @@ const Bar = styled.nav`
   display: flex;
   align-items: center;
   padding: .5rem 1rem;
-  background: linear-gradient(70deg, rgb(var(--main-theme-color), .6), rgb(var(--f-bg-color), .8) 50%);
+  background: linear-gradient(70deg, rgb(var(--main-theme-color), .6), rgb(var(--dark-theme-color), .8) 50%);
 
   .bar-item {
     display: flex;
@@ -160,7 +160,7 @@ const Bar = styled.nav`
     padding: 2rem;
     left: 30px;
     right: initial;
-    background: linear-gradient(rgb(var(--main-theme-color)), rgb(var(--f-bg-color)) 70%);
+    background: linear-gradient(rgb(var(--main-theme-color)), rgb(var(--dark-theme-color)) 70%);
 
     .bar-item {
       flex-direction: column;

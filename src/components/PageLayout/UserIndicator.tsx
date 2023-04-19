@@ -24,7 +24,7 @@ const UserIndicator = ({ session }: any) => {
 const UserIndicatorStyle = styled.p`
   padding-inline: 1rem;
   color: rgb(var(--main-theme-color));
-  background-color: rgb(var(--f-bg-color));
+  background-color: rgb(var(--dark-theme-color));
   width: 14rem;
   padding: .7rem 0;
   position: sticky;

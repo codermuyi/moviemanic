@@ -136,7 +136,7 @@ const MenuIcon = (props: any) => (
 
 const DropdownIcon = (props: any) => (
   <svg
-    style={{ fill: "rgb(var(--f-text-color))" }}
+    style={{ fill: "rgb(var(--main-text-color))" }}
     width="800px"
     height="800px"
     viewBox="-6.5 0 32 32"

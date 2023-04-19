@@ -94,7 +94,7 @@ const Home = styled.div`
       flex-direction: column;
       padding: 2rem 1rem;
       background-color: rgb(var(--main-text-color));
-      color: rgb(var(--f-bg-color));
+      color: rgb(var(--dark-theme-color));
       border-radius: 10px;
       width: 20rem;
       transition-duration: .3s;

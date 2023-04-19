@@ -43,7 +43,7 @@ const DialogBody = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1rem;
-  color: rgb(var(--f-text-color));
+  color: rgb(var(--main-text-color));
   transition-duration: .5s;
 
   p {

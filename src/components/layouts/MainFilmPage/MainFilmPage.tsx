@@ -81,8 +81,8 @@ const PageBody = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(var(--f-bg-color));
-    color: rgb(var(--f-text-color));
+    background-color: rgb(var(--dark-theme-color));
+    color: rgb(var(--main-text-color));
     cursor: pointer;
     transition: .3s;
     text-transform: capitalize;

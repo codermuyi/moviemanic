@@ -116,7 +116,7 @@ const PageBody = styled.div`
     .smtn-input {
       padding: .7rem;
       font-size: 1rem;
-      background-color: rgb(var(--f-bg-color));
+      background-color: rgb(var(--dark-theme-color));
       color: rgb(var(--main-theme-color));
       border: 0;
 
@@ -144,7 +144,7 @@ const PageBody = styled.div`
     margin: 1rem auto;
     
     a {
-      color: rgb(var(--f-bg-color));
+      color: rgb(var(--dark-theme-color));
     }
   }
 `

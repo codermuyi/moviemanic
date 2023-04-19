@@ -80,7 +80,7 @@ const Dropdown = styled.div.attrs(props => {
   .dropdown-body {
     overflow: hidden;
     max-height: ${props => props.isOpen ? 'auto' : '0'};
-    border-left: 2px dashed rgb(var(--f-text-color), .9);
+    border-left: 2px dashed rgb(var(--main-text-color), .9);
     background-image: url("data:image/svg+xml,%3csvg width='3%' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='2' stroke-dasharray='6%2c 21%2c 7' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
     border-right: 0;
     margin-left: 5px;
@@ -92,13 +92,13 @@ const Dropdown = styled.div.attrs(props => {
   }
 
   .dropdown-item {
-    background-color: rgb(var(--f-bg-color), .95);
+    background-color: rgb(var(--dark-theme-color), .95);
     padding: .3rem 1.3rem;
 
   }
   
   .dropdown-item:not(:last-child) {
-    border-bottom: 2px solid rgb(var(--f-bg-color));
+    border-bottom: 2px solid rgb(var(--dark-theme-color));
   }
 `
 

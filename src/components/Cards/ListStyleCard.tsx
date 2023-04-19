@@ -40,7 +40,7 @@ const Card = styled.div`
   overflow: hidden;
   border-top: 2px solid rgb(var(--main-theme-color));
   border-radius: 10px;
-  background-color: rgb(var(--f-bg-color));
+  background-color: rgb(var(--dark-theme-color));
   transition: .3s;
   
   .card-image {

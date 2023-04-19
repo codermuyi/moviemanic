@@ -29,8 +29,8 @@ const Foot = styled.footer`
   flex-direction: column;
   font-size: .8em;
   gap: .6em;
-  background-color: rgb(var(--f-bg-color));
-  color: rgb(var(--f-text-color));
+  background-color: rgb(var(--dark-theme-color));
+  color: rgb(var(--main-text-color));
   /* border-inline: 1rem solid rgb(var(--main-theme-color)); */
 
   a {

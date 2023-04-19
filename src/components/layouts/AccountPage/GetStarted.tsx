@@ -61,14 +61,14 @@ const FirstScreen = styled.div`
       position: absolute;
       inset: 0;
       z-index: -1;
-      background-color: rgb(var(--f-bg-color));
+      background-color: rgb(var(--dark-theme-color));
       clip-path: circle(0% at 50% 50%);
       transition: clip-path .4s;
     }
     
     &:hover,
     &:focus {
-      box-shadow: 0 4px 8px rgb(var(--f-bg-color), .25);
+      box-shadow: 0 4px 8px rgb(var(--dark-theme-color), .25);
       background-color: white;
       transform: scale(1.1);
 

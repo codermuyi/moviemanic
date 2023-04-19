@@ -34,7 +34,7 @@ const Something = styled.div`
     align-items: center;
     padding: 3rem;
     height: 300px;
-    background-color: rgb(var(--f-bg-color));
+    background-color: rgb(var(--dark-theme-color));
     border-radius: 50px;
     position: relative;
     overflow: hidden;
