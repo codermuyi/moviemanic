@@ -14,7 +14,7 @@ export default function useSignOut() {
     if (error) {
       toast.error('Failed to sign out')
     } else {
-      router.push(routes.SIGN_IN)
+      router.push(routes.HOME)
     }
   }
 

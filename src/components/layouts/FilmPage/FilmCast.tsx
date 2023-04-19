@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import ScrollBarX from '@atoms/ScrollBarX';
 import CastProfile from './FilmCastProfile'
 
-const Casts = ({ credits }: { credits: any }) => { 
+const Casts = ({ credits, mediaType }: { credits: any, mediaType: string }) => {
   return (
     <FilmCast>
       <h2 className='heading'>Casts</h2>
@@ -10,7 +10,7 @@ const Casts = ({ credits }: { credits: any }) => {
       <ScrollBarX>
         <div className='cast-list'>
           {credits.cast?.map((cast: any, i: number) => (
-            <CastProfile key={i} cast={cast} />
+            <CastProfile key={i} cast={cast} mediaType={mediaType} />
           ))}
         </div>
       </ScrollBarX>
@@ -23,27 +23,7 @@ const FilmCast = styled.div`
     display: flex;
     flex-grow: 0;
     gap: 1em;
-    margin-top: 1rem;
-
-    .cast {
-      .cast-profile {
-        border-radius: 50%;
-      }
-
-      svg {
-        width: 160px;
-        height: 160px;
-      }
-    }
-  }
-
-  .cast-info {
-    font-size: .7em;
-    text-align: center;
-
-    .role {
-      opacity: .6;
-    }
+    margin-block: 1rem;
   }
 `
 
