@@ -10,12 +10,12 @@ const FilmWithCast = ({ cast }: { cast: any }) => {
     <Dialog
       noButton
       name={
-        <TheButton name={`More movies with ${cast.name}`}>
+        <TheButton name={`Movies with ${cast.name}`}>
           <RightIcon width='25' height='25' />
         </TheButton>
       }
       title={<>
-        More movies with {' '}
+        Movies with {' '}
         <span style={{ color: 'rgb(var(--main-theme-color))' }}>
           {cast.name}
         </span>

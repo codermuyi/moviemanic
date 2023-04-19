@@ -6,7 +6,7 @@ import { ProfileIcon } from '@atoms/SVGIcons';
 import MovieWithCastDialog from './MovieWithCastDialog'
 
 const CastProfile = (props: any) => {
-  const { cast, mediaType } = props;
+  const { cast } = props;
   const [src, setSrc] = useState('')
 
   return (
@@ -27,7 +27,7 @@ const CastProfile = (props: any) => {
         <p>{cast.name}</p>
         <p className='role'>{cast.character && cast.character}</p>
       </div>
-      {mediaType === 'movie' && <MovieWithCastDialog cast={cast} />}
+      <MovieWithCastDialog cast={cast} />
     </Cast>
   )
 }

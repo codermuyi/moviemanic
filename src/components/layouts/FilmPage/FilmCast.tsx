@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import ScrollBarX from '@atoms/ScrollBarX';
 import CastProfile from './FilmCastProfile'
 
-const Casts = ({ credits, mediaType }: { credits: any, mediaType: string }) => {
+const Casts = ({ credits }: { credits: any }) => {
   return (
     <FilmCast>
       <h2 className='heading'>Casts</h2>
@@ -10,7 +10,7 @@ const Casts = ({ credits, mediaType }: { credits: any, mediaType: string }) => {
       <ScrollBarX>
         <div className='cast-list'>
           {credits.cast?.map((cast: any, i: number) => (
-            <CastProfile key={i} cast={cast} mediaType={mediaType} />
+            <CastProfile key={i} cast={cast} />
           ))}
         </div>
       </ScrollBarX>
