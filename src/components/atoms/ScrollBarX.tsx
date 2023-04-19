@@ -27,8 +27,11 @@ const ScrollBarX = ({ children }: { children: ReactNode }) => {
     }
 
     if (isMobile.any() && document) {
-      document.querySelectorAll('.btn-nav')[0]?.classList.add('btn-nav-hidden')
-      document.querySelectorAll('.btn-nav')[1]?.classList.add('btn-nav-hidden')
+      const allBtnNav = document.querySelectorAll('.btn-nav')
+
+      for (let i = 0; i < allBtnNav.length; i++) {
+        allBtnNav[i].classList.add('btn-nav-hidden')
+      }
     }
   }, [scrollableNodeRef, count])
 
