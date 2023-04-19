@@ -12,6 +12,7 @@ interface GridProps {
   mediaType?: string
   isGenre?: boolean
   isListStyle?: boolean
+  completeList?: boolean
 }
 
 const FilmGrid = ({
@@ -20,18 +21,19 @@ const FilmGrid = ({
   centerTitle,
   mediaType,
   isGenre,
-  isListStyle
+  isListStyle,
+  completeList
 }: GridProps) => {
 
   return (
     <>
-      {data?.[0] && <Divv centerTitle={centerTitle} isGenre={isGenre} isListStyle={isListStyle}>
+      {data?.[0] && <Grid centerTitle={centerTitle} isGenre={isGenre} isListStyle={isListStyle}>
         {title && <h2>{title}</h2>}
         <div className='film-list'>
           {
             data.map((film: any, i: number) => {
               if (isGenre) {
-                if (i > 4) return
+                if (i > 4 && !completeList) return
                 return <FilmCard3
                   key={i}
                   type={film.media_type || mediaType}
@@ -39,7 +41,7 @@ const FilmGrid = ({
                 />
               }
               if (isListStyle) {
-                if (i > 2) return
+                if (i > 2 && !completeList) return
                 return <ListStyleCard
                   key={i}
                   type={film.media_type || mediaType}
@@ -54,12 +56,12 @@ const FilmGrid = ({
             })
           }
         </div>
-      </Divv>}
+      </Grid>}
     </>
   )
 }
 
-const Divv = styled.div.attrs((props) => {
+const Grid = styled.div.attrs((props) => {
 })`
   padding: 1rem;
   grid-column: 1 / -1;

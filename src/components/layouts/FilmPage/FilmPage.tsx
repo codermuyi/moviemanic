@@ -51,7 +51,7 @@ const FilmPageContent = ({ media_type }: Props) => {
               <FilmVideos videoData={videoData} />
               <FilmDetails {...info} />
               <br />
-              <Casts credits={credits} />
+              <Casts credits={credits} mediaType={media_type} />
               <FilmExternalSource imdb={info.imdb_id} website={info.homepage} />
             </div>
             <FilmGrid
