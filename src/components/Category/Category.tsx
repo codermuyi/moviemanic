@@ -1,13 +1,15 @@
 import Link from 'next/link'
 import styled from 'styled-components'
+
+import type { FilmListResponse } from '@/src/types'
 import Button from '@atoms/Button'
 import CategoryList from './CategoryList'
 
-interface Props {
+interface CategoryProps {
   categoryName: string
-  showType: string
+  showType: 'movie' | 'tv'
   isTrending: boolean
-  data: any
+  data: FilmListResponse
 }
 
 const Category = ({
@@ -15,8 +17,7 @@ const Category = ({
   showType,
   isTrending,
   data
-}: Props) => {
-
+}: CategoryProps) => {
   const linkPath = showType === 'movie' ? 'movies' : 'tv-series'
 
   return (

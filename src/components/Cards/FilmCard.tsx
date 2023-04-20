@@ -3,11 +3,12 @@ import styled, { keyframes } from 'styled-components'
 import CardImage from './FilmCardImage'
 import CardInfo from './FilmCardInfo'
 import { breakpoints } from '@constants'
+import type { FilmItem } from '@/src/types'
 
 interface Props {
   isTrending?: boolean
   type: string
-  data: any
+  data: FilmItem
 }
 
 const FilmCard = ({

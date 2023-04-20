@@ -1,10 +1,11 @@
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
+import { Session } from '@supabase/supabase-js'
 
 import useGetUsername from '@hooks/useGetUsername'
 import { breakpoints } from '@constants'
 
-const UserIndicator = ({ session }: any) => {
+const UserIndicator = ({ session }: { session: Session | null }) => {
   const router = useRouter()
   const username = useGetUsername()
 

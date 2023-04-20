@@ -1,10 +1,11 @@
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import type { FilmItem } from '@/src/types'
 
 interface ImageProps {
   isTrending?: boolean
-  data: any
+  data: FilmItem
   linkHref: string
   path?: string
   errorPath?: string

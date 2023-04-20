@@ -1,10 +1,11 @@
 import styled, { css } from 'styled-components'
 import Link from 'next/link'
+import type { FilmItem } from '@/src/types'
 
 interface Props {
   isTrending?: boolean
   type: string
-  data: any
+  data: FilmItem
   linkHref: string
   overflow?: boolean
 }

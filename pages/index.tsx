@@ -1,14 +1,16 @@
+import type { GetServerSidePropsContext } from 'next'
 import Meta from '@components/atoms/Meta'
 import Category from '@components/Category'
 import BlockTopLink from '@atoms/BlockTopLink'
 import BlockBottomLink from '@atoms/BlockBottomLink'
-import { GetServerSidePropsContext } from 'next'
 
+import type { FilmListResponse } from '@/src/types'
 import { filmCategories } from 'assets/film_info'
 import { server } from 'config'
 import { routeGuard } from '@/src/routeGuard'
 
-export default function Home({ data }: any) {
+export default function Home({ data }: {data: Array<FilmListResponse>}) {
+  console.log(data)
   return (
     <>
       <Meta title='Moviemanic' />

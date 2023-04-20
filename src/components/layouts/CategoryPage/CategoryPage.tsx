@@ -8,6 +8,7 @@ import Pagination from "@atoms/Pagination"
 import Heading from '@components/TypeHeading'
 
 const CategoryPageLayout = ({ data, name, mediaType }: any) => {
+  console.log(data)
   return (
     <>
       <Meta

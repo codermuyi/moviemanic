@@ -2,10 +2,11 @@ import styled, { css } from 'styled-components'
 import ScrollBarX from '@atoms/ScrollBarX';
 import FilmCard from '@components/Cards/FilmCard'
 import { breakpoints } from '@constants'
+import type { FilmList } from '@/src/types';
 
 interface ListProps {
   isTrending: boolean
-  data: any
+  data: FilmList
   showType: string
 }
 
