@@ -1,6 +1,6 @@
-import React from 'react'
+import { SVGProps } from 'react'
 
-const BookmarkFilled = (props: any) => (
+const BookmarkFilled = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width="15"
     height="15"

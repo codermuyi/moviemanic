@@ -1,6 +1,6 @@
-import React from 'react'
+import { SVGProps } from 'react'
 
-const BrokenLink = (props: any) => (
+const BrokenLink = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox="0 0 1024 1024"
     version="1.1"

@@ -1,6 +1,6 @@
-import React from 'react'
+import { SVGProps } from 'react'
 
-const Right = (props: any) => (
+const Right = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width="15"
     height="15"

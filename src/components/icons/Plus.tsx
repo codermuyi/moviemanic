@@ -1,4 +1,6 @@
-const Plus = (props: any) => (
+import { SVGProps } from 'react'
+
+const Plus = (props: SVGProps<SVGSVGElement>) => (
   <svg
     width="15"
     height="15"
