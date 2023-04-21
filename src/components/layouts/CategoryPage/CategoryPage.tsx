@@ -1,14 +1,23 @@
-import styled from 'styled-components'
 import { capitalize } from 'lodash'
 
+import type { FilmListResponse, MediaType } from '@/src/types'
 import Meta from '@atoms/Meta'
 import FilmGrid from "@components/FilmGrid"
 import BlockBottomLink from "@atoms/BlockBottomLink"
 import Pagination from "@atoms/Pagination"
 import Heading from '@components/TypeHeading'
 
-const CategoryPageLayout = ({ data, name, mediaType }: any) => {
-  console.log(data)
+interface Props {
+  data: FilmListResponse
+  name: string
+  mediaType: MediaType
+}
+
+const CategoryPageLayout = ({
+  data,
+  name,
+  mediaType
+}: Props) => {
   return (
     <>
       <Meta
@@ -17,7 +26,6 @@ const CategoryPageLayout = ({ data, name, mediaType }: any) => {
       <Heading name={name} mediaType={mediaType} />
       <FilmGrid
         data={data?.results}
-        mediaType={mediaType}
       />
       <Pagination
         currentPage={data.page}

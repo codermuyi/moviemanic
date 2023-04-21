@@ -1,13 +1,13 @@
 import styled, { keyframes } from 'styled-components'
 
+import type { FilmItem, MediaType } from '@/src/types'
 import CardImage from './FilmCardImage'
 import CardInfo from './FilmCardInfo'
 import { breakpoints } from '@constants'
-import type { FilmItem } from '@/src/types'
 
 interface Props {
   isTrending?: boolean
-  type: string
+  type: MediaType
   data: FilmItem
 }
 

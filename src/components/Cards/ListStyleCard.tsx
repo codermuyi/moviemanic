@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 
+import type { FilmItem, MediaType } from '@/src/types'
 import CardImage from './FilmCardImage'
 import CardInfo from './FilmCardInfo'
 
 interface Props {
-  type: string
-  data: any
+  type: MediaType
+  data: FilmItem
 }
 
 const ListStyleCard = ({

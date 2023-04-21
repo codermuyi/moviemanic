@@ -1,5 +1,5 @@
 
-export interface FilmItem {
+export type FilmItem = {
   id: number
   name: string
   title: string
@@ -20,10 +20,15 @@ export interface FilmItem {
 }
 
 export type FilmList = Array<FilmItem>
+export type MediaType = FilmItem['media_type']
 
-export interface FilmListResponse {
+export type FilmListResponse = {
   page: number
   results: FilmList
   total_pages: number
   total_results: number
+}
+
+export type FilmDetails = {
+
 }

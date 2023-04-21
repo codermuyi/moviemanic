@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components'
 
+import type { FilmList, MediaType } from '@/src/types'
 import FilmCard2 from '@components/Cards/FilmCard2'
 import FilmCard3 from '@components/Cards/FilmCard3'
 import ListStyleCard from '@components/Cards/ListStyleCard'
@@ -7,12 +8,18 @@ import { breakpoints } from '@constants'
 
 interface GridProps {
   title?: string
-  data: any
+  data: FilmList
   centerTitle?: boolean
-  mediaType?: string
+  mediaType?: MediaType
   isGenre?: boolean
   isListStyle?: boolean
   completeList?: boolean
+}
+
+interface GridDivProps {
+  isGenre: boolean | undefined
+  isListStyle: boolean | undefined
+  centerTitle: boolean | undefined
 }
 
 const FilmGrid = ({
@@ -27,11 +34,15 @@ const FilmGrid = ({
 
   return (
     <>
-      {data?.[0] && <Grid centerTitle={centerTitle} isGenre={isGenre} isListStyle={isListStyle}>
+      {data?.[0] && <Grid
+        centerTitle={centerTitle}
+        isGenre={isGenre}
+        isListStyle={isListStyle}
+      >
         {title && <h2>{title}</h2>}
         <div className='film-list'>
           {
-            data.map((film: any, i: number) => {
+            data.map((film, i: number) => {
               if (isGenre) {
                 if (i > 4 && !completeList) return
                 return <FilmCard3
@@ -61,8 +72,7 @@ const FilmGrid = ({
   )
 }
 
-const Grid = styled.div.attrs((props) => {
-})`
+const Grid = styled.div<GridDivProps>`
   padding: 1rem;
   grid-column: 1 / -1;
 

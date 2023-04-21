@@ -1,12 +1,13 @@
 import styled from 'styled-components'
 
+import type { FilmItem, MediaType } from '@/src/types'
 import FilmCardImage from './FilmCardImage'
 import CardInfo from './FilmCardInfo'
 import { breakpoints } from '@constants'
 
 interface Props {
-  type: string
-  data: any
+  type: MediaType
+  data: FilmItem
 }
 
 const FilmCard3 = ({
