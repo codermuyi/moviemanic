@@ -10,7 +10,6 @@ import { server } from 'config'
 import { routeGuard } from '@/src/routeGuard'
 
 export default function Home({ data }: {data: Array<FilmListResponse>}) {
-  console.log(data)
   return (
     <>
       <Meta title='Moviemanic' />
