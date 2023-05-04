@@ -1,7 +1,6 @@
 import { toast } from 'react-toastify';
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import { useRouter } from 'next/router';
-import { ChangeEvent } from 'react';
 
 import { toastOptions } from '@constants';
 import { routes } from '@constants';
@@ -10,7 +9,7 @@ export default function useChangePassword(newPassword: string) {
   const supabase = useSupabaseClient()
   const router = useRouter()
 
-  async function changePassword(e: ChangeEvent<HTMLFormElement>) {
+  async function changePassword(e: any) {
     e.preventDefault()
 
     const toastId = toast.loading("Please wait...")

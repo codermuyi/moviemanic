@@ -11,7 +11,7 @@ export default function useSaveUsername(username: string) {
   const router = useRouter()
   const session = useSession()
 
-  async function saveUsername(e: ChangeEvent) {
+  async function saveUsername(e: any) {
     e.preventDefault()
 
     const toastId = toast.loading("Please wait...")
