@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-const Meta = ({ title, description }: { [key: string]: string }) => {
+const Meta = ({ title, description }: { [key: string]: string | undefined }) => {
   const router = useRouter()
 
   return (

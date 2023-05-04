@@ -1,18 +1,22 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { filmPagePath, myFetch } from 'assets/utilities'
+import { FilmListResponse, FilmCreditsResponse, FilmVideoResponse } from '@/src/types';
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   const params: string | string[] | undefined = req.query.params;
-  const pathArray = ['', '/credits', '/recommendations', '/videos']
-  let data_list = []
   
-  for (let i = 0; i < pathArray.length; i++) {
-    let data = await myFetch(filmPagePath(params, pathArray[i]))
-    data_list.push(data)
-  }
+  let info: FilmListResponse = await myFetch(filmPagePath(params))
+  let credits: FilmCreditsResponse = await myFetch(filmPagePath(params, '/credits'))
+  let similar: FilmListResponse = await myFetch(filmPagePath(params, '/recommendations'))
+  let videoData: FilmVideoResponse = await myFetch(filmPagePath(params, '/videos'))
 
-  res.status(200).json(data_list)
+  res.status(200).json({
+    info,
+    credits,
+    similar,
+    videoData
+  })
 }

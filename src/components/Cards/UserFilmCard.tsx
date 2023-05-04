@@ -9,9 +9,10 @@ import CardDialog from './CardDialog'
 import useRemoveFromList from '@hooks/useRemoveFromList';
 import { breakpoints } from '@constants'
 import { myFetch } from '@/assets/utilities'
+import { FilmDetailsType, SupabaseData } from '@/src/types'
 
 interface Props {
-  supabaseData: any
+  supabaseData: SupabaseData
   setRandomNum?: any
 }
 
@@ -25,7 +26,7 @@ const FilmCard = ({
     `/movies/${supabaseData.film_id}`
     : `/tv-series/${supabaseData.film_id}`
 
-  const { data: info } = useSwr(
+  const { data: info } = useSwr<FilmDetailsType>(
     `/api/film-item/${supabaseData.media_type}/${supabaseData.film_id}`,
     myFetch
   )
@@ -46,7 +47,7 @@ const FilmCard = ({
             overflow
           />
           <div className='genres'>
-            <p className='genre'>{info?.genres.map((g: any) => g?.name).join(', ')}</p>
+            <p className='genre'>{info?.genres.map((g) => g?.name).join(', ')}</p>
           </div>
           <div className='info-2'>
             <CardDialog

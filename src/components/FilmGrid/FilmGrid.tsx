@@ -1,14 +1,14 @@
 import styled, { css } from 'styled-components'
 
-import type { FilmList, MediaType } from '@/src/types'
 import FilmCard2 from '@components/Cards/FilmCard2'
 import FilmCard3 from '@components/Cards/FilmCard3'
 import ListStyleCard from '@components/Cards/ListStyleCard'
 import { breakpoints } from '@constants'
+import { FilmList, MediaType } from '@/src/types'
 
 interface GridProps {
   title?: string
-  data: FilmList
+  data?: FilmList
   centerTitle?: boolean
   mediaType?: MediaType
   isGenre?: boolean
@@ -17,9 +17,9 @@ interface GridProps {
 }
 
 interface GridDivProps {
-  isGenre: boolean | undefined
-  isListStyle: boolean | undefined
-  centerTitle: boolean | undefined
+  isGenre?: boolean
+  isListStyle?: boolean
+  centerTitle?: boolean
 }
 
 const FilmGrid = ({
@@ -42,7 +42,7 @@ const FilmGrid = ({
         {title && <h2>{title}</h2>}
         <div className='film-list'>
           {
-            data.map((film, i: number) => {
+            data.map((film, i) => {
               if (isGenre) {
                 if (i > 4 && !completeList) return
                 return <FilmCard3

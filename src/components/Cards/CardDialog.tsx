@@ -6,8 +6,15 @@ import FilmPoster from '@components/FilmPoster'
 import FilmDetails from '@components/FilmDetails'
 import ScrollBar from '@atoms/ScrollBar'
 import InfoIcon from '@icons/Info'
+import { FilmDetailsType, MediaType } from '@/src/types'
 
-const CardDialog = ({ info, linkHref, mediaType }: any) => {
+interface Props {
+  info: FilmDetailsType
+  linkHref: string
+  mediaType: MediaType
+}
+
+const CardDialog = ({ info, linkHref, mediaType }: Props) => {
   return (
     <Dialog
       noButton

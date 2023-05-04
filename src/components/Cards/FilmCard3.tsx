@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
-import type { FilmItem, MediaType } from '@/src/types'
 import FilmCardImage from './FilmCardImage'
 import CardInfo from './FilmCardInfo'
 import { breakpoints } from '@constants'
+import { FilmItem, MediaType } from '@/src/types'
 
 interface Props {
   type: MediaType

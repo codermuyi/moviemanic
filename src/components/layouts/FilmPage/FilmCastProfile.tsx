@@ -2,11 +2,11 @@ import styled from 'styled-components'
 import Image from 'next/image'
 import { useState } from 'react'
 
-import { ProfileIcon } from '@atoms/SVGIcons';
 import MovieWithCastDialog from './MovieWithCastDialog'
+import { ProfileIcon } from '@atoms/SVGIcons';
+import { FilmCast } from '@/src/types'
 
-const CastProfile = (props: any) => {
-  const { cast } = props;
+const CastProfile = ({ cast }: { cast: FilmCast }) => {
   const [src, setSrc] = useState('')
 
   return (
@@ -25,7 +25,7 @@ const CastProfile = (props: any) => {
       }
       <div className='cast-info'>
         <p>{cast.name}</p>
-        <p className='role'>{cast.character && cast.character}</p>
+        <p className='role'>{cast.character}</p>
       </div>
       <MovieWithCastDialog cast={cast} />
     </Cast>

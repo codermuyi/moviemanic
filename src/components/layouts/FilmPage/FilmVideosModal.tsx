@@ -1,15 +1,17 @@
 import styled from 'styled-components';
+
 import Video from './FilmYoutubeVideo'
 import ScrollBar from '@atoms/ScrollBar'
 import Dialog from '@components/Dialog'
 import PlayIcon from '@icons/Play';
+import { FilmVideo } from '@/src/types';
 
 interface ModalInterface {
-  videoData: any
+  videoData: FilmVideo[]
 }
 
 const FilmVideosModal: React.FC<ModalInterface> = ({ videoData }) => {
-  const filterData = videoData?.filter((data: { site: string }) => data.site === 'YouTube')
+  const filterData = videoData?.filter(data => data.site === 'YouTube')
 
   return (
     <Dialog
@@ -27,7 +29,7 @@ const FilmVideosModal: React.FC<ModalInterface> = ({ videoData }) => {
     >
       <ScrollBar style={{ height: '70vh', paddingRight: '1rem' }}>
         <DialogBody>
-          {filterData?.map((vid: any, i: number) => {
+          {filterData?.map((vid, i) => {
             return <Box key={i}>
               <p>{vid.name}</p>
               <Video id={vid.key} isSmall />

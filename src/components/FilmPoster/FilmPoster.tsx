@@ -9,6 +9,7 @@ import useAddToList from '@hooks/useAddToList'
 import useRemoveFromList from '@hooks/useRemoveFromList';
 import useGetUsername from '@hooks/useGetUsername'
 import { breakpoints } from '@constants'
+import { FilmDetailsType } from '@/src/types'
 
 const FilmPoster = ({
   path,
@@ -18,8 +19,8 @@ const FilmPoster = ({
   height,
   width,
 }: {
-    path: string,
-    info: any,
+    path?: string,
+    info: FilmDetailsType,
     mediaType: string,
     hideButtons?: boolean
     height?: string,

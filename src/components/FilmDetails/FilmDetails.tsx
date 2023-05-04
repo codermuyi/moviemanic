@@ -1,18 +1,6 @@
 import styled from 'styled-components'
 import { formatDate } from '@helpers'
-
-interface Info {
-  runtime: string
-  spoken_languages: Array<{ english_name: string }>
-  release_date: string
-  status: string
-  genres: Array<{ name: string }>
-  overview: string
-  first_air_date: string
-  last_air_date: string
-  number_of_seasons: number
-  number_of_episodes: number
-}
+import { FilmDetailsType } from '@/src/types'
 
 const FilmDetails = ({
   runtime,
@@ -25,7 +13,7 @@ const FilmDetails = ({
   last_air_date,
   number_of_seasons,
   number_of_episodes,
-}: Info) => {
+}: FilmDetailsType) => {
 
   return (
     <Details>
@@ -73,7 +61,7 @@ const FilmDetails = ({
             </div>
             <div>
               <span className='heading'>Last Air</span>
-              <span>{formatDate(last_air_date) || 'N/A'}</span>
+              <span>{formatDate(last_air_date || '') || 'N/A'}</span>
             </div>
           </> : null
         }

@@ -1,12 +1,17 @@
 import styled, { css } from 'styled-components'
+
 import Link from 'next/link'
-import type { FilmItem } from '@/src/types'
+import { FilmDetailsType, FilmItem } from '@/src/types'
 
 interface Props {
   isTrending?: boolean
   type: string
-  data: FilmItem
+  data: FilmItem | FilmDetailsType
   linkHref: string
+  overflow?: boolean
+}
+
+interface StyledProps {
   overflow?: boolean
 }
 
@@ -18,19 +23,20 @@ const FilmCardInfo = ({
   overflow
 }: Props) => {
   const filmType = type === 'tv' ? 'TV Series' : 'Movie'
-  const date = parseInt(data.release_date || data.first_air_date) || 'N/A'
+  const date = data.release_date || data.first_air_date || ''
+  const year = parseInt(date) || 'N/A'
   const filmName = data.title || data.name
   const className = !isTrending ? 'normal-info' : 'trending-info'
 
   return (
-    <CardInfo className={className} o={overflow}>
+    <CardInfo className={className} overflow={overflow}>
       <div className='name'>
         <Link href={linkHref} tabIndex={-1}>
           <span>{filmName}</span>
         </Link>
       </div>
       <div className='date-and-type'>
-        <span className='date'>{date}</span>
+        <span className='date'>{year}</span>
         <span className='type'>{filmType}</span>
       </div>
     </CardInfo>
@@ -53,7 +59,7 @@ const CardInfo = styled.div.attrs(p => { })`
     font-size: .8em;
   }
 
-  ${p => !p.o && css`
+  ${p => !p.overflow && css`
     .name {
       overflow: hidden;
       white-space: nowrap;

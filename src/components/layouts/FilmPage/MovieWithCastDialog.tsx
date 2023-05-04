@@ -4,8 +4,9 @@ import Button from '@atoms/Button';
 import RightIcon from '@icons/RightArrow';
 import Dialog from '@components/Dialog';
 import MovieWithCastContent from './MovieWithCastContent';
+import { FilmCast } from '@/src/types';
 
-const FilmWithCast = ({ cast }: { cast: any }) => {
+const FilmWithCast = ({ cast }: { cast: FilmCast }) => {
   return (
     <Dialog
       noButton

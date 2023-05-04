@@ -1,9 +1,16 @@
-import { useEffect } from 'react';
+import { useEffect, ReactNode } from 'react';
 import { useRouter } from 'next/router'
-import { routes } from '@constants';
-import Loader from '@atoms/Loader';
 
-const CheckForUsername = ({ profile, children }: any) => {
+import Loader from '@atoms/Loader';
+import { routes } from '@constants';
+import { Profile } from '@/src/types'
+
+interface Props {
+  profile: Profile
+  children: ReactNode
+}
+
+const CheckForUsername = ({ profile, children }: Props) => {
   const router = useRouter()
 
   useEffect(() => {

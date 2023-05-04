@@ -15,6 +15,7 @@ import Backdrop from './FilmBackdrop'
 import { breakpoints } from '@constants'
 import { myFetch } from "@/assets/utilities"
 import { generatePageTitle } from '@helpers'
+import { FilmPageData } from '@/src/types';
 
 interface Props {
   media_type: string
@@ -23,12 +24,12 @@ interface Props {
 const FilmPageContent = ({ media_type }: Props) => {
   const router = useRouter()
   const id = router.query.id
-  const { data, isLoading } = useSwr(`/api/film-page/${media_type}/${id}`, myFetch)
+  const { data, isLoading } = useSwr<FilmPageData>(`/api/film-page/${media_type}/${id}`, myFetch)
 
-  const info = data?.[0]
-  const credits = data?.[1]
-  const similar = data?.[2]
-  const videoData = data?.[3]
+  const info = data?.info!!
+  const credits = data?.credits!!
+  const similar = data?.similar
+  const videoData = data?.videoData
 
   return (
     <>
@@ -38,26 +39,26 @@ const FilmPageContent = ({ media_type }: Props) => {
       />
 
       <PageBody>
-        {isLoading && info.success ?
+        {isLoading && info?.success ?
           <Loader /> :
           <>
             <Backdrop info={info} mediaType={media_type} />
             <FilmPoster
-              path={info.poster_path}
+              path={info?.poster_path}
               info={info}
               mediaType={media_type}
             />
             <div style={{ paddingInline: '1rem', marginBottom: '2rem' }}>
-              <FilmVideos videoData={videoData} />
+              <FilmVideos videoData={videoData?.results} />
               <FilmDetails {...info} />
               <br />
               <Casts credits={credits} />
-              <FilmExternalSource imdb={info.imdb_id} website={info.homepage} />
+              <FilmExternalSource imdb={info?.imdb_id} website={info?.homepage} />
             </div>
             <FilmGrid
               title='More Like This'
               centerTitle={true}
-              data={similar.results}
+              data={similar?.results}
             />
           </>
         }

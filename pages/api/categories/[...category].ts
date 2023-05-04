@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { myFetch, searchPath } from 'assets/utilities'
 import { filmCategories } from '@/assets/film_info';
-import type { FilmListResponse } from '@/src/types';
+import { FilmListResponse } from '@/src/types';
 
 export default async function handler(
   req: NextApiRequest,

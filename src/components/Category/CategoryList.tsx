@@ -2,18 +2,18 @@ import styled, { css } from 'styled-components'
 import ScrollBarX from '@atoms/ScrollBarX';
 import FilmCard from '@components/Cards/FilmCard'
 import { breakpoints } from '@constants'
-import type { FilmList } from '@/src/types';
+import { FilmList, MediaType } from '@/src/types';
 
 interface ListProps {
   isTrending: boolean
   data: FilmList
-  showType: string
+  showType: MediaType
 }
 
 const CategoryList = ({ isTrending, data, showType }: ListProps) => {
 
   function generateCards() {
-    return data?.map((dataItem: any, index: number) => {
+    return data?.map((dataItem, index) => {
       if (!isTrending && index > 5) return
       if (index > 9) return
       return <FilmCard

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { breakpoints } from '@constants'
 
-const Trailer = ({ id, isSmall }: { id: string, isSmall?: boolean }) => {
+const Video = ({ id, isSmall }: { id?: string, isSmall?: boolean }) => {
   return (
     <>
       {id && <IFrame
@@ -41,4 +41,4 @@ const IFrame = styled.iframe.attrs(p => {
   height: ${p => p.isSmall && '250px !important'}
 `
 
-export default Trailer
+export default Video

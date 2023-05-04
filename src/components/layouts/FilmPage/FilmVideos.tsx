@@ -1,18 +1,20 @@
 import styled from 'styled-components'
+
 import Trailer from './FilmYoutubeVideo'
 import MoreVideosModal from './FilmVideosModal';
+import { FilmVideo } from '@/src/types';
 
-const FilmVideos = ({ videoData }: any) => {
-  const trailers = videoData?.results?.filter((videoData: any) => videoData.type === 'Trailer')
-  const trailerIDs = trailers?.map((v: any) => v.key)
+const FilmVideos = ({ videoData }: { videoData: FilmVideo[] | undefined }) => {
+  const trailers = videoData?.filter(video => video.type === 'Trailer')
+  const trailerIDs = trailers?.map(trailer => trailer.key)
 
   return (
     <Content>
       <div style={{ maxWidth: '700px' }}>
         <Trailer id={trailerIDs?.[0]} />
         {
-          videoData.results?.length > 1 &&
-          <MoreVideosModal videoData={videoData.results} />
+          videoData && videoData?.length > 1 &&
+          <MoreVideosModal videoData={videoData} />
         }
       </div>
     </Content>

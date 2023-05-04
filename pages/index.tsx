@@ -1,10 +1,10 @@
-import type { GetServerSidePropsContext } from 'next'
+import { GetServerSidePropsContext } from 'next'
+
 import Meta from '@components/atoms/Meta'
 import Category from '@components/Category'
 import BlockTopLink from '@atoms/BlockTopLink'
 import BlockBottomLink from '@atoms/BlockBottomLink'
-
-import type { FilmListResponse } from '@/src/types'
+import { FilmListResponse } from '@/src/types'
 import { filmCategories } from 'assets/film_info'
 import { server } from 'config'
 import { routeGuard } from '@/src/routeGuard'

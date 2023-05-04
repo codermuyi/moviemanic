@@ -1,13 +1,13 @@
 import Link from 'next/link'
 import styled from 'styled-components'
 
-import type { FilmListResponse } from '@/src/types'
+import { FilmListResponse, MediaType } from '@/src/types'
 import Button from '@atoms/Button'
 import CategoryList from './CategoryList'
 
 interface CategoryProps {
   categoryName: string
-  showType: 'movie' | 'tv'
+  showType: MediaType
   isTrending: boolean
   data: FilmListResponse
 }

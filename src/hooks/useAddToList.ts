@@ -2,21 +2,22 @@ import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 import { toast } from 'react-toastify'
 
 import { toastOptions } from '@constants'
+import { FilmDetailsType, FilmItem } from '../types'
 
-const useAddToList = (info: any, mediaType: string) => {
+const useAddToList = (info: FilmDetailsType | FilmItem, mediaType: string) => {
   const supabase = useSupabaseClient()
   const session = useSession()
   const type = mediaType === 'tv' ? 'TV Series' : 'Movie'
 
   async function setFilmInfo() {
-    if (info) {
+    if (info && session) {
       const toastId = toast.loading("Please wait...")
       const { status } = await supabase
         .from('film_list')
         .insert([
           {
             media_type: mediaType,
-            film_id: info.film_id || info.id,
+            film_id: info.id,
             user_id: session?.user.id,
             title: info.title || info.name,
             // To avoid duplicates for each user

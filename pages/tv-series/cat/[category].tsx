@@ -1,8 +1,8 @@
-import type { GetServerSidePropsContext } from 'next'
+import { GetServerSidePropsContext } from 'next'
 
-import type { FilmListResponse } from '@/src/types'
-import { server } from 'config'
 import CategoryPageLayout from '@layouts/CategoryPage'
+import { server } from 'config'
+import { FilmListResponse } from '@/src/types'
 
 interface Props {
   data: FilmListResponse

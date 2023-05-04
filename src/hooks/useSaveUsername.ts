@@ -1,6 +1,7 @@
 import { toast } from 'react-toastify';
 import { useSupabaseClient, useSession } from '@supabase/auth-helpers-react'
 import { useRouter } from 'next/router';
+import { ChangeEvent } from 'react';
 
 import { toastOptions } from '@constants';
 import { routes } from '@constants';
@@ -10,7 +11,7 @@ export default function useSaveUsername(username: string) {
   const router = useRouter()
   const session = useSession()
 
-  async function saveUsername(e: any) {
+  async function saveUsername(e: ChangeEvent) {
     e.preventDefault()
 
     const toastId = toast.loading("Please wait...")

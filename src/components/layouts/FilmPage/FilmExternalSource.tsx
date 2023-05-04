@@ -3,8 +3,8 @@ import Link from 'next/link'
 import Button from '@atoms/Button'
 
 interface HAHAProps {
-  imdb: string
-  website: string
+  imdb?: string
+  website?: string
 }
 
 const FilmExternalSource = ({ imdb, website }: HAHAProps) => {
