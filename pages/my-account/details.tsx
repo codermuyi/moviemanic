@@ -4,8 +4,9 @@ import Meta from '@atoms/Meta';
 import CheckForUsername from '@atoms/CheckForUsername';
 import { routeGuard } from '@/src/routeGuard';
 import { formatDate } from '@/src/helpers';
+import { Profile, User } from '@/src/types';
 
-const DetailsPage = ({ profile, user }: any) => {
+const DetailsPage = ({ profile, user }: { profile: Profile, user: User }) => {
   return (
     <>
       <Meta title='Details | Moviemanic' />

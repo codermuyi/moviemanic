@@ -10,7 +10,7 @@ export default function useChangePassword(newPassword: string) {
   const supabase = useSupabaseClient()
   const router = useRouter()
 
-  async function changePassword(e: ChangeEvent) {
+  async function changePassword(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault()
 
     const toastId = toast.loading("Please wait...")

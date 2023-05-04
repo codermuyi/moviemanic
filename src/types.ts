@@ -150,4 +150,10 @@ export type SupabaseData = {
 
 export type Profile = {
   username: string
+  created_at: string
+}
+
+export type User = {
+  email: string
+  id: string
 }

@@ -10,8 +10,9 @@ import useChangeUsername from '@hooks/useChangeUsername';
 import useChangePassword from '@hooks/useChangePassword';
 import useChangeEmail from '@hooks/useChangeEmail';
 import { routeGuard } from '@/src/routeGuard';
+import { Profile } from '@/src/types'
 
-const SecurityPage = ({ profile }: any) => {
+const SecurityPage = ({ profile }: { profile: Profile }) => {
   const [newUsername, setNewUsername] = useState('')
   const [newPassword, setNewPassword] = useState('')
   const [newEmail, setNewEmail] = useState('')
@@ -34,7 +35,7 @@ const SecurityPage = ({ profile }: any) => {
                 type='text'
                 placeholder='New Username'
                 value={newUsername}
-                onChange={(e: any) => setNewUsername(e.target.value)}
+                onChange={e => setNewUsername(e.target.value)}
               />
               <Button className='flex-center' padding='.7rem'>
                 Submit {' '}
@@ -51,7 +52,7 @@ const SecurityPage = ({ profile }: any) => {
                 type='password'
                 placeholder='New Password'
                 value={newPassword}
-                onChange={(e: any) => setNewPassword(e.target.value.trim())}
+                onChange={e => setNewPassword(e.target.value.trim())}
               />
               <Button className='flex-center' padding='.7rem'>
                 Submit {' '}
@@ -69,7 +70,7 @@ const SecurityPage = ({ profile }: any) => {
                 type='text'
                 placeholder='New Email'
                 value={newEmail}
-                onChange={(e: any) => setNewEmail(e.target.value.toLowerCase())}
+                onChange={e => setNewEmail(e.target.value.toLowerCase())}
               />
               <Button className='flex-center' padding='.7rem'>
                 Change Email {' '}

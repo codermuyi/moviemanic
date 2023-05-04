@@ -11,7 +11,7 @@ export default function useChangeUsername(username: string) {
   const router = useRouter()
   const session = useSession()
 
-  async function changeUsername(e: ChangeEvent) {
+  async function changeUsername(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault()
 
     const toastId = toast.loading("Please wait...")
