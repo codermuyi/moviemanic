@@ -30,8 +30,8 @@ const FilmPageContent = ({ media_type }: Props) => {
     myFetch,
   )
 
-  const info = data?.info!
-  const credits = data?.credits!
+  const info = data?.info
+  const credits = data?.credits
   const similar = data?.similar
   const videoData = data?.videoData
 
@@ -55,7 +55,8 @@ const FilmPageContent = ({ media_type }: Props) => {
             />
             <div style={{ paddingInline: '1rem', marginBottom: '2rem' }}>
               <FilmVideos videoData={videoData?.results} />
-              <FilmDetails {...info} />
+              {/* eslint-disable-next-line @typescript-eslint/no-non-null-assertion*/}
+              <FilmDetails details={info!} />
               <br />
               <Casts credits={credits} />
               <FilmExternalSource

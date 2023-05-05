@@ -17,8 +17,10 @@ const CategoryPageLayout = ({ data, name, mediaType }: Props) => {
   return (
     <>
       <Meta
-        title={`${capitalize(name)} - ${mediaType === 'tv' ? 'TV Series' : 'Movies'
-          } | Moviemanic`}
+        title={`
+          ${capitalize(name)} - ${mediaType === 'tv' ? 'TV Series' : 'Movies'}
+           | Moviemanic
+        `}
       />
       <Heading name={name} mediaType={mediaType} />
       <FilmGrid data={data?.results} />

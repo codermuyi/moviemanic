@@ -20,7 +20,7 @@ const FilmPoster = ({
   width,
 }: {
   path?: string
-  info: FilmDetailsType
+  info?: FilmDetailsType
   mediaType: string
   hideButtons?: boolean
   height?: string
@@ -28,7 +28,7 @@ const FilmPoster = ({
 }) => {
   const [src, setSrc] = useState(`https://image.tmdb.org/t/p/w1280${path}`)
   const addToList = useAddToList(info, mediaType)
-  const removeFromList = useRemoveFromList(info.id, mediaType)
+  const removeFromList = useRemoveFromList(info?.id, mediaType)
   const username = useGetUsername()
 
   useEffect(() => {
@@ -65,8 +65,8 @@ const FilmPoster = ({
 }
 
 const Poster = styled.div<{
-  height: string | undefined
-  width: string | undefined
+  height?: string
+  width?: string
 }>`
   padding-block: 1rem;
 

@@ -42,7 +42,7 @@ const CardDialog = ({ info, linkHref, mediaType }: Props) => {
         <h2 style={{ textAlign: 'center', marginBottom: '1rem' }}>
           {info.title || info.name}
         </h2>
-        <FilmDetails {...info} />
+        <FilmDetails details={info} />
         <Link href={linkHref}>
           <Button padding=".7rem" margin="0 1rem 2rem">
             Go to page

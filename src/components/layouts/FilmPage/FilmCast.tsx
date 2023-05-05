@@ -5,16 +5,16 @@ import CastProfile from './FilmCastProfile'
 import ScrollBarX from '@atoms/ScrollBarX'
 import { FilmCreditsResponse } from '@/src/types'
 
-const Casts = ({ credits }: { credits: FilmCreditsResponse }) => {
+const Casts = ({ credits }: { credits?: FilmCreditsResponse }) => {
   return (
     <FilmCast>
       <h2 className="heading">Casts</h2>
-      {(credits.success === false || credits.cast.length === 0) && (
+      {(credits?.success === false || credits?.cast.length === 0) && (
         <p>No info.</p>
       )}
       <ScrollBarX>
         <div className="cast-list">
-          {credits.cast?.map((cast, i) => (
+          {credits?.cast?.map((cast, i) => (
             <CastProfile key={i} cast={cast} />
           ))}
         </div>

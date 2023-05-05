@@ -4,11 +4,10 @@
     "es2021": true
   },
   "extends": [
-    "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:@next/next/recommended",
-    "prettier"
+    "plugin:prettier/recommended"
   ],
   "overrides": [],
   "parser": "@typescript-eslint/parser",
@@ -19,7 +18,6 @@
   "plugins": [
     "react",
     "@typescript-eslint",
-    "eslint-plugin-prettier",
     "import",
     "react-hooks"
   ],
@@ -30,7 +28,6 @@
     }
   },
   "rules": {
-    "prettier/prettier": ["error"],
     "import/order": [
       "error",
       {

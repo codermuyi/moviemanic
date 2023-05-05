@@ -97,8 +97,8 @@ const Grid = styled.div<GridDivProps>`
       css`
         grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
 
-        .film-card {
-          @media ${breakpoints.md} {
+        @media ${breakpoints.md} {
+          .film-card {
             &:first-child {
               grid-row: 1 / 3;
               grid-column: 1 / 3;

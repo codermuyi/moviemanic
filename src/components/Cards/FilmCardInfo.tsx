@@ -11,10 +11,6 @@ interface Props {
   overflow?: boolean
 }
 
-interface StyledProps {
-  overflow?: boolean
-}
-
 const FilmCardInfo = ({
   isTrending,
   type,
@@ -43,7 +39,7 @@ const FilmCardInfo = ({
   )
 }
 
-const CardInfo = styled.div.attrs((p) => { })`
+const CardInfo = styled.div<{ overflow?: boolean }>`
   a:hover {
     text-decoration: underline;
   }

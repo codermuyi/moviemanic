@@ -5,7 +5,10 @@ import { FilmDetailsType, FilmItem } from '../types'
 
 import { toastOptions } from '@constants'
 
-const useAddToList = (info: FilmDetailsType | FilmItem, mediaType: string) => {
+const useAddToList = (
+  info?: FilmDetailsType | FilmItem,
+  mediaType?: string,
+) => {
   const supabase = useSupabaseClient()
   const session = useSession()
   const type = mediaType === 'tv' ? 'TV Series' : 'Movie'

@@ -3,7 +3,7 @@ import { toast } from 'react-toastify'
 
 import { toastOptions } from '@constants'
 
-const useRemoveFromList = (id: string | number, mediaType: string) => {
+const useRemoveFromList = (id?: string | number, mediaType?: string) => {
   const supabase = useSupabaseClient()
   const type = mediaType === 'tv' ? 'TV series' : 'Movie'
 

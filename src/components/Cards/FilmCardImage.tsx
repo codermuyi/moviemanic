@@ -21,9 +21,9 @@ const FilmCardImage = ({
   errorPath = '',
   size = 1280,
 }: ImageProps) => {
-  const imagePath = `https://image.tmdb.org/t/p/w${size}${
-    path || data.backdrop_path
-  }`
+  const imagePath = `
+    https://image.tmdb.org/t/p/w${size}${path || data.backdrop_path}
+  `
   const [src, setSrc] = useState(imagePath)
   const [style, setStyle] = useState({})
   const height = isTrending ? 170 : 130

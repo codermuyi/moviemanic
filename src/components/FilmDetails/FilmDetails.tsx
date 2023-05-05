@@ -3,18 +3,20 @@ import styled from 'styled-components'
 import { formatDate } from '@helpers'
 import { FilmDetailsType } from '@/src/types'
 
-const FilmDetails = ({
-  runtime,
-  spoken_languages,
-  release_date,
-  status,
-  genres,
-  overview,
-  first_air_date,
-  last_air_date,
-  number_of_seasons,
-  number_of_episodes,
-}: FilmDetailsType) => {
+const FilmDetails = ({ details }: { details: FilmDetailsType }) => {
+  const {
+    runtime,
+    spoken_languages,
+    release_date,
+    status,
+    genres,
+    overview,
+    first_air_date,
+    last_air_date,
+    number_of_seasons,
+    number_of_episodes,
+  } = details
+
   return (
     <Details>
       <div className="series-detail">
