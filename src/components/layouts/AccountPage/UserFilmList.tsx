@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
-import UserFilmCard from '@/src/components/Cards/UserFilmCard';
-import { getSeconds } from '@helpers';
+import UserFilmCard from '@/src/components/Cards/UserFilmCard'
+import { getSeconds } from '@helpers'
 
 const FilmList = ({ filmList, setRandomNum }: any) => {
   const newFilmList = filmList.sort((a: any, b: any) => {
@@ -15,49 +15,50 @@ const FilmList = ({ filmList, setRandomNum }: any) => {
 
   return (
     <UserInfo>
-      <div className='film-list'>
-        <div className='movie-list'>
-          <h2 className='title'>Movies {formatNum(movies)}</h2>
-          {
-            movies?.[0] ?
-              <div className='film-grid'>
-                {movies.map((film: any, i: number) =>
-                  <UserFilmCard
-                    key={i}
-                    supabaseData={film}
-                    setRandomNum={setRandomNum}
-                  />
-                )}
-              </div>
-              : <p>Movies added to your list will show up here</p>
-          }
+      <div className="film-list">
+        <div className="movie-list">
+          <h2 className="title">Movies {formatNum(movies)}</h2>
+          {movies?.[0] ? (
+            <div className="film-grid">
+              {movies.map((film: any, i: number) => (
+                <UserFilmCard
+                  key={i}
+                  supabaseData={film}
+                  setRandomNum={setRandomNum}
+                />
+              ))}
+            </div>
+          ) : (
+            <p>Movies added to your list will show up here</p>
+          )}
           <br />
         </div>
-        <div className='tv-list'>
-          <h2 className='title'>TV Series {formatNum(tv_series)}</h2>
-          {
-            tv_series?.[0] ?
-              <div className='film-grid'>
-                {tv_series.map((film: any, i: number) =>
-                  <UserFilmCard
-                    key={i}
-                    supabaseData={film}
-                    setRandomNum={setRandomNum}
-                  />
-                )}
-              </div>
-              : <p>TV Series added to your list will show up here</p>
-          }
+        <div className="tv-list">
+          <h2 className="title">TV Series {formatNum(tv_series)}</h2>
+          {tv_series?.[0] ? (
+            <div className="film-grid">
+              {tv_series.map((film: any, i: number) => (
+                <UserFilmCard
+                  key={i}
+                  supabaseData={film}
+                  setRandomNum={setRandomNum}
+                />
+              ))}
+            </div>
+          ) : (
+            <p>TV Series added to your list will show up here</p>
+          )}
           <br />
         </div>
       </div>
-      {filmList.length === 0 && <p style={{ marginBottom: '3rem' }}>
-        *To add films to your list, click on the + icon on film poster
-      </p>}
+      {filmList.length === 0 && (
+        <p style={{ marginBottom: '3rem' }}>
+          *To add films to your list, click on the + icon on film poster
+        </p>
+      )}
     </UserInfo>
   )
 }
-
 
 const UserInfo = styled.div`
   padding: 1rem;
@@ -65,7 +66,8 @@ const UserInfo = styled.div`
   .film-list {
     padding: 1rem;
 
-    .movie-list, .tv-list {
+    .movie-list,
+    .tv-list {
       padding-bottom: 2rem;
     }
 
@@ -86,7 +88,7 @@ const UserInfo = styled.div`
     p {
       padding: 1rem;
     }
-    
+
     .film-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
-
 import Link from 'next/link'
+
 import { FilmDetailsType, FilmItem } from '@/src/types'
 
 interface Props {
@@ -20,7 +20,7 @@ const FilmCardInfo = ({
   type,
   data,
   linkHref,
-  overflow
+  overflow,
 }: Props) => {
   const filmType = type === 'tv' ? 'TV Series' : 'Movie'
   const date = data.release_date || data.first_air_date || ''
@@ -30,20 +30,20 @@ const FilmCardInfo = ({
 
   return (
     <CardInfo className={className} overflow={overflow}>
-      <div className='name'>
+      <div className="name">
         <Link href={linkHref} tabIndex={-1}>
           <span>{filmName}</span>
         </Link>
       </div>
-      <div className='date-and-type'>
-        <span className='date'>{year}</span>
-        <span className='type'>{filmType}</span>
+      <div className="date-and-type">
+        <span className="date">{year}</span>
+        <span className="type">{filmType}</span>
       </div>
     </CardInfo>
   )
 }
 
-const CardInfo = styled.div.attrs(p => { })`
+const CardInfo = styled.div.attrs((p) => { })`
   a:hover {
     text-decoration: underline;
   }
@@ -56,22 +56,24 @@ const CardInfo = styled.div.attrs(p => { })`
   }
 
   &.normal-info {
-    font-size: .8em;
+    font-size: 0.8em;
   }
 
-  ${p => !p.overflow && css`
-    .name {
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-  `}
+  ${(p) =>
+    !p.overflow &&
+    css`
+      .name {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    `}
 
   .date-and-type {
     display: flex;
     gap: 1.2em;
-    color: rgb(var(--main-text-color), .7);
-    font-size: .7em;
+    color: rgb(var(--main-text-color), 0.7);
+    font-size: 0.7em;
 
     .type {
       position: relative;
@@ -83,7 +85,7 @@ const CardInfo = styled.div.attrs(p => { })`
         transform: translate(50%, -50%);
         display: inline-block;
         background: rgb(var(--main-theme-color));
-        padding: .2em;
+        padding: 0.2em;
         border-radius: 50%;
       }
     }

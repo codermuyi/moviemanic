@@ -1,9 +1,13 @@
 export function getSeconds(date: string) {
-  return (new Date(date)).getTime() / 1000
+  return new Date(date).getTime() / 1000
 }
 
 export function formatDate(date: string) {
-  const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short', year: 'numeric' }
+  const options: Intl.DateTimeFormatOptions = {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  }
   const dateObj = new Date(date)
   return dateObj.toLocaleDateString('en-US', options)
 }
@@ -30,6 +34,10 @@ export const isMobile = {
   ios: () => navigator.userAgent.match(/iPhone|iPad|iPod/i),
   opera: () => navigator.userAgent.match(/Opera Mini/i),
   windows: () => navigator.userAgent.match(/IEMobile/i),
-  any: () => (isMobile.android() || isMobile.blackberry() || 
-  isMobile.ios() || isMobile.opera() || isMobile.windows())
-};
+  any: () =>
+    isMobile.android() ||
+    isMobile.blackberry() ||
+    isMobile.ios() ||
+    isMobile.opera() ||
+    isMobile.windows(),
+}

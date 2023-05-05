@@ -1,20 +1,12 @@
-import { server } from 'config'
 import { SWRConfig } from 'swr'
 
+import { server } from 'config'
 import SearchPageLayout from '@layouts/SearchPage'
 
-const SearchResults = ({
-  searchQuery,
-  fallback,
-  ctxQuery
-}: { [key: string]: any }) => {
-
+const SearchResults = ({ searchQuery, fallback, ctxQuery }: any) => {
   return (
     <SWRConfig value={{ fallback }}>
-      <SearchPageLayout
-        searchQuery={searchQuery}
-        contextQuery={ctxQuery}
-      />
+      <SearchPageLayout searchQuery={searchQuery} contextQuery={ctxQuery} />
     </SWRConfig>
   )
 }
@@ -29,10 +21,10 @@ export const getServerSideProps = async (ctx: any) => {
     props: {
       searchQuery: q,
       fallback: {
-        [apiPath]: data
+        [apiPath]: data,
       },
-      ctxQuery: ctx.query
-    }
+      ctxQuery: ctx.query,
+    },
   }
 }
 

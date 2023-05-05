@@ -1,6 +1,7 @@
-import FilmPageContent from "@layouts/FilmPage"
+import { SWRConfig } from 'swr'
+
+import FilmPageContent from '@layouts/FilmPage'
 import { server } from 'config'
-import { SWRConfig } from "swr"
 
 export async function getServerSideProps(ctx: any) {
   const apiPath = `/api/film-page/movie/${ctx.params.id}`
@@ -10,16 +11,16 @@ export async function getServerSideProps(ctx: any) {
   return {
     props: {
       fallback: {
-        [apiPath]: data
-      }
-    }
+        [apiPath]: data,
+      },
+    },
   }
 }
 
 const moviePage = ({ fallback }: any) => {
   return (
     <SWRConfig value={{ fallback }}>
-      <FilmPageContent media_type='movie' />
+      <FilmPageContent media_type="movie" />
     </SWRConfig>
   )
 }

@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
-
 import Link from 'next/link'
+
 import { FilmItem, FilmDetailsType } from '@/src/types'
 
 interface ImageProps {
@@ -21,7 +21,9 @@ const FilmCardImage = ({
   errorPath = '',
   size = 1280,
 }: ImageProps) => {
-  const imagePath = `https://image.tmdb.org/t/p/w${size}${path || data.backdrop_path}`
+  const imagePath = `https://image.tmdb.org/t/p/w${size}${
+    path || data.backdrop_path
+  }`
   const [src, setSrc] = useState(imagePath)
   const [style, setStyle] = useState({})
   const height = isTrending ? 170 : 130
@@ -33,15 +35,18 @@ const FilmCardImage = ({
   }, [imagePath])
 
   return (
-    <Link href={linkHref} className={`film-card-${!isTrending ? 'normal' : 'trending'}-link`}>
+    <Link
+      href={linkHref}
+      className={`film-card-${!isTrending ? 'normal' : 'trending'}-link`}
+    >
       <Image
         src={src}
         alt={filmName || 'Film image'}
         width={width}
         height={height}
         className={`card-image ${!isTrending ? 'normal' : 'trending'}`}
-        placeholder='blur'
-        blurDataURL='/white-placeholder.png'
+        placeholder="blur"
+        blurDataURL="/white-placeholder.png"
         onError={() => {
           setSrc(errorPath || '/no-image.svg')
           setStyle({ objectPosition: 'center' })

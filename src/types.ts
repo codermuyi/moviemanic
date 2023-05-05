@@ -1,4 +1,3 @@
-
 export type FilmItem = {
   id: number
   name?: string
@@ -7,15 +6,15 @@ export type FilmItem = {
   original_language: string
   original_name: string
   release_date?: string
-  first_air_date?: string,
+  first_air_date?: string
   overview: string
   poster_path: string
   backdrop_path: string
-  media_type: 'movie' | 'tv',
+  media_type: 'movie' | 'tv'
   video: false
   genre_ids: number[]
-  popularity: number,
-  vote_average: number,
+  popularity: number
+  vote_average: number
   origin_country: string[]
 }
 
@@ -53,7 +52,7 @@ export type FilmDetailsType = {
   imdb_id: string
   original_language: string
   original_title?: string
-  original_name?:string
+  original_name?: string
   overview: string
   popularity: number
   production_companies: Company[]

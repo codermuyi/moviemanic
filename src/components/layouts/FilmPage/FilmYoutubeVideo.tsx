@@ -1,26 +1,27 @@
 import styled from 'styled-components'
+
 import { breakpoints } from '@constants'
 
-const Video = ({ id, isSmall }: { id?: string, isSmall?: boolean }) => {
+const Video = ({ id, isSmall }: { id?: string; isSmall?: boolean }) => {
   return (
     <>
-      {id && <IFrame
-        width="560"
-        height="315"
-        src={`https://www.youtube.com/embed/${id}`}
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowFullScreen
-        isSmall={isSmall}
-      >
-      </IFrame>}
+      {id && (
+        <IFrame
+          width="560"
+          height="315"
+          src={`https://www.youtube.com/embed/${id}`}
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+          isSmall={isSmall}
+        ></IFrame>
+      )}
     </>
   )
 }
 
-const IFrame = styled.iframe.attrs(p => {
-})`
+const IFrame = styled.iframe<{ isSmall?: boolean }>`
   min-width: 200px;
   width: 100%;
   max-width: 700px;
@@ -38,7 +39,7 @@ const IFrame = styled.iframe.attrs(p => {
     height: 315px;
   }
 
-  height: ${p => p.isSmall && '250px !important'}
+  height: ${(p) => p.isSmall && '250px !important'};
 `
 
 export default Video

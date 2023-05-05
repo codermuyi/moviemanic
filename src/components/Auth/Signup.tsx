@@ -1,9 +1,7 @@
-import Auth from './Auth';
+import Auth from './Auth'
 
 const Signup = () => {
-  return (
-    <Auth view='sign_up' />
-  )
+  return <Auth view="sign_up" />
 }
 
 export default Signup

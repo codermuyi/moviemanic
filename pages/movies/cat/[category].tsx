@@ -10,19 +10,21 @@ interface Props {
 }
 
 const MovieCategoryPage = (props: Props) => {
-  return <CategoryPageLayout {...props} mediaType='movie' />
+  return <CategoryPageLayout {...props} mediaType="movie" />
 }
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const page = ctx.query.page || 1
 
-  const res = await fetch(`${server}/api/categories/movie/${ctx.query.category}?page=${page}`)
+  const res = await fetch(
+    `${server}/api/categories/movie/${ctx.query.category}?page=${page}`,
+  )
   const data: FilmListResponse = await res.json()
 
   return {
     props: {
       data: data,
-      name: ctx.query.category
+      name: ctx.query.category,
     },
   }
 }

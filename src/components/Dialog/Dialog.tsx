@@ -1,6 +1,8 @@
-import * as Dialog from '@radix-ui/react-dialog';
-import styles from './Dialog.module.css';
-import Button from '@atoms/Button';
+import * as Dialog from '@radix-ui/react-dialog'
+
+import styles from './Dialog.module.css'
+
+import Button from '@atoms/Button'
 import X from '@icons/XIcon'
 
 interface DialogProps {
@@ -12,24 +14,41 @@ interface DialogProps {
   noButton?: boolean
 }
 
-const MyDialog: React.FC<DialogProps> = ({ name, title, description, children, contentStyle, noButton }) => (
+const MyDialog: React.FC<DialogProps> = ({
+  name,
+  title,
+  description,
+  children,
+  contentStyle,
+  noButton,
+}) => (
   <Dialog.Root>
     <Dialog.Trigger asChild>
-      {!noButton ? <Button padding='.5rem'>{name}</Button> : name}
+      {!noButton ? <Button padding=".5rem">{name}</Button> : name}
     </Dialog.Trigger>
     <Dialog.Portal>
       <Dialog.Overlay className={styles.DialogOverlay} />
       <Dialog.Content className={styles.DialogContent} style={contentStyle}>
-        {(title ?? name) && <Dialog.Title className={styles.DialogTitle}>
-          {title ?? name}
-        </Dialog.Title>}
-        {description && <Dialog.Description className={styles.DialogDescription}>
-          {description}
-        </Dialog.Description>}
+        {(title ?? name) && (
+          <Dialog.Title className={styles.DialogTitle}>
+            {title ?? name}
+          </Dialog.Title>
+        )}
+        {description && (
+          <Dialog.Description className={styles.DialogDescription}>
+            {description}
+          </Dialog.Description>
+        )}
         {children}
         <Dialog.Close asChild>
           <div style={{ position: 'fixed', top: 10, right: 10 }}>
-            <Button name="Close" padding='.3rem' radius='50%' width='25px' height='25px'>
+            <Button
+              name="Close"
+              padding=".3rem"
+              radius="50%"
+              width="25px"
+              height="25px"
+            >
               <X />
             </Button>
           </div>
@@ -37,6 +56,6 @@ const MyDialog: React.FC<DialogProps> = ({ name, title, description, children, c
       </Dialog.Content>
     </Dialog.Portal>
   </Dialog.Root>
-);
+)
 
-export default MyDialog;
+export default MyDialog

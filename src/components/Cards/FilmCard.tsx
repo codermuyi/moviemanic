@@ -2,6 +2,7 @@ import styled, { keyframes } from 'styled-components'
 
 import CardImage from './FilmCardImage'
 import CardInfo from './FilmCardInfo'
+
 import { breakpoints } from '@constants'
 import { FilmItem, MediaType } from '@/src/types'
 
@@ -11,30 +12,29 @@ interface Props {
   data: FilmItem
 }
 
-const FilmCard = ({
-  isTrending,
-  type,
-  data
-}: Props) => {
-  const linkHref = type === 'movie' ? `/movies/${data.id}` : `/tv-series/${data.id}`
+const FilmCard = ({ isTrending, type, data }: Props) => {
+  const linkHref =
+    type === 'movie' ? `/movies/${data.id}` : `/tv-series/${data.id}`
 
-  return data && (
-    <Card className='film-card'>
-      <CardImage
-        isTrending={isTrending}
-        data={data}
-        linkHref={linkHref}
-        size={1280}
-      />
-      <CardInfo
-        isTrending={isTrending}
-        data={data}
-        type={type}
-        linkHref={linkHref}
-        overflow
-      />
-      <span></span>
-    </Card>
+  return (
+    data && (
+      <Card className="film-card">
+        <CardImage
+          isTrending={isTrending}
+          data={data}
+          linkHref={linkHref}
+          size={1280}
+        />
+        <CardInfo
+          isTrending={isTrending}
+          data={data}
+          type={type}
+          linkHref={linkHref}
+          overflow
+        />
+        <span></span>
+      </Card>
+    )
   )
 }
 
@@ -97,7 +97,7 @@ const Card = styled.div`
   }
 
   span::after {
-    content:'';
+    content: '';
     position: absolute;
     bottom: 0;
     right: 0;
@@ -108,11 +108,11 @@ const Card = styled.div`
     opacity: 0;
     transition: 0.5s;
     animation: ${animate} 2s ease-in-out infinite;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     animation-delay: -1s;
     pointer-events: none;
   }
-  
+
   .film-card-normal-link {
     display: block;
     transition: inherit;
@@ -125,10 +125,10 @@ const Card = styled.div`
     }
     .card-image {
       &.normal {
-        box-shadow: 0 5px 15px rgba(0,0,0,0.38);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.38);
       }
       &.trending {
-        transform: scale(.95);
+        transform: scale(0.95);
       }
     }
 

@@ -1,7 +1,8 @@
 import styled from 'styled-components'
-import { ReactNode } from 'react';
+import { ReactNode } from 'react'
 
-import MiniCategories from './MiniCategories';
+import MiniCategories from './MiniCategories'
+
 import { breakpoints } from '@constants'
 
 const Layout = ({ children }: { children: ReactNode }) => {

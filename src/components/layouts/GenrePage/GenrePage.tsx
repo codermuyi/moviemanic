@@ -7,15 +7,12 @@ const GenrePageContent = ({ data, name, mediaType, id }: any) => {
   return (
     <>
       <Heading name={name} mediaType={mediaType} />
-      <FilmGrid
-        data={data.results}
-        mediaType={mediaType}
-      />
-      <Pagination 
+      <FilmGrid data={data.results} mediaType={mediaType} />
+      <Pagination
         currentPage={data.page}
         totalPages={data.total_pages}
         query={id}
-        pageType='genre'
+        pageType="genre"
       />
       <BlockBottomLink />
     </>

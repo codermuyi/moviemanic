@@ -7,24 +7,24 @@ import Pagination from '@components/atoms/Pagination'
 import FilmCard from '@components/Cards/FilmCard'
 import { myFetch } from '@/assets/utilities'
 
-const SearchPageContent = ({
-  searchQuery,
-  contextQuery
-}: any) => {
-  const { data: d } = useSwr(`/api/search/${searchQuery}?page=${contextQuery.page}`, myFetch)
+const SearchPageContent = ({ searchQuery, contextQuery }: any) => {
+  const { data: d } = useSwr(
+    `/api/search/${searchQuery}?page=${contextQuery.page}`,
+    myFetch,
+  )
 
   const data = d?.results?.filter((v: any) => v.media_type !== 'person')
   const num: number = data?.length
 
   return (
     <>
-      <Meta
-        title={`Search results for "${searchQuery}" | Moviemanic`}
-      />
-      {data ?
+      <Meta title={`Search results for "${searchQuery}" | Moviemanic`} />
+      {data ? (
         <>
           <Content>
-            <h1>Result{num > 1 && 's'} for &quot;{searchQuery}&quot; ({num})</h1>
+            <h1>
+              Result{num > 1 && 's'} for &quot;{searchQuery}&quot; ({num})
+            </h1>
             {data.map((filmData: any) => {
               return (
                 <FilmCard
@@ -40,10 +40,12 @@ const SearchPageContent = ({
             currentPage={d?.page}
             totalPages={d?.total_pages}
             query={searchQuery}
-            pageType='search'
+            pageType="search"
           />
         </>
-        : <Loader />}
+      ) : (
+        <Loader />
+      )}
     </>
   )
 }
@@ -51,10 +53,10 @@ const SearchPageContent = ({
 const Content = styled.div`
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat( auto-fit, minmax(200px, 1fr) );
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.2rem;
   padding: 1rem 3rem;
-  background-color: rgb(255 255 255 / .05);
+  background-color: rgb(255 255 255 / 0.05);
   border-radius: 50px;
 
   h1 {

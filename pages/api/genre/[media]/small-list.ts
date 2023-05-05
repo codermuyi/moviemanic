@@ -1,9 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+
 import { categoryPath, myFetch } from '@/assets/utilities'
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   const media = req.query.media
 

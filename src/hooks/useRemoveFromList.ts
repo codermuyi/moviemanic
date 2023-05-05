@@ -9,7 +9,7 @@ const useRemoveFromList = (id: string | number, mediaType: string) => {
 
   async function setFilmInfo() {
     if (id) {
-      const toastId = toast.loading("Please wait...")
+      const toastId = toast.loading('Please wait...')
 
       const { data: datum } = await supabase
         .from('film_list')
@@ -24,20 +24,20 @@ const useRemoveFromList = (id: string | number, mediaType: string) => {
       if (datum?.length === 0) {
         toast.update(toastId, {
           render: `${type} not in your list`,
-          type: "info",
-          ...toastOptions
+          type: 'info',
+          ...toastOptions,
         })
       } else if (status === 204) {
         toast.update(toastId, {
           render: `Removed ${type} from your list`,
-          type: "success",
-          ...toastOptions
+          type: 'success',
+          ...toastOptions,
         })
       } else if (status === 0) {
         toast.update(toastId, {
           render: 'Failed to upload',
-          type: "error",
-          ...toastOptions
+          type: 'error',
+          ...toastOptions,
         })
       }
     }

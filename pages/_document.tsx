@@ -1,11 +1,17 @@
-import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
+import Document, {
+  Html,
+  Head,
+  Main,
+  NextScript,
+  DocumentContext,
+} from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
 class ODocument extends Document {
   constructor(props: any) {
     super(props)
   }
-  
+
   render() {
     return (
       <Html lang="en">

@@ -1,10 +1,11 @@
 import styled from 'styled-components'
 
-import Button from '@atoms/Button';
-import RightIcon from '@icons/RightArrow';
-import Dialog from '@components/Dialog';
-import MovieWithCastContent from './MovieWithCastContent';
-import { FilmCast } from '@/src/types';
+import MovieWithCastContent from './MovieWithCastContent'
+
+import Button from '@atoms/Button'
+import RightIcon from '@icons/RightArrow'
+import Dialog from '@components/Dialog'
+import { FilmCast } from '@/src/types'
 
 const FilmWithCast = ({ cast }: { cast: FilmCast }) => {
   return (
@@ -12,15 +13,17 @@ const FilmWithCast = ({ cast }: { cast: FilmCast }) => {
       noButton
       name={
         <TheButton name={`Movies with ${cast.name}`}>
-          <RightIcon width='25' height='25' />
+          <RightIcon width="25" height="25" />
         </TheButton>
       }
-      title={<>
-        Movies with {' '}
-        <span style={{ color: 'rgb(var(--main-theme-color))' }}>
-          {cast.name}
-        </span>
-      </>}
+      title={
+        <>
+          Movies with{' '}
+          <span style={{ color: 'rgb(var(--main-theme-color))' }}>
+            {cast.name}
+          </span>
+        </>
+      }
       contentStyle={{
         maxWidth: '1000px',
         overflow: 'hidden',

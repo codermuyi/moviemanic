@@ -10,19 +10,21 @@ interface Props {
 }
 
 const TVCategoryPage = (props: Props) => {
-  return <CategoryPageLayout {...props} mediaType='tv' />
+  return <CategoryPageLayout {...props} mediaType="tv" />
 }
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const page = ctx.query.page || 1
 
-  const res = await fetch(`${server}/api/categories/tv/${ctx.query.category}?page=${page}`)
+  const res = await fetch(
+    `${server}/api/categories/tv/${ctx.query.category}?page=${page}`,
+  )
   const data = await res.json()
 
   return {
     props: {
       data: data,
-      name: ctx.query.category
+      name: ctx.query.category,
     },
   }
 }

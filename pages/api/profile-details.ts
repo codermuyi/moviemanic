@@ -10,12 +10,11 @@ const ProtectedRoute = async (req: NextApiRequest, res: NextApiResponse) => {
   if (!session)
     return res.status(401).json({
       error: 'not_authenticated',
-      description: 'The user does not have an active session or is not authenticated',
+      description:
+        'The user does not have an active session or is not authenticated',
     })
 
-  const { data } = await supabase
-    .from('profiles')
-    .select('username')
+  const { data } = await supabase.from('profiles').select('username')
 
   res.status(200).json(data)
 }

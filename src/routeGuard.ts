@@ -1,8 +1,9 @@
 import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
-import { GetServerSidePropsContext } from 'next';
+import { GetServerSidePropsContext } from 'next'
 
-import { routes } from './constants';
-import { myFetch } from '@/assets/utilities';
+import { routes } from './constants'
+
+import { myFetch } from '@/assets/utilities'
 
 export async function routeGuard(
   ctx: GetServerSidePropsContext,
@@ -24,20 +25,17 @@ export async function routeGuard(
         permanent: false,
       },
     }
-  }
-  else if (!session && privateWhenLoggedIn) {
+  } else if (!session && privateWhenLoggedIn) {
     // Only fetch data when page is not redirected
-    if (dataFetchUrl)
-      data = await myFetch(dataFetchUrl)
+    if (dataFetchUrl) data = await myFetch(dataFetchUrl)
 
     return {
       props: {
         profile: null,
         data: data,
-      }
+      },
     }
-  }
-  else if (!session)
+  } else if (!session)
     return {
       redirect: {
         destination: redirect ?? routes.SIGN_IN,
@@ -45,12 +43,9 @@ export async function routeGuard(
       },
     }
 
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('*')
+  const { data: profile } = await supabase.from('profiles').select('*')
 
-  if (dataFetchUrl)
-    data = await myFetch(dataFetchUrl)
+  if (dataFetchUrl) data = await myFetch(dataFetchUrl)
 
   return {
     props: {

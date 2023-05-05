@@ -1,20 +1,20 @@
-import styled from "styled-components";
-import { useState } from "react";
-import { useRouter } from "next/router";
+import styled from 'styled-components'
+import { useState } from 'react'
+import { useRouter } from 'next/router'
 
-import Button from "@atoms/Button";
-import { SearchIcon } from "@atoms/SVGIcons";
-import { breakpoints } from "@constants";
+import Button from '@atoms/Button'
+import { SearchIcon } from '@atoms/SVGIcons'
+import { breakpoints } from '@constants'
 
 const Search = () => {
-  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [searchQuery, setSearchQuery] = useState<string>('')
   const [isDisabled, setDisabled] = useState<boolean>(true)
   const router = useRouter()
 
   const handleChange = (e: any) => {
-    setSearchQuery(e.target.value);
-    setDisabled(e.target.value === '');
-  };
+    setSearchQuery(e.target.value)
+    setDisabled(e.target.value === '')
+  }
 
   const handleSubmit = (e: any) => {
     e.preventDefault()
@@ -25,8 +25,8 @@ const Search = () => {
   }
 
   return (
-    <Cont onSubmit={handleSubmit} className='flex-center'>
-      <Field className='flex-center'>
+    <Cont onSubmit={handleSubmit} className="flex-center">
+      <Field className="flex-center">
         <SearchIcon width="30px" height="30px" fill="currentColor" />
         <input
           type="search"
@@ -35,15 +35,12 @@ const Search = () => {
           onChange={handleChange}
         />
       </Field>
-      <Button
-        padding=" .8em 1em"
-        disabled={isDisabled}
-      >
+      <Button padding=" .8em 1em" disabled={isDisabled}>
         Search
       </Button>
     </Cont>
-  );
-};
+  )
+}
 
 const Cont = styled.form`
   padding: 1rem 2rem;
@@ -52,21 +49,25 @@ const Cont = styled.form`
   @media ${breakpoints.lg} {
     width: 100%;
     border-radius: 10px;
-    background: linear-gradient(to right, rgb(var(--dark-theme-color)), rgb(var(--main-theme-color)));
-    padding: .5rem 0;
+    background: linear-gradient(
+      to right,
+      rgb(var(--dark-theme-color)),
+      rgb(var(--main-theme-color))
+    );
+    padding: 0.5rem 0;
     margin-block: 3px 1rem;
   }
 
   .button {
     color: rgb(var(--main-text-color));
     cursor: pointer;
-    
+
     :hover {
       background-color: white;
       color: rgb(var(--sec-text-color));
     }
   }
-`;
+`
 
 const Field = styled.div`
   gap: 1em;
@@ -101,10 +102,10 @@ const Field = styled.div`
     }
 
     @media ${breakpoints.lg} {
-      padding-block: .4rem;
+      padding-block: 0.4rem;
       font-size: 1.2rem;
     }
   }
-`;
+`
 
-export default Search;
+export default Search

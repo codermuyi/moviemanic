@@ -1,7 +1,12 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-const Meta = ({ title, description }: { [key: string]: string | undefined }) => {
+const Meta = ({
+  title,
+  description,
+}: {
+  [key: string]: string | undefined
+}) => {
   const router = useRouter()
 
   return (
@@ -20,13 +25,13 @@ const Meta = ({ title, description }: { [key: string]: string | undefined }) => 
       <meta name="image" property="og:image" content="/icon-moviemanic.jpg" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
     </Head>
-
   )
 }
 
 Meta.defaultProps = {
   title: 'Moviemanic',
-  description: 'Search for movies and tv shows, and watch trailers directly on the site'
+  description:
+    'Search for movies and tv shows, and watch trailers directly on the site',
 }
 
 export default Meta

@@ -1,30 +1,29 @@
 import styled from 'styled-components'
 import Link from 'next/link'
-
 import React from 'react'
 
 const BlockBottomLink = () => {
   return (
     <Bottom>
-      <Link className='card' href='/movies'>
+      <Link className="card" href="/movies">
         <div>
           <p>Movies</p>
         </div>
       </Link>
-      <Link className='card' href='/tv-series'>
+      <Link className="card" href="/tv-series">
         <div>
           <p>TV Series</p>
         </div>
       </Link>
-      <div className='card no-hover'></div>
-      <div className='card no-hover'></div>
+      <div className="card no-hover"></div>
+      <div className="card no-hover"></div>
     </Bottom>
   )
 }
 
 const Bottom = styled.div`
   display: grid;
-  gap: .8rem;
+  gap: 0.8rem;
   padding: 3rem 1rem;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
@@ -35,7 +34,7 @@ const Bottom = styled.div`
     background-color: rgb(var(--dark-theme-color));
     color: rgb(var(--main-text-color));
     cursor: pointer;
-    transition: .3s;
+    transition: 0.3s;
     padding: 2.8rem 2rem;
     border-radius: 2rem;
 
@@ -46,7 +45,6 @@ const Bottom = styled.div`
         color: rgb(var(--main-theme-color));
       }
     }
-    
 
     :nth-child(1) {
       grid-column: 1 / 3;

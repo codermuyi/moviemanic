@@ -1,6 +1,8 @@
 import useSwr from 'swr'
-import { myFetch } from '@/assets/utilities'
+
 import { Profile } from '../types'
+
+import { myFetch } from '@/assets/utilities'
 
 export default function useGetUsername() {
   const { data } = useSwr<Profile[]>('/api/profile-details', myFetch)

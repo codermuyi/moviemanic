@@ -1,21 +1,22 @@
 import styled from 'styled-components'
 import useSwr from 'swr'
-import { useRouter } from "next/router"
+import { useRouter } from 'next/router'
+
+import FilmVideos from './FilmVideos'
+import Casts from './FilmCast'
+import FilmExternalSource from './FilmExternalSource'
+import Backdrop from './FilmBackdrop'
 
 import Meta from '@atoms/Meta'
 import Loader from '@atoms/Loader'
 import FilmPoster from '@components/FilmPoster'
 import FilmDetails from '@components/FilmDetails'
 import FilmGrid from '@components/FilmGrid'
-import FilmVideos from './FilmVideos'
-import Casts from './FilmCast'
-import FilmExternalSource from './FilmExternalSource'
 import BlockBottomLink from '@atoms/BlockBottomLink'
-import Backdrop from './FilmBackdrop'
 import { breakpoints } from '@constants'
-import { myFetch } from "@/assets/utilities"
+import { myFetch } from '@/assets/utilities'
 import { generatePageTitle } from '@helpers'
-import { FilmPageData } from '@/src/types';
+import { FilmPageData } from '@/src/types'
 
 interface Props {
   media_type: string
@@ -24,10 +25,13 @@ interface Props {
 const FilmPageContent = ({ media_type }: Props) => {
   const router = useRouter()
   const id = router.query.id
-  const { data, isLoading } = useSwr<FilmPageData>(`/api/film-page/${media_type}/${id}`, myFetch)
+  const { data, isLoading } = useSwr<FilmPageData>(
+    `/api/film-page/${media_type}/${id}`,
+    myFetch,
+  )
 
-  const info = data?.info!!
-  const credits = data?.credits!!
+  const info = data?.info!
+  const credits = data?.credits!
   const similar = data?.similar
   const videoData = data?.videoData
 
@@ -39,8 +43,9 @@ const FilmPageContent = ({ media_type }: Props) => {
       />
 
       <PageBody>
-        {isLoading && info?.success ?
-          <Loader /> :
+        {isLoading && info?.success ? (
+          <Loader />
+        ) : (
           <>
             <Backdrop info={info} mediaType={media_type} />
             <FilmPoster
@@ -53,15 +58,18 @@ const FilmPageContent = ({ media_type }: Props) => {
               <FilmDetails {...info} />
               <br />
               <Casts credits={credits} />
-              <FilmExternalSource imdb={info?.imdb_id} website={info?.homepage} />
+              <FilmExternalSource
+                imdb={info?.imdb_id}
+                website={info?.homepage}
+              />
             </div>
             <FilmGrid
-              title='More Like This'
+              title="More Like This"
               centerTitle={true}
               data={similar?.results}
             />
           </>
-        }
+        )}
       </PageBody>
       <BlockBottomLink />
     </>
@@ -79,7 +87,7 @@ const PageBody = styled.div`
     display: grid;
     grid-template-columns: 350px minmax(10px, 1fr);
     grid-template-rows: 2;
-    
+
     & > *:not(:last-child) {
       margin-bottom: 2rem;
     }

@@ -1,7 +1,11 @@
 .main {
   min-height: 100vh;
   padding-bottom: 2rem;
-  background: radial-gradient(100% 225% at 100% 0%, rgb(var(--main-theme-color)) 0%, rgb(var(--dark-theme-color)) 100%);
+  background: radial-gradient(
+    100% 225% at 100% 0%,
+    rgb(var(--main-theme-color)) 0%,
+    rgb(var(--dark-theme-color)) 100%
+  );
 }
 
 .col2 {
@@ -22,6 +26,6 @@
   }
 
   .main .col2 {
-    margin-right: .5rem;
+    margin-right: 0.5rem;
   }
 }

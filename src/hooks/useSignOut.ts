@@ -1,8 +1,8 @@
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router'
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import { toast } from 'react-toastify'
 
-import { routes } from "@constants";
+import { routes } from '@constants'
 
 export default function useSignOut() {
   const router = useRouter()

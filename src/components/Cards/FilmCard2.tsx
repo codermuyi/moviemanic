@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 import FilmCardImage from './FilmCardImage'
 import CardInfo from './FilmCardInfo'
+
 import { breakpoints } from '@constants'
 import { FilmItem, MediaType } from '@/src/types'
 
@@ -10,27 +11,22 @@ interface Props {
   data: FilmItem
 }
 
-const FilmCard2 = ({
-  type,
-  data
-}: Props) => {
-  const linkHref = type === 'movie' ? `/movies/${data.id}` : `/tv-series/${data.id}`
+const FilmCard2 = ({ type, data }: Props) => {
+  const linkHref =
+    type === 'movie' ? `/movies/${data.id}` : `/tv-series/${data.id}`
 
-  return data && (
-    <Card className='film-card'>
-      <FilmCardImage
-        data={data}
-        path={data.poster_path}
-        linkHref={linkHref}
-        size={780}
-      />
-      <CardInfo
-        data={data}
-        type={type}
-        linkHref={linkHref}
-        overflow
-      />
-    </Card>
+  return (
+    data && (
+      <Card className="film-card">
+        <FilmCardImage
+          data={data}
+          path={data.poster_path}
+          linkHref={linkHref}
+          size={780}
+        />
+        <CardInfo data={data} type={type} linkHref={linkHref} overflow />
+      </Card>
+    )
   )
 }
 
@@ -40,14 +36,13 @@ const Card = styled.div`
   border-radius: var(--border-rad);
 
   * {
-    transition: .3s;
+    transition: 0.3s;
   }
 
   display: grid;
   grid-template-rows: 1fr 60px;
-  gap: .3rem;
-  
-  
+  gap: 0.3rem;
+
   .card-image {
     width: 100%;
     height: 100%;
@@ -67,7 +62,11 @@ const Card = styled.div`
       top: -3px;
       width: 0;
       height: 3px;
-      background: linear-gradient(to right, transparent, rgb(var(--sub-theme-color)));
+      background: linear-gradient(
+        to right,
+        transparent,
+        rgb(var(--sub-theme-color))
+      );
       transition: inherit;
       border-radius: var(--border-rad);
     }
@@ -78,7 +77,7 @@ const Card = styled.div`
     .card-image {
       filter: brightness(50%);
       object-position: center;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.28);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.28);
       transform: scale(0.98);
     }
 
@@ -92,14 +91,14 @@ const Card = styled.div`
   @media ${breakpoints.lg} {
     position: relative;
     height: 230px;
-  
+
     & > * {
       position: absolute;
       inset: 0;
       display: flex;
       justify-content: center;
     }
-    
+
     .normal-info {
       position: absolute;
       padding-inline: 1rem;
@@ -115,7 +114,7 @@ const Card = styled.div`
       .card-image {
         filter: brightness(30%);
         object-position: center;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.28);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.28);
       }
 
       .normal-info {

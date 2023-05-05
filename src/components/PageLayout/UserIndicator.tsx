@@ -11,13 +11,9 @@ const UserIndicator = ({ session }: { session: Session | null }) => {
 
   return (
     <>
-      {
-        session &&
-        (router.asPath !== '/my-account') &&
-        username && <UserIndicatorStyle>
-          Signed in as {username}
-        </UserIndicatorStyle>
-      }
+      {session && router.asPath !== '/my-account' && username && (
+        <UserIndicatorStyle>Signed in as {username}</UserIndicatorStyle>
+      )}
     </>
   )
 }
@@ -27,7 +23,7 @@ const UserIndicatorStyle = styled.p`
   color: rgb(var(--main-theme-color));
   background-color: rgb(var(--dark-theme-color));
   width: 14rem;
-  padding: .7rem 0;
+  padding: 0.7rem 0;
   position: sticky;
   top: 3.3rem;
   right: 5px;
