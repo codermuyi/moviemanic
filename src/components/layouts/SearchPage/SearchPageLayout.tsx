@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import styled from 'styled-components'
 import useSwr from 'swr'
 

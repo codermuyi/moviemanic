@@ -5,7 +5,7 @@ import StarRating from './FilmRating'
 interface Props {
   name?: string
   title?: string
-  tagline: string
+  tagline?: string
   vote_average: number
 }
 

@@ -16,10 +16,10 @@ import BlockBottomLink from '@atoms/BlockBottomLink'
 import { breakpoints } from '@constants'
 import { myFetch } from '@/assets/utilities'
 import { generatePageTitle } from '@helpers'
-import { FilmPageData } from '@/src/types'
+import { FilmPageData, MediaType } from '@/src/types'
 
 interface Props {
-  media_type: string
+  media_type: MediaType
 }
 
 const FilmPageContent = ({ media_type }: Props) => {

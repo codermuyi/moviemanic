@@ -15,12 +15,12 @@ export function formatDate(date: string) {
 }
 
 export function generatePageTitle(
-  info: FilmDetailsType,
+  info: FilmDetailsType | undefined,
   media_type: string,
 ): string {
-  const filmTitle = info.name || info.title
+  const filmTitle = info?.name || info?.title
   const filmMedia = media_type === 'tv' ? 'TV Series' : 'Movies'
-  const date = info.release_date || info.first_air_date || ''
+  const date = info?.release_date || info?.first_air_date || ''
   const year = parseInt(date)
   const checkDate = !isNaN(year) ? `(${year})` : ''
 

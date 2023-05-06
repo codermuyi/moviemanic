@@ -10,23 +10,24 @@ const FilmBackdrop = ({
   info,
   mediaType,
 }: {
-  info: FilmDetailsType
+  info?: FilmDetailsType
   mediaType: MediaType
 }) => {
   return (
-    <Backdrop backdrop={info.backdrop_path}>
-      <FilmPoster path={info.poster_path} info={info} mediaType={mediaType} />
+    <Backdrop backdrop={info?.backdrop_path}>
+      <FilmPoster path={info?.poster_path} info={info} mediaType={mediaType} />
       <FilmTitle
-        name={info.name}
-        title={info.title}
-        tagline={info.tagline}
-        vote_average={info.vote_average}
+        name={info?.name}
+        title={info?.title}
+        tagline={info?.tagline}
+        // @ts-ignore
+        vote_average={info?.vote_average}
       />
     </Backdrop>
   )
 }
 
-const Backdrop = styled.div<{ backdrop: string }>`
+const Backdrop = styled.div<{ backdrop?: string }>`
   grid-column: 1 / -1;
   background: url(${(p) => `https://image.tmdb.org/t/p/w1280${p.backdrop}`})
     no-repeat;
