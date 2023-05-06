@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const ScrollBar = styled(SimpleBar)`
   .simplebar-scrollbar {
-    height: .8rem;
+    height: 0.8rem;
   }
 
   .simplebar-scrollbar::before {

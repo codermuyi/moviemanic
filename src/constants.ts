@@ -1,4 +1,3 @@
-
 export const routes = {
   HOME: '/',
   MOVIES: '/movies',
@@ -17,7 +16,7 @@ export const routes = {
   DETAILS: '/my-account/details',
   SECURITY: '/my-account/security',
   GET_STARTED: '/get-started',
-  RESET_PASSWORD: '/reset-password'
+  RESET_PASSWORD: '/reset-password',
 }
 
 export const breakpoints = {
@@ -26,10 +25,10 @@ export const breakpoints = {
   smMax: '(max-width: 599px)',
   md: '(min-width: 768px)',
   mdMax: '(max-width: 767px)',
-  lg:'(min-width: 992px)',
-  xl:'(min-width: 1200px)',
-  xxl:'(min-width: 1440px)',
-  xxxl:'(min-width: 2560px)',
+  lg: '(min-width: 992px)',
+  xl: '(min-width: 1200px)',
+  xxl: '(min-width: 1440px)',
+  xxxl: '(min-width: 2560px)',
 }
 
 export const toastOptions = {

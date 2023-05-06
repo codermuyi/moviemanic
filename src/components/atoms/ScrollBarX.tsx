@@ -1,16 +1,17 @@
 import styled from 'styled-components'
 import { createRef, useState, useEffect, ReactNode } from 'react'
 
-import LeftArrow from '@icons/LeftArrow';
-import RightArrow from '@icons/RightArrow';
-import ScrollBar from './ScrollBar';
-import Button from './Button';
-import { isMobile } from '@/src/helpers';
+import ScrollBar from './ScrollBar'
+import Button from './Button'
+
+import LeftArrow from '@icons/LeftArrow'
+import RightArrow from '@icons/RightArrow'
+import { isMobile } from '@/src/helpers'
 
 const ScrollBarX = ({ children }: { children: ReactNode }) => {
   const scrollableNodeRef = createRef()
   const [count, setCount] = useState(0)
-  
+
   useEffect(() => {
     const el: any = scrollableNodeRef.current
 
@@ -18,7 +19,7 @@ const ScrollBarX = ({ children }: { children: ReactNode }) => {
       el.style.transitionDuration = '.1s'
       el.scroll({
         left: count,
-        behavior: 'smooth'
+        behavior: 'smooth',
       })
 
       if (count < 0 || count > el.scrollWidth) {
@@ -35,8 +36,8 @@ const ScrollBarX = ({ children }: { children: ReactNode }) => {
     }
   }, [scrollableNodeRef, count])
 
-  const next = () => setCount(prevCount => prevCount + 500)
-  const prev = () => setCount(prevCount => prevCount - 500)
+  const next = () => setCount((prevCount) => prevCount + 500)
+  const prev = () => setCount((prevCount) => prevCount - 500)
 
   return (
     <X>
@@ -47,19 +48,11 @@ const ScrollBarX = ({ children }: { children: ReactNode }) => {
       >
         {children}
       </ScrollBar>
-      <Button
-        className='btn-nav'
-        onClick={() => prev()}
-        radius='100%'
-      >
-        <LeftArrow width='20px' height='20px' />
+      <Button className="btn-nav" onClick={() => prev()} radius="100%">
+        <LeftArrow width="20px" height="20px" />
       </Button>
-      <Button
-        className='btn-nav'
-        onClick={() => next()}
-        radius='100%'
-      >
-        <RightArrow width='20px' height='20px' />
+      <Button className="btn-nav" onClick={() => next()} radius="100%">
+        <RightArrow width="20px" height="20px" />
       </Button>
     </X>
   )
@@ -72,7 +65,7 @@ const X = styled.div`
     position: absolute;
     z-index: 10;
     transform: translateY(-50%);
-    padding: .6rem;
+    padding: 0.6rem;
 
     :nth-of-type(1) {
       left: -15px;

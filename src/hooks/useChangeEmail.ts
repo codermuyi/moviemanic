@@ -1,9 +1,9 @@
-import { toast } from 'react-toastify';
+import { toast } from 'react-toastify'
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/router'
 
-import { toastOptions } from '@constants';
-import { routes } from '@constants';
+import { toastOptions } from '@constants'
+import { routes } from '@constants'
 
 export default function useChangePassword(newEmail: string) {
   const supabase = useSupabaseClient()
@@ -12,23 +12,23 @@ export default function useChangePassword(newEmail: string) {
   async function changeEmail(e: any) {
     e.preventDefault()
 
-    const toastId = toast.loading("Please wait...")
+    const toastId = toast.loading('Please wait...')
     const { data, error } = await supabase.auth.updateUser({
       password: newEmail,
-    });
+    })
 
     if (data) {
       toast.update(toastId, {
         render: 'Email changed successfully',
-        type: "success",
-        ...toastOptions
+        type: 'success',
+        ...toastOptions,
       })
       router.push(routes.ACCOUNT)
     } else if (error) {
       toast.update(toastId, {
         render: 'Failed to change email',
-        type: "error",
-        ...toastOptions
+        type: 'error',
+        ...toastOptions,
       })
     }
   }

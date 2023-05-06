@@ -6,12 +6,12 @@ import { breakpoints } from '@constants'
 const BlockTopLink = () => {
   return (
     <Something>
-      <Link href='movies'>
+      <Link href="movies">
         <div>
           <p>Movies</p>
         </div>
       </Link>
-      <Link href='tv-series'>
+      <Link href="tv-series">
         <div>
           <p>TV Series</p>
         </div>
@@ -27,7 +27,7 @@ const Something = styled.div`
   padding: 1rem;
   font-size: 2rem;
   justify-content: center;
-  
+
   a {
     flex: 1;
     display: flex;
@@ -38,7 +38,7 @@ const Something = styled.div`
     border-radius: 50px;
     position: relative;
     overflow: hidden;
-    transition: .4s;
+    transition: 0.4s;
 
     div {
       position: relative;
@@ -52,12 +52,12 @@ const Something = styled.div`
       z-index: 1;
       background-color: rgb(var(--main-theme-color));
       clip-path: circle(7.2% at 50% 50%);
-      transition: clip-path .4s;
+      transition: clip-path 0.4s;
     }
 
     :hover,
     :focus {
-      box-shadow: 0 3px 5px rgb(0 0 0 / .2);
+      box-shadow: 0 3px 5px rgb(0 0 0 / 0.2);
     }
   }
 
@@ -72,12 +72,12 @@ const Something = styled.div`
       }
     }
   }
-  
+
   a:last-child {
     ::before {
       clip-path: circle(70.7% at 50% 50%);
     }
-    
+
     :hover,
     :focus {
       padding-left: 6rem;

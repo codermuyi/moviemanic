@@ -1,9 +1,8 @@
-
 .Fieldset {
   display: flex;
   gap: 1.3rem;
   align-items: center;
-  margin-bottom: .6rem;
+  margin-bottom: 0.6rem;
   border: none;
 }
 
@@ -25,7 +24,7 @@
   font-size: 15px;
   line-height: 1;
   color: var(--violet11);
-  box-shadow: 0 0 0 1px rgb(0 0 0 /.3);
+  box-shadow: 0 0 0 1px rgb(0 0 0 /0.3);
   height: 35px;
   background-color: rgb(var(--main-bg-color));
   border: none;

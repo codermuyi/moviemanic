@@ -1,33 +1,37 @@
 import useSwr from 'swr'
 import styled from 'styled-components'
+import { SetStateAction, Dispatch } from 'react'
 
 import CardImage from './FilmCardImage'
 import CardInfo from './FilmCardInfo'
+import CardDialog from './CardDialog'
+
 import Button from '@atoms/Button'
 import MinusIcon from '@icons/Minus'
-import CardDialog from './CardDialog'
-import useRemoveFromList from '@hooks/useRemoveFromList';
+import useRemoveFromList from '@hooks/useRemoveFromList'
 import { breakpoints } from '@constants'
 import { myFetch } from '@/assets/utilities'
+import { FilmDetailsType, SupabaseData } from '@/src/types'
 
 interface Props {
-  supabaseData: any
-  setRandomNum?: any
+  supabaseData: SupabaseData
+  setRandomNum: Dispatch<SetStateAction<number>>
 }
 
-const FilmCard = ({
-  supabaseData,
-  setRandomNum
-}: Props) => {
-  const removeFromList = useRemoveFromList(supabaseData.film_id, supabaseData.media_type)
+const FilmCard = ({ supabaseData, setRandomNum }: Props) => {
+  const removeFromList = useRemoveFromList(
+    supabaseData.film_id,
+    supabaseData.media_type,
+  )
 
-  const linkHref = supabaseData.media_type === 'movie' ?
-    `/movies/${supabaseData.film_id}`
-    : `/tv-series/${supabaseData.film_id}`
+  const linkHref =
+    supabaseData.media_type === 'movie'
+      ? `/movies/${supabaseData.film_id}`
+      : `/tv-series/${supabaseData.film_id}`
 
-  const { data: info } = useSwr(
+  const { data: info } = useSwr<FilmDetailsType>(
     `/api/film-item/${supabaseData.media_type}/${supabaseData.film_id}`,
-    myFetch
+    myFetch,
   )
 
   const remove = async () => {
@@ -36,26 +40,32 @@ const FilmCard = ({
   }
 
   return info ? (
-    <Card className='film-card'>
-      <div className='card-content'>
-        <div className='super-super'>
+    <Card className="film-card">
+      <div className="card-content">
+        <div className="super-super">
           <CardInfo
             data={info}
             type={supabaseData.media_type}
             linkHref={linkHref}
             overflow
           />
-          <div className='genres'>
-            <p className='genre'>{info?.genres.map((g: any) => g?.name).join(', ')}</p>
+          <div className="genres">
+            <p className="genre">
+              {info?.genres.map((g) => g?.name).join(', ')}
+            </p>
           </div>
-          <div className='info-2'>
+          <div className="info-2">
             <CardDialog
               info={info}
               linkHref={linkHref}
               mediaType={supabaseData.media_type}
             />
-            <Button onClick={remove} className='flex-center' name='Remove from list'>
-              <MinusIcon width='20px' height='20px' />
+            <Button
+              onClick={remove}
+              className="flex-center"
+              name="Remove from list"
+            >
+              <MinusIcon width="20px" height="20px" />
             </Button>
           </div>
         </div>
@@ -66,16 +76,17 @@ const FilmCard = ({
           size={185}
         />
       </div>
-      <div className='card-bg'>
+      <div className="card-bg">
+        <div></div>
+      </div>
+    </Card>
+  ) : (
+    <Card className="film-card">
+      <div className="card-bg">
         <div></div>
       </div>
     </Card>
   )
-    : <Card className='film-card'>
-      <div className='card-bg'>
-        <div></div>
-      </div>
-    </Card>
 }
 
 const Card = styled.div`
@@ -91,9 +102,9 @@ const Card = styled.div`
   }
 
   & * {
-    transition-duration: .3s;
+    transition-duration: 0.3s;
   }
-  
+
   .card-bg {
     overflow: hidden;
     display: grid;
@@ -104,11 +115,15 @@ const Card = styled.div`
       width: 100%;
       height: 100%;
       border-top: 6px solid;
-      border-image-source: linear-gradient(to right, rgb(var(--main-theme-color)) 65%, rgb(var(--main-text-color)) 60%);
+      border-image-source: linear-gradient(
+        to right,
+        rgb(var(--main-theme-color)) 65%,
+        rgb(var(--main-text-color)) 60%
+      );
       border-image-slice: 1;
     }
   }
-  
+
   .card-content {
     position: relative;
     display: grid;
@@ -121,7 +136,7 @@ const Card = styled.div`
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    gap: .4rem;
+    gap: 0.4rem;
 
     .normal-info {
       .date-and-type {
@@ -133,17 +148,17 @@ const Card = styled.div`
   .info-2 {
     display: flex;
     padding-inline: 1rem;
-    gap: .5rem;
-    
+    gap: 0.5rem;
+
     .button {
-      padding: .3rem;
+      padding: 0.3rem;
     }
 
     @media (pointer: coarse) {
       gap: 1rem;
-      
+
       .button {
-        padding: .6rem;
+        padding: 0.6rem;
       }
     }
   }
@@ -153,14 +168,14 @@ const Card = styled.div`
       display: none !important;
     }
   }
-  
+
   .genres {
     display: inherit;
     align-items: center;
-    gap: .4em;
+    gap: 0.4em;
 
     .genre {
-      font-size: .8em;
+      font-size: 0.8em;
       padding: 0;
     }
   }
@@ -172,8 +187,7 @@ const Card = styled.div`
     width: 5rem;
     height: 7.6rem;
     border-radius: 20px;
-    transition: .3s;
-  
+    transition: 0.3s;
   }
 
   .card-image {
@@ -182,7 +196,7 @@ const Card = styled.div`
     height: 100%;
     border-radius: inherit;
   }
-  
+
   :hover,
   :focus-within {
     .film-card-normal-link {

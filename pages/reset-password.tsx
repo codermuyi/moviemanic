@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import { useState } from 'react';
+import { useState } from 'react'
 
-import Meta from '@atoms/Meta';
-import RightIcon from '@icons/RightArrow';
+import Meta from '@atoms/Meta'
+import RightIcon from '@icons/RightArrow'
 import Button from '@atoms/Button'
-import useChangePassword from '@/src/hooks/useChangePassword';
+import useChangePassword from '@/src/hooks/useChangePassword'
 
 const ChangePasswordPage = () => {
   const [newPassword, setNewPassword] = useState('')
@@ -12,26 +12,25 @@ const ChangePasswordPage = () => {
 
   return (
     <>
-      <Meta title='Security | Moviemanic' />
-        <PageBody>
-          <h1>Reset Password</h1>
+      <Meta title="Security | Moviemanic" />
+      <PageBody>
+        <h1>Reset Password</h1>
 
-          <div className='change-smtn'>
-            <form onSubmit={handleChangePassword}>
-              <input
-                className='smtn-input'
-                type='text'
-                placeholder='New Password'
-                value={newPassword}
-                onChange={(e: any) => setNewPassword(e.target.value)}
-              />
-              <Button className='flex-center' padding='.7rem'>
-                Submit {' '}
-                <RightIcon />
-              </Button>
-            </form>
-          </div>
-        </PageBody>
+        <div className="change-smtn">
+          <form onSubmit={handleChangePassword}>
+            <input
+              className="smtn-input"
+              type="text"
+              placeholder="New Password"
+              value={newPassword}
+              onChange={(e: any) => setNewPassword(e.target.value)}
+            />
+            <Button className="flex-center" padding=".7rem">
+              Submit <RightIcon />
+            </Button>
+          </form>
+        </div>
+      </PageBody>
     </>
   )
 }
@@ -57,9 +56,9 @@ const PageBody = styled.div`
       display: grid;
       gap: 1rem;
     }
-    
+
     .smtn-input {
-      padding: .7rem;
+      padding: 0.7rem;
       font-size: 1rem;
       background-color: rgb(var(--dark-theme-color));
       color: rgb(var(--main-theme-color));
@@ -69,7 +68,7 @@ const PageBody = styled.div`
         outline-color: rgb(var(--main-theme-color)) !important;
       }
     }
-    
+
     .button {
       width: 10rem;
       justify-self: center;

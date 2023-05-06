@@ -1,19 +1,22 @@
-import styled from "styled-components"
+import styled from 'styled-components'
+
 import StarRating from './FilmRating'
 
-const FilmTitle = ({
-  name,
-  title,
-  tagline,
-  vote_average
-}: any) => {
+interface Props {
+  name?: string
+  title?: string
+  tagline?: string
+  vote_average: number
+}
+
+const FilmTitle = ({ name, title, tagline, vote_average }: Props) => {
   return (
     <Name>
       <h1>
         {title || name}
-        {(!title && !name) && '404: this page is invalid'}
+        {!title && !name && '404: this page is invalid'}
       </h1>
-      <p className='tagline'>{tagline}</p>
+      <p className="tagline">{tagline}</p>
       <StarRating vote_average={vote_average} />
     </Name>
   )
@@ -30,8 +33,8 @@ const Name = styled.div`
   }
 
   .tagline {
-    font-size: .8em;
-    opacity: .8;
+    font-size: 0.8em;
+    opacity: 0.8;
   }
 `
 

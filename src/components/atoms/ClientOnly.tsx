@@ -1,21 +1,23 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, HTMLAttributes, ReactNode } from 'react'
 
-function ClientOnly({ children, ...delegated }: any) {
-  const [hasMounted, setHasMounted] = useState(false);
+function ClientOnly({
+  children,
+  ...delegated
+}: {
+  children: ReactNode
+  delegated: HTMLAttributes<HTMLDivElement>
+}) {
+  const [hasMounted, setHasMounted] = useState(false)
 
   useEffect(() => {
-    setHasMounted(true);
-  }, []);
+    setHasMounted(true)
+  }, [])
 
   if (!hasMounted) {
-    return null;
+    return null
   }
-  
-  return (
-    <div {...delegated}>
-      {children}
-    </div>
-  );
+
+  return <div {...delegated}>{children}</div>
 }
 
 export default ClientOnly

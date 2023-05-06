@@ -1,18 +1,19 @@
 import styled from 'styled-components'
 import useSwr from 'swr'
 
-import {
-  GridIcon,
-  MovieIcon,
-  TVIcon,
-  MenuIcon
-} from '@atoms/SVGIcons'
-import Button from '@atoms/Button'
+import GridIcon from '../icons/Grid'
+import MovieIcon from '../icons/Movie'
+import TVIcon from '../icons/TV'
+import MenuIcon from '../icons/Menu'
+
 import SidebarDropdown from './SidebarDropdown'
+
+import Button from '@atoms/Button'
 import ScrollBar from '@atoms/ScrollBar'
 import NavLink from '@atoms/NavLink'
 import { filmCategories } from '@/assets/film_info'
 import { myFetch } from '@/assets/utilities'
+import { Genre } from '@/src/types'
 
 interface SidebarProps {
   iconFill: string
@@ -20,70 +21,68 @@ interface SidebarProps {
   toggle: () => void
 }
 
-const Sidebar = ({
-  iconFill,
-  isOpen,
-  toggle,
-}: SidebarProps) => {
-  const { data: movieGenres } = useSwr('/api/genre/movie/small-list', myFetch)
-  const { data: tvGenres } = useSwr('/api/genre/tv/small-list', myFetch)
+const Sidebar = ({ iconFill, isOpen, toggle }: SidebarProps) => {
+  const { data: movieGenres } = useSwr<Genre[]>(
+    '/api/genre/movie/small-list',
+    myFetch,
+  )
+  const { data: tvGenres } = useSwr<Genre[]>(
+    '/api/genre/tv/small-list',
+    myFetch,
+  )
 
   const iconWidth = 25
   const iconHeight = 25
 
-  let tvCatList = ['TV Series', 'Genres']
-  let movieCatList = ['Movies', 'Genres']
+  const tvCatList = ['TV Series', 'Genres']
+  const movieCatList = ['Movies', 'Genres']
 
-  filmCategories.forEach(category => {
-    if (category.type === 'movie')
-      movieCatList.push(category.name)
-    else
-      tvCatList.push(category.name)
+  filmCategories.forEach((category) => {
+    if (category.type === 'movie') movieCatList.push(category.name)
+    else tvCatList.push(category.name)
   })
 
-  const movieGenreLinks = movieGenres?.map((genre: any) =>
+  const movieGenreLinks = movieGenres?.map((genre: Genre) => (
     <NavLink key={genre.id} href={`/movies/genre/${genre.id}`}>
       <p>{genre.name}</p>
     </NavLink>
-  )
+  ))
 
-  const tvGenreLinks = tvGenres?.map((genre: any) =>
+  const tvGenreLinks = tvGenres?.map((genre: Genre) => (
     <NavLink key={genre.id} href={`/tv-series/genre/${genre.id}`}>
       <p>{genre.name}</p>
     </NavLink>
-  )
+  ))
 
   return (
     <>
       <SideNav className={isOpen ? 'open' : ''}>
         <ScrollBar style={{ maxHeight: '95vh' }}>
           <div className="nav-item toggle">
-            <Button
-              bgColor='transparent'
-              onClick={toggle}
-            >
+            <Button bgColor="transparent" onClick={toggle}>
               <MenuIcon
                 width={iconWidth}
                 height={iconHeight}
-                fill='rgb(var(--main-text-color))'
+                fill="rgb(var(--main-text-color))"
               />
             </Button>
           </div>
 
-          <NavLink href='/' className='nav-item nav-link'>
-            <GridIcon
-              width={iconWidth}
-              height={iconHeight}
-            />
+          <NavLink href="/" className="nav-item nav-link">
+            <GridIcon width={iconWidth} height={iconHeight} />
             <p>Home</p>
           </NavLink>
 
           <SidebarDropdown
-            name='movie'
-            dataID='open-by-default'
+            name="movie"
+            dataID="open-by-default"
             toggleElementContent={
               <>
-                <MovieIcon width={iconWidth} height={iconHeight} fill={iconFill} />
+                <MovieIcon
+                  width={iconWidth}
+                  height={iconHeight}
+                  fill={iconFill}
+                />
                 <p>Movies</p>
               </>
             }
@@ -91,26 +90,36 @@ const Sidebar = ({
           >
             {movieCatList.map((cat, i) => {
               if (cat === 'Genres') {
-                return <SidebarDropdown
-                  key={i}
-                  name='movie-genre'
-                  toggleElementContent={<p>_ Genres</p>}
-                  isSidebarOpen={isOpen}
-                >
-                  {movieGenreLinks}
-                </SidebarDropdown>
+                return (
+                  <SidebarDropdown
+                    key={i}
+                    name="movie-genre"
+                    toggleElementContent={<p>_ Genres</p>}
+                    isSidebarOpen={isOpen}
+                  >
+                    {movieGenreLinks}
+                  </SidebarDropdown>
+                )
               } else {
-                return <NavLink href={cat === 'Movies' ? '/movies' : `/movies/cat/${cat.toLowerCase()}`} key={i}>
-                  <p>{cat}</p>
-                </NavLink>
+                return (
+                  <NavLink
+                    href={
+                      cat === 'Movies'
+                        ? '/movies'
+                        : `/movies/cat/${cat.toLowerCase()}`
+                    }
+                    key={i}
+                  >
+                    <p>{cat}</p>
+                  </NavLink>
+                )
               }
-            }
-            )}
+            })}
           </SidebarDropdown>
 
           <SidebarDropdown
-            name='tv'
-            dataID='open-by-default'
+            name="tv"
+            dataID="open-by-default"
             toggleElementContent={
               <>
                 <TVIcon width={iconWidth} height={iconHeight} fill={iconFill} />
@@ -121,24 +130,34 @@ const Sidebar = ({
           >
             {tvCatList.map((cat, i) => {
               if (cat === 'Genres')
-                return <SidebarDropdown
-                  name='tv-genre'
-                  key={i}
-                  toggleElementContent={<p>_ Genres</p>}
-                  isSidebarOpen={isOpen}
-                >
-                  {tvGenreLinks}
-                </SidebarDropdown>
+                return (
+                  <SidebarDropdown
+                    name="tv-genre"
+                    key={i}
+                    toggleElementContent={<p>_ Genres</p>}
+                    isSidebarOpen={isOpen}
+                  >
+                    {tvGenreLinks}
+                  </SidebarDropdown>
+                )
               else
-                return <NavLink href={cat === 'TV Series' ? '/tv-series' : `/tv-series/cat/${cat.toLowerCase()}`} key={i}>
-                  <p>{cat}</p>
-                </NavLink>
-            }
-            )}
+                return (
+                  <NavLink
+                    href={
+                      cat === 'TV Series'
+                        ? '/tv-series'
+                        : `/tv-series/cat/${cat.toLowerCase()}`
+                    }
+                    key={i}
+                  >
+                    <p>{cat}</p>
+                  </NavLink>
+                )
+            })}
           </SidebarDropdown>
         </ScrollBar>
       </SideNav>
-      <Overlay className='overlay' onClick={toggle}></Overlay>
+      <Overlay className="overlay" onClick={toggle}></Overlay>
     </>
   )
 }
@@ -153,7 +172,7 @@ const SideNav = styled.div`
   z-index: 3000;
   background-color: rgb(var(--dark-theme-color));
   color: rgb(var(--main-text-color));
-  transition-duration: .2s;
+  transition-duration: 0.2s;
   padding-bottom: 40rem;
 
   &.open {
@@ -162,12 +181,12 @@ const SideNav = styled.div`
 
   .nav-item {
     width: var(--sb-width);
-    transition-duration: .2s;
+    transition-duration: 0.2s;
     display: flex;
     gap: 1rem;
     align-items: center;
     width: 100%;
-    padding: .3rem 1rem;
+    padding: 0.3rem 1rem;
     background-color: rgb(var(--dark-theme-color));
     color: rgb(var(--sub-theme-color));
 
@@ -186,7 +205,7 @@ const SideNav = styled.div`
   }
 
   a {
-    transition-duration: .2s;
+    transition-duration: 0.2s;
   }
 
   a:hover {
@@ -205,7 +224,7 @@ const SideNav = styled.div`
 const Overlay = styled.div`
   position: fixed;
   inset: 0;
-  background-color: rgb(0 0 0 / .6);
+  background-color: rgb(0 0 0 / 0.6);
   -webkit-backdrop-filter: blur(3px) brightness(100%);
   backdrop-filter: blur(3px) brightness(100%);
   cursor: pointer;

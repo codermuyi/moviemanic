@@ -1,32 +1,33 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 import Link from 'next/link'
-import BookmarkFilledIcon from "@icons/BookmarkFilled"
-import CogIcon from "@icons/Cog"
-import DetailsIcon from "@icons/Details"
-import useSignOut from "@hooks/useSignOut"
+
+import BookmarkFilledIcon from '@icons/BookmarkFilled'
+import CogIcon from '@icons/Cog'
+import DetailsIcon from '@icons/Details'
+import useSignOut from '@hooks/useSignOut'
 
 const pageLinks = [
   {
     name: 'My list',
     href: 'my-account/list',
-    icon: <BookmarkFilledIcon width='30px' height='30px' />,
+    icon: <BookmarkFilledIcon width="30px" height="30px" />,
     text: 'Personal list of movies and tv series',
   },
   {
     name: 'Account details',
     href: 'my-account/details',
-    icon: <DetailsIcon width='25px' height='28px' />,
+    icon: <DetailsIcon width="25px" height="28px" />,
     text: 'Your current details e.g. email',
   },
   {
     name: 'Settings & security',
     href: 'my-account/security',
-    icon: <CogIcon width='30px' height='30px' />,
+    icon: <CogIcon width="30px" height="30px" />,
     text: 'Change password and email',
   },
   {
     name: 'Sign out',
-    href: ''
+    href: '',
     // text: 'Personal list of movies and tv series',
   },
 ]
@@ -36,20 +37,22 @@ const UserHome = ({ username }: { username: string | undefined }) => {
 
   return (
     <Home>
-      <h1 className='username'>{username}</h1>
-      <div className='page-items'>
-        {pageLinks.map((link, index) => <Link
-          href={link.href}
-          key={index}
-          className='king-link'
-          onClick={() => link.name === 'Sign out' && signOut()}
-        >
-          <div>
-            <span>{link.icon}</span>
-            <span>{link.name}</span>
-          </div>
-          {link.text && <p>{link.text}</p>}
-        </Link>)}
+      <h1 className="username">{username}</h1>
+      <div className="page-items">
+        {pageLinks.map((link, index) => (
+          <Link
+            href={link.href}
+            key={index}
+            className="king-link"
+            onClick={() => link.name === 'Sign out' && signOut()}
+          >
+            <div>
+              <span>{link.icon}</span>
+              <span>{link.name}</span>
+            </div>
+            {link.text && <p>{link.text}</p>}
+          </Link>
+        ))}
       </div>
     </Home>
   )
@@ -64,7 +67,7 @@ const Home = styled.div`
     border-radius: 30px;
     isolation: isolate;
     position: relative;
-    
+
     &::before,
     &::after {
       content: '';
@@ -78,7 +81,7 @@ const Home = styled.div`
     }
     &::after {
       z-index: -1;
-      background-color: rgb(var(--main-theme-color), .9);
+      background-color: rgb(var(--main-theme-color), 0.9);
     }
   }
 
@@ -97,15 +100,15 @@ const Home = styled.div`
       color: rgb(var(--dark-theme-color));
       border-radius: 10px;
       width: 20rem;
-      transition-duration: .3s;
+      transition-duration: 0.3s;
 
       div {
         display: flex;
         align-items: center;
-        gap: .5rem;
-        transition-duration: .3s;
+        gap: 0.5rem;
+        transition-duration: 0.3s;
       }
-      
+
       :hover,
       :focus-visible {
         div {
@@ -114,8 +117,8 @@ const Home = styled.div`
       }
 
       p {
-        font-size: .8rem;
-        padding-top: .5rem;
+        font-size: 0.8rem;
+        padding-top: 0.5rem;
       }
     }
   }

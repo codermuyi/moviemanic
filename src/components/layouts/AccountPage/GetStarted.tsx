@@ -1,36 +1,41 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 import { useState } from 'react'
 
-import Dialog from '@components/Dialog';
+import useSaveUsername from '../../../hooks/useSaveUsername'
+
+import Dialog from '@components/Dialog'
 import Button from '@components/atoms/Button'
-import RightArrowIcon from '@icons/RightArrow';
+import RightArrowIcon from '@icons/RightArrow'
 import { breakpoints } from '@constants'
-import useSaveUsername from '../../../hooks/useSaveUsername';
 
 const GetStartedTSX = () => {
   const [username, setUsername] = useState('')
   const saveUsername = useSaveUsername(username)
 
   return (
-    <FirstScreen className='flex-center'>
+    <FirstScreen className="flex-center">
       <p>Get started to add movies and tv shows to your list</p>
       <Dialog
         noButton
         name={<Button>Get Started</Button>}
-        title=''
+        title=""
         contentStyle={{
-          paddingBlock: '2rem'
+          paddingBlock: '2rem',
         }}
       >
-        <NamePrompt className='grid-center'>
+        <NamePrompt className="grid-center">
           <div style={{ fontSize: '2rem' }}>Enter a username:</div>
-          <form className='flex-center' style={{ gap: 10 }} onSubmit={saveUsername}>
+          <form
+            className="flex-center"
+            style={{ gap: 10 }}
+            onSubmit={saveUsername}
+          >
             <input
-              type='text'
+              type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
-            <Button padding='10px'>
+            <Button padding="10px">
               <RightArrowIcon />
             </Button>
           </form>
@@ -45,7 +50,7 @@ const FirstScreen = styled.div`
   background-color: rgb(var(-f-bg-color));
   gap: 1rem;
   flex-direction: column;
-  
+
   & > .button {
     --size: 12rem;
     font-size: 2rem;
@@ -63,18 +68,18 @@ const FirstScreen = styled.div`
       z-index: -1;
       background-color: rgb(var(--dark-theme-color));
       clip-path: circle(0% at 50% 50%);
-      transition: clip-path .4s;
+      transition: clip-path 0.4s;
     }
-    
+
     &:hover,
     &:focus {
-      box-shadow: 0 4px 8px rgb(var(--dark-theme-color), .25);
+      box-shadow: 0 4px 8px rgb(var(--dark-theme-color), 0.25);
       background-color: white;
       transform: scale(1.1);
 
       ::before {
         clip-path: circle(100% at 50% 50%);
-      } 
+      }
     }
   }
 
@@ -89,13 +94,13 @@ const NamePrompt = styled.div`
   padding-block: 2rem;
 
   input {
-    padding: .7rem;
+    padding: 0.7rem;
     font-size: 1rem;
     background-color: rgb(255 255 255);
     color: rgb(var(--main-theme-color));
     border: 0;
     border-radius: 10px;
-    
+
     :hover {
       outline-color: rgb(var(--main-theme-color));
     }

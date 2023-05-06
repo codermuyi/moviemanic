@@ -1,25 +1,29 @@
 import styled from 'styled-components'
 
-import Button from '@atoms/Button';
-import RightIcon from '@icons/RightArrow';
-import Dialog from '@components/Dialog';
-import MovieWithCastContent from './MovieWithCastContent';
+import MovieWithCastContent from './MovieWithCastContent'
 
-const FilmWithCast = ({ cast }: { cast: any }) => {
+import Button from '@atoms/Button'
+import RightIcon from '@icons/RightArrow'
+import Dialog from '@components/Dialog'
+import { FilmCast } from '@/src/types'
+
+const FilmWithCast = ({ cast }: { cast: FilmCast }) => {
   return (
     <Dialog
       noButton
       name={
         <TheButton name={`Movies with ${cast.name}`}>
-          <RightIcon width='25' height='25' />
+          <RightIcon width="25" height="25" />
         </TheButton>
       }
-      title={<>
-        Movies with {' '}
-        <span style={{ color: 'rgb(var(--main-theme-color))' }}>
-          {cast.name}
-        </span>
-      </>}
+      title={
+        <>
+          Movies with{' '}
+          <span style={{ color: 'rgb(var(--main-theme-color))' }}>
+            {cast.name}
+          </span>
+        </>
+      }
       contentStyle={{
         maxWidth: '1000px',
         overflow: 'hidden',

@@ -1,38 +1,42 @@
 import Link from 'next/link'
 import styled from 'styled-components'
-import Button from '@atoms/Button'
+
 import CategoryList from './CategoryList'
 
-interface Props {
+import { FilmListResponse, MediaType } from '@/src/types'
+import Button from '@atoms/Button'
+
+interface CategoryProps {
   categoryName: string
-  showType: string
+  showType: MediaType
   isTrending: boolean
-  data: any
+  data: FilmListResponse
 }
 
 const Category = ({
   categoryName,
   showType,
   isTrending,
-  data
-}: Props) => {
-
+  data,
+}: CategoryProps) => {
   const linkPath = showType === 'movie' ? 'movies' : 'tv-series'
 
   return (
     <Cont>
-      {(isTrending && showType == 'tv') && <br />}
+      {isTrending && showType == 'tv' && <br />}
       <Heading>
-        <div className='name'>
-          <p className='category-name'>{categoryName}</p>
-          <p className='show-type'>{showType === 'tv' ? 'TV Series' : 'Movie'}</p>
+        <div className="name">
+          <p className="category-name">{categoryName}</p>
+          <p className="show-type">
+            {showType === 'tv' ? 'TV Series' : 'Movie'}
+          </p>
         </div>
-        <div className='see-more'>
+        <div className="see-more">
           <Link href={`/${linkPath}/cat/${categoryName.toLowerCase()}`}>
             <Button
-              bgColor='white'
-              padding='.5rem'
-              color='rgb(var(--main-theme-color))'
+              bgColor="white"
+              padding=".5rem"
+              color="rgb(var(--main-theme-color))"
               tabIndex={-1}
             >
               SEE MORE
@@ -51,15 +55,15 @@ const Category = ({
 }
 
 const Cont = styled.div`
-  margin: 1rem .1rem;
+  margin: 1rem 0.1rem;
   padding: 0 1rem;
 `
 
 const Heading = styled.div`
   display: flex;
   justify-content: space-between;
-  padding-block: .4rem;
-  margin-block: 2rem .4rem;
+  padding-block: 0.4rem;
+  margin-block: 2rem 0.4rem;
 
   .name {
     display: flex;
@@ -76,14 +80,14 @@ const Heading = styled.div`
     .show-type {
       border-radius: 6px;
       border: 1px solid white;
-      font-size: .65em;
+      font-size: 0.65em;
       padding: 3px 10px;
       text-transform: uppercase;
     }
   }
 
   .see-more button {
-    font-size: .65rem;
+    font-size: 0.65rem;
   }
 `
 

@@ -1,18 +1,28 @@
+import { FilmDetailsType } from './types'
+
 export function getSeconds(date: string) {
-  return (new Date(date)).getTime() / 1000
+  return new Date(date).getTime() / 1000
 }
 
 export function formatDate(date: string) {
-  const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short', year: 'numeric' }
+  const options: Intl.DateTimeFormatOptions = {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  }
   const dateObj = new Date(date)
   return dateObj.toLocaleDateString('en-US', options)
 }
 
-export function generatePageTitle(info: any, media_type: string): string {
-  const filmTitle = info.name || info.title
+export function generatePageTitle(
+  info: FilmDetailsType | undefined,
+  media_type: string,
+): string {
+  const filmTitle = info?.name || info?.title
   const filmMedia = media_type === 'tv' ? 'TV Series' : 'Movies'
-  const filmDate = parseInt(info.release_date || info.first_air_date)
-  const checkDate = !isNaN(filmDate) ? `(${filmDate})` : ''
+  const date = info?.release_date || info?.first_air_date || ''
+  const year = parseInt(date)
+  const checkDate = !isNaN(year) ? `(${year})` : ''
 
   if (info) {
     if (info.success === false) {
@@ -30,6 +40,10 @@ export const isMobile = {
   ios: () => navigator.userAgent.match(/iPhone|iPad|iPod/i),
   opera: () => navigator.userAgent.match(/Opera Mini/i),
   windows: () => navigator.userAgent.match(/IEMobile/i),
-  any: () => (isMobile.android() || isMobile.blackberry() || 
-  isMobile.ios() || isMobile.opera() || isMobile.windows())
-};
+  any: () =>
+    isMobile.android() ||
+    isMobile.blackberry() ||
+    isMobile.ios() ||
+    isMobile.opera() ||
+    isMobile.windows(),
+}

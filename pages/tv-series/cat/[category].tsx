@@ -1,23 +1,32 @@
-import { server } from 'config'
-import CategoryPageLayout from '@layouts/CategoryPage'
+import { GetServerSidePropsContext } from 'next'
 
-export const getServerSideProps = async (ctx: any) => {
+import CategoryPageLayout from '@layouts/CategoryPage'
+import { server } from 'config'
+import { FilmListResponse } from '@/src/types'
+
+interface Props {
+  data: FilmListResponse
+  name: string
+}
+
+const TVCategoryPage = (props: Props) => {
+  return <CategoryPageLayout {...props} mediaType="tv" />
+}
+
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const page = ctx.query.page || 1
 
-  const res = await fetch(`${server}/api/categories/tv/${ctx.query.category}?page=${page}`)
+  const res = await fetch(
+    `${server}/api/categories/tv/${ctx.query.category}?page=${page}`,
+  )
   const data = await res.json()
 
   return {
     props: {
       data: data,
-      name: ctx.query.category
+      name: ctx.query.category,
     },
   }
 }
-
-const TVCategoryPage = (props: any) => {
-  return <CategoryPageLayout {...props} mediaType='tv' />
-}
-
 
 export default TVCategoryPage

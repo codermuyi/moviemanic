@@ -2,30 +2,36 @@ import styled from 'styled-components'
 import Image from 'next/image'
 import { useState } from 'react'
 
-import { ProfileIcon } from '@atoms/SVGIcons';
 import MovieWithCastDialog from './MovieWithCastDialog'
 
-const CastProfile = (props: any) => {
-  const { cast } = props;
+import ProfileIcon from '@icons/Profile'
+import { FilmCast } from '@/src/types'
+
+const CastProfile = ({ cast }: { cast: FilmCast }) => {
   const [src, setSrc] = useState('')
 
   return (
-    <Cast className='cast'>
-      {cast.profile_path ?
+    <Cast className="cast">
+      {cast.profile_path ? (
         <Image
-          src={src === '' ? `https://image.tmdb.org/t/p/w500${cast.profile_path}` : src}
+          src={
+            src === ''
+              ? `https://image.tmdb.org/t/p/w500${cast.profile_path}`
+              : src
+          }
           alt={cast.name}
           width={150}
           height={150}
           style={{ objectFit: 'cover' }}
-          className='cast-profile'
+          className="cast-profile"
           onError={() => setSrc('/error-image.png')}
-        /> :
-        <ProfileIcon fill='gray' className='no-img-icon' />
-      }
-      <div className='cast-info'>
+        />
+      ) : (
+        <ProfileIcon fill="gray" className="no-img-icon" />
+      )}
+      <div className="cast-info">
         <p>{cast.name}</p>
-        <p className='role'>{cast.character && cast.character}</p>
+        <p className="role">{cast.character}</p>
       </div>
       <MovieWithCastDialog cast={cast} />
     </Cast>
@@ -45,11 +51,11 @@ const Cast = styled.div`
   }
 
   .cast-info {
-    font-size: .7em;
+    font-size: 0.7em;
     text-align: center;
 
     .role {
-      opacity: .6;
+      opacity: 0.6;
     }
   }
 `

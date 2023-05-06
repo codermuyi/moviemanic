@@ -1,22 +1,19 @@
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
+import { Session } from '@supabase/supabase-js'
 
 import useGetUsername from '@hooks/useGetUsername'
 import { breakpoints } from '@constants'
 
-const UserIndicator = ({ session }: any) => {
+const UserIndicator = ({ session }: { session: Session | null }) => {
   const router = useRouter()
   const username = useGetUsername()
 
   return (
     <>
-      {
-        session &&
-        (router.asPath !== '/my-account') &&
-        username && <UserIndicatorStyle>
-          Signed in as {username}
-        </UserIndicatorStyle>
-      }
+      {session && router.asPath !== '/my-account' && username && (
+        <UserIndicatorStyle>Signed in as {username}</UserIndicatorStyle>
+      )}
     </>
   )
 }
@@ -26,7 +23,7 @@ const UserIndicatorStyle = styled.p`
   color: rgb(var(--main-theme-color));
   background-color: rgb(var(--dark-theme-color));
   width: 14rem;
-  padding: .7rem 0;
+  padding: 0.7rem 0;
   position: sticky;
   top: 3.3rem;
   right: 5px;

@@ -5,24 +5,25 @@
   scroll-padding: 4rem;
 
   --border-radius: 12px;
-  --main-text-font: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
-    'Fira Mono', 'Droid Sans Mono', 'Courier New', 'Ubuntu Mono', monospace;
+  --main-text-font: ui-monospace, Menlo, Monaco, 'Cascadia Mono',
+    'Segoe UI Mono', 'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace',
+    'Source Code Pro', 'Fira Mono', 'Droid Sans Mono', 'Courier New',
+    'Ubuntu Mono', monospace;
 
   --main-text-color: 255, 255, 255;
   --sec-text-color: 20, 20, 20;
   --main-bg-color: 34, 34, 34;
   --sec-bg-color: 100, 100, 100;
-  
-  --main-theme-color: 186,79,58;
+
+  --main-theme-color: 186, 79, 58;
   --sub-theme-color: 78, 100, 160;
   --dark-theme-color: 9, 9, 9;
-  
+
   --toastify-color-light: rgb(var(--main-text-color));
   --toastify-color-dark: rgb(var(--main-text-color));
 
   --toastify-color-progress-info: rgb(var(--main-text-color));
-  --toastify-color-progress-success: rgb(var(--main-text-color));  
+  --toastify-color-progress-success: rgb(var(--main-text-color));
   --toastify-color-progress-warning: rgb(var(--main-text-color));
   --toastify-color-progress-error: rgb(var(--main-text-color));
 
@@ -69,12 +70,12 @@ a {
   cursor: pointer;
   color: rgb(var(--main-text-color));
   border-radius: 10px;
-  transition-duration: .2s;
+  transition-duration: 0.2s;
 }
 
 .button:hover {
   background-color: rgb(var(--dark-theme-color));
-  box-shadow: 0 2px 2px rgb(0, 0, 0, .2);
+  box-shadow: 0 2px 2px rgb(0, 0, 0, 0.2);
 }
 
 .button:disabled {
@@ -107,5 +108,5 @@ a {
 
 ::selection {
   color: black;
-  background-color: rgb(var(--main-theme-color), .7);
+  background-color: rgb(var(--main-theme-color), 0.7);
 }

@@ -1,8 +1,8 @@
-import Button from '@/src/components/atoms/Button'
 import Image from 'next/image'
 import styled from 'styled-components'
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/router'
 
+import Button from '@/src/components/atoms/Button'
 import arrowLeft from '@/assets/icons/arrow-left.svg'
 import arrowRight from '@/assets/icons/arrow-right.svg'
 import skipPrev from '@/assets/icons/skip-prev.svg'
@@ -15,12 +15,7 @@ interface Props {
   pageType: string
 }
 
-const Pagination = ({
-  currentPage,
-  totalPages,
-  query,
-  pageType
-}: Props) => {
+const Pagination = ({ currentPage, totalPages, query, pageType }: Props) => {
   const router = useRouter()
   const total = totalPages < 500 ? totalPages : 500
 
@@ -41,16 +36,24 @@ const Pagination = ({
   return (
     <Pag>
       <Button disabled={currentPage === 1} onClick={() => navigate(1)}>
-        <Image src={skipPrev} alt='skip to page 1' />
+        <Image src={skipPrev} alt="skip to page 1" />
       </Button>
-      <Button disabled={currentPage === 1} onClick={() => navigate(currentPage - 1)}>
-        <Image src={arrowLeft} alt='previous' />
+      <Button
+        disabled={currentPage === 1}
+        onClick={() => navigate(currentPage - 1)}
+      >
+        <Image src={arrowLeft} alt="previous" />
       </Button>
       <div>
-        <p>Page {currentPage} of {total}</p>
+        <p>
+          Page {currentPage} of {total}
+        </p>
       </div>
-      <Button disabled={currentPage >= total} onClick={() => navigate(currentPage + 1)}>
-        <Image src={arrowRight} alt='next' />
+      <Button
+        disabled={currentPage >= total}
+        onClick={() => navigate(currentPage + 1)}
+      >
+        <Image src={arrowRight} alt="next" />
       </Button>
       <Button disabled={currentPage >= total} onClick={() => navigate(total)}>
         <Image src={skipNext} alt={`skip to page ${total}`} />
