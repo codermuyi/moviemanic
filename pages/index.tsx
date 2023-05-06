@@ -29,5 +29,5 @@ export default function Home({ data }: { data: Array<FilmListResponse> }) {
 }
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-  return await routeGuard(ctx, true, `${server}/api/categories`)
+  return await routeGuard(ctx, false, `${server}/api/categories`)
 }
