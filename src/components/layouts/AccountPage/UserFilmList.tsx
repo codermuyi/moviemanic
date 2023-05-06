@@ -1,17 +1,25 @@
 import styled from 'styled-components'
+import { SetStateAction, Dispatch } from 'react'
 
 import UserFilmCard from '@/src/components/Cards/UserFilmCard'
 import { getSeconds } from '@helpers'
+import { SupabaseData } from '@/src/types'
 
-const FilmList = ({ filmList, setRandomNum }: any) => {
-  const newFilmList = filmList.sort((a: any, b: any) => {
+const FilmList = ({
+  filmList,
+  setRandomNum,
+}: {
+  filmList: SupabaseData[]
+  setRandomNum: Dispatch<SetStateAction<number>>
+}) => {
+  const newFilmList = filmList.sort((a, b) => {
     return getSeconds(b.created_at) - getSeconds(a.created_at)
   })
 
-  const movies = newFilmList.filter((film: any) => film.media_type === 'movie')
-  const tv_series = newFilmList.filter((film: any) => film.media_type === 'tv')
+  const movies = newFilmList.filter((film) => film.media_type === 'movie')
+  const tv_series = newFilmList.filter((film) => film.media_type === 'tv')
 
-  const formatNum = (arr: any) => arr.length > 0 && `(${arr.length})`
+  const formatNum = (arr: SupabaseData[]) => arr.length > 0 && `(${arr.length})`
 
   return (
     <UserInfo>
@@ -20,7 +28,7 @@ const FilmList = ({ filmList, setRandomNum }: any) => {
           <h2 className="title">Movies {formatNum(movies)}</h2>
           {movies?.[0] ? (
             <div className="film-grid">
-              {movies.map((film: any, i: number) => (
+              {movies.map((film, i) => (
                 <UserFilmCard
                   key={i}
                   supabaseData={film}
@@ -37,7 +45,7 @@ const FilmList = ({ filmList, setRandomNum }: any) => {
           <h2 className="title">TV Series {formatNum(tv_series)}</h2>
           {tv_series?.[0] ? (
             <div className="film-grid">
-              {tv_series.map((film: any, i: number) => (
+              {tv_series.map((film, i) => (
                 <UserFilmCard
                   key={i}
                   supabaseData={film}

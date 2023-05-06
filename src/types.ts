@@ -10,7 +10,7 @@ export type FilmItem = {
   overview: string
   poster_path: string
   backdrop_path: string
-  media_type: 'movie' | 'tv'
+  media_type: MediaType
   video: false
   genre_ids: number[]
   popularity: number
@@ -19,11 +19,22 @@ export type FilmItem = {
 }
 
 export type FilmList = Array<FilmItem>
-export type MediaType = FilmItem['media_type']
+export type MediaType = 'movie' | 'tv'
 
 export type FilmListResponse = {
   page: number
   results: FilmList
+  total_pages: number
+  total_results: number
+}
+
+export type SearchResultItem = Omit<FilmItem, 'media_type'> & {
+  media_type: MediaType | 'person'
+}
+
+export type SearchResponse = {
+  page: number
+  results: SearchResultItem[]
   total_pages: number
   total_results: number
 }
@@ -101,7 +112,7 @@ export type FilmCast = {
   cast_id: number
   character: string
   credit_id: string
-  gender: 2
+  gender: number // 2
   id: number
   known_for_department: string
   name: string
@@ -145,6 +156,7 @@ export type SupabaseData = {
   film_id: string
   user_id: string
   title: string
+  created_at: string
 }
 
 export type Profile = {
@@ -155,4 +167,9 @@ export type Profile = {
 export type User = {
   email: string
   id: string
+}
+
+export type MainFilmPageResopnse = {
+  genreList: Genre[]
+  filmList: FilmListResponse[]
 }

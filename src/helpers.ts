@@ -1,3 +1,5 @@
+import { FilmDetailsType } from './types'
+
 export function getSeconds(date: string) {
   return new Date(date).getTime() / 1000
 }
@@ -12,11 +14,15 @@ export function formatDate(date: string) {
   return dateObj.toLocaleDateString('en-US', options)
 }
 
-export function generatePageTitle(info: any, media_type: string): string {
+export function generatePageTitle(
+  info: FilmDetailsType,
+  media_type: string,
+): string {
   const filmTitle = info.name || info.title
   const filmMedia = media_type === 'tv' ? 'TV Series' : 'Movies'
-  const filmDate = parseInt(info.release_date || info.first_air_date)
-  const checkDate = !isNaN(filmDate) ? `(${filmDate})` : ''
+  const date = info.release_date || info.first_air_date || ''
+  const year = parseInt(date)
+  const checkDate = !isNaN(year) ? `(${year})` : ''
 
   if (info) {
     if (info.success === false) {

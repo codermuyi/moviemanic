@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useState, useEffect } from 'react'
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 import { GetServerSidePropsContext } from 'next'
@@ -8,11 +9,12 @@ import Loader from '@atoms/Loader'
 import Layout from '@layouts/AccountPage/Layout'
 import CheckForUsername from '@atoms/CheckForUsername'
 import { routeGuard } from '@/src/routeGuard'
+import { Profile } from '@/src/types'
 
-const MyListPage = ({ profile }: any) => {
+const MyListPage = ({ profile }: { profile: Profile }) => {
   const session = useSession()
   const supabase = useSupabaseClient()
-  const [filmList, setFilmList] = useState<{ [x: string]: any } | null>(null)
+  const [filmList, setFilmList] = useState(null)
   // Random number to refetch data whenever a film is deleted from the list
   const [randomNum, setRandomNum] = useState(Math.random())
 
@@ -20,6 +22,7 @@ const MyListPage = ({ profile }: any) => {
     const getData = async () => {
       if (session) {
         const { data } = await supabase.from('film_list').select()
+        // @ts-ignore
         setFilmList(data)
       }
     }

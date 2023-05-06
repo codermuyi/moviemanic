@@ -1,10 +1,12 @@
 import { SWRConfig } from 'swr'
+import { GetServerSidePropsContext } from 'next'
 
 import FilmPageContent from '@layouts/FilmPage'
 import { server } from 'config'
+import { FilmPageData } from '@/src/types'
 
-export async function getServerSideProps(ctx: any) {
-  const apiPath = `/api/film-page/tv/${ctx.params.id}`
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+  const apiPath = `/api/film-page/tv/${ctx.params?.id}`
   const res = await fetch(`${server}${apiPath}`)
   const data = await res.json()
 
@@ -17,7 +19,11 @@ export async function getServerSideProps(ctx: any) {
   }
 }
 
-const moviePage = ({ fallback }: any) => {
+const moviePage = ({
+  fallback,
+}: {
+  fallback: { [key: string]: FilmPageData }
+}) => {
   return (
     <SWRConfig value={{ fallback }}>
       <FilmPageContent media_type="tv" />

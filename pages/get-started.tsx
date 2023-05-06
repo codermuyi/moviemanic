@@ -5,8 +5,9 @@ import Meta from '@atoms/Meta'
 import GetStarted from '@layouts/AccountPage/GetStarted'
 import { routeGuard } from '@/src/routeGuard'
 import { routes } from '@/src/constants'
+import { Profile } from '@/src/types'
 
-export default function AccountPage({ profile }: any) {
+export default function AccountPage({ profile }: { profile: Profile }) {
   return !profile?.username ? (
     <>
       <Meta title="Get Started | Moviemanic" />

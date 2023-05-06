@@ -1,6 +1,12 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, HTMLAttributes, ReactNode } from 'react'
 
-function ClientOnly({ children, ...delegated }: any) {
+function ClientOnly({
+  children,
+  ...delegated
+}: {
+  children: ReactNode
+  delegated: HTMLAttributes<HTMLDivElement>
+}) {
   const [hasMounted, setHasMounted] = useState(false)
 
   useEffect(() => {

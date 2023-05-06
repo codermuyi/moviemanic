@@ -4,8 +4,15 @@ import FilmTitle from './FilmTitle'
 
 import FilmPoster from '@components/FilmPoster'
 import { breakpoints } from '@constants'
+import { MediaType, FilmDetailsType } from '@/src/types'
 
-const FilmBackdrop = ({ info, mediaType }: any) => {
+const FilmBackdrop = ({
+  info,
+  mediaType,
+}: {
+  info: FilmDetailsType
+  mediaType: MediaType
+}) => {
   return (
     <Backdrop backdrop={info.backdrop_path}>
       <FilmPoster path={info.poster_path} info={info} mediaType={mediaType} />

@@ -1,8 +1,9 @@
 import Meta from '@atoms/Meta'
 import MainFilmPageContent from '@layouts/MainFilmPage'
 import { server } from 'config'
+import { MainFilmPageResopnse } from '@/src/types'
 
-const index = ({ data }: any) => {
+const index = ({ data }: { data: MainFilmPageResopnse }) => {
   return (
     <>
       <Meta title="TV Series | Moviemanic" />

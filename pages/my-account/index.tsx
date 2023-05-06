@@ -5,8 +5,9 @@ import UserHome from '@layouts/AccountPage/UserHome'
 import Layout from '@layouts/AccountPage/Layout'
 import CheckForUsername from '@atoms/CheckForUsername'
 import { routeGuard } from '@/src/routeGuard'
+import { Profile } from '@/src/types'
 
-export default function AccountPage({ profile }: { profile: any }) {
+export default function AccountPage({ profile }: { profile: Profile }) {
   return (
     <>
       <Meta title="My Account | Moviemanic" />

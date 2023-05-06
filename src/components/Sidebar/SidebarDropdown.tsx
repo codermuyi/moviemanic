@@ -3,13 +3,21 @@ import { useState, useEffect, ReactNode } from 'react'
 
 import DropdownIndicator from '../icons/DropdownIndicator'
 
+type DropdownProps = {
+  name: string
+  toggleElementContent: ReactNode
+  isSidebarOpen: boolean
+  children?: ReactNode[]
+  dataID?: string
+}
+
 const SidebarDropdown = ({
   name,
   toggleElementContent,
   isSidebarOpen,
   children,
   dataID = '',
-}: any) => {
+}: DropdownProps) => {
   const [isDropdownOpen, openDropdown] = useState(false)
 
   useEffect(() => {
@@ -45,8 +53,8 @@ const SidebarDropdown = ({
         <DropdownIndicator className={`${name}-dropdown-icon`} />
       </div>
       <div className="dropdown-body">
-        {children?.map((child: ReactNode, i: number) => (
-          <div key={i} className="dropdown-item">
+        {children?.map((child, index) => (
+          <div key={index} className="dropdown-item">
             {child}
           </div>
         ))}

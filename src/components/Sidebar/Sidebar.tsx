@@ -13,6 +13,7 @@ import ScrollBar from '@atoms/ScrollBar'
 import NavLink from '@atoms/NavLink'
 import { filmCategories } from '@/assets/film_info'
 import { myFetch } from '@/assets/utilities'
+import { Genre } from '@/src/types'
 
 interface SidebarProps {
   iconFill: string
@@ -21,8 +22,14 @@ interface SidebarProps {
 }
 
 const Sidebar = ({ iconFill, isOpen, toggle }: SidebarProps) => {
-  const { data: movieGenres } = useSwr('/api/genre/movie/small-list', myFetch)
-  const { data: tvGenres } = useSwr('/api/genre/tv/small-list', myFetch)
+  const { data: movieGenres } = useSwr<Genre[]>(
+    '/api/genre/movie/small-list',
+    myFetch,
+  )
+  const { data: tvGenres } = useSwr<Genre[]>(
+    '/api/genre/tv/small-list',
+    myFetch,
+  )
 
   const iconWidth = 25
   const iconHeight = 25
@@ -35,13 +42,13 @@ const Sidebar = ({ iconFill, isOpen, toggle }: SidebarProps) => {
     else tvCatList.push(category.name)
   })
 
-  const movieGenreLinks = movieGenres?.map((genre: any) => (
+  const movieGenreLinks = movieGenres?.map((genre: Genre) => (
     <NavLink key={genre.id} href={`/movies/genre/${genre.id}`}>
       <p>{genre.name}</p>
     </NavLink>
   ))
 
-  const tvGenreLinks = tvGenres?.map((genre: any) => (
+  const tvGenreLinks = tvGenres?.map((genre: Genre) => (
     <NavLink key={genre.id} href={`/tv-series/genre/${genre.id}`}>
       <p>{genre.name}</p>
     </NavLink>

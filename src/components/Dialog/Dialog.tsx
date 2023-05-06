@@ -10,7 +10,7 @@ interface DialogProps {
   title?: string | React.ReactNode
   description?: string
   children?: React.ReactNode
-  contentStyle?: any
+  contentStyle?: object
   noButton?: boolean
 }
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import styled from 'styled-components'
 import useSwr from 'swr'
 
@@ -6,15 +7,23 @@ import Loader from '@components/atoms/Loader'
 import Pagination from '@components/atoms/Pagination'
 import FilmCard from '@components/Cards/FilmCard'
 import { myFetch } from '@/assets/utilities'
+import { SearchResponse } from '@/src/types'
 
-const SearchPageContent = ({ searchQuery, contextQuery }: any) => {
-  const { data: d } = useSwr(
+interface Props {
+  searchQuery: string
+  contextQuery: { page: string }
+}
+
+const SearchPageContent = ({ searchQuery, contextQuery }: Props) => {
+  const { data: d } = useSwr<SearchResponse>(
     `/api/search/${searchQuery}?page=${contextQuery.page}`,
     myFetch,
   )
 
-  const data = d?.results?.filter((v: any) => v.media_type !== 'person')
-  const num: number = data?.length
+  console.log(d)
+
+  const data = d?.results?.filter((item) => item.media_type !== 'person')
+  const num = data?.length
 
   return (
     <>
@@ -23,9 +32,9 @@ const SearchPageContent = ({ searchQuery, contextQuery }: any) => {
         <>
           <Content>
             <h1>
-              Result{num > 1 && 's'} for &quot;{searchQuery}&quot; ({num})
+              {num && `Result${num > 1 && 's'} for "${searchQuery}" (${num})`}
             </h1>
-            {data.map((filmData: any) => {
+            {data.map((filmData) => {
               return (
                 <FilmCard
                   key={filmData.id}
@@ -37,7 +46,9 @@ const SearchPageContent = ({ searchQuery, contextQuery }: any) => {
             })}
           </Content>
           <Pagination
+            // @ts-ignore
             currentPage={d?.page}
+            // @ts-ignore
             totalPages={d?.total_pages}
             query={searchQuery}
             pageType="search"

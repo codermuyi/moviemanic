@@ -1,9 +1,15 @@
 import Link from 'next/link'
 import styled from 'styled-components'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, ReactNode } from 'react'
 import { useRouter } from 'next/router'
 
-const NavLink = ({ href, children, className }: any) => {
+type NavLinkProps = {
+  href: string
+  children: ReactNode
+  className?: string
+}
+
+const NavLink = ({ href, children, className }: NavLinkProps) => {
   const [ariaCurrent, setAriaCurrent] = useState<'page' | undefined>()
   const { asPath } = useRouter()
 

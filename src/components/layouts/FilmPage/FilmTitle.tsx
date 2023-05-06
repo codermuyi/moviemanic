@@ -2,7 +2,14 @@ import styled from 'styled-components'
 
 import StarRating from './FilmRating'
 
-const FilmTitle = ({ name, title, tagline, vote_average }: any) => {
+interface Props {
+  name?: string
+  title?: string
+  tagline: string
+  vote_average: number
+}
+
+const FilmTitle = ({ name, title, tagline, vote_average }: Props) => {
   return (
     <Name>
       <h1>

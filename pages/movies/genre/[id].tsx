@@ -1,8 +1,10 @@
+import { GetServerSidePropsContext } from 'next'
+
 import { server } from 'config'
 import Meta from '@/src/components/atoms/Meta'
-import GenrePageContent from '@layouts/GenrePage'
+import GenrePageContent, { GenrePageProps } from '@layouts/GenrePage'
 
-const genrePage = ({ data, name, id }: any) => {
+const genrePage = ({ data, name, id }: GenrePageProps) => {
   return (
     <>
       <Meta title={`${name} - Movies | Moviemanic`} />
@@ -11,9 +13,11 @@ const genrePage = ({ data, name, id }: any) => {
   )
 }
 
-export async function getServerSideProps(ctx: any) {
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   const res = await fetch(
-    `${server}/api/genre/movie/id/${ctx.params.id}?page=${ctx.query.page}`,
+    `${server}/api/genre/movie/id/${ctx.params && ctx.params.id}?page=${
+      ctx.query.page
+    }`,
   )
   const data = await res.json()
 

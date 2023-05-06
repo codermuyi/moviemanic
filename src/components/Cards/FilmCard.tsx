@@ -4,12 +4,12 @@ import CardImage from './FilmCardImage'
 import CardInfo from './FilmCardInfo'
 
 import { breakpoints } from '@constants'
-import { FilmItem, MediaType } from '@/src/types'
+import { FilmItem, MediaType, SearchResultItem } from '@/src/types'
 
 interface Props {
   isTrending?: boolean
-  type: MediaType
-  data: FilmItem
+  type: MediaType | 'person'
+  data: FilmItem | SearchResultItem
 }
 
 const FilmCard = ({ isTrending, type, data }: Props) => {

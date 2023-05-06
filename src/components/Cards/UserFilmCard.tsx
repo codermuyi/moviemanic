@@ -1,5 +1,6 @@
 import useSwr from 'swr'
 import styled from 'styled-components'
+import { SetStateAction, Dispatch } from 'react'
 
 import CardImage from './FilmCardImage'
 import CardInfo from './FilmCardInfo'
@@ -14,7 +15,7 @@ import { FilmDetailsType, SupabaseData } from '@/src/types'
 
 interface Props {
   supabaseData: SupabaseData
-  setRandomNum?: any
+  setRandomNum: Dispatch<SetStateAction<number>>
 }
 
 const FilmCard = ({ supabaseData, setRandomNum }: Props) => {

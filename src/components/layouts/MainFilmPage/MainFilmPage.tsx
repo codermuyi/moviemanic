@@ -6,10 +6,21 @@ import ScrollBar from '@atoms/ScrollBar'
 import FilmGrid from '@components/FilmGrid'
 import Button from '@atoms/Button'
 import { filmCategories } from '@/assets/film_info'
+import { MainFilmPageResopnse, MediaType } from '@/src/types'
 
-const MainFilmPageContent = ({ data, mediaType }: any) => {
+const MainFilmPageContent = ({
+  data,
+  mediaType,
+}: {
+  data: MainFilmPageResopnse
+  mediaType: MediaType
+}) => {
   const title = mediaType === 'movie' ? 'Movies' : 'TV Series'
   const linkPath = mediaType === 'movie' ? 'movies' : 'tv-series'
+
+  const { filmList, genreList } = data
+
+  console.log(data)
 
   return (
     <PageBody>
@@ -33,7 +44,7 @@ const MainFilmPageContent = ({ data, mediaType }: any) => {
           </div>
         </ScrollBar>
         <div className="genre-list">
-          {data.genreList.genres.map((genre: any, i: number) => (
+          {genreList.map((genre, i) => (
             <Link key={i} href={`#${genre.name}`} className="card genre-card">
               <div>
                 <p>{genre.name}</p>
@@ -42,16 +53,16 @@ const MainFilmPageContent = ({ data, mediaType }: any) => {
           ))}
         </div>
         <br />
-        {data.filmList.map((list: any, i: number) => {
+        {filmList.map((list, i) => {
           return (
-            <div id={data.genreList.genres[i].name} key={i}>
+            <div id={genreList[i].name} key={i}>
               <FilmGrid
-                title={data.genreList.genres[i].name}
+                title={genreList[i].name}
                 mediaType={mediaType}
                 data={list.results}
                 isGenre
               />
-              <Link href={`/${linkPath}/genre/${data.genreList.genres[i].id}`}>
+              <Link href={`/${linkPath}/genre/${genreList[i].id}`}>
                 <Button radius="20px" margin="0 0 30px 50px" padding="10px">
                   See More
                 </Button>

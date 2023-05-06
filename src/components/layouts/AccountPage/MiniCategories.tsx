@@ -10,9 +10,13 @@ import { breakpoints } from '@constants'
 import { routes } from '@constants'
 import { filmCategories } from 'assets/film_info'
 import { myFetch } from 'assets/utilities'
+import { FilmListResponse } from '@/src/types'
 
 const MiniCategories = () => {
-  const { data: categories, isLoading } = useSwr('/api/categories', myFetch)
+  const { data: categories, isLoading } = useSwr<FilmListResponse[]>(
+    '/api/categories',
+    myFetch,
+  )
 
   return (
     <Aside>
@@ -20,7 +24,7 @@ const MiniCategories = () => {
       <ScrollBar style={{ maxHeight: '100%' }} autoHide={false}>
         <br />
         {!isLoading ? (
-          filmCategories?.map((c: any, i: number) => (
+          filmCategories?.map((c, i) => (
             <div key={c.id}>
               <FilmGrid
                 isListStyle

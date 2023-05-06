@@ -1,9 +1,17 @@
 import { SWRConfig } from 'swr'
+import { GetServerSidePropsContext } from 'next'
 
 import { server } from 'config'
 import SearchPageLayout from '@layouts/SearchPage'
+import { FilmListResponse } from '@/src/types'
 
-const SearchResults = ({ searchQuery, fallback, ctxQuery }: any) => {
+interface Props {
+  searchQuery: string
+  fallback: { [key: string]: FilmListResponse }
+  ctxQuery: { page: string }
+}
+
+const SearchResults = ({ searchQuery, fallback, ctxQuery }: Props) => {
   return (
     <SWRConfig value={{ fallback }}>
       <SearchPageLayout searchQuery={searchQuery} contextQuery={ctxQuery} />
@@ -11,8 +19,8 @@ const SearchResults = ({ searchQuery, fallback, ctxQuery }: any) => {
   )
 }
 
-export const getServerSideProps = async (ctx: any) => {
-  const q = ctx.params.query
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+  const q = ctx.params?.query
   const apiPath = `/api/search/${q}?page=${ctx.query.page}`
   const res = await fetch(`${server}${apiPath}`)
   const data = await res.json()
