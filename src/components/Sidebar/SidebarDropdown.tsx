@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { useState, useEffect, ReactNode } from 'react'
 
-import { DropdownIcon } from '@atoms/SVGIcons'
+import DropdownIndicator from '../icons/DropdownIndicator'
 
 const SidebarDropdown = ({
   name,
@@ -42,7 +42,7 @@ const SidebarDropdown = ({
         onKeyDown={handleKeyDown}
       >
         <div>{toggleElementContent}</div>
-        <DropdownIcon className={`${name}-dropdown-icon`} />
+        <DropdownIndicator className={`${name}-dropdown-icon`} />
       </div>
       <div className="dropdown-body">
         {children?.map((child: ReactNode, i: number) => (

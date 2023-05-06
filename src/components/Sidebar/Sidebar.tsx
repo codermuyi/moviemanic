@@ -1,9 +1,13 @@
 import styled from 'styled-components'
 import useSwr from 'swr'
 
+import GridIcon from '../icons/Grid'
+import MovieIcon from '../icons/Movie'
+import TVIcon from '../icons/TV'
+import MenuIcon from '../icons/Menu'
+
 import SidebarDropdown from './SidebarDropdown'
 
-import { GridIcon, MovieIcon, TVIcon, MenuIcon } from '@atoms/SVGIcons'
 import Button from '@atoms/Button'
 import ScrollBar from '@atoms/ScrollBar'
 import NavLink from '@atoms/NavLink'

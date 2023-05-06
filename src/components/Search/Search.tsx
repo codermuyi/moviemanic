@@ -2,8 +2,9 @@ import styled from 'styled-components'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 
+import SearchIcon from '../icons/Search'
+
 import Button from '@atoms/Button'
-import { SearchIcon } from '@atoms/SVGIcons'
 import { breakpoints } from '@constants'
 
 const Search = () => {

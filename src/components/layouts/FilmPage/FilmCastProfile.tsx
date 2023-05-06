@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 import MovieWithCastDialog from './MovieWithCastDialog'
 
-import { ProfileIcon } from '@atoms/SVGIcons'
+import ProfileIcon from '@icons/Profile'
 import { FilmCast } from '@/src/types'
 
 const CastProfile = ({ cast }: { cast: FilmCast }) => {

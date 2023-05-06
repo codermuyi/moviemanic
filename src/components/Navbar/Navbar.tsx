@@ -4,13 +4,12 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { useSession } from '@supabase/auth-helpers-react'
 
-import {
-  MainIcon,
-  ProfileIcon,
-  MenuIcon,
-  MovieIcon,
-  TVIcon,
-} from '@atoms/SVGIcons'
+import ProfileIcon from '../icons/Profile'
+import MainIcon from '../icons/Main'
+import MenuIcon from '../icons/Menu'
+import MovieIcon from '../icons/Movie'
+import TVIcon from '../icons/TV'
+
 import Button from '@atoms/Button'
 import NavLink from '@atoms/NavLink'
 import Sidebar from '@components/Sidebar'
