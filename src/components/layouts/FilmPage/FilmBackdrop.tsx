@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 import FilmTitle from './FilmTitle'
+// import FilmCompanies from './FilmCompanies'
 
 import FilmPoster from '@components/FilmPoster'
 import { breakpoints } from '@constants'
@@ -13,8 +14,9 @@ const FilmBackdrop = ({
   info?: FilmDetailsType
   mediaType: MediaType
 }) => {
+  console.log(info)
   return (
-    <Backdrop backdrop={info?.backdrop_path}>
+    <Backdrop path={`https://image.tmdb.org/t/p/w1280${info?.backdrop_path}`}>
       <FilmPoster path={info?.poster_path} info={info} mediaType={mediaType} />
       <FilmTitle
         name={info?.name}
@@ -23,14 +25,14 @@ const FilmBackdrop = ({
         // @ts-ignore
         vote_average={info?.vote_average}
       />
+      {/* <FilmCompanies info={info} /> */}
     </Backdrop>
   )
 }
 
-const Backdrop = styled.div<{ backdrop?: string }>`
+const Backdrop = styled.div<{ path?: string }>`
   grid-column: 1 / -1;
-  background: url(${(p) => `https://image.tmdb.org/t/p/w1280${p.backdrop}`})
-    no-repeat;
+  background: url(${(p) => p.path}) no-repeat;
   background-size: cover;
   background-position: center;
   padding-block: 9rem;

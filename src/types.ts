@@ -44,7 +44,7 @@ export type Genre = {
   name: string
 }
 
-type Company = {
+export type Company = {
   id: number
   logo_path: string
   name: string
