@@ -25,10 +25,7 @@ export async function routeGuard(
         permanent: false,
       },
     }
-  } else if (
-    (!session && privateWhenLoggedIn) ||
-    (!session && !privateWhenLoggedIn)
-  ) {
+  } else if (!session && privateWhenLoggedIn) {
     // Only fetch data when page is not redirected
     if (dataFetchUrl) data = await myFetch(dataFetchUrl)
 

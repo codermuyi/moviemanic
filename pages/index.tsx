@@ -1,5 +1,3 @@
-import { GetServerSidePropsContext } from 'next'
-
 import Meta from '@components/atoms/Meta'
 import Category from '@components/Category'
 import BlockTopLink from '@atoms/BlockTopLink'
@@ -7,7 +5,7 @@ import BlockBottomLink from '@atoms/BlockBottomLink'
 import { FilmListResponse } from '@/src/types'
 import { filmCategories } from 'assets/film_info'
 import { server } from 'config'
-import { routeGuard } from '@/src/routeGuard'
+import { myFetch } from '@/assets/utilities'
 
 export default function Home({ data }: { data: Array<FilmListResponse> }) {
   return (
@@ -28,6 +26,12 @@ export default function Home({ data }: { data: Array<FilmListResponse> }) {
   )
 }
 
-export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-  return await routeGuard(ctx, false, `${server}/api/categories`)
+export const getServerSideProps = async () => {
+  const data = await myFetch(`${server}/api/categories`)
+
+  return {
+    props: {
+      data,
+    },
+  }
 }
