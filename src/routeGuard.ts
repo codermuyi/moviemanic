@@ -1,7 +1,7 @@
 import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import { GetServerSidePropsContext } from 'next'
 
-import { routes } from './constants'
+import { routesV1 } from './constants'
 
 import { myFetch } from '@/assets/utilities'
 
@@ -21,7 +21,7 @@ export async function routeGuard(
   if (session && privateWhenLoggedIn) {
     return {
       redirect: {
-        destination: redirect ?? routes.ACCOUNT,
+        destination: redirect ?? routesV1.ACCOUNT,
         permanent: false,
       },
     }
@@ -38,7 +38,7 @@ export async function routeGuard(
   } else if (!session)
     return {
       redirect: {
-        destination: redirect ?? routes.SIGN_IN,
+        destination: redirect ?? routesV1.SIGN_IN,
         permanent: false,
       },
     }

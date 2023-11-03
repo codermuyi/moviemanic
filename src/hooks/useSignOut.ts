@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import { toast } from 'react-toastify'
 
-import { routes } from '@constants'
+import { routesV1 } from '@constants'
 
 export default function useSignOut() {
   const router = useRouter()
@@ -14,7 +14,7 @@ export default function useSignOut() {
     if (error) {
       toast.error('Failed to sign out')
     } else {
-      router.push(routes.HOME)
+      router.push(routesV1.HOME)
     }
   }
 

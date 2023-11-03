@@ -5,7 +5,10 @@ const nextConfig = {
     domains: ['image.tmdb.org', 'themoviedb.org'],
     // To prevent vercel limitations
     unoptimized: true,
-  }
+  },
+  compiler: {
+    styledComponents: true,
+  },
 }
 
 module.exports = nextConfig

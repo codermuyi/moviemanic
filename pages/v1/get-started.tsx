@@ -4,7 +4,7 @@ import { GetServerSidePropsContext } from 'next'
 import Meta from '@atoms/Meta'
 import GetStarted from '@layouts/AccountPage/GetStarted'
 import { routeGuard } from '@/src/routeGuard'
-import { routes } from '@/src/constants'
+import { routesV1 } from '@/src/constants'
 import { Profile } from '@/src/types'
 
 export default function AccountPage({ profile }: { profile: Profile }) {
@@ -18,7 +18,7 @@ export default function AccountPage({ profile }: { profile: Profile }) {
       <p>You already have a username</p>
       <Link
         className="button"
-        href={routes.ACCOUNT}
+        href={routesV1.ACCOUNT}
         style={{ padding: '1rem', textAlign: 'center' }}
       >
         Go to Account page

@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -16,17 +20,62 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"],
-      "@components/*": ["src/components/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@variables/*": ["src/variables/*"],
-      "@layouts/*": ["src/components/layouts/*"],
-      "@icons/*": ["src/components/icons/*"],
-      "@atoms/*": ["src/components/atoms/*"],
-      "@constants": ["src/constants"],
-      "@helpers": ["src/helpers"],
-    }
+      "@/*": [
+        "./*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@hooks/*": [
+        "src/hooks/*"
+      ],
+      "@layouts/*": [
+        "src/components/layouts/*"
+      ],
+      "@icons/*": [
+        "src/components/icons/*"
+      ],
+      "@atoms/*": [
+        "src/components/atoms/*"
+      ],
+      "@constants": [
+        "src/constants"
+      ],
+      "@helpers": [
+        "src/helpers"
+      ],
+      "@_components/*": [
+        "app/components/*"
+      ],
+      "@_hooks/*": [
+        "app/hooks/*"
+      ],
+      "@_layouts/*": [
+        "app/components/layouts/*"
+      ],
+      "@_icons/*": [
+        "app/components/icons/*"
+      ],
+      "@_atoms/*": [
+        "app/components/atoms/*"
+      ],
+      "@_helpers": [
+        "app/helpers"
+      ]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
