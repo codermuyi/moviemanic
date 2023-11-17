@@ -24,9 +24,14 @@
       "@icons/*": ["src/components/icons/*"],
       "@atoms/*": ["src/components/atoms/*"],
       "@constants": ["src/constants"],
-      "@helpers": ["src/helpers"],
-    }
+      "@helpers": ["src/helpers"]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }

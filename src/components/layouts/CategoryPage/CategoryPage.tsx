@@ -23,7 +23,7 @@ const CategoryPageLayout = ({ data, name, mediaType }: Props) => {
         `}
       />
       <Heading name={name} mediaType={mediaType} />
-      <FilmGrid data={data?.results} />
+      <FilmGrid data={data?.results} mediaType={mediaType} />
       <Pagination
         currentPage={data.page}
         totalPages={data.total_pages}
